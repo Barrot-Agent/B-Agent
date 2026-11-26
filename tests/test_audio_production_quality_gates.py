@@ -95,6 +95,24 @@ def _fake_bundle_modules() -> dict[str, ModuleType]:
     }
 
 
+def _fake_loudness_report(audio, sample_rate: int) -> dict[str, object]:
+    return {
+        "standard": "ITU-R BS.1770-4",
+        "loudness_range_standard": "EBU R128 LRA",
+        "implementation": "pyloudnorm",
+        "implementation_version": "0.2.0",
+        "sample_rate_hz": int(sample_rate),
+        "duration_seconds": float(len(audio) / sample_rate),
+        "integrated_lufs": -20.0,
+        "loudness_range_lu": 4.0,
+        "loudness_range_status": "MEASURED",
+        "crest_factor_db": 3.0,
+        "normalization_applied": False,
+        "measurement_only": True,
+        "status": "MEASURED",
+    }
+
+
 def _fake_librosa(
     signal: np.ndarray,
     *,
@@ -163,6 +181,7 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
         patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=export),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", side_effect=measure),
+        patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
     ):
         result = render_production_bundle(
             _manifest(),
@@ -192,6 +211,10 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert metadata["dc_offset_correction"]["applied"] is True
     assert metadata["dc_offset_correction"]["reversible"] is True
     assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert metadata["audio_quality_benchmark_version"] == "1.1.0"
+    assert metadata["mix"]["loudness"]["integrated_lufs"] == -20.0
+    assert metadata["mix"]["loudness"]["normalization_applied"] is False
+    assert all(stem["loudness"]["integrated_lufs"] == -20.0 for stem in metadata["stems"])
     assert all(stem["stereo_integrity"]["dc_offset_dbfs"] < -60.0 for stem in metadata["stems"])
     assert [stem["instrument"] for stem in metadata["stems"]] == ["keys", "pad"]
     assert all(stem["sample_count"] == frames for stem in metadata["stems"])
@@ -227,6 +250,7 @@ def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: 
         patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
+        patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
     ):
         result = render_production_bundle(_manifest(), target, soundfont_path=soundfont)
 
