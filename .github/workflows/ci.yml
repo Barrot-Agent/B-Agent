@@ -200,7 +200,15 @@ jobs:
           python -m coverage report --include='barrot_agent/rendering/*' --fail-under=63
           python -m coverage report --include='barrot_agent/smart_agent.py' --fail-under=70
           python -m coverage report --include='barrot_agent/mem_palace.py' --fail-under=80
-          # Professional audio is a co-equal mission; protect its production and analysis paths from untested regressions.
+          # Non-regression floors for major packages excluded from the legacy/core aggregate.
+          # Floors are set at or just below verified main baselines; raise them as tests improve.
+          python -m coverage report --include='barrot_agent/agi/*' --fail-under=63
+          python -m coverage report --include='barrot_agent/analysis/*' --fail-under=20
+          python -m coverage report --include='barrot_agent/ingestion/*' --fail-under=26
+          python -m coverage report --include='barrot_agent/orchestration/*' --fail-under=69
+          python -m coverage report --include='barrot_agent/evolution/*' --fail-under=82
+          # Professional audio is a co-equal mission; protect its full creative package and key production paths.
+          python -m coverage report --include='barrot_agent/creative/*' --fail-under=90
           python -m coverage report --include='barrot_agent/creative/audio_adapter.py' --fail-under=70
           python -m coverage report --include='barrot_agent/creative/audio_bundle.py' --fail-under=75
           python -m coverage report --include='barrot_agent/creative/audio_render.py' --fail-under=80
