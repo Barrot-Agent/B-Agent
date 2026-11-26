@@ -4644,3 +4644,38 @@ Latest scheduled main capture: [run 45818504756](https://github.com/Barrot-Agent
 3. Continuity: validate signed bundle recovery between two independently controlled physical hosts with explicit key handling; do not enable unattended network sync.
 4. Shared V3: review the ancestry-based gate correction separately from #1713's Telegram changes; do not merge until review, branch protection and deployment consequences are resolved.
 5. HF Space: obtain build logs through an already-authorized read-only path; do not restart or redeploy.
+
+
+---
+
+# Run 52 — primary-source event capture extension and exact-head status — 2026-11-26T13:20:00Z
+
+## XRP primary evidence extension — EXECUTED
+
+- Reviewed Ripple's official October 28, 2026 release, [Ripple and Coinbase Partner to Expand Access to Ripple USD](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/). It states RLUSD became available through Coinbase Prime, Coinbase Exchange and Coinbase Retail; deposits/withdrawals span XRPL, Base and Ethereum; conversion is 1:1 from USD and supported USD-denominated stablecoins; Ripple provides liquidity on Base. Coinbase Global Exchange collateral support was explicitly described as future availability, not live at launch.
+- Added a separate Ripple-origin event to the existing XRP integration branch #1705: event `ripple-coinbase-rlusd-partnership-2026-10-28`, source `ripple_coinbase_rlusd_partnership_20261028`. It preserves the Ripple and Coinbase announcements as independent publisher evidence, records the collateral timing caveat, and explicitly rejects the inference that RLUSD distribution proves XRP spot demand or that every RLUSD transfer requires XRP.
+- Updated `research/xrp_intelligence/event_registry_current.json` to version `run223-20261126-ripple-coinbase-primary-capture`, **151 events**. Registry availability/capture time is `2026-11-26T13:13:03Z`; `raw_source_sha256=null` until the scheduled digest-only capture produces a canonical receipt. Redistribution terms for raw HTML were not reviewed, so the source spec retains digest-only receipts.
+- Added an exact-URL, exact-source-ID, marker-checked capture spec and digest-only retention reason to `barrot_agent/evolution/xrp_public_ingestion.py`; added regression tests for the source spec and production registry entry. Existing source allowlist already included `ripple.com`.
+- Commit [7c3f1a1](https://github.com/Barrot-Agent/B-Agent/commit/7c3f1a1e9137f611ef2918d654fe28dfdbec4897) is on existing PR [#1705](https://github.com/Barrot-Agent/B-Agent/pull/1705), now **13 ahead / 0 behind** main. No new branch or PR was created.
+- Branch push ingestion [45827307924](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827307924) completed successfully and uploaded the raw, receipt-index, feature-store and event artifacts. This push run did not request the manual `capture_event_sources` input; therefore the new Ripple page's runtime receipt capture is **not yet verified**. The default scheduled primary-page capture remains main-only until merge; no dispatch action was available through the connected GitHub interface.
+- Exact-head CI [45827318858](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827318858): Tests and Pages validation passed; full repository test suite was still running at this checkpoint. Audit [45827319939](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827319939), pip-audit [45827320222](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827320222), and conflict integrity [45827319357](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827319357) passed. Merge readiness [45827319051](https://github.com/Barrot-Agent/B-Agent/actions/runs/45827319051) was still running. No independent review exists. Do not claim the new source capture fully verified until exact-head full suite and a real capture with retained receipt metadata pass.
+
+## Handoff branch verification — EXECUTED / VERIFIED
+
+- Canonical handoff PR #1702 current head `d6712cc4cd617f16262a92c4fbfff351e734be2b`, 116 ahead / 0 behind main. Exact-head CI [45826554906](https://github.com/Barrot-Agent/B-Agent/actions/runs/45826554906): **4,701 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Tests, full suite and Pages validation passed.
+- Merge-readiness [45826539646](https://github.com/Barrot-Agent/B-Agent/actions/runs/45826539646) remains blocked by stale PR-base metadata: it reports `EVENT_PR_NUMBER` empty, `PR is not confirmed mergeable`, and `PR base is behind current main`, although the live compare is 116 ahead / 0 behind with current main as merge base. This is a gate false block, not evidence of a content conflict. #1713 contains an ancestry-based correction but also contains unreviewed Telegram changes; do not duplicate or merge it as a gate-only patch.
+- #1702 and #1705 have no independent reviews. The branch-protection API did not expose full review rules to the connected integration. Main merge still triggers GitHub Pages deployment; no deployment authorization was supplied. No merge, close, deploy or branch rewrite occurred.
+
+## Portfolio state
+
+- XRP: receipt chain verified at sequence 138; event registry expanded to 151; one new Ripple-origin event is designed and committed on #1705, but its canonical receipt capture and full-suite validation are pending. Forecast remains `NOT_ISSUED`.
+- Audio: remains a co-equal mission; FluidSynth technical render passes, but distinct timbres, blind listening, user acceptance and native DAW project remain unverified.
+- Continuity: remains a co-equal mission; signed cross-process file transfer passes, but independent physical-host recovery and network synchronization remain unverified.
+- The scheduled Pillars check still reports Hugging Face Space `BUILD_ERROR`; no build logs or verified root cause. No Space restart or redeploy.
+- Sellbird remains Barrot-only, uninstalled/unconfigured, with outbound paused and zero verified prospects or revenue.
+
+## Next actions
+
+1. Finish exact-head full-suite and merge-readiness checks for #1705. If any test fails, fix on that existing branch and rerun exact-head CI.
+2. Verify a real, scheduled or explicitly dispatched capture for the four curated primary pages (Coinbase, Ripple, Circle, SBI Remit); require exact URL, capture time, hash, source ID and receipt ID. Keep digest-only retention and forecast ineligibility until the full receipt contract passes.
+3. Keep the three mission queues balanced. Do not merge while branch-protection/review state and the GitHub Pages deployment side effect remain unresolved.
