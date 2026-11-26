@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T01:53:06Z",
-  "capture_basis": "Run 39: fetched current main SHA, complete recursive tree, all 11 open PRs, branch ancestry, exact-head full-suite/security results, workflow jobs/logs, current branch protection summary and latest durable handoff. Reconciled #1712 merge, refreshed PR classifications, repaired one false-positive test assertion on draft #1713, and updated the canonical handoff/map on existing PR #1702. No merge, deployment, external model transfer, outreach, paper trade or real-money action.",
+  "captured_at_utc": "2026-11-26T02:02:22.680Z",
+  "capture_basis": "Run 39: fetched current main SHA, complete recursive tree, all 11 open PRs, branch ancestry, exact-head full-suite/security results, workflow jobs/logs, current branch protection summary and latest durable handoff. Reconciled #1712 merge, refreshed PR classifications, repaired one false-positive test assertion on draft #1713, and updated the canonical handoff/map on existing PR #1702. No merge, deployment, external model transfer, outreach, paper trade or real-money action. Follow-up: corrected map classifications to preserve the established test vocabulary and restored required connector-evidence phrases; the #1702 follow-up commit requires fresh exact-head CI.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
-        "commits_ahead": 94,
+        "head_sha": "87dda52197fd26b70bf7b8b50e808d92c2f56393",
+        "commits_ahead": 95,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -80,7 +80,7 @@
         "review_count": 0,
         "mergeable": true,
         "mergeable_state": "clean",
-        "validation_status": "EXACT_HEAD_FULL_SUITE_AND_SECURITY_CHECKS_PASSED; MERGE_GATE_BLOCKED_BY_LEGACY_BASE_SHA_CHECK; NO_INDEPENDENT_REVIEW_OR_DEPLOYMENT_AUTHORIZATION",
+        "validation_status": "PREDECESSOR_HEAD_7E78CD_FULL_SUITE_PASSED_4701; CURRENT_HANDOFF_MAP_TEST_REFRESH_REQUIRES_NEW_EXACT_HEAD_CI",
         "checks": {
           "observed_at_utc": "2026-11-26T01:53:06Z",
           "pr_number": 1702,
@@ -131,7 +131,8 @@
           "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
         ],
         "observed_at_utc": "2026-11-26T01:53:06Z",
-        "exact_head_validation": "PASSED_ON_7E78CD"
+        "exact_head_validation": "PASSED_ON_7E78CD",
+        "last_exact_head_passed_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1"
       },
       {
         "number": 1703,
@@ -490,7 +491,7 @@
         "changed_paths": [
           ".github/workflows/xrp-public-ingestion.yml"
         ],
-        "classification": "superseded_pending_successor_merge_stale_duplicate",
+        "classification": "superseded_pending_successor_merge",
         "workstream_uniqueness": "duplicate_subset_of_1706",
         "review_count": 0,
         "mergeable": true,
@@ -622,7 +623,7 @@
         "changed_paths": [
           "hf_space/requirements.txt"
         ],
-        "classification": "blocked_dependency_compatibility_stale",
+        "classification": "blocked_dependency_compatibility",
         "workstream_uniqueness": "unique_but_incompatible_constraint",
         "review_count": 0,
         "mergeable": true,
@@ -993,7 +994,7 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Verified GitHub connector read/write on 2026-11-26: main SHA 2151843140fd770b62ef93d06a78c559f9e73bbd; recursive tree 3,164 entries (not truncated); 11 open PRs; current-main ancestry and changed-path diffs; exact-head CI, dependency, money and conflict checks; workflow jobs/logs; Sellbird upstream metadata/docs; existing-branch test repair and canonical handoff/map updates. No evidence transferred to Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks."
+        "evidence": "Verified GitHub connector read/write: main metadata/tree, complete recursive tree, open PRs, workflow runs/jobs/logs, file reads and existing-branch writes. Current main SHA 2151843140fd770b62ef93d06a78c559f9e73bbd; 3,164 tree entries; 11 open PRs; exact-head CI and security evidence inspected. No evidence transferred to Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle or Databricks."
       },
       "permissions": {
         "observed_actions": [
@@ -3947,6 +3948,9 @@
       "authenticated": false,
       "outbound_sending": "PAUSED",
       "qualified_prospects": 0
-    }
+    },
+    "followup_validation_status": "CURRENT_HANDOFF_MAP_TEST_FOLLOWUP_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CI",
+    "handoff_branch_pre_followup_head": "87dda52197fd26b70bf7b8b50e808d92c2f56393",
+    "pre_followup_head_validation": "The prior 4,701-pass suite was on 7e78cd598dd8e1ac54dc70a634c79a22bf6266a1; do not reuse it for this follow-up head."
   }
 }

@@ -1,3 +1,9 @@
+## Run 39 follow-up — exact-head validation boundary
+
+The canonical handoff, platform map and inventory test were updated on the existing #1702 branch. The earlier 4,701-pass full-suite result belongs to predecessor head 7e78cd598dd8e1ac54dc70a634c79a22bf6266a1; it does not validate this follow-up documentation/test commit. The follow-up must receive its own exact-head full-suite, dependency, money, conflict-integrity and merge-gate results before it can be called verified. The map records the pre-follow-up branch head and explicitly marks the new validation pending. No merge or deployment was performed.
+
+---
+
 # Run 39 — current-main integration and three-mission checkpoint
 
 Evidence cutoff: 2026-11-26T01:53:06Z. Historical checkpoints remain preserved below.
