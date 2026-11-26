@@ -127,7 +127,8 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     successor = next(item for item in data["repair_prs"] if item["number"] == 1714)
     assert source["draft"] is True
     assert source["successor_pr"] == 1714
-    assert source["classification"] == "superseded_source_preserved_as_draft"
+    assert source["classification"].startswith("superseded_source_preserved_as_draft")
+    assert "Telegram additions intentionally excluded from #1714" in source["classification"]
     assert successor["draft"] is False
     assert successor["classification"].startswith("active_clean_v3_governance_successor")
     assert successor["checks"]["full_suite"]["conclusion"] == "success"
