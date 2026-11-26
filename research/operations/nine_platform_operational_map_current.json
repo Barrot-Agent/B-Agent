@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T02:02:22.680Z",
-  "capture_basis": "Run 39: fetched current main SHA, complete recursive tree, all 11 open PRs, branch ancestry, exact-head full-suite/security results, workflow jobs/logs, current branch protection summary and latest durable handoff. Reconciled #1712 merge, refreshed PR classifications, repaired one false-positive test assertion on draft #1713, and updated the canonical handoff/map on existing PR #1702. No merge, deployment, external model transfer, outreach, paper trade or real-money action. Follow-up: corrected map classifications to preserve the established test vocabulary and restored required connector-evidence phrases; the #1702 follow-up commit requires fresh exact-head CI.",
+  "captured_at_utc": "2026-11-26T02:10:14.682Z",
+  "capture_basis": "Run 39: fetched current main SHA, complete recursive tree, all 11 open PRs, branch ancestry, exact-head full-suite/security results, workflow jobs/logs, current branch protection summary and latest durable handoff. Reconciled #1712 merge, refreshed PR classifications, repaired one false-positive test assertion on draft #1713, and updated the canonical handoff/map on existing PR #1702. No merge, deployment, external model transfer, outreach, paper trade or real-money action. Follow-up: corrected map classifications to preserve the established test vocabulary and restored required connector-evidence phrases; the #1702 follow-up commit requires fresh exact-head CI. Run 39 evidence addendum: inspected raw XRP artifacts and feature-store SQLite, verified artifact ZIP digests and all 21 retained payload hashes plus 37 receipt-chain logs, calculated timestamp-bounded spot/order-book depth, inspected full-song audio QC and recorded the lead-stem phase warning. Current #1702 head 8bbb0e6 had one map inventory synchronization test failure; top-level dependency_prs is regenerated from the canonical PR inventory in this update.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -62,8 +62,8 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "branch": "integration/mission-handoff-refresh-20261125",
         "base": "main",
-        "head_sha": "87dda52197fd26b70bf7b8b50e808d92c2f56393",
-        "commits_ahead": 95,
+        "head_sha": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
+        "commits_ahead": 96,
         "commits_behind": 0,
         "draft": false,
         "changed_paths": [
@@ -80,49 +80,52 @@
         "review_count": 0,
         "mergeable": true,
         "mergeable_state": "clean",
-        "validation_status": "PREDECESSOR_HEAD_7E78CD_FULL_SUITE_PASSED_4701; CURRENT_HANDOFF_MAP_TEST_REFRESH_REQUIRES_NEW_EXACT_HEAD_CI",
+        "validation_status": "FULL_SUITE_FAILED_ONE_STALE_TOP_LEVEL_DEPENDENCY_PR_CLASSIFICATION; MAP ARRAY SYNCHRONIZATION FIXED IN THIS UPDATE; NEW EXACT-HEAD CI PENDING",
         "checks": {
-          "observed_at_utc": "2026-11-26T01:53:06Z",
+          "observed_at_utc": "2026-11-26T02:10:14.682Z",
           "pr_number": 1702,
-          "tested_head_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
+          "tested_head_sha": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
           "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-          "commits_ahead": 94,
+          "commits_ahead": 96,
           "commits_behind": 0,
           "full_suite": {
-            "run_id": 45736754212,
-            "conclusion": "success",
-            "passed": 4701,
-            "failed": 0,
+            "run_id": 45739756032,
+            "conclusion": "failure",
+            "passed": 4700,
+            "failed": 1,
             "skipped": 1,
             "warnings": 11,
             "subtests": 21,
-            "coverage_percent": 74.21
+            "coverage_percent": 74.21,
+            "failing_test": "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams",
+            "root_cause": "top-level dependency_prs was not regenerated from the canonical repository.current_open_pull_requests array after classification normalization"
           },
           "dependency_audit": {
-            "run_id": 45736754136,
+            "run_id": 45739755987,
             "conclusion": "success"
           },
           "money_audit": {
-            "run_id": 45736754302,
+            "run_id": 45739755876,
             "conclusion": "success"
           },
           "conflict_integrity": {
-            "run_id": 45736754163,
+            "run_id": 45739755914,
             "conclusion": "success"
           },
           "fail_closed_merge_readiness": {
-            "run_id": 45736754144,
+            "run_id": 45739755868,
             "conclusion": "failure",
-            "blocker": "legacy gate compares cached PR base.sha with current main despite verified current-main ancestry"
+            "blocker": "legacy gate compares cached PR base.sha to current main although current-main ancestry is verified"
           },
           "review_count": 0,
           "mergeable": true,
           "merge_status": "NOT_MERGED",
           "blockers": [
+            "one map inventory synchronization assertion; correction committed in this update",
+            "legacy base.sha merge-gate defect",
             "zero independent reviews",
-            "classic branch-protection approval count unavailable via HTTP 403",
-            "main merge triggers Pages deployment; explicit deployment authorization absent",
-            "legacy gate compares cached PR base.sha with current main despite verified current-main ancestry"
+            "branch-protection approval count unknown (HTTP 403)",
+            "automatic Pages deployment side effect; explicit deployment authorization absent"
           ]
         },
         "blockers": [
@@ -130,8 +133,8 @@
           "main branch protection details return HTTP 403; required approval count unknown",
           "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
         ],
-        "observed_at_utc": "2026-11-26T01:53:06Z",
-        "exact_head_validation": "PASSED_ON_7E78CD",
+        "observed_at_utc": "2026-11-26T02:10:14.682Z",
+        "exact_head_validation": "FAILED_ON_8BBB0E6_ONE_INVENTORY_ASSERTION",
         "last_exact_head_passed_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1"
       },
       {
@@ -1310,19 +1313,158 @@
     "source_failures": {
       "count": 18,
       "sec_status": "BLOCKED_CONFIGURATION",
-      "sec_raw_receipts": 0
+      "sec_raw_receipts": 0,
+      "binance_status": 451,
+      "bybit_status": 403
     },
     "quote_basis": {
-      "status": "NOT_REPORTED_IN_RUN170_HANDOFF_SUMMARY",
-      "model_eligible": false
+      "status": "VERIFIED_FROM_RUN170_RAW_ARTIFACT",
+      "venue": "OKX",
+      "pair": "XRP/USDT",
+      "quote_currency": "USDT",
+      "normalized_quote_currency": "USD",
+      "event_time_utc": "2026-11-26T01:14:31.184Z",
+      "normalized_values": {
+        "best_bid_usd": 0.943143948,
+        "best_ask_usd": 0.94325326,
+        "mid_price_usd": 0.943198604,
+        "spread_bps": 1.1589499766
+      },
+      "snapshot_skew_seconds": 1.115,
+      "max_component_age_seconds": 10.027,
+      "independence_groups": [
+        "okx"
+      ],
+      "independence_group_count": 1,
+      "model_eligible_for_quote_basis": true,
+      "limitations": [
+        "single venue group",
+        "top-of-book only",
+        "not a consolidated multi-venue price",
+        "snapshot is not live at current time"
+      ]
     },
     "sec": {
       "status": "BLOCKED_CONFIGURATION",
+      "contact_identity_configured": false,
       "raw_receipts": 0,
-      "filing_events": 0
+      "issuer_filings_ingested": 0
     },
     "forecast_issued": false,
-    "paper_trade_executed": false
+    "paper_trade_executed": false,
+    "spot_cross_venue": {
+      "event_window_utc": "2026-11-26T01:14:29.120Z/2026-11-26T01:14:33Z",
+      "venues": [
+        "coinbase",
+        "bitstamp",
+        "kraken",
+        "okx"
+      ],
+      "mid_price_min_usd": 0.94319,
+      "mid_price_max_usd": 0.943305,
+      "range_bps_of_mean": 1.219,
+      "spreads_bps": {
+        "coinbase": 1.0602,
+        "bitstamp": 1.4843,
+        "kraken": 0.7421,
+        "okx_normalized": 1.15895
+      },
+      "note": "Four sampled venues; OKX USDT normalized using same-venue quote basis; not a global consolidated price."
+    },
+    "orderbook_depth": {
+      "usd_venues": [
+        "coinbase",
+        "bitstamp",
+        "kraken"
+      ],
+      "event_window_utc": "2026-11-26T01:14:29.120Z/2026-11-26T01:14:33Z",
+      "depth_10bps_usd": {
+        "bid": 1175117.28,
+        "ask": 746529.89,
+        "imbalance": 0.223,
+        "bid_ask_ratio": 1.574,
+        "venues": [
+          "coinbase",
+          "bitstamp",
+          "kraken"
+        ]
+      },
+      "depth_50bps_usd": {
+        "bid": 2646171.99,
+        "ask": 1989977.88,
+        "venues": [
+          "coinbase",
+          "bitstamp"
+        ],
+        "venue_count": 2
+      },
+      "depth_100bps_usd": {
+        "bid": 5264986.92,
+        "ask": 3298155.25,
+        "venues": [
+          "coinbase",
+          "bitstamp"
+        ],
+        "venue_count": 2
+      },
+      "okx_10bps_usdt": {
+        "bid": 220517.7,
+        "ask": 142138.96,
+        "imbalance": 0.2161
+      },
+      "bitbank_10bps_jpy": {
+        "bid": 16829553.14,
+        "ask": 9862972.24,
+        "converted_to_usd": false
+      },
+      "limitations": [
+        "venue-specific snapshots only",
+        "not consolidated global liquidity",
+        "different quote currencies are not summed",
+        "Kraken 50/100bps records absent",
+        "not an executable liquidity guarantee"
+      ]
+    },
+    "raw_artifact_verification": {
+      "artifact_zip_sha256_match": {
+        "raw": true,
+        "events": true,
+        "receipt_index": true,
+        "feature_store": true
+      },
+      "retained_raw_payloads": {
+        "verified": 21,
+        "total": 21,
+        "mismatches": 0
+      },
+      "receipt_chain_logs": {
+        "chain_log_sha256_match": true,
+        "receipt_log_sha256_match": true,
+        "chain_entries": 37,
+        "receipt_entries": 37
+      },
+      "cross_run_chain_sha256": "1d7f55dc182590a2661ee9ae13395eae6d517838dad7bf0ff7f3f6815fc8fdc0",
+      "external_anchor": "NOT_ANCHORED"
+    },
+    "derivatives": {
+      "binance_spot_and_futures": "HTTP_451_REGION_RESTRICTED",
+      "bybit": "HTTP_403_ACCESS_RESTRICTED",
+      "deribit": "RAW_ONLY_CONTRACT_SEMANTICS_UNVERIFIED",
+      "model_eligible_features": 0
+    },
+    "exchange_flows": {
+      "status": "RAW_ONLY_HASHED",
+      "wallet_attribution_verified": false,
+      "model_eligible": false
+    },
+    "morpho_cbxrp": {
+      "status": "RESEARCH_ONLY_NOT_MODEL_ELIGIBLE",
+      "indexer_tip_block": 62325273,
+      "market_history_block": 62326515,
+      "liquidity_block": 62326515,
+      "block_delta": 1242,
+      "block_timestamps_verified": false
+    }
   },
   "current_prs": [
     {
@@ -1331,8 +1473,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
-      "commits_ahead": 94,
+      "head_sha": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
+      "commits_ahead": 96,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -1349,49 +1491,52 @@
       "review_count": 0,
       "mergeable": true,
       "mergeable_state": "clean",
-      "validation_status": "EXACT_HEAD_FULL_SUITE_AND_SECURITY_CHECKS_PASSED; MERGE_GATE_BLOCKED_BY_LEGACY_BASE_SHA_CHECK; NO_INDEPENDENT_REVIEW_OR_DEPLOYMENT_AUTHORIZATION",
+      "validation_status": "FULL_SUITE_FAILED_ONE_STALE_TOP_LEVEL_DEPENDENCY_PR_CLASSIFICATION; MAP ARRAY SYNCHRONIZATION FIXED IN THIS UPDATE; NEW EXACT-HEAD CI PENDING",
       "checks": {
-        "observed_at_utc": "2026-11-26T01:53:06Z",
+        "observed_at_utc": "2026-11-26T02:10:14.682Z",
         "pr_number": 1702,
-        "tested_head_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
+        "tested_head_sha": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
         "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-        "commits_ahead": 94,
+        "commits_ahead": 96,
         "commits_behind": 0,
         "full_suite": {
-          "run_id": 45736754212,
-          "conclusion": "success",
-          "passed": 4701,
-          "failed": 0,
+          "run_id": 45739756032,
+          "conclusion": "failure",
+          "passed": 4700,
+          "failed": 1,
           "skipped": 1,
           "warnings": 11,
           "subtests": 21,
-          "coverage_percent": 74.21
+          "coverage_percent": 74.21,
+          "failing_test": "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams",
+          "root_cause": "top-level dependency_prs was not regenerated from the canonical repository.current_open_pull_requests array after classification normalization"
         },
         "dependency_audit": {
-          "run_id": 45736754136,
+          "run_id": 45739755987,
           "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 45736754302,
+          "run_id": 45739755876,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 45736754163,
+          "run_id": 45739755914,
           "conclusion": "success"
         },
         "fail_closed_merge_readiness": {
-          "run_id": 45736754144,
+          "run_id": 45739755868,
           "conclusion": "failure",
-          "blocker": "legacy gate compares cached PR base.sha with current main despite verified current-main ancestry"
+          "blocker": "legacy gate compares cached PR base.sha to current main although current-main ancestry is verified"
         },
         "review_count": 0,
         "mergeable": true,
         "merge_status": "NOT_MERGED",
         "blockers": [
+          "one map inventory synchronization assertion; correction committed in this update",
+          "legacy base.sha merge-gate defect",
           "zero independent reviews",
-          "classic branch-protection approval count unavailable via HTTP 403",
-          "main merge triggers Pages deployment; explicit deployment authorization absent",
-          "legacy gate compares cached PR base.sha with current main despite verified current-main ancestry"
+          "branch-protection approval count unknown (HTTP 403)",
+          "automatic Pages deployment side effect; explicit deployment authorization absent"
         ]
       },
       "blockers": [
@@ -1399,8 +1544,9 @@
         "main branch protection details return HTTP 403; required approval count unknown",
         "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
       ],
-      "observed_at_utc": "2026-11-26T01:53:06Z",
-      "exact_head_validation": "PASSED_ON_7E78CD"
+      "observed_at_utc": "2026-11-26T02:10:14.682Z",
+      "exact_head_validation": "FAILED_ON_8BBB0E6_ONE_INVENTORY_ASSERTION",
+      "last_exact_head_passed_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1"
     },
     {
       "number": 1703,
@@ -1761,7 +1907,7 @@
       "changed_paths": [
         ".github/workflows/xrp-public-ingestion.yml"
       ],
-      "classification": "superseded_pending_successor_merge_stale_duplicate",
+      "classification": "superseded_pending_successor_merge",
       "workstream_uniqueness": "duplicate_subset_of_1706",
       "review_count": 0,
       "mergeable": true,
@@ -1893,7 +2039,7 @@
       "changed_paths": [
         "hf_space/requirements.txt"
       ],
-      "classification": "blocked_dependency_compatibility_stale",
+      "classification": "blocked_dependency_compatibility",
       "workstream_uniqueness": "unique_but_incompatible_constraint",
       "review_count": 0,
       "mergeable": true,
@@ -2012,47 +2158,50 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T01:53:06Z",
+    "observed_at_utc": "2026-11-26T02:10:14.682Z",
     "pr_number": 1702,
-    "tested_head_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
+    "tested_head_sha": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 94,
+    "commits_ahead": 96,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45736754212,
-      "conclusion": "success",
-      "passed": 4701,
-      "failed": 0,
+      "run_id": 45739756032,
+      "conclusion": "failure",
+      "passed": 4700,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "coverage_percent": 74.21
+      "coverage_percent": 74.21,
+      "failing_test": "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams",
+      "root_cause": "Top-level dependency_prs array remained stale after canonical PR classification normalization; this update regenerates it from repository.current_open_pull_requests."
     },
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45736754136,
+        "run_id": 45739755987,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45736754302,
+        "run_id": 45739755876,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45736754163,
+        "run_id": 45739755914,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45736754144,
+        "run_id": 45739755868,
         "conclusion": "failure",
-        "blocker": "PR base is behind current main; legacy gate compares cached base.sha although current-main ancestry is verified"
+        "blocker": "legacy workflow compares cached PR base.sha instead of current-main ancestry"
       }
     },
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "zero independent reviews",
-      "branch protection approval count unknown (HTTP 403)",
-      "automatic GitHub Pages deployment side effect; explicit deployment authorization absent",
-      "legacy merge gate uses stale PR base.sha; #1713 contains an ancestry-based correction but remains draft"
+      "one map inventory consistency failure on 8bbb0e6; correction committed in this update; exact-head rerun pending",
+      "legacy merge gate base.sha defect",
+      "no independent review",
+      "branch-protection approval count unavailable via HTTP 403",
+      "future merge triggers Pages deployment and explicit deployment approval is absent"
     ]
   },
   "latest_primary_source_research": {
@@ -2529,11 +2678,20 @@
       "mergeable_state": "clean",
       "stale_main_reconciliation_required": true,
       "overlaps_with": [],
-      "validation_status": "PRIOR_FULL_SUITE_FAILED_ONE_TEST; TEST ASSERTION CORRECTED ON c99c2202; CURRENT EXACT-HEAD FULL SUITE IN PROGRESS",
+      "validation_status": "FULL SUITE PASSED; DRAFT STATE BLOCKS GATE",
       "full_suite_run_id": 45738733535,
-      "full_suite_conclusion": "in_progress",
+      "full_suite_conclusion": "success",
+      "full_suite": {
+        "passed": 4697,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.24
+      },
       "gated_merge_run_id": 45738733596,
-      "gated_merge_conclusion": "in_progress",
+      "gated_merge_conclusion": "failure",
+      "gated_merge_blocker": "PR must be marked ready for review",
       "dependency_audit": {
         "run_id": 45738733719,
         "conclusion": "success"
@@ -3861,10 +4019,18 @@
     },
     "mission_prs": {
       "1702": {
-        "head": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1",
+        "head": "8bbb0e6265e6a0ea275dc3542fda1b52543e2801",
         "behind": 0,
-        "full_suite": 4701,
-        "gate": "BLOCKED_LEGACY_BASE_SHA_CHECK"
+        "ahead": 96,
+        "full_suite": "FAILED_ONE_MAP_INVENTORY_ASSERTION",
+        "passed": 4700,
+        "failed": 1,
+        "skipped": 1,
+        "failure": "top-level dependency_prs stale classification; corrected by regenerating from canonical PR inventory in this update",
+        "dependency_audit": "PASS",
+        "money_audit": "PASS",
+        "conflict_integrity": "PASS",
+        "merge_gate": "BLOCKED_LEGACY_BASE_SHA"
       },
       "1703": {
         "head": "9ea30d044c84fc97c8354457f7227439c73442b4",
@@ -3889,9 +4055,12 @@
         "head": "c99c2202f0edea916e3c6a5c261b9c36cc4e7a1a",
         "behind": 0,
         "draft": true,
-        "prior_failure": "one false-positive substring assertion",
-        "fix_commit": "c99c2202f0edea916e3c6a5c261b9c36cc4e7a1a",
-        "full_suite": "IN_PROGRESS"
+        "full_suite": "PASS",
+        "passed": 4697,
+        "failed": 0,
+        "skipped": 1,
+        "coverage_percent": 74.24,
+        "merge_gate": "BLOCKED_DRAFT_STATE"
       }
     },
     "dependency_prs": {
@@ -3915,12 +4084,29 @@
       "latest_run": 170,
       "forecast_status": "NOT_ISSUED",
       "event_receipt_links": 0,
-      "drift_features_evaluated": 0
+      "drift_features_evaluated": 0,
+      "quote_basis_mid_usd": 0.943198604,
+      "quote_basis_spread_bps": 1.15895,
+      "quote_independence_groups": 1,
+      "sampled_usd_venue_depth_10bps": {
+        "bid": 1175117.28,
+        "ask": 746529.89,
+        "imbalance": 0.223
+      },
+      "retained_raw_payload_hashes_verified": 21,
+      "receipt_chain_entries_verified": 37,
+      "external_anchor": "NOT_ANCHORED",
+      "derivatives_model_eligible": false,
+      "exchange_flows_model_eligible": false
     },
     "audio": {
-      "per_instrument_soundfont_routing_tested": true,
-      "artistic_listening_acceptance": false,
-      "native_daw_project": false
+      "full_song_render": "PASS_TECHNICAL_QC_WITH_LEAD_STEM_WARNING",
+      "workflow_run_id": 45736401684,
+      "mix_mono_loss_db": -1.036,
+      "lead_stem_correlation": -0.3012,
+      "lead_stem_mono_loss_db": -4.563,
+      "native_daw_project": false,
+      "user_listening_acceptance": false
     },
     "continuity": {
       "portable_project_state_pr": "1703",
@@ -3949,8 +4135,67 @@
       "outbound_sending": "PAUSED",
       "qualified_prospects": 0
     },
-    "followup_validation_status": "CURRENT_HANDOFF_MAP_TEST_FOLLOWUP_COMMIT_REQUIRES_FRESH_EXACT_HEAD_CI",
+    "followup_validation_status": "CURRENT #1702 HEAD 8BBB HAD ONE MAP INVENTORY TEST FAILURE; THIS UPDATE SYNCHRONIZES DEPENDENCY_PRs FROM THE CANONICAL INVENTORY; NEW EXACT-HEAD CI PENDING",
     "handoff_branch_pre_followup_head": "87dda52197fd26b70bf7b8b50e808d92c2f56393",
-    "pre_followup_head_validation": "The prior 4,701-pass suite was on 7e78cd598dd8e1ac54dc70a634c79a22bf6266a1; do not reuse it for this follow-up head."
+    "pre_followup_head_validation": "The prior 4,701-pass suite was on 7e78cd598dd8e1ac54dc70a634c79a22bf6266a1; do not reuse it for this follow-up head.",
+    "observed_at_utc": "2026-11-26T02:10:14.682Z"
+  },
+  "latest_audio_qc": {
+    "observed_at_utc": "2026-11-26T02:10:14.682Z",
+    "workflow_run_id": 45736401684,
+    "artifact_id": 15078972034,
+    "artifact_size_bytes": 215704000,
+    "full_song": {
+      "bars": 80,
+      "bpm": 110,
+      "key": "D minor",
+      "time_signature": "4/4",
+      "duration_seconds": 175.545,
+      "sample_rate_hz": 44100,
+      "stem_count": 9,
+      "midi_present": true,
+      "section_markers": 10,
+      "clipped_samples": 0,
+      "peak_dbfs": -6.017,
+      "true_peak_dbtp": -6
+    },
+    "mix_stereo": {
+      "correlation": 0.5756,
+      "mono_fold_down_loss_db": -1.036,
+      "quality": "PASS"
+    },
+    "stem_stereo_warnings": {
+      "lead": {
+        "correlation": -0.3012,
+        "mono_fold_down_loss_db": -4.563,
+        "status": "WARN"
+      },
+      "hihat": {
+        "correlation": 0.2975,
+        "mono_fold_down_loss_db": -1.939,
+        "status": "PASS"
+      },
+      "strings": {
+        "correlation": 0.0519,
+        "mono_fold_down_loss_db": -2.791,
+        "status": "PASS"
+      }
+    },
+    "stem_reconstruction": {
+      "correlation": 0.99998,
+      "relative_rms_error": 0.0062,
+      "max_absolute_error": 0.02695,
+      "sample_aligned": true
+    },
+    "rights": {
+      "soundfont_license_label": "MIT",
+      "rights_metadata_status": "CALLER_SUPPLIED_UNVERIFIED",
+      "soundfont_binary_bundled": false
+    },
+    "timbral_diversity": "NOT_VERIFIED; 16-BAR ROUTING TEST USED BYTE-IDENTICAL SOUNDFONT COPIES UNDER TWO PATHS",
+    "native_daw_project": false,
+    "blind_listening": false,
+    "user_acceptance": false,
+    "limitation": "A lead-stem phase/mono-compatibility warning remains; no automatic phase flip applied without comparative listening."
   }
 }

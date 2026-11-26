@@ -1,3 +1,31 @@
+## Run 39 evidence addendum — raw XRP market snapshot, audio QC and CI correction
+
+Evidence captured: 2026-11-26T02:10:14.682Z. This section supersedes any earlier Run 39 statement that quote-basis details were not reported in the run summary.
+
+### Current PR #1702 head and exact-head validation
+
+- At capture, #1702 head was 8bbb0e6265e6a0ea275dc3542fda1b52543e2801, 96 commits ahead and 0 behind current main. Dependency Audit [45739755987](https://github.com/Barrot-Agent/B-Agent/actions/runs/45739755987), Money audit [45739755876](https://github.com/Barrot-Agent/B-Agent/actions/runs/45739755876) and Conflict Integrity [45739755914](https://github.com/Barrot-Agent/B-Agent/actions/runs/45739755914) passed on that exact head.
+- Full repository suite [45739756032](https://github.com/Barrot-Agent/B-Agent/actions/runs/45739756032) ran 4,700 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage. The only failure was the current-PR inventory test: the canonical repository PR list had the normalized #1708 classification, but the top-level dependency_prs projection was stale. This update regenerates current_prs, dependency_prs and repair_prs from the canonical repository inventory. It changes no runtime code. A new exact-head suite is required; the 4,700/1 failure result is not a pass.
+- The read-only gate [45739755868](https://github.com/Barrot-Agent/B-Agent/actions/runs/45739755868) failed because the legacy workflow compares cached PR base.sha to current main. The branch itself is 0 behind and contains current main. #1713's ancestry-based gate correction remains draft.
+- #1713 test correction is now verified: exact-head full suite [45738733535](https://github.com/Barrot-Agent/B-Agent/actions/runs/45738733535) passed 4,697, 0 failed, 1 skipped, 11 warnings, 21 subtests, 74.24%. Its gate [45738733596](https://github.com/Barrot-Agent/B-Agent/actions/runs/45738733596) blocks only because the PR is still draft. No merge.
+
+### XRP run #170 — raw artifacts independently checked
+
+- Run [45734356569](https://github.com/Barrot-Agent/B-Agent/actions/runs/45734356569), data cutoff 2026-11-26 01:14:40.096 UTC, adapter v3.34/parser v3.32. The four downloaded artifact ZIP SHA-256 digests match GitHub artifact metadata. All 21 retained raw payloads match their receipt-manifest hashes. Both 37-entry receipt-chain log hashes match their manifest; cross-run chain SHA-256 is 1d7f55dc182590a2661ee9ae13395eae6d517838dad7bf0ff7f3f6815fc8fdc0. The chain is not externally anchored.
+- Last verified OKX XRP/USDT quote basis at 01:14:31.184 UTC: normalized bid $0.943143948, ask $0.943253260, mid $0.943198604, spread 1.15895 bps. It is one venue/independence group, top-of-book only.
+- Coinbase, Bitstamp, Kraken and normalized OKX sampled mids ranged $0.943190–$0.943305 over 01:14:29–01:14:33 UTC, a 1.219 bps range. Spreads were approximately 1.0602 bps Coinbase, 1.4843 Bitstamp, 0.7421 Kraken and 1.15895 OKX.
+- Summed 10-bps USD depth across Coinbase, Bitstamp and Kraken only: bids $1,175,117.28, asks $746,529.89, sampled-book imbalance +22.30%. At 50 bps, only Coinbase and Bitstamp had usable records: bids $2,646,171.99, asks $1,989,977.88. At 100 bps: bids $5,264,986.92, asks $3,298,155.25. OKX 10-bps depth was 220,517.70 USDT bid and 142,138.96 USDT ask; Bitbank 10-bps depth was 16,829,553.14 JPY bid and 9,862,972.24 JPY ask. Different quote currencies were not combined. These are venue snapshots, not a consolidated or executable global book.
+- The 12 source snapshots span five venue groups. Feature store: 127 snapshots, 32,797 historical records; latest 490 records, 123 eligible and 367 excluded. Derivatives remain ineligible: Binance returned HTTP 451, Bybit 403, and Deribit is raw-only pending contract-semantic validation. Exchange wallet flows remain hash-only without validated wallet attribution. Morpho cbXRP indexer tip 62,325,273 trails market-history/liquidity block 62,326,515 by 1,242 blocks; timestamp alignment is unverified. SEC EDGAR remains blocked because contact identity is not configured.
+- The event timeline still has 150 events but zero verified receipt links and zero raw hashes. Walk-forward has 476 one-hour baseline rows, PARTIAL_OR_BLOCKED; drift 0/205; no forecast issued. The quote/depth snapshot is historical to 01:14 UTC and is not a live price.
+
+### Audio render QC — warning retained, no quality claim
+
+- Full-song artifact from Audio Render Integration [45736401684](https://github.com/Barrot-Agent/B-Agent/actions/runs/45736401684) contains an 80-bar, 110 BPM, D-minor, 4/4, 175.545-second render, 44.1 kHz, nine aligned stems, Standard MIDI and ten markers. No clipped samples; peak -6.017 dBFS and true peak -6.000 dBTP.
+- The mix passed stereo QC: correlation 0.5756, mono fold-down loss -1.036 dB. The lead stem did not: correlation -0.3012 and mono fold-down loss -4.563 dB (WARN). Hihat correlation 0.2975/-1.939 dB; strings 0.0519/-2.791 dB. Stem-sum reconstruction correlation 0.99998, relative RMS error 0.0062, max absolute error 0.02695.
+- The test SoundFont is labeled MIT but caller-supplied rights remain unverified and the binary is not bundled. The 16-bar routing test used byte-identical SoundFont copies under two paths; different timbral quality is not verified. No native DAW project or blind/user listening acceptance exists. Do not flip phase automatically; run a controlled A/B with a distinct rights-cleared lead patch and listen before changing the signal path.
+
+---
+
 ## Run 39 follow-up — exact-head validation boundary
 
 The canonical handoff, platform map and inventory test were updated on the existing #1702 branch. The earlier 4,701-pass full-suite result belongs to predecessor head 7e78cd598dd8e1ac54dc70a634c79a22bf6266a1; it does not validate this follow-up documentation/test commit. The follow-up must receive its own exact-head full-suite, dependency, money, conflict-integrity and merge-gate results before it can be called verified. The map records the pre-follow-up branch head and explicitly marks the new validation pending. No merge or deployment was performed.
