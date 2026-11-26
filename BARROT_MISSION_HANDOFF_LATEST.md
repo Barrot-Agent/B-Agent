@@ -4906,3 +4906,85 @@ Main remains 2151843140fd770b62ef93d06a78c559f9e73bbd (3,164 tree entries); main
 6. Keep Sellbird Barrot-only and sending paused. Continue free-only prospect discovery only after a verified, deliverable Barrot pilot proof bundle exists.
 
 No merge, deployment, PR closure, secret rotation, Space restart, external model dispatch, outreach, paper trade, funds transfer, Kaggle submission or real-money action occurred.
+
+
+---
+
+# Run 54 follow-up — exact-head CI and primary-source corrections — 2026-11-26T15:17:30Z
+
+## PR #1702 post-refresh validation
+
+The map and handoff updates through commit `a3270c79af712ace7fa6da0cd4d2afc187a6eb98` were tested on that exact head:
+
+- [Full repository CI 45846562291](https://github.com/Barrot-Agent/B-Agent/actions/runs/45846562291): **4,701 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Full tracked active repository suite ran; legacy and mission-critical coverage gates passed.
+- [Dependency Audit 45846562218](https://github.com/Barrot-Agent/B-Agent/actions/runs/45846562218): success.
+- [Money audit 45846562146](https://github.com/Barrot-Agent/B-Agent/actions/runs/45846562146): success.
+- [Conflict Integrity 45846562455](https://github.com/Barrot-Agent/B-Agent/actions/runs/45846562455): success.
+- GitHub Pages **build validation only** succeeded in the CI run; no deployment was performed.
+- [Barrot Gated Merge 45846562431](https://github.com/Barrot-Agent/B-Agent/actions/runs/45846562431): **failed for one verified false blocker**. Its script compares the cached PR API `base.sha` (`6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`) directly with current main (`2151843140fd770b62ef93d06a78c559f9e73bbd`). GitHub's commit comparison says the branch is **121 ahead / 0 behind**, with current main as merge base. The check is therefore testing a stale PR metadata field, not actual ancestry.
+- The ancestry-based correction exists on #1713, but that PR also contains dual-agent invalidation and manual Telegram send/inbox functionality. Do not treat it as a clean gate-only change. Review/scope it before any promotion.
+- PR #1702 still has zero independent reviews. Branch protection exposes four required status checks, but the detailed protection endpoint returns HTTP 403 and the required review count cannot be verified. Merge remains blocked. A merge also triggers Pages deployment; no deployment authorization was supplied.
+- This follow-up itself advances #1702. Its new head must receive its own exact-head CI; the successful 4,701-test result above applies to `a3270c79...`, not to the new follow-up commit.
+
+## New primary-source findings: SBI / SBIC / Ripple / Evernorth
+
+### Japan's SBIC entities are not SBI Holdings
+
+Primary company profiles identify three separate regional Small and Medium Business Investment & Consultation companies under Japan's `中小企業投資育成株式会社法`:
+
+- **Tokyo / SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; official profile lists its legal name, corporate number `9011001030621`, its east-region coverage and the two sister companies. https://www.sbic.co.jp/company/profile/
+- **Nagoya / SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; official profile identifies SBIC Central Japan and its five-prefecture region. https://www.sbic-cj.co.jp/company/about/
+- **Osaka / SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; official profile identifies SBIC West Japan and its 24-prefecture western region. https://www.sbic-wj.co.jp/profiles/profile/
+
+The Osaka policy page explicitly says the three regional companies cover Japan together. These are not SBI Holdings subsidiaries merely because their initials are SBIC. Keep the entities and their corporate records separate.
+
+### “SBIC, ChatGPT” is an SBIC training reference, not a partnership
+
+Tokyo SBIC's own page advertises a two-day generative-AI / machine-learning training for its portfolio companies on June 12–13, 2025. Its syllabus explicitly includes “How to use ChatGPT” and Copilot; general companies were not eligible to attend. The page does not announce an OpenAI partnership or an SBI Holdings relationship. https://www.sbic.co.jp/training/20250612co/
+
+### SBI Holdings' Ripple / Evernorth relationships
+
+SBI Holdings' official FY2025 financial-results presentation, dated May 1, 2026, reports:
+
+- SBI Group held an approximately **9% stake in Ripple** in the presentation's valuation discussion.
+- It records Ripple's November 2025 **$500 million financing round** at a $40 billion valuation and March 2026 **$750 million share buyback** at a $50 billion valuation.
+- The Evernorth diagram reports an SBI Group **$200 million cash investment** in Evernorth's PIPE and **over $1 billion total** raised through a combination of spot XRP and cash.
+- Its XRP-distribution slide labels approximately **5.10 billion XRP** as “Actual XRP” and approximately **33.20 billion XRP** as under escrow, with quantities valued as of April 27, 2026. “Actual XRP” here means Ripple-held XRP outside escrow, not “actual capital.” The slide estimates Ripple's non-circulating holdings at approximately JPY 8.8 trillion.
+- Source: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/260501presentations.pdf (slides 58–59; figures dated in the slide).
+
+Evernorth's SEC Form 10-Q (filed November 13, 2026) adds an important ownership-timing correction:
+
+- As of September 30, 2026, Evernorth was a wholly owned Ripple subsidiary and was formed as a public-markets vehicle for institutional XRP exposure.
+- The business combination closed October 9, 2026. After closing, Evernorth became the publicly traded parent of the combined entities and ceased to be wholly owned or controlled by Ripple; it became a related party. Do not describe it as still wholly owned by Ripple after the closing.
+- The 10-Q reports **$29 million net cash proceeds** from an October 13 convertible note after a $1 million advisor fee. This is separate from the later equity-line facility.
+- SEC filing: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+
+### “Actual capital” and the Evernorth equity line
+
+The exact phrase “actual capital” remains unlocated in a primary source. Two nearby items must not be conflated:
+
+1. SBI's presentation uses **“Actual XRP”** for Ripple's approximately 5.10 billion non-escrow XRP as of April 27, 2026. That is an asset classification, not capital raised.
+2. Evernorth's October 23, 2026 Cantor committed equity facility registers up to **5,218,935 shares**. The S-1 describes up to approximately **$80.7 million gross / $78.3 million net** only if all registered shares are sold under the facility. Evernorth can choose whether and when to issue purchase notices; proceeds depend on draw frequency and sale price. The 10-Q says the registration became effective October 30 and Evernorth owed a non-refundable commitment fee of approximately $0.5 million. This is a financing capacity, not proof that $80.7 million was received.
+3. No ELOC draw amount was identified in the SEC materials reviewed through the November 13 filing. Keep actual drawdowns **unverified** until a later filing, purchase notice or share issuance reconciles them. Do not add the facility headline to actual capital raised.
+4. Primary filings: October 23 Form 8-K https://www.sec.gov/Archives/edgar/data/2092592/000162828026067061/evernorth-elocx8xk.htm; S-1 https://www.sec.gov/Archives/edgar/data/2092592/000162828026067081/xrpn-20261023.htm; November 13 424B3 / attached 10-Q https://www.sec.gov/Archives/edgar/data/2092592/000162828026073931/evernorth-424stickerresalea.htm.
+
+### “ASK Coin”
+
+The strongest exact-name candidate found is Permission's **ASK token**. Permission's own terms describe it as a blockchain-based token for rewards/features in the Permission ecosystem and expressly state it is not legal tender, a security, investment product or savings vehicle, and does not guarantee future value. No direct XRP or Ripple relationship was established. This remains a candidate match, not proof that every “ASK Coin” reference means Permission ASK. https://www.permission.ai/terms-of-use
+
+### Kamilah / Camilla Stevenson YouTube attribution
+
+The candidate `@drkamilahstevenson` channel links to `go.prescribewealth.com/yt-bio`; the PrescribeWealth site identifies Dr. Kamilah Stevenson as its founder. This is a stronger one-way identity link than a name match alone, but the official site does not reciprocally link to that YouTube channel, and search results show numerous similarly named/crypto-branded accounts. Identity is **not yet independently closed**. No public-video inventory is included until a second first-party identity link is found.
+
+## Dependency clarification: PR #1711
+
+Correction to the earlier shorthand that NumPy `<3` “conflicts” with Streamlit 1.35: the PR's own dependency-resolution workflow [45621659910](https://github.com/Barrot-Agent/B-Agent/actions/runs/45621659910) successfully resolved **NumPy 1.26.4 with Streamlit 1.35.0**. The broader NumPy upper bound does not force NumPy 2 when the resolver can select 1.26.4. The PR remains a draft and six commits behind; the public Hugging Face Space `BUILD_ERROR` root cause is still unexplained, so this draft is not a verified fix. Keep it unmerged and do not claim a NumPy incompatibility was proven.
+
+## Follow-up status
+
+- **DESIGNED:** keep the three Barrot missions co-equal; use V3 as shared execution/governance; keep research facts, potential capital, actual capital, and market-eligible features distinct.
+- **EXECUTED:** exact-head full-suite validation on `a3270c79...`; primary-source SBIC, SBI, Evernorth, Permission and YouTube identity checks; correction of the #1711 resolver interpretation.
+- **VERIFIED:** 4,701 full-suite tests passed on `a3270c79...`; dependency, money and conflict checks passed; merge gate's cached-base defect reproduced; SBIC regional company identities and training content confirmed on their own sites; SBI/Evernorth facts confirmed against SBI's presentation and SEC filings.
+- **NOT VERIFIED:** the new follow-up commit's exact-head CI; the #1702 merge gate fix on main; required approval policy; Pages deployment authorization; Evernorth ELOC actual drawdowns; ASK identity beyond the Permission candidate; reciprocal YouTube identity link; any directional XRP forecast.
+
+No merge, deployment, PR closure, outreach, paper trade, funds transfer, Kaggle submission, external model dispatch or real-money action occurred.
