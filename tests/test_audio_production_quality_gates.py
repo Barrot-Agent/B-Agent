@@ -480,3 +480,49 @@ def test_stereo_integrity_passes_centered_mono_compatible_audio() -> None:
     assert measured["dc_offset_warning"] is False
     assert measured["mono_compatibility_warning"] is False
     assert measured["warnings"] == []
+
+
+
+def test_stereo_side_reduction_preserves_mono_signal_and_repairs_phase_warning() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import (
+        _limit_stereo_side_for_mono_compatibility,
+        _measure_stereo_integrity,
+    )
+
+    phase = np.arange(8192, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone, -0.5 * tone)).astype(np.float32)
+    original_mono = (anti_phase[:, 0] + anti_phase[:, 1]) * 0.5
+
+    corrected, report = _limit_stereo_side_for_mono_compatibility(anti_phase)
+    measured = _measure_stereo_integrity(corrected)
+    corrected_mono = (corrected[:, 0] + corrected[:, 1]) * 0.5
+
+    assert report["applied"] is True
+    assert report["status"] == "APPLIED"
+    assert report["side_gain"] < 1.0
+    assert np.allclose(corrected_mono, original_mono, atol=1e-7)
+    assert measured["mono_compatibility_warning"] is False
+    assert measured["mono_fold_down_loss_db"] >= -3.0
+    assert measured["stereo_correlation"] >= 0.0
+
+
+def test_stereo_side_reduction_does_not_silence_a_true_mono_null() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import (
+        _limit_stereo_side_for_mono_compatibility,
+        _measure_stereo_integrity,
+    )
+
+    phase = np.arange(8192, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone, -tone)).astype(np.float32)
+
+    corrected, report = _limit_stereo_side_for_mono_compatibility(anti_phase)
+
+    assert report["applied"] is False
+    assert report["status"] == "UNRESOLVED"
+    assert report["reason"] == "mid_signal_too_weak_to_preserve_mono_content"
+    assert np.array_equal(corrected, anti_phase)
+    assert _measure_stereo_integrity(corrected)["mono_compatibility_warning"] is True
