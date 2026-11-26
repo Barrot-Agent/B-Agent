@@ -1735,6 +1735,22 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
     assert "raw_only" in reason
 
 
+def test_franklin_xrpz_identity_failure_reports_missing_markers():
+    captured = datetime(2026, 11, 26, 16, 15, tzinfo=timezone.utc)
+    source_id = "xrp_etf_franklin_xrpz_issuer_page"
+    url = dict(ENDPOINTS)[source_id]
+    payload = {"html_text": "<html><title>Franklin XRP ETF</title><p>As of 11/26/2026</p></html>"}
+
+    with pytest.raises(XRPIngestionError, match="missing required markers: xrpz, xrp in fund"):
+        PARSERS[source_id](
+            payload,
+            source_id=source_id,
+            url=url,
+            digest="e" * 64,
+            captured=captured,
+        )
+
+
 @pytest.mark.parametrize(
     ("source_id", "host", "url"),
     [

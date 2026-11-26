@@ -3858,8 +3858,11 @@ def _raw_only_franklin_xrpz_issuer_page(payload: Any, *, captured: datetime, **_
         raise XRPIngestionError("Franklin XRPZ issuer page response must contain HTML text")
     normalized = payload["html_text"].casefold()
     required_markers = ("franklin xrp etf", "xrpz", "xrp in fund", "as of")
-    if any(marker not in normalized for marker in required_markers):
-        raise XRPIngestionError("Franklin XRPZ issuer-page identity or holdings markers are missing")
+    missing_markers = tuple(marker for marker in required_markers if marker not in normalized)
+    if missing_markers:
+        raise XRPIngestionError(
+            "Franklin XRPZ issuer-page missing required markers: " + ", ".join(missing_markers)
+        )
     return (
         [],
         None,
