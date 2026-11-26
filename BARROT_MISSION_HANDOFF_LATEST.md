@@ -1,3 +1,80 @@
+# Run 41 — exact-phrase follow-up and Kamilah Stevenson YouTube attribution — 2026-11-26T04:15:01.397Z
+
+## Exact-phrase research — EXECUTED; confidence-qualified
+
+- **ASK Coin:** Exact-phrase search surfaced a Telegram mini-app called Ask Coin. A Russian-language review updated 2026-11-24 reports that the `@AskCoin` bot no longer loads its game interface, `askcoin.io` is listed for sale, owners/legal entity are undisclosed, `@AskCoinNews` is inactive, and `@AskCoinChat` is Telegram-flagged as Scam. The review explicitly says the game's ASK ticker cannot be tied to Permission Coin or the separate AskCoin asset. This is a secondary review, not primary chain evidence; classify as an **unverified, likely unrelated Telegram project**, not an XRP asset or Ripple affiliate. Source: https://todzhinsky.ru/invest/ask-coin-otzyvy
+- **"actual capital":** Exact phrase occurs in a 2025-06-09 XRP netflow discussion. Its key distinction is that exchange deposits/withdrawals are not proof of capital entering/leaving the market; buy-side order-book volume and executed trades are needed to estimate actual buying pressure. Treat the article as a secondary conceptual source, not a substitute for raw venue data: https://thecryptobasic.com/2025/06/09/did-xrp-market-cap-surge-647x-from-just-17m-in-netflow-heres-what-we-know/
+- **"SBIC, ChatGPT SBIC":** no authoritative exact-phrase match or official OpenAI/SBI relationship surfaced in this pass. Remains unresolved; do not infer a product, partnership or account connection.
+- **Research implication:** retain separate measures for exchange netflows, spot taker buy/sell volume, order-book depth/imbalance, ETF creations/redemptions and realized venue-level flows. Never label net exchange outflow alone as net capital inflow or spot demand.
+
+## Kamilah/Camilla Stevenson — identity triangulated; public-channel inventory started
+
+The XRP Podcast with Paul Barron published **"Crypto Panics! with Dr. Kamilah Stevenson"** on 2026-06-11. In the episode transcript, the guest self-identifies using the "Cam i am cam Stevenson" X name, says her Instagram name is "Kamilla Stevenson", gives her YouTube as "doctor Camilla Stevenson", and explicitly warns that fake pages exist. The matching YouTube channel is **Kamilah Stevenson — @drkamilahstevenson**, with 142K subscribers and approximately 1.2K videos; its own channel description focuses on stocks, crypto, macro and long-term investing. The official All Nations Chicago leadership page separately lists Dr. Kamilah Stevenson in Chicago. Treat `@drkamilahstevenson` as a **high-confidence match for the XRP creator**, but do not attribute every similar-name channel or social profile; the creator herself warns about impersonators. Sources:
+- https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+- https://www.youtube.com/@drkamilahstevenson
+- https://allnationschicago.com/leadership
+
+### Public video inventory surfaced from the primary XRP channel
+
+This is a search-indexed inventory, not a complete crawl of all 1.2K uploads. Titles are preserved as published; view counts and relative-age labels are search-crawl snapshots and will change.
+
+**Recent public uploads (12 surfaced):**
+1. This NEW Bank Deal Shows Exactly Where XRP Is Headed
+2. This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)
+3. Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)
+4. XRP vs Banks: Why Your Money Needs Autonomy NOW
+5. Did SWIFT Just Change XRP Forever? (The Truth)
+6. BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.
+7. A $119 Billion African Bank Just Put Its License Behind XRP
+8. A New XRP Tool Can Buy and Sell for You
+9. Invest NOW or Get Left Behind. Institutions Are Already Moving.
+10. The CFTC Just Said What XRP Holders Waited Years to Hear
+11. Wall Street Just Got a Company Built to Keep BUYING XRP
+12. XRP Ledger Technology Just Reached Europe's Central Bank
+
+**High-view public videos surfaced (12; overlap with recent list possible):**
+1. Japan Just Ended 30 Years of ZERO Interest Rates—Why XRP Could Explode
+2. How the Wealthy Will Use XRP (Most People Won't Understand)
+3. Flare Is Putting 100 Million XRP to Work. Holders Can Earn From It
+4. Why XRP Could Be Repriced (Banks Aren't Trading It)
+5. Banks Just Got The GREEN LIGHT On Crypto—Are You Positioned
+6. SEC Silent, CFTC Approved: XRP Just Got Treated Like Gold
+7. The CLARITY Act Just Failed in the Senate. What This Means for XRP
+8. SWIFT Just Connected 11,000 Banks—And XRP Is At The CENTER
+9. Why Banks Need XRP to Be Expensive (Retail Is Thinking About It Wrong)
+10. Most XRP Holders Don't Understand What They're Actually Holding
+11. Japan's Top Financial CEO Just Publicly DEMANDED The US Senate Act On XRP
+12. Did SWIFT Just Change XRP Forever? (The Truth)
+
+**Recent public live replays (12 surfaced):**
+1. XRP Got Everything We Waited For. So Why Isn't It Soaring?
+2. XRP's Next Big Move Could Come Down to These 4 Days
+3. Bank Of America's CEO Just ADMITTED What XRP Holders Already Knew
+4. I Was WRONG About XRP. The Timeline Just Changed.
+5. 191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral
+6. Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP.
+7. Your XRP Can Now Trade Without You
+8. America's Biggest Banks Just Picked Quant. XRP Was Never the Competition.
+9. The White House Is Done Waiting on Congress. XRP Moves Forward Anyway
+10. The CLARITY Act Exposed the Banks. XRP Just Became More Important
+11. The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next
+12. The CLARITY Act Vote Failed. XRP Ran 580% Without It
+
+**Excluded:** the channel page separately lists members-only videos; they are not public and were not included. The creator's own public post links a second channel, `@PrescribeWealth`; it is first-party-linked but has not yet been separately inventoried. Other similarly named channels were excluded pending direct first-party linkage.
+
+### XRP fact-check lead from the creator's coverage
+
+The 2026-10-20 upload **"This NEW Bank Deal Shows Exactly Where XRP Is Headed"** was listed at 29,824 views and 1,100 likes in the search snapshot. Its description discusses Standard Chartered custody of Ripple RLUSD on XRPL and a proposed Ripple/LMAX collateral-mirroring arrangement. A 2026-10-21 DailyCoin article explicitly separates the live RLUSD custody service from the proposed LMAX arrangement, which still required testing, legal review and regulatory approval; it also notes that RLUSD adoption does not automatically imply XRP demand. Treat the video as a research lead, not primary evidence of a live XRP collateral facility. Source: https://dailycoin.com/standard-chartereds-role-with-xrp-rlusd-explained/
+
+## Run 41 status
+
+- **DESIGNED:** retain provenance and confidence labels for phrase matches; keep video creator identity separate from clone-channel attribution; fact-check video claims against primary custody, issuer and regulatory sources.
+- **EXECUTED:** exact phrase searches; opened the Ask Coin review; triangulated the XRP creator through the podcast transcript, the channel's own page and official church leadership page; inventoried 36 search-indexed public video entries across recent uploads, high-view uploads and live replays; excluded members-only and unlinked lookalike channels.
+- **VERIFIED:** channel identity at high confidence for `@drkamilahstevenson`; the creator's explicit impersonation warning; the Ask Coin article's stated ambiguity; the "actual capital" distinction in the 2025 netflow article.
+- **NOT VERIFIED:** any XRP relationship for the Telegram Ask Coin game; any exact "SBIC, ChatGPT SBIC" entity; direct link between the XRP channel and the separate church channel beyond matching public identity; the proposed LMAX collateral-mirroring service as live; a complete crawl of the creator's 1.2K videos or the linked `@PrescribeWealth` second channel.
+
+---
+
 # Run 40 — current three-mission evidence, gate repair, audio bundle and Sellbird boundary — 2026-11-26T04:07:45.629Z
 
 ## Repository integration — VERIFIED
