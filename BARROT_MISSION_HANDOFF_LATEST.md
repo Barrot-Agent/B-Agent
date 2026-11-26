@@ -1,3 +1,57 @@
+# CURRENT CHECKPOINT — 2026-11-26T19:38:28Z
+
+This Run57 checkpoint supersedes the 18:35 UTC summary below where newer evidence exists. Prior research and execution history remain preserved.
+
+## Mission portfolio — VERIFIED
+
+- The root and packaged mission manifests are byte-identical (blob `360643b391b5d8e67fa917913581bb459afb613c`). The mission registry enforces exactly three active priority-1 missions: XRP intelligence/prediction, professional audio, and long-horizon continuity. Barrot V3 remains the shared execution/orchestration/provenance/safety/verification foundation.
+- The persisted round-robin test recovers across fresh processes in one shared workspace (XRP → audio → continuity → XRP). This does not prove automatic cross-host synchronization.
+
+## Repository and integration — EXECUTED / VERIFIED
+
+- Main `2151843140fd770b62ef93d06a78c559f9e73bbd`; recursive tree 3,164 entries, not truncated. Exact-main CI [45735004570](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735004570): 4,695 passed, 1 skipped, 11 warnings, 21 subtests, 74.21% coverage. Main dependency and pip audits passed.
+- Twelve PRs remain open. #1702 is the single handoff/map PR; #1703 continuity; #1704 audio; #1705 XRP/RLUSD; #1714 shared V3 ancestry-gate repair; #1713 remains a draft source containing additional Telegram functionality; #1706/#1708 overlap the XRP workflow (1708 is a draft subset); #1709, #1707, #1710 and #1711 are separate dependency updates with current-main validation still required.
+- On #1702 parent `e01224ea39087f35db9006eac6171ad727d6bad2`, exact full suite [45884285859](https://github.com/Barrot-Agent/B-Agent/actions/runs/45884285859) reported 4,700 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests, 74.21%. The single failure was a stale hyphenated classification in the exact `repair_prs[1713]` entry. This commit corrects that exact field; all exact-head checks are pending again. Audit, pip-audit and merge-tree passed on the parent head.
+- #1714 exact-head full suite, dependency audit, money audit, conflict-integrity, merge-tree and ancestry gate passed. It has zero independent reviews; the detailed branch-protection endpoint returns HTTP 403, so the required approval count is unknown.
+- Main is protected and visible required checks are Full repository test suite, audit, pip-audit and Verify PR merge tree. A main merge triggers GitHub Pages deployment; no deployment authorization exists. No merge, branch rewrite, force-push or deployment occurred.
+
+## XRP intelligence — EXECUTED; forecast withheld
+
+- Main ingestion [run 191 / 45881762528](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881762528), main SHA above. Data cutoff **2026-11-26 19:11:57.044991 UTC**. Adapter v3.34, parser v3.32. Feature store: 145 snapshots, 36,496 historical records; latest snapshot 377 eligible / 367 excluded; 2,230 input records; SQLite integrity `ok`.
+- Receipt chain: 37 receipts (21 retained raw payloads, 16 digest-only), verification PASS, sequence 145, cross-run continuity CONTINUED. External timestamp anchoring is absent. Snapshot `e75a7b2e…27d0250`.
+- Event timeline: 150 events, zero raw hashes and zero verified receipt links; 11 URL-only matches and zero URL-plus-capture-time matches. Walk-forward: 548 one-hour rows, PARTIAL_OR_BLOCKED. Drift: 0/205 features evaluated, INSUFFICIENT_DATA. Forecast model ineligible; **NOT_ISSUED**.
+- SEC capture remains BLOCKED_CONFIGURATION (no contact identity, zero SEC raw receipts). Latest cross-analysis [run 4652 / 45879212965](https://github.com/Barrot-Agent/B-Agent/actions/runs/45879212965) reports stale sentiment inputs (XRP 678.2h, BTC 735.0h); forecast eligibility false. The cache budget remains constrained; artifact fallback worked, but no raw-store rebuild or external anchor is established.
+- #1705's branch capture verified 3 of 4 curated primary pages (Ripple, Circle and SBI Remit); Coinbase's official RLUSD listing page returned HTTP 403 to the runner. This is branch evidence, not mainline evidence. Keep all forecasts disabled.
+
+## Audio and continuity — EXECUTED; acceptance limits explicit
+
+- #1704 full-song render [run 45867292176](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176) produced a 175.545-second, 110 BPM, D-minor, 4/4 bundle: stereo WAV, nine sample-aligned stems, MIDI and metadata. QC: 44.1 kHz, zero clipped samples, -6.000 dBTP. No native DAW project, blind listening or user acceptance exists; lead/strings still need mono-translation review.
+- #1703 project-state ledger tests pass. Correction to the older summary: the branch implements Ed25519-signed export/import, trusted-key verification, expiry/sequence checks and replay protection across separate sender/receiver processes using a file. Trusted-key provisioning is out-of-band. No automatic network transport, key exchange or cross-provider recovery has been executed.
+
+## Research, platforms and commercial readiness
+
+- Primary Japanese sources identify SBIC East/Central/West as three distinct regional statutory SME investment companies under Japan's 1963 Act, not SBI Holdings. The Tokyo, Nagoya and Osaka legal entities have separate names, dates, capital and operating areas; the research artifact preserves the corporate numbers and official source links.
+- “ASK Coin,” “actual capital,” and official “SBIC, ChatGPT SBIC” affiliation remain unresolved as primary-source claims. The candidate Kamilah Stevenson channel links to PrescribeWealth, but no reciprocal official link binds its channel ID to Dr. Stevenson; no video inventory is attributed.
+- Only ChatGPT-to-GitHub has tested authentication and data flow. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified as live Barrot connections.
+- Sellbird is `ethanplusai/sellbird`, v0.5.0, AGPL-3.0-only. Its default native email mode requires Outbox approval, but credentials are absent and warmup, send-window, compliance and suppression prerequisites are incomplete. Not installed or authenticated; **0 prospects, 0 sends, 0 replies, 0 meetings, $0 revenue**. Barrot technology only; no music or TrekFlex campaigns. Outbound remains paused.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal missions, V3 shared foundation, XRP fail-closed forecast policy, editable audio workflow, portable state ledger, nine-platform least-privilege map, Barrot-only customer acquisition.
+- **EXECUTED:** re-fetched main/tree/open PRs, ancestry, changed paths, CI/security/gate runs and handoff; verified run 191 artifacts/logs, #1703 signed-bundle implementation, #1704 audio QC, Sellbird source/config and primary SBIC evidence; corrected the handoff map's exact classification field.
+- **VERIFIED:** mission priority enforcement; round-robin cross-process recovery; run 191 feature-store integrity and receipt-chain verification; #1703/#1704/#1705 exact-head suites; #1714 ancestry gate; forecast withheld; no Sellbird sending or real-money action.
+- **NOT VERIFIED:** independent approvals/hidden branch protection; deployment authorization; full event receipt linkage or external anchoring; predictive superiority/calibration/drift; audio listening acceptance/native DAW project; automatic network sync; eight external platform connections; Sellbird prospects or revenue.
+
+## Next actions
+
+1. Complete exact-head full-suite/audit/merge-tree checks on the corrected #1702 tip; do not reuse parent-head results.
+2. Preserve #1714 as the only active clean V3 gate successor; do not merge until independent approval requirements and Pages deployment authorization are established.
+3. Continue the existing XRP work by improving event receipt capture and fresh sentiment coverage; keep forecasts disabled.
+4. Complete level-matched audio listening/mono review and authenticated cross-host continuity transport only through existing workstreams.
+5. Keep Sellbird discovery separate from outreach and all sending paused until the Barrot offer, audience, message and mailbox safeguards are verified and explicitly approved.
+
+---
+
 # CURRENT CHECKPOINT — 2026-11-26T18:35:00Z
 
 This compact checkpoint supersedes the prior top-level status. The detailed Run 47–56 research and execution history remains preserved below.

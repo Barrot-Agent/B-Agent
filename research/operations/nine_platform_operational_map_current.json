@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T19:17:59Z",
+  "captured_at_utc": "2026-11-26T19:38:28Z",
   "capture_basis": "Run 57 correction: main/tree/PR ancestry, main XRP run 190, branch run 188, audio run 93, continuity PR #1703, Sellbird v0.5.0 audit and primary-source SBIC/Evernorth/Circle/Coinbase/Ripple/Kamilah research.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -1999,7 +1999,7 @@
       "commits_ahead": 11,
       "commits_behind": 0,
       "draft": true,
-      "classification": "superseded-source draft preserved; Telegram messaging scope excluded from #1714",
+      "classification": "superseded_source_preserved_as_draft; Telegram additions intentionally excluded from #1714",
       "workstream_uniqueness": "source_only",
       "review_count": 0,
       "successor_pr": 1714,
