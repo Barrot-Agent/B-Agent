@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T10:03:52Z",
-  "capture_basis": "GitHub connector live read/write; current main recursive tree and all open PRs inspected; branch ancestry and exact-head checks verified; main XRP run 178 raw/event/receipt/feature-store artifacts and cross-analysis artifact downloaded and checked locally; canonical handoff updated on existing PR #1702 branch.",
+  "captured_at_utc": "2026-11-26T10:20:03Z",
+  "capture_basis": "GitHub connector current-main/PR/CI/artifact audit; main XRP run 178 raw receipts, chain logs and SQLite independently verified; primary-source research refresh on SBIC/SBI/Coinbase/Circle/Ripple/ASK/Kamilah; existing #1702 branch handoff/map correction; no merge/deploy or cross-platform transfer.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -60,16 +60,18 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+        "head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
         "state": "open",
-        "classification": "unique_handoff; Run47 docs/map commit added after this recorded parent; exact-head CI pending; prior code head passed",
-        "commits_ahead": 110,
+        "classification": "unique_handoff; previous exact-head full suite had one map evidence-string assertion failure; corrected in this commit; exact-head CI pending",
+        "commits_ahead": 111,
         "commits_behind": 0,
-        "head_sha_role": "pre_Run47_documentation_commit_parent",
-        "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT",
+        "head_sha_role": "pre_final_Run47_research_map_commit_parent",
+        "exact_head_validation": "PENDING_AFTER_RUN47_RESEARCH_MAP_CORRECTION",
         "validation_status": [
-          "prior code head full suite/audit/pip-audit/merge-tree passed",
-          "Run47 handoff/map commit exact-head CI pending",
+          "prior code head passed 4701 tests",
+          "parent a3fa full suite 4700 passed / 1 failed / 1 skipped; sole failure was map evidence phrase assertion",
+          "map evidence phrase correction included in current commit",
+          "exact-head CI pending",
           "zero independent reviews",
           "approval policy unavailable via HTTP 403",
           "Pages deployment authorization absent"
@@ -216,7 +218,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-26T10:03:52Z",
+      "observed_at_utc": "2026-11-26T10:20:03Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -408,7 +410,7 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Verified GitHub connector read/write on current main: metadata, complete recursive tree, open PRs, branch ancestry, workflow runs/jobs/logs, exact-head checks, file reads, existing-branch writes and workflow artifact downloads. Current main SHA 2151843140fd770b62ef93d06a78c559f9e73bbd; 3,164 tree entries; 11 open PRs. Main XRP run 178 artifacts and SQLite feature store were downloaded; 21/21 retained raw payload hashes and receipt/chain log hashes independently matched. Only ChatGPT GitHub access is verified; no evidence was transferred to the other eight platforms."
+        "evidence": "Verified GitHub connector read/write: main metadata/tree, open PRs, workflow runs/jobs/logs, file reads, branch ancestry, exact-head checks, existing-branch writes and workflow artifact downloads. Current main SHA 2151843140fd770b62ef93d06a78c559f9e73bbd; 3,164 tree entries; 11 open PRs. Main XRP run 178 artifacts and SQLite feature store were downloaded; 21/21 retained raw payload hashes and receipt/chain log hashes independently matched. Only ChatGPT GitHub access is verified; no evidence was transferred to the other eight platforms."
       },
       "permissions": {
         "observed_actions": [
@@ -641,10 +643,10 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "XRP: review #1705's three-source digest-only primary-event capture; then implement raw-artifact feature-store rebuild and independent timestamp anchoring, resolve lawful source failures, and complete leakage-safe multi-horizon evaluation before forecasts.",
+    "XRP: review #1705's three-source digest-only primary-event capture; add raw-artifact feature-store rebuild and independent timestamp anchoring; resolve lawful source failures; complete leakage-safe multi-horizon evaluation before forecasts.",
     "Audio: prove distinct rights-cleared SoundFonts end-to-end, fix lead phase/mono translation, add reproducible DAW interchange, and run level-matched blind listening with explicit user acceptance.",
     "Continuity: test signed state transfer and recovery between separately controlled physical hosts, stale/conflict handling after import, and controlled model/tool handoff.",
-    "Governance: review #1713 without duplicating its ancestry gate fix; no merge until review/approval requirements and Pages deployment authorization are satisfied.",
+    "Governance: verify exact-head CI after the Run47 evidence-string correction; review #1713 without duplicating its ancestry gate fix; no merge until review/approval requirements and Pages deployment authorization are satisfied.",
     "Commercial: validate a bounded Barrot-only workflow/provenance pilot offer before prospecting; keep Sellbird sending paused."
   ],
   "a2a_bridge": {
@@ -807,8 +809,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
-      "commits_ahead": 110,
+      "head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+      "commits_ahead": 111,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -820,38 +822,42 @@
         "tests/test_nine_platform_operational_map_current.py",
         "tests/test_xrp_mission_priority.py"
       ],
-      "classification": "unique_handoff; Run47 docs/map commit added after this recorded parent; exact-head CI pending; prior code head passed",
+      "classification": "unique_handoff; previous exact-head full suite had one map evidence-string assertion failure; corrected in this commit; exact-head CI pending",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
       "mergeable_state": "clean",
       "validation_status": [
-        "prior code head full suite/audit/pip-audit/merge-tree passed",
-        "Run47 handoff/map commit exact-head CI pending",
+        "prior code head passed 4701 tests",
+        "parent a3fa full suite 4700 passed / 1 failed / 1 skipped; sole failure was map evidence phrase assertion",
+        "map evidence phrase correction included in current commit",
+        "exact-head CI pending",
         "zero independent reviews",
         "approval policy unavailable via HTTP 403",
         "Pages deployment authorization absent"
       ],
       "checks": {
-        "observed_at_utc": "2026-11-26T10:03:52Z",
+        "observed_at_utc": "2026-11-26T10:20:03Z",
         "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
         "full_suite": {
-          "run_id": 45789932591,
-          "conclusion": "success",
-          "passed": 4701,
-          "failed": 0,
+          "run_id": 45799454056,
+          "conclusion": "failure",
+          "passed": 4700,
+          "failed": 1,
           "skipped": 1,
           "warnings": 11,
           "subtests": 21,
           "coverage_percent": 74.21,
-          "duration_seconds": 131.19
+          "duration_seconds": 182.02,
+          "failing_test": "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions",
+          "cause": "required evidence substrings were removed from map; restored in current commit"
         },
         "dependency_audit": {
           "run_id": 45774704394,
           "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 45774705623,
+          "run_id": 45799453930,
           "conclusion": "success"
         },
         "conflict_integrity": {
@@ -859,19 +865,35 @@
           "conclusion": "success"
         },
         "gated_merge": {
-          "run_id": 45789932580,
+          "run_id": 45799453934,
           "conclusion": "failure",
-          "blocker": "legacy cached base SHA false-positive; live compare proves zero behind"
+          "blocker": "full repository test suite failed one map evidence-string assertion"
         },
-        "tested_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
+        "tested_head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
         "commits_ahead": 104,
         "commits_behind": 0,
-        "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f"
+        "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+        "audit": {
+          "run_id": 45799453930,
+          "conclusion": "success"
+        },
+        "pip_audit": {
+          "run_id": 45799454044,
+          "conclusion": "success"
+        },
+        "merge_tree": {
+          "run_id": 45799453971,
+          "conclusion": "success"
+        },
+        "pages_build_validation": {
+          "run_id": 45799454056,
+          "conclusion": "success"
+        }
       },
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT",
+      "exact_head_validation": "PENDING_AFTER_RUN47_RESEARCH_MAP_CORRECTION",
       "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
-      "head_sha_role": "pre_Run47_documentation_commit_parent"
+      "head_sha_role": "pre_final_Run47_research_map_commit_parent"
     },
     {
       "number": 1703,
@@ -1453,47 +1475,52 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T10:03:52Z",
+    "observed_at_utc": "2026-11-26T10:20:03Z",
     "pr_number": 1702,
-    "tested_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
+    "tested_head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "current_branch_parent_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "current_branch_head_status": "ADVANCED_BY_RUN47_RESEARCH_AND_MAP_CORRECTION_COMMIT; EXACT_HEAD_CI_PENDING",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 110,
+    "commits_ahead": 111,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45789932591,
-      "conclusion": "success",
-      "passed": 4701,
-      "failed": 0,
+      "run_id": 45799454056,
+      "conclusion": "failure",
+      "passed": 4700,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
       "coverage_percent": 74.21,
-      "duration_seconds": 131.19
+      "duration_seconds": 182.02,
+      "failing_test": "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions",
+      "failure_cause": "map authentication.evidence string omitted four exact substrings required by test; corrected in current commit"
     },
     "other_checks": {
       "audit": {
-        "run_id": 45789932598,
+        "run_id": 45799453930,
         "conclusion": "success"
       },
       "pip_audit": {
-        "run_id": 45789932622,
-        "conclusion": "success"
-      },
-      "merge_tree": {
-        "run_id": 45789932624,
-        "conclusion": "success"
-      },
-      "pages_build_validation": {
-        "run_id": 45789932591,
+        "run_id": 45799454044,
         "conclusion": "success"
       },
       "money_audit": {
-        "conclusion": "NOT_OBSERVED_ON_CURRENT_HEAD"
+        "run_id": 45799453930,
+        "conclusion": "success"
+      },
+      "merge_tree": {
+        "run_id": 45799453971,
+        "conclusion": "success"
+      },
+      "pages_build_validation": {
+        "run_id": 45799454056,
+        "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45789932580,
+        "run_id": 45799453934,
         "conclusion": "failure",
-        "blocker": "legacy gate compared stale PR API base SHA; live compare shows behind_by=0 and merge base=current main"
+        "blocker": "full repository test suite failed one map evidence-string assertion"
       }
     },
     "mergeable": true,
@@ -1501,14 +1528,11 @@
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "legacy cached base SHA false-block; #1713 contains ancestry-based correction",
+      "one map evidence-string test failure on parent head; corrected in current commit, exact-head CI pending",
       "zero independent reviews",
       "required approval count unavailable via HTTP 403",
-      "merge triggers GitHub Pages deployment; specific deployment authorization absent"
-    ],
-    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
-    "current_branch_head_status": "ADVANCED_BY_RUN47_DOCUMENTATION_COMMIT; EXACT_HEAD_CI_PENDING",
-    "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT"
+      "merge triggers GitHub Pages deployment; specific authorization absent"
+    ]
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -1999,12 +2023,12 @@
     "artifact_sha256": "64f1beb795aea862862a585cf947522091a464fc235e362c2685134427215186"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-26T10:03:52Z",
+    "observed_at_utc": "2026-11-26T10:20:03Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "recursive_tree_entries": 3164,
     "tree_truncated": false,
     "handoff_branch": "integration/mission-handoff-refresh-20261125",
-    "handoff_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+    "handoff_branch_parent_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
     "open_pr_count": 11,
     "open_pr_numbers": [
       1702,
@@ -2026,7 +2050,7 @@
     "latest_audio_artifact_id": 15093789930,
     "latest_audio_qc_artifact_id": 15094323089,
     "latest_continuity_full_suite_run_id": 45736556559,
-    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN47_HANDOFF_AND_MAP_COMMIT",
+    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN47_RESEARCH_AND_MAP_CORRECTION_COMMIT",
     "no_new_branch": true,
     "no_new_pr": true,
     "no_merge": true,
@@ -2613,22 +2637,22 @@
     "forecast_issued": false
   },
   "latest_mission_prompt_alignment": {
-    "observed_at_utc": "2026-11-26T10:03:52Z",
+    "observed_at_utc": "2026-11-26T10:20:03Z",
     "source_file": "scripts/ask_barrot.py",
     "finding": "SYSTEM_BASE previously ranked XRP as sole highest-priority mission, contradicting the three co-equal priority-1 mission portfolio.",
     "classification": "VERIFIED_IN_SCOPE_CAPABILITY_GAP",
     "implementation": "Runtime mission manifest and nine-platform map readers plus fail-closed connection claims and regression tests remain implemented on #1702; all three missions remain active at priority 1.",
     "implementation_branch": "integration/mission-handoff-refresh-20261125",
     "implementation_pr": 1702,
-    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; PRIOR_CODE_HEAD_FULL_SUITE_4701_PASSED; RUN47_DOC_MAP_COMMIT_EXACT_HEAD_CI_PENDING; NOT_MERGED",
-    "exact_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
-    "exact_head_ci_run_id": 45789932591,
+    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; PARENT_HEAD_FULL_SUITE_4700_PASSED_1_MAP_ASSERTION_FAILED; ASSERTION_CAUSE_CORRECTED_IN_CURRENT_COMMIT; EXACT_HEAD_CI_PENDING; NOT_MERGED",
+    "exact_head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "exact_head_ci_run_id": 45799454056,
     "merge_blockers": [
+      "exact-head CI pending after evidence-string correction",
       "zero independent reviews",
       "branch-protection details return HTTP 403; required approval count unknown",
       "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
-    ],
-    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f"
+    ]
   },
   "latest_xrp_run166_summary": {
     "observed_at_utc": "2026-11-25T22:13:59Z",
@@ -2731,17 +2755,19 @@
     "paper_trade_executed": false
   },
   "latest_exact_head_validation": {
-    "observed_at_utc": "2026-11-26T10:03:52Z",
+    "observed_at_utc": "2026-11-26T10:20:03Z",
     "pr_number": 1702,
-    "tested_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
+    "tested_head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "current_branch_parent_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "current_branch_head_status": "ADVANCED_BY_RUN47_RESEARCH_AND_MAP_CORRECTION_COMMIT; EXACT_HEAD_CI_PENDING",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 108,
+    "commits_ahead": 111,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45789932591,
-      "conclusion": "success",
-      "passed": 4701,
-      "failed": 0,
+      "run_id": 45799454056,
+      "conclusion": "failure",
+      "passed": 4700,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
@@ -2749,37 +2775,38 @@
     },
     "required_checks": {
       "audit": {
-        "run_id": 45789932598,
+        "run_id": 45799453930,
         "conclusion": "success"
       },
       "pip_audit": {
-        "run_id": 45789932622,
+        "run_id": 45799454044,
         "conclusion": "success"
       },
       "merge_tree": {
-        "run_id": 45789932624,
+        "run_id": 45799453971,
+        "conclusion": "success"
+      },
+      "money_audit": {
+        "run_id": 45799453930,
         "conclusion": "success"
       }
     },
     "fail_closed_merge_readiness": {
-      "run_id": 45789932580,
+      "run_id": 45799453934,
       "conclusion": "failure",
-      "reason": "cached PR base SHA mismatch; current compare confirms branch is not behind and merge base equals main"
+      "reason": "full repository test suite failed one assertion in nine-platform operational map test"
     },
     "pages_build_validation": "SUCCESS_NO_DEPLOYMENT",
-    "money_audit": "NOT_OBSERVED_ON_CURRENT_HEAD",
     "review_count": 0,
     "mergeable": true,
     "mergeable_state": "clean",
     "merge_status": "NOT_MERGED",
     "blockers": [
+      "map evidence assertion corrected in current commit; rerun pending",
       "zero independent reviews",
       "required approval count unavailable via HTTP 403",
       "merge triggers GitHub Pages deployment; explicit authorization absent"
-    ],
-    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
-    "current_branch_head_status": "ADVANCED_BY_RUN47_DOCUMENTATION_COMMIT; EXACT_HEAD_CI_PENDING",
-    "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT"
+    ]
   },
   "latest_xrp_run167_summary": {
     "observed_at_utc": "2026-11-25T23:13:17Z",
@@ -4145,9 +4172,304 @@
       "outreach": false,
       "paper_trade": false,
       "real_money": false,
-      "exact_head_ci_pending": true
+      "exact_head_ci_pending": true,
+      "research_addendum": true
     },
-    "handoff_commit_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
-    "exact_head_ci_after_documentation_commit": "PENDING"
+    "handoff_commit_parent_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+    "exact_head_ci_after_documentation_commit": "PARENT_HEAD_FAILED_ONE_MAP_EVIDENCE_ASSERTION; CORRECTED_IN_CURRENT_COMMIT; RERUN_PENDING",
+    "full_suite_failure": {
+      "run_id": 45799454056,
+      "head_sha": "a3fa9a3d34a74d5b1a58bad24de225bcd903546d",
+      "passed": 4700,
+      "failed": 1,
+      "skipped": 1,
+      "coverage_percent": 74.21,
+      "failing_test": "tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions",
+      "fix": "restored required evidence substrings without changing permissions"
+    },
+    "research_addendum_status": "PRIMARY_SOURCE_REFRESHED; RESEARCH_ONLY; MODEL_INELIGIBLE_UNTIL_RECEIPTS_AND_POINT_IN_TIME_VALIDATION"
+  },
+  "latest_research_addendum": {
+    "observed_at": "2026-11-26",
+    "source_policy": "Primary corporate disclosures and issuer filings preferred; company statements treated as evidence of what the party announced, not independent proof of economic impact.",
+    "sbic_identity": {
+      "status": "RESOLVED_HIGH_CONFIDENCE",
+      "entities": [
+        {
+          "region": "East Japan",
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "domain": "sbic.co.jp"
+        },
+        {
+          "region": "Central Japan",
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "domain": "sbic-cj.co.jp"
+        },
+        {
+          "region": "West Japan",
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "domain": "sbic-wj.co.jp"
+        }
+      ],
+      "distinction": "Three regional SBIC companies with distinct profiles/regions; separate from SBI Holdings, the listed financial holding company (TSE 8473)."
+    },
+    "claims": [
+      {
+        "id": "sbic_chatgpt",
+        "status": "EDUCATIONAL_USE_NOT_PARTNERSHIP",
+        "confidence": "high",
+        "evidence": [
+          "Tokyo SBIC ChatGPT seminar, 2024",
+          "Tokyo SBIC generative-AI training for portfolio companies, 2025"
+        ],
+        "counter_hypothesis": "SoftBank/OpenAI SB OAI Japan JV is separate from SBIC."
+      },
+      {
+        "id": "sb_oai_japan",
+        "status": "SEPARATE_SOFTBANK_OPENAI_JV",
+        "confidence": "high",
+        "evidence": [
+          "SB OAI Japan established November 2025 as 50:50 JV through C Holdings"
+        ]
+      },
+      {
+        "id": "sbi_ripple",
+        "status": "DIRECT_INVESTMENT_AND_JV_REPORTED",
+        "confidence": "high",
+        "evidence": [
+          "SBI reports 2016 Ripple investment, SBI Ripple Asia JV and about 9% Ripple stake in June 2025"
+        ],
+        "caveat": "Current post-2025 ownership percentage not independently recalculated."
+      },
+      {
+        "id": "sbi_circle",
+        "status": "STRATEGIC_INVESTMENT_AND_JV",
+        "confidence": "high",
+        "evidence": [
+          "SBI and SBI Shinsei Bank each disclosed $25m Circle investment in June 2025",
+          "SBI Circle Holdings JV; SBI VC Trade USDC public handling from March 2025"
+        ]
+      },
+      {
+        "id": "sbi_rlusd",
+        "status": "LIVE_JAPAN_LISTING",
+        "confidence": "high",
+        "evidence": [
+          "SBI VC Trade announced RLUSD handling from 2026-06-24 after 2025-08 MOU"
+        ]
+      },
+      {
+        "id": "sbi_xrpl_poc",
+        "status": "XRPL_POC_NOT_XRP_TOKEN_DEMAND",
+        "confidence": "high",
+        "evidence": [
+          "SBI Ripple Asia February 2026 tokenized-deposit/deposit-money PoC on XRPL/MoneyTap"
+        ],
+        "caveat": "No evidence in the announcement that XRP token was collateral or required."
+      },
+      {
+        "id": "sbi_cambodia",
+        "status": "STABLECOIN_REMITTANCE_POC_NOT_XRP",
+        "confidence": "high",
+        "evidence": [
+          "SBI/National Bank of Cambodia MOU 2026-11-13; JPYSC, SBI Remit, SBI Digitrust"
+        ]
+      },
+      {
+        "id": "sbi_open_standard",
+        "status": "CONSORTIUM_MEMBERSHIP_NOT_BILATERAL_PARTNERSHIP",
+        "confidence": "high",
+        "evidence": [
+          "SBI and Startale joined Open Standard 2026-10-16; Coinbase among 140+ members; JPYSC/OUSD interoperability exploration"
+        ]
+      },
+      {
+        "id": "coinbase_circle",
+        "status": "DIRECT_EQUITY_AND_REVENUE_SHARING",
+        "confidence": "high",
+        "evidence": [
+          "Coinbase exchanged 50% Centre interest for 3.5% Circle equity in 2023",
+          "Coinbase FY2025 10-K describes 50% of remaining USDC payment base",
+          "Circle Q3 2025 10-Q: Coinbase 24%, Circle 14%, off-platform 62% as of 2025-09-30"
+        ],
+        "caveat": "Current post-IPO equity percentage and current platform distribution not recalculated."
+      },
+      {
+        "id": "circle_xrpl",
+        "status": "NATIVE_USDC_DEPLOYMENT",
+        "confidence": "high",
+        "evidence": [
+          "Circle announced native USDC on XRPL mainnet 2025-06-12"
+        ],
+        "caveat": "USDC availability on XRPL does not establish XRP-token demand or Circle/Ripple equity partnership."
+      },
+      {
+        "id": "coinbase_ripple",
+        "status": "NO_NEW_DIRECT_CORPORATE_PARTNERSHIP_FOUND",
+        "confidence": "medium",
+        "evidence": [
+          "Coinbase/SBI Open Standard participation is consortium-level; Coinbase exchange support is not a bilateral corporate partnership."
+        ]
+      },
+      {
+        "id": "ask_coin",
+        "status": "CANDIDATE_PERMISSION_ASK_TOKEN",
+        "confidence": "medium",
+        "evidence": [
+          "Permission official ASK documentation describes a token on Base and Polygon for its data/agent economy."
+        ],
+        "caveat": "No XRP Ledger, Ripple, SBI or actual-capital link established; may not be the user's intended ASK Coin."
+      },
+      {
+        "id": "actual_capital",
+        "status": "UNRESOLVED_NO_VERIFIABLE_EXACT_PHRASE_MATCH",
+        "confidence": "low",
+        "evidence": [
+          "Targeted exact-phrase public searches did not surface a verifiable primary-source match."
+        ]
+      },
+      {
+        "id": "kamilah_stevenson",
+        "status": "HIGH_CONFIDENCE_CHANNEL_ATTRIBUTION",
+        "confidence": "high",
+        "evidence": [
+          "@drkamilahstevenson channel links to Prescribe Wealth; official site identifies Dr Kamilah Stevenson."
+        ],
+        "caveat": "Creator commentary is not primary evidence for the claims in the videos; separate Camilla spelling not verified."
+      }
+    ],
+    "youtube_inventory": {
+      "channel": "https://www.youtube.com/@drkamilahstevenson",
+      "channel_snapshot_subscribers": 142000,
+      "channel_snapshot_video_count": 1200,
+      "inventory_status": "PARTIAL_PUBLIC_INDEX",
+      "other_channel_excluded": "https://www.youtube.com/@KamilahStevensonXrpStocks",
+      "other_channel_reason": "about two subscribers and 14 videos; no corroborating official link",
+      "recent_titles": [
+        "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+        "This New SEC Proposal Could Unlock Trillions for XRP",
+        "Exactly How to Retire With Your XRP Portfolio",
+        "XRP vs Banks: Why Your Money Needs Autonomy NOW",
+        "Did SWIFT Just Change XRP Forever? (The Truth)",
+        "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.",
+        "A $119 Billion African Bank Just Put Its License Behind XRP",
+        "A New XRP Tool Can Buy and Sell for You",
+        "Invest NOW or Get Left Behind. Institutions Are Already Moving.",
+        "The CFTC Just Said What XRP Holders Waited Years to Hear",
+        "Wall Street Just Got a Company Built to Keep BUYING XRP",
+        "XRP Ledger Technology Just Reached Europe's Central Bank"
+      ],
+      "additional_collections_discovered": {
+        "popular_videos": 12,
+        "public_live_streams": 12,
+        "shorts": 12
+      },
+      "claim_status": "COMMENTARY_ONLY; VERIFY UNDERLYING CLAIMS INDEPENDENTLY"
+    },
+    "sources": [
+      {
+        "publisher": "Tokyo SBIC",
+        "title": "Corporate profile (East Japan)",
+        "date": "current profile",
+        "url": "https://www.sbic.co.jp/"
+      },
+      {
+        "publisher": "Nagoya SBIC",
+        "title": "Corporate profile (Central Japan)",
+        "date": "current profile",
+        "url": "https://www.sbic-cj.co.jp/"
+      },
+      {
+        "publisher": "Osaka SBIC",
+        "title": "Corporate profile (West Japan)",
+        "date": "current profile",
+        "url": "https://www.sbic-wj.co.jp/"
+      },
+      {
+        "publisher": "SBI Holdings",
+        "title": "Corporate profile and 2025 Circle/Ripple investment disclosure",
+        "date": "2025-06",
+        "url": "https://www.sbigroup.co.jp/english/"
+      },
+      {
+        "publisher": "SBI Holdings / SBI VC Trade",
+        "title": "RLUSD handling begins in Japan",
+        "date": "2026-06-24",
+        "url": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html"
+      },
+      {
+        "publisher": "SBI Holdings",
+        "title": "Japan–Cambodia stablecoin remittance PoC MOU",
+        "date": "2026-11-13",
+        "url": "https://www.sbigroup.co.jp/news/2026/1113_16737.html"
+      },
+      {
+        "publisher": "SBI Holdings",
+        "title": "Open Standard participation with Startale",
+        "date": "2026-10-16",
+        "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+      },
+      {
+        "publisher": "SBI Holdings",
+        "title": "RLUSD Japan distribution MOU",
+        "date": "2025-08-22",
+        "url": "https://www.sbigroup.co.jp/news/2025/0822_15680.html"
+      },
+      {
+        "publisher": "Circle",
+        "title": "Now Available: USDC on the XRPL",
+        "date": "2025-06-12",
+        "url": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl"
+      },
+      {
+        "publisher": "Coinbase",
+        "title": "Ushering in the next chapter for USDC",
+        "date": "2023",
+        "url": "https://www.coinbase.com/en-gb/blog/ushering-in-the-next-chapter-for-usdc"
+      },
+      {
+        "publisher": "Coinbase / SEC",
+        "title": "FY2025 Form 10-K",
+        "date": "2026-02",
+        "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000047/coinbase2025ars.pdf"
+      },
+      {
+        "publisher": "Circle / SEC",
+        "title": "Q3 2025 Form 10-Q",
+        "date": "2025-11",
+        "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604225000047/crcl-20250930.htm"
+      },
+      {
+        "publisher": "Coinbase / SEC",
+        "title": "FY2024 Form 10-K",
+        "date": "2025-02",
+        "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978825000022/coin-20241231.htm"
+      },
+      {
+        "publisher": "Permission",
+        "title": "ASK token documentation",
+        "date": "current docs",
+        "url": "https://docs.permission.ai/ask-token"
+      },
+      {
+        "publisher": "Permission",
+        "title": "ASK tokenomics",
+        "date": "current docs",
+        "url": "https://docs.permission.ai/ask-token/ask-tokenomics"
+      },
+      {
+        "publisher": "Prescribe Wealth",
+        "title": "Official site identifying Dr Kamilah Stevenson",
+        "date": "current site",
+        "url": "https://prescribewealth.com/"
+      },
+      {
+        "publisher": "YouTube",
+        "title": "Dr Kamilah Stevenson public channel",
+        "date": "observed 2026-11-26",
+        "url": "https://www.youtube.com/@drkamilahstevenson"
+      }
+    ],
+    "model_eligibility": "RESEARCH_ONLY; not eligible as a model feature until event-specific source receipts, point-in-time timestamps and causal evaluation are verified."
   }
 }
