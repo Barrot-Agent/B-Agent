@@ -7,6 +7,7 @@ on:
       - "barrot_agent/creative/**"
       - "tests/test_musical_adapters.py"
       - "tests/test_audio_render_integration.py"
+      - "tests/test_audio_production_quality_gates.py"
       - "pyproject.toml"
       - ".github/workflows/audio-render-integration.yml"
   push:
@@ -14,6 +15,7 @@ on:
     paths:
       - "barrot_agent/creative/**"
       - "tests/test_audio_render_integration.py"
+      - "tests/test_audio_production_quality_gates.py"
       - "pyproject.toml"
       - ".github/workflows/audio-render-integration.yml"
   workflow_dispatch:
