@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T16:46:59.837Z",
-  "capture_basis": "Run55 addendum: independently rechecked XRP run 187 raw payloads, 37-entry receipt chain and cross-run link; inspected full-song audio QC; recorded the exact-head map consistency failure and corrected the observation to run 187.",
+  "captured_at_utc": "2026-11-26T17:13:00Z",
+  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -61,11 +61,11 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "65d4b6d0075ec7881e652892fd61d84b70cd45e5",
+        "head_sha": "54de8481fa38f4856615c47aad60583e46cb76d0",
         "state": "open",
         "draft": false,
-        "classification": "unique_canonical_handoff; exact-head full suite/audit/pip-audit/merge-tree pass; legacy merge-readiness false-block; zero independent reviews; Pages deployment authorization absent",
-        "commits_ahead": 123,
+        "classification": "unique_canonical_handoff; exact-head full suite passed on current head; legacy gate false-blocks on stale PR base SHA; zero independent reviews; Pages deployment authorization absent",
+        "commits_ahead": 125,
         "commits_behind": 0,
         "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
       },
@@ -76,7 +76,7 @@
         "head_sha": "9ea30d044c84fc97c8354457f7227439c73442b4",
         "state": "open",
         "draft": false,
-        "classification": "unique_continuity; exact-head full suite pass; cross-host sync unverified; zero independent reviews; deployment approval absent",
+        "classification": "unique_continuity; exact-head full suite passed; cross-host sync and sender authentication unverified; zero independent reviews; deployment approval absent",
         "commits_ahead": 16,
         "commits_behind": 0,
         "latest_status": "4,715 passed; 1 skipped; 74.34% coverage"
@@ -88,7 +88,7 @@
         "head_sha": "4ff0e5881a84bd1f496fefc730073194365cb8f1",
         "state": "open",
         "draft": false,
-        "classification": "unique_audio; exact-head suite and render pass; listening/native DAW/distinct timbres unverified; zero independent reviews; deployment approval absent",
+        "classification": "unique_audio; exact-head full suite and FluidSynth render passed; distinct timbres, listening acceptance and native DAW project unverified; zero independent reviews; deployment approval absent",
         "commits_ahead": 24,
         "commits_behind": 0,
         "latest_status": "4,703 passed; 1 skipped; 74.29% coverage; full-song render artifact exists"
@@ -97,11 +97,11 @@
         "number": 1705,
         "title": "Normalize RLUSD cross-chain supply as research-only evidence",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
-        "head_sha": "37fc048f500ad278b3dc5ad2e664a32e31118a17",
+        "head_sha": "1091feb9cf5be437506c33c96dd767606ce389cd",
         "state": "open",
         "draft": false,
-        "classification": "unique_xrp_research; exact-head suite pass; three curated primary-event capture specifications tested on branch only; zero independent reviews; deployment approval absent",
-        "commits_ahead": 17,
+        "classification": "unique_xrp_research; exact-head CI, dependency, money and conflict checks passed; model admission blocked; event receipt links 0/150; zero independent reviews; legacy gate false-block",
+        "commits_ahead": 18,
         "commits_behind": 0,
         "latest_status": "4,714 passed; 1 skipped; research-only"
       },
@@ -183,11 +183,22 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1713",
         "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
         "state": "open",
-        "draft": false,
-        "classification": "unique_v3_governance; corrected ancestry gate passes but PR also adds Telegram inbox/report/reply and manual send workflow; scope/review/deployment blocked",
+        "draft": true,
+        "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from clean successor #1714; retain history; do not close until successor merged and verified",
         "commits_ahead": 11,
         "commits_behind": 0,
         "latest_status": "full suite and corrected gate pass; zero independent reviews"
+      },
+      {
+        "number": 1714,
+        "title": "V3 governance: correct ancestry gate and preserve evidence state",
+        "url": "https://github.com/Barrot-Agent/B-Agent/pull/1714",
+        "head_sha": "87a370d77df5703a807ad3d8128d0ca972c383fd",
+        "state": "open",
+        "draft": false,
+        "classification": "active_clean_v3_governance_successor; core CI, dependency, money and conflict checks passed; PR full suite and PR-event ancestry gate pending at 2026-11-26T17:13Z; zero independent reviews; deployment authorization absent",
+        "commits_ahead": 5,
+        "commits_behind": 0
       }
     ],
     "merged_pull_requests": [
@@ -228,12 +239,12 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-26T16:30:51Z",
+      "observed_at_utc": "2026-11-26T17:13:00Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
       "tree_truncated": false,
-      "open_pull_request_count": 11,
+      "open_pull_request_count": 12,
       "merge_ancestry": [
         "#1692",
         "#1701",
@@ -244,19 +255,14 @@
       "exact_head_ci": {
         "run_id": 45735004570,
         "conclusion": "success",
+        "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
         "full_suite": {
           "passed": 4695,
           "failed": 0,
           "skipped": 1,
-          "coverage": 74.21
-        },
-        "audit": {
-          "run_id": 45735004503,
-          "conclusion": "success"
-        },
-        "pip_audit": {
-          "run_id": 45735004518,
-          "conclusion": "success"
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.21
         }
       },
       "dependency_audit": {
@@ -290,18 +296,19 @@
         "run_number": 187,
         "run_id": 45856901485,
         "conclusion": "success",
+        "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
         "data_cutoff_utc": "2026-11-26T16:15:06.777833Z",
-        "snapshot_id": "6b1bda4f1633eccc80f42e8dd3526e8ed5096d826eb384354906c582b8ad3eba"
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45856901485"
       },
-      "branch_protection_gate_status": "PROTECTED; four required status contexts observed; detailed protection endpoint HTTP 403; required approval count unknown; PR #1702 legacy base-SHA check false-blocks despite 0 commits behind; corrected ancestry gate exists only on mixed-scope PR #1713",
+      "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; fallback ruleset disabled; future merge triggers Pages deployment requiring specific authorization",
       "pages_deployment_side_effect": "Merge to main triggers automatic Pages deployment; no deployment authorization for further merges.",
       "latest_main_cross_analysis_run": {
-        "run_number": 4649,
-        "run_id": 45853205248,
+        "run_number": 4650,
+        "run_id": 45862574069,
         "conclusion": "success",
-        "xrp_sentiment_status": "STALE_INPUT",
-        "btc_sentiment_status": "STALE_INPUT",
-        "forecast_eligibility": "FALSE_STALE_SENTIMENT"
+        "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
+        "created_at_utc": "2026-11-26T16:51:23Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862574069"
       },
       "latest_integration_validation": {
         "pr_number": 1702,
@@ -397,7 +404,8 @@
       "parser_version": "xrp-public-market-v3.32",
       "snapshot_id": "6b1bda4f1633eccc80f42e8dd3526e8ed5096d826eb384354906c582b8ad3eba",
       "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45856901485"
-    }
+    },
+    "open_pull_request_count": 12
   },
   "mission_portfolio": {
     "schema_version": "barrot.mission-portfolio.v1",
@@ -668,11 +676,11 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "XRP: review #1705's three-source digest-only primary-event capture; add raw-artifact feature-store rebuild and independent timestamp anchoring; resolve lawful source failures; complete leakage-safe multi-horizon evaluation before forecasts.",
-    "Audio: prove distinct rights-cleared SoundFonts end-to-end, fix lead phase/mono translation, add reproducible DAW interchange, and run level-matched blind listening with explicit user acceptance.",
-    "Continuity: test signed state transfer and recovery between separately controlled physical hosts, stale/conflict handling after import, and controlled model/tool handoff.",
-    "Governance: verify exact-head CI after the Run47 evidence-string correction; review #1713 without duplicating its ancestry gate fix; no merge until review/approval requirements and Pages deployment authorization are satisfied.",
-    "Commercial: validate a bounded Barrot-only workflow/provenance pilot offer before prospecting; keep Sellbird sending paused."
+    "V3 governance: finish exact-head full-suite, dependency/security, conflict-integrity and PR-event ancestry-gate checks on #1714; request independent review; no merge until approval requirements and Pages deployment authorization are verified.",
+    "XRP: fix event-to-receipt linkage by capturing exact primary-source URL, capture timestamp, raw bytes/hash, source identity and receipt ID before linking; keep the forecast gate closed.",
+    "Audio: test byte-distinct rights-cleared SoundFonts end-to-end, inspect rendered stem differences, then run level-matched listening and record user acceptance; native DAW project remains absent.",
+    "Continuity: preserve the tested portable ledger; do not add network sync until authenticated sender identity, key exchange, encrypted transport and multi-host acceptance are implemented.",
+    "Commercial: validate a reproducible Barrot-only provenance/ingestion pilot demo and delivery scope before Sellbird prospecting; keep outbound sending paused."
   ],
   "a2a_bridge": {
     "source_pr": 1693,
@@ -1660,99 +1668,71 @@
   },
   "repair_prs": [
     {
+      "number": 1714,
+      "title": "V3 governance: correct ancestry gate and preserve evidence state",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1714",
+      "branch": "integration/v3-governance-clean-20261126",
+      "base": "main",
+      "head_sha": "87a370d77df5703a807ad3d8128d0ca972c383fd",
+      "commits_ahead": 5,
+      "commits_behind": 0,
+      "draft": false,
+      "classification": "active_clean_v3_governance_successor; Telegram excluded",
+      "workstream_uniqueness": "unique",
+      "review_count": 0,
+      "checks": {
+        "core_ci": {
+          "run_id": 45865622293,
+          "conclusion": "success"
+        },
+        "dependency_audit": {
+          "run_id": 45865622309,
+          "conclusion": "success"
+        },
+        "money_audit": {
+          "run_id": 45865690147,
+          "conclusion": "success"
+        },
+        "conflict_integrity": {
+          "run_id": 45865690169,
+          "conclusion": "success"
+        },
+        "pr_full_suite": {
+          "run_id": 45865690314,
+          "conclusion": "in_progress"
+        },
+        "pr_dependency_audit": {
+          "run_id": 45865690211,
+          "conclusion": "in_progress"
+        },
+        "pr_gated_merge": {
+          "run_id": 45865690207,
+          "conclusion": "in_progress"
+        }
+      },
+      "blockers": [
+        "PR-event full suite and gate pending",
+        "zero independent reviews",
+        "approval policy unavailable via HTTP 403",
+        "Pages deployment authorization absent"
+      ],
+      "observed_at_utc": "2026-11-26T17:13:00Z"
+    },
+    {
       "number": 1713,
       "title": "Invalidate stale dual-agent validation and preserve acceptance evidence",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1713",
       "branch": "repair/dual-agent-state-invalidation",
-      "base": "main",
       "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
       "commits_ahead": 11,
       "commits_behind": 0,
-      "draft": false,
-      "changed_paths": [
-        ".github/workflows/barrot-gated-merge.yml",
-        "barrot_agent/collaboration/dual_agent_deliberation.py",
-        "tests/test_barrot_gated_merge.py",
-        "tests/test_dual_agent_deliberation.py",
-        "tests/test_v3_acceptance_matrix.py"
-      ],
-      "classification": "unique_v3_governance_ready_checks_review_and_deployment_blocked",
-      "workstream_uniqueness": "unique",
+      "draft": true,
+      "classification": "superseded_source_preserved_as_draft; includes Telegram additions excluded from #1714",
+      "workstream_uniqueness": "source_only",
       "review_count": 0,
-      "mergeable": true,
-      "checks": {
-        "observed_at_utc": "2026-11-26T06:04:27Z",
-        "pr_number": 1713,
-        "tested_head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
-        "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-        "commits_ahead": 11,
-        "commits_behind": 0,
-        "full_suite": {
-          "run_id": 45752443699,
-          "conclusion": "success",
-          "passed": 4699,
-          "failed": 0,
-          "skipped": 1,
-          "warnings": 11,
-          "subtests": 21,
-          "coverage_percent": 74,
-          "duration_seconds": 124.78
-        },
-        "audit": {
-          "run_id": 45752443670,
-          "conclusion": "success"
-        },
-        "pip_audit": {
-          "run_id": 45752443643,
-          "conclusion": "success"
-        },
-        "merge_tree": {
-          "run_id": 45752443672,
-          "conclusion": "success"
-        },
-        "gated_merge": {
-          "run_id": 45752443640,
-          "conclusion": "success",
-          "readiness": "READY_FOR_EXPLICIT_MERGE"
-        }
-      },
-      "blockers": [
-        "zero reviews",
-        "required approval count unavailable via HTTP 403",
-        "merge triggers Pages deployment; explicit authorization absent"
-      ],
-      "observed_at_utc": "2026-11-26T08:19:25Z",
-      "mergeable_state": "clean",
-      "stale_main_reconciliation_required": true,
-      "overlaps_with": [],
-      "validation_status": "EXACT-HEAD FULL SUITE 4699 PASSED; DEPENDENCY, MONEY, CONFLICT AND ANCESTRY-BASED GATE PASSED; ZERO REVIEWS; APPROVAL POLICY UNKNOWN; PAGES DEPLOYMENT AUTHORIZATION ABSENT",
-      "full_suite_run_id": 45752443699,
-      "full_suite_conclusion": "success",
-      "full_suite": {
-        "passed": 4699,
-        "failed": 0,
-        "skipped": 1,
-        "warnings": 11,
-        "subtests": 21,
-        "coverage_percent": 74.24,
-        "duration_seconds": 124.78
-      },
-      "gated_merge_run_id": 45752443640,
-      "gated_merge_conclusion": "success",
-      "gated_merge_blocker": "PR must be marked ready for review",
-      "dependency_audit": {
-        "run_id": 45752443643,
-        "conclusion": "success"
-      },
-      "money_audit": {
-        "run_id": 45752443670,
-        "conclusion": "success"
-      },
-      "conflict_integrity": {
-        "run_id": 45752443672,
-        "conclusion": "success"
-      },
-      "latest_status": "full suite and corrected gate passed"
+      "successor_pr": 1714,
+      "close_only_after_successor_merged_and_verified": true,
+      "observed_at_utc": "2026-11-26T17:13:00Z"
     }
   ],
   "latest_research_updates": {
@@ -4682,11 +4662,11 @@
       "number": 1702,
       "title": "docs: refresh current three-mission handoff and platform map",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-      "head_sha": "65d4b6d0075ec7881e652892fd61d84b70cd45e5",
+      "head_sha": "54de8481fa38f4856615c47aad60583e46cb76d0",
       "state": "open",
       "draft": false,
-      "classification": "unique_canonical_handoff; exact-head full suite/audit/pip-audit/merge-tree pass; legacy merge-readiness false-block; zero independent reviews; Pages deployment authorization absent",
-      "commits_ahead": 123,
+      "classification": "unique_canonical_handoff; exact-head full suite passed on current head; legacy gate false-blocks on stale PR base SHA; zero independent reviews; Pages deployment authorization absent",
+      "commits_ahead": 125,
       "commits_behind": 0,
       "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
     },
@@ -4697,7 +4677,7 @@
       "head_sha": "9ea30d044c84fc97c8354457f7227439c73442b4",
       "state": "open",
       "draft": false,
-      "classification": "unique_continuity; exact-head full suite pass; cross-host sync unverified; zero independent reviews; deployment approval absent",
+      "classification": "unique_continuity; exact-head full suite passed; cross-host sync and sender authentication unverified; zero independent reviews; deployment approval absent",
       "commits_ahead": 16,
       "commits_behind": 0,
       "latest_status": "4,715 passed; 1 skipped; 74.34% coverage"
@@ -4709,7 +4689,7 @@
       "head_sha": "4ff0e5881a84bd1f496fefc730073194365cb8f1",
       "state": "open",
       "draft": false,
-      "classification": "unique_audio; exact-head suite and render pass; listening/native DAW/distinct timbres unverified; zero independent reviews; deployment approval absent",
+      "classification": "unique_audio; exact-head full suite and FluidSynth render passed; distinct timbres, listening acceptance and native DAW project unverified; zero independent reviews; deployment approval absent",
       "commits_ahead": 24,
       "commits_behind": 0,
       "latest_status": "4,703 passed; 1 skipped; 74.29% coverage; full-song render artifact exists"
@@ -4718,11 +4698,11 @@
       "number": 1705,
       "title": "Normalize RLUSD cross-chain supply as research-only evidence",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
-      "head_sha": "37fc048f500ad278b3dc5ad2e664a32e31118a17",
+      "head_sha": "1091feb9cf5be437506c33c96dd767606ce389cd",
       "state": "open",
       "draft": false,
-      "classification": "unique_xrp_research; exact-head suite pass; three curated primary-event capture specifications tested on branch only; zero independent reviews; deployment approval absent",
-      "commits_ahead": 17,
+      "classification": "unique_xrp_research; exact-head CI, dependency, money and conflict checks passed; model admission blocked; event receipt links 0/150; zero independent reviews; legacy gate false-block",
+      "commits_ahead": 18,
       "commits_behind": 0,
       "latest_status": "4,714 passed; 1 skipped; research-only"
     },
@@ -4804,20 +4784,31 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1713",
       "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
       "state": "open",
-      "draft": false,
-      "classification": "unique_v3_governance; corrected ancestry gate passes but PR also adds Telegram inbox/report/reply and manual send workflow; scope/review/deployment blocked",
+      "draft": true,
+      "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from clean successor #1714; retain history; do not close until successor merged and verified",
       "commits_ahead": 11,
       "commits_behind": 0,
       "latest_status": "full suite and corrected gate pass; zero independent reviews"
+    },
+    {
+      "number": 1714,
+      "title": "V3 governance: correct ancestry gate and preserve evidence state",
+      "url": "https://github.com/Barrot-Agent/B-Agent/pull/1714",
+      "head_sha": "87a370d77df5703a807ad3d8128d0ca972c383fd",
+      "state": "open",
+      "draft": false,
+      "classification": "active_clean_v3_governance_successor; core CI, dependency, money and conflict checks passed; PR full suite and PR-event ancestry gate pending at 2026-11-26T17:13Z; zero independent reviews; deployment authorization absent",
+      "commits_ahead": 5,
+      "commits_behind": 0
     }
   ],
   "current_main_state": {
-    "observed_at_utc": "2026-11-26T14:13:07.334Z",
+    "observed_at_utc": "2026-11-26T17:13:00Z",
     "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
     "recursive_tree_entries": 3164,
     "tree_truncated": false,
-    "open_pull_request_count": 11,
+    "open_pull_request_count": 12,
     "exact_head_ci": {
       "run_id": 45735004570,
       "conclusion": "success",
@@ -4845,24 +4836,12 @@
       "triggered_by_merge_pr": 1712,
       "additional_merge_requires_specific_deployment_approval": true
     },
-    "latest_xrp_ingestion_run": {
-      "run_number": 182,
-      "run_id": 45827136443,
-      "conclusion": "success",
-      "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-      "data_cutoff_utc": "2026-11-26T13:14:39.790Z",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45827136443"
-    },
-    "latest_main_cross_analysis_run": {
-      "run_number": 4647,
-      "run_id": 45833221030,
-      "conclusion": "success",
-      "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-      "created_at_utc": "2026-11-26T13:51:32Z",
-      "forecast_eligibility": "FALSE_STALE_SENTIMENT",
-      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45833221030"
-    },
-    "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; fallback ruleset disabled; future merge triggers Pages deployment requiring specific authorization"
+    "latest_xrp_ingestion_run": 45856901485,
+    "latest_main_cross_analysis_run": 45862574069,
+    "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; fallback ruleset disabled; future merge triggers Pages deployment requiring specific authorization",
+    "tree_entries": 3164,
+    "main_ci_run": 45735004570,
+    "main_ci_conclusion": "success"
   },
   "latest_xrp_ingestion_run": {
     "run_number": 187,
@@ -5598,5 +5577,75 @@
     "soundfont_license": "MIT",
     "soundfont_source": "Debian fluid-soundfont-gm 3.1-5.3build1; FluidR3_GM by Frank Wen",
     "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45836037352"
+  },
+  "latest_run56_checkpoint": {
+    "captured_at_utc": "2026-11-26T17:13:00Z",
+    "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
+    "tree_entries": 3164,
+    "tree_truncated": false,
+    "open_prs": 12,
+    "mission_priorities": {
+      "xrp_intelligence": 1,
+      "professional_audio": 1,
+      "long_horizon_continuity": 1,
+      "shared_foundation": "Barrot V3"
+    },
+    "main_ci": {
+      "run_id": 45735004570,
+      "conclusion": "success",
+      "passed": 4695,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.21
+    },
+    "xrp_main_run": 187,
+    "xrp_main_run_id": 45856901485,
+    "xrp_forecast_status": "NOT_ISSUED",
+    "xrp_event_count": 150,
+    "xrp_event_receipt_links": 0,
+    "xrp_retained_raw_hashes_verified": 21,
+    "xrp_receipt_chain_links_verified": 37,
+    "xrp_receipt_count": 37,
+    "xrp_digest_only_receipts": 16,
+    "xrp_cross_run_sequence": 142,
+    "audio_pr": 1704,
+    "audio_full_suite_passed": 4703,
+    "audio_render_run_id": 45836037352,
+    "audio_listening": "NOT_DONE",
+    "audio_native_daw_project": false,
+    "audio_distinct_timbres": "NOT_VERIFIED",
+    "continuity_pr": 1703,
+    "continuity_full_suite_passed": 4715,
+    "continuity_cross_workspace_export_import": true,
+    "continuity_cross_host_sync": false,
+    "governance_successor_pr": 1714,
+    "governance_successor_head": "87a370d77df5703a807ad3d8128d0ca972c383fd",
+    "governance_core_ci": "PASS",
+    "governance_pr_full_suite": "IN_PROGRESS",
+    "governance_pr_gate": "IN_PROGRESS",
+    "source_pr_1713": "DRAFT_PRESERVED",
+    "sellbird_release": "0.5.0",
+    "sellbird_license": "AGPL-3.0-only",
+    "sellbird_installed": false,
+    "sellbird_authenticated": false,
+    "sellbird_sending": "PAUSED",
+    "commercial_funnel": {
+      "qualified_prospects": 0,
+      "approved": 0,
+      "sent": 0,
+      "replies": 0,
+      "meetings": 0,
+      "proposals": 0,
+      "revenue_usd": 0,
+      "paid_lookup_cost_usd": 0
+    },
+    "no_merge": true,
+    "no_deploy": true,
+    "no_secrets_changed": true,
+    "no_external_send": true,
+    "no_real_money": true,
+    "next_concrete_action": "Complete exact-head PR-event full suite and ancestry gate on #1714; request independent review; do not merge without verified approvals and explicit Pages deployment authorization."
   }
 }
