@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T17:13:00Z",
-  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope.",
+  "captured_at_utc": "2026-11-26T17:15:41Z",
+  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -61,11 +61,11 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "54de8481fa38f4856615c47aad60583e46cb76d0",
+        "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
         "state": "open",
         "draft": false,
-        "classification": "unique_canonical_handoff; exact-head full suite passed on current head; legacy gate false-blocks on stale PR base SHA; zero independent reviews; Pages deployment authorization absent",
-        "commits_ahead": 125,
+        "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
+        "commits_ahead": 133,
         "commits_behind": 0,
         "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
       },
@@ -184,7 +184,7 @@
         "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
         "state": "open",
         "draft": true,
-        "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from clean successor #1714; retain history; do not close until successor merged and verified",
+        "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from #1714; retain history; do not close until successor merged and verified",
         "commits_ahead": 11,
         "commits_behind": 0,
         "latest_status": "full suite and corrected gate pass; zero independent reviews"
@@ -196,7 +196,7 @@
         "head_sha": "87a370d77df5703a807ad3d8128d0ca972c383fd",
         "state": "open",
         "draft": false,
-        "classification": "active_clean_v3_governance_successor; core CI, dependency, money and conflict checks passed; PR full suite and PR-event ancestry gate pending at 2026-11-26T17:13Z; zero independent reviews; deployment authorization absent",
+        "classification": "active_clean_v3_governance_successor; core CI and PR dependency/money/conflict checks passed; PR full suite and ancestry gate still in progress at 17:15:41Z; zero independent reviews; deployment authorization absent",
         "commits_ahead": 5,
         "commits_behind": 0
       }
@@ -239,7 +239,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-26T17:13:00Z",
+      "observed_at_utc": "2026-11-26T17:15:41Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -819,8 +819,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "ad07aafcc52837859ee884cc63ebc7a51590df23",
-      "commits_ahead": 119,
+      "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
+      "commits_ahead": 133,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -835,7 +835,7 @@
         "tests/test_nine_platform_operational_map_current.py",
         "tests/test_xrp_mission_priority.py"
       ],
-      "classification": "unique_canonical_handoff; exact-head suite failed on stale XRP run/map schema; Run54 map refresh committed; exact-head retest pending; zero independent reviews; deployment authorization absent",
+      "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -1677,7 +1677,7 @@
       "commits_ahead": 5,
       "commits_behind": 0,
       "draft": false,
-      "classification": "active_clean_v3_governance_successor; Telegram excluded",
+      "classification": "active_clean_v3_governance_successor; core CI and PR dependency/money/conflict checks passed; PR full suite and ancestry gate still in progress at 17:15:41Z; zero independent reviews; deployment authorization absent",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "checks": {
@@ -1727,7 +1727,7 @@
       "commits_ahead": 11,
       "commits_behind": 0,
       "draft": true,
-      "classification": "superseded_source_preserved_as_draft; includes Telegram additions excluded from #1714",
+      "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from #1714; retain history; do not close until successor merged and verified",
       "workstream_uniqueness": "source_only",
       "review_count": 0,
       "successor_pr": 1714,
@@ -4662,11 +4662,11 @@
       "number": 1702,
       "title": "docs: refresh current three-mission handoff and platform map",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-      "head_sha": "54de8481fa38f4856615c47aad60583e46cb76d0",
+      "head_sha": "0984b7ac2d42124fe0ff07277c79dbb6f03cdfea",
       "state": "open",
       "draft": false,
-      "classification": "unique_canonical_handoff; exact-head full suite passed on current head; legacy gate false-blocks on stale PR base SHA; zero independent reviews; Pages deployment authorization absent",
-      "commits_ahead": 125,
+      "classification": "unique_canonical_handoff; Run56 handoff/map refresh committed; exact-head CI/dependency/money/conflict checks queued or in progress; do not reuse parent-head pass; legacy gate false-block; zero independent reviews; Pages deployment authorization absent",
+      "commits_ahead": 133,
       "commits_behind": 0,
       "latest_status": "full suite passed on exact head; merge gate compares stale base SHA"
     },
@@ -4785,7 +4785,7 @@
       "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
       "state": "open",
       "draft": true,
-      "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from clean successor #1714; retain history; do not close until successor merged and verified",
+      "classification": "superseded_source_preserved_as_draft; Telegram scope excluded from #1714; retain history; do not close until successor merged and verified",
       "commits_ahead": 11,
       "commits_behind": 0,
       "latest_status": "full suite and corrected gate pass; zero independent reviews"
@@ -4797,7 +4797,7 @@
       "head_sha": "87a370d77df5703a807ad3d8128d0ca972c383fd",
       "state": "open",
       "draft": false,
-      "classification": "active_clean_v3_governance_successor; core CI, dependency, money and conflict checks passed; PR full suite and PR-event ancestry gate pending at 2026-11-26T17:13Z; zero independent reviews; deployment authorization absent",
+      "classification": "active_clean_v3_governance_successor; core CI and PR dependency/money/conflict checks passed; PR full suite and ancestry gate still in progress at 17:15:41Z; zero independent reviews; deployment authorization absent",
       "commits_ahead": 5,
       "commits_behind": 0
     }
@@ -5579,7 +5579,7 @@
     "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45836037352"
   },
   "latest_run56_checkpoint": {
-    "captured_at_utc": "2026-11-26T17:13:00Z",
+    "captured_at_utc": "2026-11-26T17:15:41Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_entries": 3164,
     "tree_truncated": false,
@@ -5646,6 +5646,11 @@
     "no_secrets_changed": true,
     "no_external_send": true,
     "no_real_money": true,
-    "next_concrete_action": "Complete exact-head PR-event full suite and ancestry gate on #1714; request independent review; do not merge without verified approvals and explicit Pages deployment authorization."
+    "next_concrete_action": "Complete exact-head PR-event full suite and ancestry gate on #1714; request independent review; do not merge without verified approvals and explicit Pages deployment authorization.",
+    "handoff_pr_head": "bba6b7709a4586d16973fad78f039cf9afcd60fc",
+    "handoff_pr_full_suite": "IN_PROGRESS_ON_0984b7ac",
+    "governance_pr_dependency_audit": "PASS",
+    "governance_pr_money_audit": "PASS",
+    "governance_pr_conflict_integrity": "PASS"
   }
 }
