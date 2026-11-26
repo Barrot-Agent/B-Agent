@@ -348,6 +348,17 @@ EVENT_SOURCE_CAPTURE_SPECS = (
             "SBI Remit Co., Ltd.",
         ),
     },
+    {
+        "event_id": "ripple-xrp-holdings-2026-09-30",
+        "source_id": "ripple_xrp_holdings_20260930",
+        "source_uri": "https://ripple.com/xrp/",
+        "required_markers": (
+            "TOTAL XRP HELD BY RIPPLE: 36,809,481,946",
+            "TOTAL XRP DISTRIBUTED: 63,176,123,712",
+            "TOTAL XRP PLACED IN ESCROW: 31,700,000,000",
+            "As of 09/30/26",
+        ),
+    },
 )
 EVENT_SOURCE_CAPTURE_BY_ID = {
     spec["source_id"]: spec for spec in EVENT_SOURCE_CAPTURE_SPECS

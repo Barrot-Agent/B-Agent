@@ -264,3 +264,37 @@ def test_ripple_coinbase_primary_event_is_present_in_curated_registry():
     assert event["source_status"] == "verified"
     assert event["raw_source_sha256"] is None
     assert event["captured_at_utc"] == "2026-11-26T13:13:03Z"
+
+
+def test_ripple_xrp_holdings_primary_event_capture_spec_is_exact_and_allowlisted():
+    spec = next(
+        item for item in EVENT_SOURCE_CAPTURE_SPECS
+        if item["source_id"] == "ripple_xrp_holdings_20260930"
+    )
+    assert spec["event_id"] == "ripple-xrp-holdings-2026-09-30"
+    assert spec["source_uri"] == "https://ripple.com/xrp/"
+    assert {
+        "TOTAL XRP HELD BY RIPPLE: 36,809,481,946",
+        "TOTAL XRP DISTRIBUTED: 63,176,123,712",
+        "TOTAL XRP PLACED IN ESCROW: 31,700,000,000",
+        "As of 09/30/26",
+    }.issubset(set(spec["required_markers"]))
+    assert "ripple.com" in ALLOWED_HOSTS
+
+
+def test_ripple_xrp_holdings_event_is_present_in_curated_registry():
+    root = Path(__file__).resolve().parents[1]
+    registry = json.loads(
+        (root / "research" / "xrp_intelligence" / "event_registry_current.json").read_text(encoding="utf-8")
+    )
+    matches = [
+        event for event in registry["events"]
+        if event["event_id"] == "ripple-xrp-holdings-2026-09-30"
+    ]
+    assert len(matches) == 1
+    event = matches[0]
+    assert event["source_id"] == "ripple_xrp_holdings_20260930"
+    assert event["source_url"] == "https://ripple.com/xrp/"
+    assert event["source_status"] == "verified"
+    assert event["raw_source_sha256"] is None
+    assert event["captured_at_utc"] == "2026-11-26T20:17:00Z"
