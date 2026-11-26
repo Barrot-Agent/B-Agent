@@ -106,7 +106,7 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert ripple_holdings["source_url"] == "https://ripple.com/xrp/"
     assert ripple_holdings["source_published_at_utc"] is None
     assert ripple_holdings["raw_source_sha256"] is None
-    assert ripple_holdings["model_eligible"] is False
+    assert registry["model_eligible"] is False
     assert "36,809,481,946 XRP" in ripple_holdings["claim"]
     assert "31,700,000,000 XRP in escrow" in ripple_holdings["claim"]
     assert "do not by themselves measure net market selling" in ripple_holdings["hypothesis"]
