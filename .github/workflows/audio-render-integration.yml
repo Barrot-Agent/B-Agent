@@ -9,6 +9,13 @@ on:
       - "tests/test_audio_render_integration.py"
       - "pyproject.toml"
       - ".github/workflows/audio-render-integration.yml"
+  push:
+    branches: ["integration/**"]
+    paths:
+      - "barrot_agent/creative/**"
+      - "tests/test_audio_render_integration.py"
+      - "pyproject.toml"
+      - ".github/workflows/audio-render-integration.yml"
   workflow_dispatch:
 
 permissions:
