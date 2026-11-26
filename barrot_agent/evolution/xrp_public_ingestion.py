@@ -259,6 +259,10 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "SBI Remit's public dated XRP remittance announcement is captured for point-in-time event provenance; "
         "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
     ),
+    "ripple_xrp_holdings_20260930": (
+        "Ripple's official XRP page is captured for point-in-time supply provenance; raw HTML redistribution "
+        "terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
     "sbi_vc_trade_lending_page": (
         "SBI VC Trade's public lending terms are captured for source-change detection; raw HTML redistribution "
         "rights have not been reviewed, so retain only the SHA-256 receipt and do not publish the page bytes."
@@ -311,7 +315,7 @@ SCHEDULED_ENDPOINTS = tuple(
     and source_id not in WEEKLY_SOURCE_IDS
 )
 
-# Capture only three exact, curated, dated primary-source announcements once daily.
+# Capture only five exact, curated primary-source disclosures once daily.
 # HTML is marker-checked in memory and retained as a digest-only receipt because
 # publisher-page redistribution terms have not been reviewed.
 EVENT_SOURCE_CAPTURE_SPECS = (
