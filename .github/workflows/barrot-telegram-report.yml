@@ -7,23 +7,35 @@ on:
         description: "Command or topic for Barrot (e.g. status, prs, issues, opencode)"
         required: false
         default: "status"
-  schedule:
-    - cron: "0 */6 * * *"
+      confirm_send:
+        description: "Explicitly authorize sending this report to the configured Telegram chat"
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
 
 jobs:
   report:
+    if: ${{ inputs.confirm_send == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: "3.12"
+
+      - name: Require an explicit Telegram destination
+        env:
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          test -n "$TELEGRAM_CHAT_ID" || { echo "::error::TELEGRAM_CHAT_ID must be configured explicitly; refusing to infer a recipient."; exit 1; }
 
       - name: Send Telegram report
         env:
@@ -31,5 +43,5 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          BARROT_COMMAND: ${{ inputs.command || 'scheduled' }}
+          BARROT_COMMAND: ${{ inputs.command || 'status' }}
         run: python scripts/barrot_telegram_report.py
