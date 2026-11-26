@@ -103,15 +103,19 @@ def main() -> int:
         print(chat_id)
         return 0
 
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     if not chat_id:
-        chat_id = str(resolve_chat_id(tg_token))
+        print(
+            "Error: set TELEGRAM_CHAT_ID explicitly; refusing to infer a Telegram recipient.",
+            file=sys.stderr,
+        )
+        return 1
 
     repo = os.environ.get("GITHUB_REPOSITORY", "Barrot-Agent/B-Agent")
     gh_token = os.environ.get("GITHUB_TOKEN", "")
-    command = os.environ.get("BARROT_COMMAND", "scheduled")
+    command = os.environ.get("BARROT_COMMAND", "manual")
     send_telegram(build_report(repo, gh_token, command), tg_token, chat_id)
-    print("Report sent to Telegram.")
+    print("Reply sent to Telegram.")
     return 0
 
 
