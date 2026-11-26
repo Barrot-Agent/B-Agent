@@ -60,11 +60,20 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
+        "head_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
         "state": "open",
-        "classification": "unique_handoff; exact-head suite/security/merge-tree pass; legacy gate false-block; zero reviews; deployment approval absent",
-        "commits_ahead": 108,
-        "commits_behind": 0
+        "classification": "unique_handoff; Run47 docs/map commit added after this recorded parent; exact-head CI pending; prior code head passed",
+        "commits_ahead": 110,
+        "commits_behind": 0,
+        "head_sha_role": "pre_Run47_documentation_commit_parent",
+        "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT",
+        "validation_status": [
+          "prior code head full suite/audit/pip-audit/merge-tree passed",
+          "Run47 handoff/map commit exact-head CI pending",
+          "zero independent reviews",
+          "approval policy unavailable via HTTP 403",
+          "Pages deployment authorization absent"
+        ]
       },
       {
         "number": 1703,
@@ -798,8 +807,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
-      "commits_ahead": 105,
+      "head_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+      "commits_ahead": 110,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -811,23 +820,23 @@
         "tests/test_nine_platform_operational_map_current.py",
         "tests/test_xrp_mission_priority.py"
       ],
-      "classification": "EXACT-HEAD PRE-UPDATE FULL SUITE 4701 PASSED; DEPENDENCY, MONEY AND CONFLICT CHECKS PASSED; LEGACY GATE FALSE-BLOCKED ON CACHED BASE.SHA; RUN45 HANDOFF COMMIT CI PENDING",
+      "classification": "unique_handoff; Run47 docs/map commit added after this recorded parent; exact-head CI pending; prior code head passed",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
       "mergeable_state": "clean",
       "validation_status": [
-        "legacy gate false-positive; #1713 contains ancestry fix",
-        "zero reviews",
-        "approval policy unavailable (HTTP 403)",
-        "Pages deployment authorization absent",
-        "Run45 documentation commit awaits exact-head CI"
+        "prior code head full suite/audit/pip-audit/merge-tree passed",
+        "Run47 handoff/map commit exact-head CI pending",
+        "zero independent reviews",
+        "approval policy unavailable via HTTP 403",
+        "Pages deployment authorization absent"
       ],
       "checks": {
-        "observed_at_utc": "2026-11-26T08:19:25Z",
+        "observed_at_utc": "2026-11-26T10:03:52Z",
         "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
         "full_suite": {
-          "run_id": 45774704280,
+          "run_id": 45789932591,
           "conclusion": "success",
           "passed": 4701,
           "failed": 0,
@@ -835,7 +844,7 @@
           "warnings": 11,
           "subtests": 21,
           "coverage_percent": 74.21,
-          "duration_seconds": 210.62
+          "duration_seconds": 131.19
         },
         "dependency_audit": {
           "run_id": 45774704394,
@@ -850,17 +859,19 @@
           "conclusion": "success"
         },
         "gated_merge": {
-          "run_id": 45774704432,
+          "run_id": 45789932580,
           "conclusion": "failure",
-          "blocker": "unique_handoff_blocked_gate_false_positive_and_post_update_ci"
+          "blocker": "legacy cached base SHA false-positive; live compare proves zero behind"
         },
-        "tested_head_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
+        "tested_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
         "commits_ahead": 104,
-        "commits_behind": 0
+        "commits_behind": 0,
+        "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f"
       },
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "PREVIOUS_PASS_ON_B90D7F; RUN45_MAP_SCHEMA_CORRECTION_PENDING",
-      "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f"
+      "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT",
+      "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
+      "head_sha_role": "pre_Run47_documentation_commit_parent"
     },
     {
       "number": 1703,
@@ -1446,7 +1457,7 @@
     "pr_number": 1702,
     "tested_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 108,
+    "commits_ahead": 110,
     "commits_behind": 0,
     "full_suite": {
       "run_id": 45789932591,
@@ -1494,7 +1505,10 @@
       "zero independent reviews",
       "required approval count unavailable via HTTP 403",
       "merge triggers GitHub Pages deployment; specific deployment authorization absent"
-    ]
+    ],
+    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+    "current_branch_head_status": "ADVANCED_BY_RUN47_DOCUMENTATION_COMMIT; EXACT_HEAD_CI_PENDING",
+    "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT"
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-25T16:17:00Z",
@@ -1990,7 +2004,7 @@
     "recursive_tree_entries": 3164,
     "tree_truncated": false,
     "handoff_branch": "integration/mission-handoff-refresh-20261125",
-    "handoff_branch_parent_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
+    "handoff_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
     "open_pr_count": 11,
     "open_pr_numbers": [
       1702,
@@ -2012,7 +2026,7 @@
     "latest_audio_artifact_id": 15093789930,
     "latest_audio_qc_artifact_id": 15094323089,
     "latest_continuity_full_suite_run_id": 45736556559,
-    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN47_HANDOFF_AND_MAP_UPDATE",
+    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN47_HANDOFF_AND_MAP_COMMIT",
     "no_new_branch": true,
     "no_new_pr": true,
     "no_merge": true,
@@ -2606,14 +2620,15 @@
     "implementation": "Runtime mission manifest and nine-platform map readers plus fail-closed connection claims and regression tests remain implemented on #1702; all three missions remain active at priority 1.",
     "implementation_branch": "integration/mission-handoff-refresh-20261125",
     "implementation_pr": 1702,
-    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; CURRENT_EXACT_HEAD_FULL_SUITE_4701_PASSED; NOT_MERGED",
+    "implementation_status": "IMPLEMENTED_ON_EXISTING_PR_BRANCH; PRIOR_CODE_HEAD_FULL_SUITE_4701_PASSED; RUN47_DOC_MAP_COMMIT_EXACT_HEAD_CI_PENDING; NOT_MERGED",
     "exact_head_sha": "ef43e2e216d68aeb3582eb8db8c893c4edc1fd01",
     "exact_head_ci_run_id": 45789932591,
     "merge_blockers": [
       "zero independent reviews",
       "branch-protection details return HTTP 403; required approval count unknown",
       "merge triggers GitHub Pages deployment; explicit deployment authorization absent"
-    ]
+    ],
+    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f"
   },
   "latest_xrp_run166_summary": {
     "observed_at_utc": "2026-11-25T22:13:59Z",
@@ -2761,7 +2776,10 @@
       "zero independent reviews",
       "required approval count unavailable via HTTP 403",
       "merge triggers GitHub Pages deployment; explicit authorization absent"
-    ]
+    ],
+    "current_branch_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+    "current_branch_head_status": "ADVANCED_BY_RUN47_DOCUMENTATION_COMMIT; EXACT_HEAD_CI_PENDING",
+    "exact_head_validation": "PENDING_AFTER_RUN47_DOC_MAP_COMMIT"
   },
   "latest_xrp_run167_summary": {
     "observed_at_utc": "2026-11-25T23:13:17Z",
@@ -4126,7 +4144,10 @@
       "external_model_dispatch": false,
       "outreach": false,
       "paper_trade": false,
-      "real_money": false
-    }
+      "real_money": false,
+      "exact_head_ci_pending": true
+    },
+    "handoff_commit_parent_sha": "edabac1fa2c2107074f4c2606327935fa148069f",
+    "exact_head_ci_after_documentation_commit": "PENDING"
   }
 }
