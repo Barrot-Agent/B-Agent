@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from barrot_agent.orchestration import BarrotAutonomousLoop, AutonomousTaskStore
+from barrot_agent.orchestration import BarrotAutonomousLoop, AutonomousTaskStore, ProjectStateLedger
 from barrot_agent.orchestration.executor import ExecutionResult
 from barrot_agent.orchestration.verifier import VerificationResult
 
@@ -161,3 +161,62 @@ def test_completed_checkpoint_is_revalidated_on_resume(tmp_path):
     resumed = second.run(goal, task_id="revalidate-task")
     assert not resumed.success
     assert resumed.status == "paused"
+
+
+
+def test_autonomous_loop_persists_task_lifecycle_and_exports_project_state(tmp_path):
+    goal = "Inspect and verify the task lifecycle."
+    plan = json.dumps({"analysis": "inspect", "commands": ["pwd"]})
+    loop = BarrotAutonomousLoop(
+        SequenceBrain([plan]),
+        workspace=tmp_path,
+        max_attempts=1,
+        goal_verifier=lambda goal, record: {"success": True, "evidence": {"verified": True}},
+    )
+    loop.executor.run = lambda command: ExecutionResult(command, True, "workspace", "", 0)
+    loop.verifier.verify_python = lambda: VerificationResult(True, [{"success": True}])
+
+    result = loop.run(goal, task_id="project-ledger-task")
+    assert result.success and result.status == "complete"
+
+    ledger = ProjectStateLedger(tmp_path)
+    records = [
+        item for item in ledger.load()["records"]
+        if item["record_type"] == "task" and item["key"] == "project-ledger-task"
+    ]
+    assert [item["status"] for item in records] == ["open", "open", "complete"]
+    assert records[-1]["value"]["goal_sha256"] == hashlib.sha256(goal.encode()).hexdigest()
+    assert goal not in json.dumps(records)
+
+    remote = ProjectStateLedger(tmp_path / "remote")
+    imported = remote.reconcile_bundle(loop.export_project_state())
+    assert imported["records"] == ledger.load()["records"]
+    assert loop.project_state.summary()["record_count"] == 3
+
+
+def test_autonomous_loop_does_not_overwrite_unresolved_project_state_conflict(tmp_path):
+    ledger = ProjectStateLedger(tmp_path)
+    observed = "2026-11-25T00:00:00Z"
+    provenance = {"source_type": "test", "source_ref": "independent-workspace"}
+    ledger.add_record({
+        "record_type": "task", "key": "conflict-task",
+        "value": {"goal_sha256": "a" * 64, "execution_status": "open", "attempts_completed": 1, "priority": 100},
+        "status": "open", "observed_at_utc": observed, "confidence": 1.0,
+        "provenance": provenance,
+    })
+    ledger.add_record({
+        "record_type": "task", "key": "conflict-task",
+        "value": {"goal_sha256": "b" * 64, "execution_status": "open", "attempts_completed": 1, "priority": 100},
+        "status": "open", "observed_at_utc": observed, "confidence": 1.0,
+        "provenance": provenance,
+    })
+    loop = BarrotAutonomousLoop(SequenceBrain([]), workspace=tmp_path, max_attempts=1)
+    with pytest.raises(RuntimeError, match="unresolved project-state conflict"):
+        loop.run("new goal", task_id="conflict-task")
+    assert len(ledger.load()["conflicts"]) == 1
+
+
+def test_project_state_storage_id_is_reserved_from_autonomous_tasks(tmp_path):
+    loop = BarrotAutonomousLoop(SequenceBrain([]), workspace=tmp_path)
+    with pytest.raises(ValueError, match="reserved"):
+        loop.run("goal", task_id=ProjectStateLedger.TASK_ID)
