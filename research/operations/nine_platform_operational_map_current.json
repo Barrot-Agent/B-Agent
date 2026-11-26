@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T19:39:12Z",
-  "capture_basis": "Run 57 correction: main/tree/PR ancestry, main XRP run 190, branch run 188, audio run 93, continuity PR #1703, Sellbird v0.5.0 audit and primary-source SBIC/Evernorth/Circle/Coinbase/Ripple/Kamilah research.",
+  "captured_at_utc": "2026-11-26T20:03:10Z",
+  "capture_basis": "Run 58 correction: preserve stable machine-readable PR classification and keep approval/deployment blockers in explicit detail fields.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -71,8 +71,9 @@
         "commits_ahead": 5,
         "commits_behind": 0,
         "compare_status": "ahead",
-        "classification": "active V3 governance successor; checks pass but no independent review or Pages deployment authorization",
-        "audited_at_utc": "2026-11-26T19:17:59Z"
+        "classification": "active_clean_v3_governance_successor",
+        "audited_at_utc": "2026-11-26T20:03:10Z",
+        "classification_detail": "Checks pass; no independent review or Pages deployment authorization; required approval count unknown (HTTP 403)."
       },
       {
         "number": 1713,
@@ -1942,7 +1943,7 @@
       "commits_ahead": 5,
       "commits_behind": 0,
       "draft": false,
-      "classification": "active V3 governance successor; checks pass but no independent review or Pages deployment authorization",
+      "classification": "active_clean_v3_governance_successor",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "checks": {
@@ -1980,7 +1981,8 @@
         "Pages deployment authorization absent"
       ],
       "observed_at_utc": "2026-11-26T17:18:18Z",
-      "audited_at_utc": "2026-11-26T19:17:59Z"
+      "audited_at_utc": "2026-11-26T20:03:10Z",
+      "classification_detail": "Exact-head checks pass; no independent review is recorded; the required approval count is unknown because branch-protection details return HTTP 403; Pages deployment authorization is absent."
     },
     {
       "number": 1713,
