@@ -1,4 +1,4 @@
-"""Real FluidSynth integration test; the CI SoundFont is test-only GPL-2."""
+"""Real FluidSynth integration test using the MIT-licensed FluidR3_GM SoundFont."""
 from __future__ import annotations
 
 import hashlib
@@ -48,8 +48,8 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_original(
         _template(), CompositionSettings(bars=16, seed=20261123)
@@ -83,6 +83,9 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
     assert abs(first.rms_level - rms) <= 1e-5
     assert sample_peak > 0.001 and rms > 0.001
     assert int(np.count_nonzero(np.abs(samples) >= 1.0)) == 0
+    assert math.isfinite(first.dc_offset_dbfs)
+    assert first.stereo_correlation is None or -1.0 <= first.stereo_correlation <= 1.0
+    assert first.mono_fold_down_loss_db is not None
 
     sf2_hash = _sha256(soundfont)
     qc = {
@@ -100,12 +103,18 @@ def test_real_fluidsynth_render_is_stereo_reproducible_and_headroom_safe(tmp_pat
         "true_peak_dbtp": 20.0 * math.log10(max(true_peak, 1e-12)),
         "rms_dbfs": 20.0 * math.log10(max(rms, 1e-12)),
         "clip_sample_count": 0,
+        "stereo_integrity": {
+            "dc_offset_dbfs": first.dc_offset_dbfs,
+            "stereo_correlation": first.stereo_correlation,
+            "mono_fold_down_loss_db": first.mono_fold_down_loss_db,
+            "warnings": list(first.stereo_warnings),
+        },
         "bars": 16,
         "bpm": manifest.bpm,
         "key": manifest.scale,
         "time_signature": "4/4",
         "seed": 20261123,
-        "distribution": "QC JSON only; GPL-2 SoundFont and rendered WAV are not uploaded",
+        "distribution": "Single-render QC only; the full-song test uploads the editable bundle separately",
     }
     qc_output = os.environ.get("BARROT_AUDIO_QC_OUTPUT")
     if qc_output:
@@ -122,21 +131,29 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         pytest.skip("BARROT_TEST_SF2 is not configured outside the dedicated CI job")
 
     soundfont = Path(soundfont_value)
+    alternate_soundfont = tmp_path / "alternate-test.sf2"
+    alternate_soundfont.write_bytes(soundfont.read_bytes())
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_original(
         _template(), CompositionSettings(bars=16, seed=20261123)
     )
+    soundfont_map = {"snare": alternate_soundfont}
+    soundfont_map_metadata = {
+        "snare": {"source": source_name, "license": license_name}
+    }
     first = render_production_bundle(
         manifest,
         tmp_path / "bundle-a",
         soundfont_path=soundfont,
         soundfont_source=source_name,
         soundfont_license=license_name,
+        soundfont_map=soundfont_map,
+        soundfont_map_metadata=soundfont_map_metadata,
     )
     second = render_production_bundle(
         manifest,
@@ -144,6 +161,8 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         soundfont_path=soundfont,
         soundfont_source=source_name,
         soundfont_license=license_name,
+        soundfont_map=soundfont_map,
+        soundfont_map_metadata=soundfont_map_metadata,
     )
 
     sample_rate, mix_samples = wavfile.read(first.mix_path)
@@ -194,7 +213,18 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     assert metadata["stem_alignment"]["sample_count"] == mix_samples.shape[0]
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+    assert "stereo_integrity" in metadata["mix"]
+    assert all("stereo_integrity" in item for item in metadata["stems"])
+    assert metadata["dc_offset_correction"]["applied"] is True
+    assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert all(item["stereo_integrity"]["dc_offset_dbfs"] < -60.0 for item in metadata["stems"])
     assert metadata["rights"]["soundfont_sha256"] == _sha256(soundfont)
+    assets = {item["instrument"]: item for item in metadata["rights"]["soundfont_assets"]}
+    assert assets["snare"]["asset_name"] == alternate_soundfont.name
+    assert assets["snare"]["sha256"] == _sha256(alternate_soundfont)
+    assert assets["keys"]["asset_name"] == soundfont.name
+    assert all(item["status"] == "CALLER_SUPPLIED_UNVERIFIED" for item in assets.values())
+    assert metadata["stems"][1]["soundfont_sha256"] == _sha256(alternate_soundfont)
     assert metadata["mix"]["sha256"] == _sha256(first.mix_path)
     assert metadata["midi"]["sha256"] == _sha256(first.midi_path)
     assert all(stem["clip_sample_count"] == 0 for stem in metadata["stems"])
@@ -220,7 +250,12 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
         "stem_alignment": "all WAV stems share the mix sample rate, frame count, and timeline origin",
         "daw_interchange": "Standard MIDI File + aligned WAV stems + JSON metadata; not a native DAW project",
         "rights_metadata_status": metadata["rights"]["status"],
-        "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
+        "stereo_integrity": metadata["mix"]["stereo_integrity"],
+        "stereo_integrity_by_stem": {
+            item["instrument"]: item["stereo_integrity"]
+            for item in metadata["stems"]
+        },
+        "distribution": "This reproducibility test emits QC only; the full-song test uploads the editable bundle separately",
     }
     qc_output = os.environ.get("BARROT_AUDIO_BUNDLE_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_BUNDLE_QC_OUTPUT must be set in the dedicated integration job"
@@ -244,13 +279,15 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     license_name = os.environ.get("BARROT_TEST_SF2_LICENSE", "")
     source_name = os.environ.get("BARROT_TEST_SF2_SOURCE", "")
     assert soundfont.is_file()
-    assert license_name.startswith("GPL-2")
-    assert "timgm6mb-soundfont" in source_name.lower()
+    assert license_name == "MIT"
+    assert "fluid-soundfont-gm" in source_name.lower()
 
     manifest = compose_full_song(_template(), seed=20261123)
+    bundle_output = os.environ.get("BARROT_AUDIO_BUNDLE_OUTPUT")
+    bundle_dir = Path(bundle_output) if bundle_output else tmp_path / "full-song-bundle"
     result = render_production_bundle(
         manifest,
-        tmp_path / "full-song-bundle",
+        bundle_dir,
         soundfont_path=soundfont,
         sample_rate=44100,
         headroom_dbfs=-6.0,
@@ -303,8 +340,41 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     ]
     assert metadata["stem_alignment"]["aligned"] is True
     assert metadata["stem_alignment"]["sample_count"] == samples.shape[0]
+    reconstruction = metadata["stem_sum_reconstruction"]
+    assert reconstruction["measured"] is True
+    assert reconstruction["guaranteed"] is False
+    assert reconstruction["relative_rms_error"] < 0.03
+
+    # Independently recompute reconstruction metrics from the emitted WAVs.
+    # This catches precision errors in the metadata path, including a float32
+    # dot-product accumulation that can incorrectly report correlation > 1.
+    stem_sum = np.zeros(samples.shape, dtype=np.float64)
+    for stem_path in result.stems:
+        stem_rate, stem_samples = wavfile.read(stem_path)
+        assert stem_rate == sample_rate
+        assert stem_samples.shape == samples.shape
+        stem_sum += stem_samples.astype(np.float64)
+    mix_values = samples.astype(np.float64)
+    stem_centered = stem_sum - np.mean(stem_sum, dtype=np.float64)
+    mix_centered = mix_values - np.mean(mix_values, dtype=np.float64)
+    correlation_denominator = math.sqrt(
+        float(np.vdot(stem_centered, stem_centered))
+        * float(np.vdot(mix_centered, mix_centered))
+    )
+    expected_correlation = float(
+        np.vdot(stem_centered, mix_centered) / correlation_denominator
+    )
+    expected_relative_rms_error = float(
+        np.sqrt(np.mean(np.square(stem_sum - mix_values)))
+        / np.sqrt(np.mean(np.square(mix_values)))
+    )
+    assert -1.0 <= reconstruction["correlation"] <= 1.0
+    assert abs(reconstruction["correlation"] - expected_correlation) <= 1e-6
+    assert abs(reconstruction["relative_rms_error"] - expected_relative_rms_error) <= 1e-6
     assert metadata["native_daw_project_available"] is False
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+    assert "stereo_integrity" in metadata["mix"]
+    assert all("stereo_integrity" in item for item in metadata["stems"])
 
     qc = {
         "status": "VERIFIED_FULL_SONG_TECHNICAL_BUNDLE",
@@ -328,8 +398,14 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "true_peak_dbtp": 20.0 * math.log10(max(result.true_peak_level, 1e-12)),
         "clip_sample_count": 0,
         "stem_alignment": metadata["stem_alignment"],
+        "stem_sum_reconstruction": metadata["stem_sum_reconstruction"],
+        "stereo_integrity": metadata["mix"]["stereo_integrity"],
+        "stereo_integrity_by_stem": {
+            item["instrument"]: item["stereo_integrity"]
+            for item in metadata["stems"]
+        },
         "native_daw_project_available": False,
-        "distribution": "QC JSON only; GPL-2 SoundFont, WAV mix, stems, and MIDI are not uploaded",
+        "distribution": "WAV mix, nine aligned stems, Standard MIDI File and JSON metadata are uploaded; MIT license notice included; SoundFont binary is not bundled",
     }
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"

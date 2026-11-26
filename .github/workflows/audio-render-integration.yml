@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   fluidsynth-render:
-    name: Real FluidSynth stereo render and QC
+    name: Full-song FluidR3 render, editable bundle, and QC
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -26,34 +26,82 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install native FluidSynth and test-only SoundFont
+      - name: Install FluidSynth and MIT-licensed FluidR3 General MIDI SoundFont
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y libfluidsynth3 timgm6mb-soundfont
-          dpkg-query -W -f='${Package} ${Version}\n' libfluidsynth3 timgm6mb-soundfont
-          SF2_VERSION="$(dpkg-query -W -f='${Version}' timgm6mb-soundfont)"
-          echo "BARROT_TEST_SF2_SOURCE=Debian timgm6mb-soundfont ${SF2_VERSION}" >> "$GITHUB_ENV"
-          sha256sum /usr/share/sounds/sf2/TimGM6mb.sf2
+          sudo apt-get install --no-install-recommends -y libfluidsynth3 fluid-soundfont-gm
+          dpkg-query -W -f='${Package} ${Version}\n' libfluidsynth3 fluid-soundfont-gm
+          SF2_VERSION="$(dpkg-query -W -f='${Version}' fluid-soundfont-gm)"
+          SF2_PATH="/usr/share/sounds/sf2/FluidR3_GM.sf2"
+          LICENSE_PATH="/usr/share/doc/fluid-soundfont-gm/copyright"
+          test -s "$SF2_PATH"
+          test -s "$LICENSE_PATH"
+          echo "BARROT_TEST_SF2_SOURCE=Debian fluid-soundfont-gm ${SF2_VERSION}; FluidR3_GM by Frank Wen" >> "$GITHUB_ENV"
+          echo "BARROT_TEST_SF2_LICENSE=MIT" >> "$GITHUB_ENV"
+          echo "BARROT_TEST_SF2=$SF2_PATH" >> "$GITHUB_ENV"
+          echo "BARROT_TEST_SF2_LICENSE_FILE=$LICENSE_PATH" >> "$GITHUB_ENV"
+          sha256sum "$SF2_PATH" "$LICENSE_PATH"
           ldconfig -p | grep -i fluidsynth
 
       - name: Install optional music runtime
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov numpy scipy pretty_midi pyfluidsynth
+          python -m pip install pytest pytest-cov numpy scipy pretty_midi pyfluidsynth mido
 
       - name: Run stereo render, full-song bundle, and technical QC
         env:
-          BARROT_TEST_SF2: /usr/share/sounds/sf2/TimGM6mb.sf2
-          BARROT_TEST_SF2_LICENSE: "GPL-2 (test-only; not bundled or redistributed)"
           BARROT_AUDIO_QC_OUTPUT: ${{ runner.temp }}/audio-render-qc.json
           BARROT_AUDIO_BUNDLE_QC_OUTPUT: ${{ runner.temp }}/audio-bundle-qc.json
           BARROT_AUDIO_FULL_SONG_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-qc.json
+          BARROT_AUDIO_BUNDLE_OUTPUT: ${{ runner.temp }}/audio-production-bundle
         run: python -m pytest tests/test_audio_render_integration.py -v
 
-      - name: Upload non-audio QC receipt only
+      - name: Add attribution and import instructions to the production bundle
+        if: success()
+        run: |
+          BUNDLE="${{ runner.temp }}/audio-production-bundle"
+          mkdir -p "$BUNDLE/licenses"
+          cp "$BARROT_TEST_SF2_LICENSE_FILE" "$BUNDLE/licenses/FluidR3_GM_Debian_Copyright.txt"
+          cp "${{ runner.temp }}/audio-full-song-qc.json" "$BUNDLE/quality-control.json"
+          SF2_SHA256="$(sha256sum "$BARROT_TEST_SF2" | awk '{print $1}')"
+          LICENSE_SHA256="$(sha256sum "$BARROT_TEST_SF2_LICENSE_FILE" | awk '{print $1}')"
+          cat > "$BUNDLE/README.md" <<EOF
+          # Barrot full-song audio bundle
+
+          This CI artifact contains a full-length stereo WAV mix, nine sample-aligned WAV stems, a Standard MIDI File with named tracks and section markers, JSON production metadata, and technical QC.
+
+          - Renderer: FluidSynth via pyfluidsynth
+          - SoundFont: FluidR3_GM from Debian's fluid-soundfont-gm package
+          - SoundFont author: Frank Wen and listed contributors
+          - SoundFont license: MIT; the Debian copyright and license notice is in licenses/FluidR3_GM_Debian_Copyright.txt
+          - SoundFont SHA-256: ${SF2_SHA256}
+          - License-document SHA-256: ${LICENSE_SHA256}
+          - The SoundFont binary itself is not included.
+
+          Import composition.mid and the aligned files in stems/ into a DAW. mix.wav is the premaster reference render with a -6 dBFS headroom ceiling. metadata.json records tempo, key, meter, section map, sample alignment, hashes, and soundfont provenance.
+
+          This is a reproducible technical reference render, not a native DAW project or a claim of professional mix/master quality. Instrument stems are rendered in separate synth passes; exact stem-sum reconstruction is not guaranteed, and the measured error/correlation are recorded in metadata.json and quality-control.json. Musical quality still requires comparative listening and user acceptance.
+          EOF
+          test -s "$BUNDLE/mix.wav"
+          test -s "$BUNDLE/composition.mid"
+          test -s "$BUNDLE/metadata.json"
+          test -s "$BUNDLE/quality-control.json"
+          test "$(find "$BUNDLE/stems" -maxdepth 1 -type f -name '*.wav' | wc -l)" -eq 9
+
+      - name: Upload technical QC receipts
+        if: success()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: audio-render-qc-${{ github.run_id }}
           path: ${{ runner.temp }}/audio-*-qc.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload editable full-song production bundle
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: audio-production-bundle-${{ github.run_id }}
+          path: ${{ runner.temp }}/audio-production-bundle/
           if-no-files-found: error
           retention-days: 30
