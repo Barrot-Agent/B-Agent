@@ -1415,7 +1415,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "default: false" in dispatch_inputs
     assert "type: boolean" in dispatch_inputs
     capture_step = workflow.split("      - name: Capture public XRP market sources", 1)[1].split("      - name:", 1)[0]
-    assert "CAPTURE_EVENT_SOURCES: \${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}" in capture_step
+    assert "CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}" in capture_step
     assert 'if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]' in capture_step
     assert "args+=(--capture-event-sources)" in capture_step
     assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
