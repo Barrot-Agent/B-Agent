@@ -54,6 +54,29 @@ def _dbfs(value: float) -> float:
     return 20.0 * math.log10(max(float(value), 1e-12))
 
 
+def _remove_dc_offset(audio):
+    """Center each stereo channel and retain the reversible pre-gain offsets."""
+    import numpy as np
+
+    samples = np.asarray(audio, dtype=np.float64)
+    if samples.ndim != 2 or samples.shape[1] != 2 or samples.shape[0] == 0:
+        raise ValueError("DC correction requires non-empty stereo audio")
+    if not np.isfinite(samples).all():
+        raise ValueError("DC correction cannot process non-finite audio")
+    offsets = np.mean(samples, axis=0, dtype=np.float64)
+    corrected = np.asarray(samples - offsets, dtype=np.float32)
+    after = np.mean(corrected.astype(np.float64), axis=0, dtype=np.float64)
+    return corrected, {
+        "method": "per-channel arithmetic mean subtraction",
+        "channel_offsets_before": [float(value) for value in offsets],
+        "channel_offsets_after": [float(value) for value in after],
+        "dc_offset_before_dbfs": _dbfs(float(np.max(np.abs(offsets)))),
+        "dc_offset_after_dbfs": _dbfs(float(np.max(np.abs(after)))),
+        "reversible": True,
+        "offset_units": "pre-gain sample values; add offsets multiplied by common_gain_linear to reconstruct pre-correction output",
+    }
+
+
 def _safe_slug(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
     return slug or "instrument"
@@ -228,7 +251,13 @@ def render_production_bundle(
             }
         )
 
-    audio_arrays = [mix, *stem_arrays]
+    raw_audio_arrays = [mix, *stem_arrays]
+    audio_arrays = []
+    dc_offset_corrections = []
+    for audio in raw_audio_arrays:
+        corrected, correction = _remove_dc_offset(audio)
+        audio_arrays.append(corrected)
+        dc_offset_corrections.append(correction)
     source_levels = [
         _measure_audio_levels(audio, resample_poly, oversample=4)
         for audio in audio_arrays
@@ -296,11 +325,12 @@ def render_production_bundle(
     _write_float32_wav(mix_path, rendered_mix, sample_rate, wavfile)
     stem_paths = []
     stem_metadata = []
-    for descriptor, audio, levels, stereo_integrity in zip(
+    for descriptor, audio, levels, stereo_integrity, dc_correction in zip(
         stem_descriptors,
         rendered_arrays[1:],
         rendered_levels[1:],
         rendered_stereo_integrity[1:],
+        dc_offset_corrections[1:],
     ):
         stem_path = descriptor["destination"]
         _write_float32_wav(stem_path, audio, sample_rate, wavfile)
@@ -317,6 +347,7 @@ def render_production_bundle(
                 "rms_dbfs": _dbfs(rms),
                 "clip_sample_count": int(np.count_nonzero(np.abs(audio) >= 1.0)),
                 "stereo_integrity": stereo_integrity,
+                "dc_offset_correction": dc_correction,
                 "soundfont_sha256": descriptor["soundfont_asset"]["sha256"],
                 "soundfont_source": descriptor["soundfont_asset"]["source"],
                 "soundfont_license": descriptor["soundfont_asset"]["license"],
@@ -375,6 +406,19 @@ def render_production_bundle(
             "rms_dbfs": _dbfs(rms),
             "clip_sample_count": int(np.count_nonzero(np.abs(rendered_mix) >= 1.0)),
             "stereo_integrity": rendered_stereo_integrity[0],
+            "dc_offset_correction": dc_offset_corrections[0],
+        },
+        "dc_offset_correction": {
+            "applied": True,
+            "method": "per-channel arithmetic mean subtraction",
+            "stage": "after rendering and before common headroom gain",
+            "reversible": True,
+            "offsets_are_pre_gain_sample_values": True,
+            "mix": dc_offset_corrections[0],
+            "stems": {
+                descriptor["instrument"]: correction
+                for descriptor, correction in zip(stem_descriptors, dc_offset_corrections[1:])
+            },
         },
         "midi": {
             "path": "composition.mid",

@@ -215,6 +215,9 @@ def test_real_fluidsynth_bundle_exports_reproducible_aligned_stems_and_midi(tmp_
     assert metadata["rights"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
     assert "stereo_integrity" in metadata["mix"]
     assert all("stereo_integrity" in item for item in metadata["stems"])
+    assert metadata["dc_offset_correction"]["applied"] is True
+    assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert all(item["stereo_integrity"]["dc_offset_dbfs"] < -60.0 for item in metadata["stems"])
     assert metadata["rights"]["soundfont_sha256"] == _sha256(soundfont)
     assets = {item["instrument"]: item for item in metadata["rights"]["soundfont_assets"]}
     assert assets["snare"]["asset_name"] == alternate_soundfont.name

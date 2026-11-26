@@ -189,6 +189,10 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert result.peak_level <= ceiling + 1e-6
     assert metadata["stem_alignment"]["aligned"] is True
     assert metadata["stem_alignment"]["sample_count"] == frames
+    assert metadata["dc_offset_correction"]["applied"] is True
+    assert metadata["dc_offset_correction"]["reversible"] is True
+    assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert all(stem["stereo_integrity"]["dc_offset_dbfs"] < -60.0 for stem in metadata["stems"])
     assert [stem["instrument"] for stem in metadata["stems"]] == ["keys", "pad"]
     assert all(stem["sample_count"] == frames for stem in metadata["stems"])
     assert metadata["common_gain_linear"] < 1.0
