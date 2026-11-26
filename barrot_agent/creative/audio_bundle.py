@@ -262,6 +262,9 @@ def render_production_bundle(
 
     # Keep individual stems usable in mono. Preserve the mid signal exactly;
     # reduce only excessive side energy, and report cases that cannot be repaired.
+    # Apply the same stem deltas to the full mix so its pre-existing reconstruction
+    # residual is preserved rather than creating a new mix/stem mismatch.
+    pre_compatibility_stems = [audio.copy() for audio in audio_arrays[1:]]
     stereo_compatibility_corrections = []
     for index, descriptor in enumerate(stem_descriptors, start=1):
         corrected, correction = _limit_stereo_side_for_mono_compatibility(
@@ -270,6 +273,15 @@ def render_production_bundle(
         )
         audio_arrays[index] = corrected
         stereo_compatibility_corrections.append(correction)
+
+    if any(item["applied"] for item in stereo_compatibility_corrections):
+        adjusted_mix = np.asarray(audio_arrays[0], dtype=np.float64)
+        for original, corrected in zip(pre_compatibility_stems, audio_arrays[1:]):
+            adjusted_mix += (
+                np.asarray(corrected, dtype=np.float64)
+                - np.asarray(original, dtype=np.float64)
+            )
+        audio_arrays[0] = np.asarray(adjusted_mix, dtype=np.float32)
 
     source_levels = [
         _measure_audio_levels(audio, resample_poly, oversample=4)
@@ -436,6 +448,15 @@ def render_production_bundle(
             "clip_sample_count": int(np.count_nonzero(np.abs(rendered_mix) >= 1.0)),
             "stereo_integrity": rendered_stereo_integrity[0],
             "dc_offset_correction": dc_offset_corrections[0],
+            "stereo_compatibility_correction": {
+                "applied": any(item["applied"] for item in stereo_compatibility_corrections),
+                "method": "apply each corrected stem delta to the full mix while preserving the pre-existing mix/stem residual",
+                "instruments": [
+                    descriptor["instrument"]
+                    for descriptor, item in zip(stem_descriptors, stereo_compatibility_corrections)
+                    if item["applied"]
+                ],
+            },
         },
         "dc_offset_correction": {
             "applied": True,
