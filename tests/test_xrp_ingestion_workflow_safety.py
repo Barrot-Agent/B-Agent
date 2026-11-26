@@ -28,6 +28,11 @@ def test_production_schedule_is_separate_from_integration_smoke():
         if step.get("name") == "Capture public XRP market sources and evaluate historical baselines"
     )
     assert "startsWith(github.ref, 'refs/heads/integration/')" in capture_step["env"]["INCLUDE_SEC_COMPANYFACTS"]
+    capture_event_sources = capture_step["env"]["CAPTURE_EVENT_SOURCES"]
+    assert "inputs.capture_event_sources" in capture_event_sources
+    assert "github.event.schedule == '15 0 * * *'" in capture_event_sources
+    assert "github.event_name == 'push'" in capture_event_sources
+    assert "refs/heads/integration/" in capture_event_sources
     assert payload["jobs"]["capture"]["if"] == (
         "github.ref == 'refs/heads/main' || "
         "(startsWith(github.ref, 'refs/heads/integration/') && "

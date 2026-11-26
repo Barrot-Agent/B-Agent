@@ -196,7 +196,7 @@ jobs:
         env:
           WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
           INCLUDE_SEC_COMPANYFACTS: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}
-          CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources }}
+          CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}
           BARROT_SEC_USER_AGENT: ${{ vars.BARROT_SEC_USER_AGENT }}
         shell: bash
         run: |
