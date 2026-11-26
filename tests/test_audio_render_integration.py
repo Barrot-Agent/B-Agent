@@ -340,6 +340,15 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
     ]
     assert metadata["stem_alignment"]["aligned"] is True
     assert metadata["stem_alignment"]["sample_count"] == samples.shape[0]
+    assert metadata["audio_quality_benchmark_version"] == "1.1.0"
+    mix_loudness = metadata["mix"]["loudness"]
+    assert mix_loudness["standard"] == "ITU-R BS.1770-4"
+    assert mix_loudness["integrated_lufs"] is not None
+    assert mix_loudness["loudness_range_lu"] is not None
+    assert mix_loudness["normalization_applied"] is False
+    assert mix_loudness["measurement_only"] is True
+    assert all("loudness" in item for item in metadata["stems"])
+    assert all(item["loudness"]["integrated_lufs"] is not None for item in metadata["stems"])
     reconstruction = metadata["stem_sum_reconstruction"]
     assert reconstruction["measured"] is True
     assert reconstruction["guaranteed"] is False
@@ -395,6 +404,9 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         "section_map": metadata["sections"],
         "midi_markers": [name for name, _ in markers],
         "peak_dbfs": 20.0 * math.log10(max(result.peak_level, 1e-12)),
+        "audio_quality_benchmark_version": metadata["audio_quality_benchmark_version"],
+        "mix_loudness": metadata["mix"]["loudness"],
+        "loudness_by_stem": {item["instrument"]: item["loudness"] for item in metadata["stems"]},
         "true_peak_dbtp": 20.0 * math.log10(max(result.true_peak_level, 1e-12)),
         "clip_sample_count": 0,
         "stem_alignment": metadata["stem_alignment"],

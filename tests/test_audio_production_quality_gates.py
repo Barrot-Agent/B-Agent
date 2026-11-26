@@ -536,3 +536,46 @@ def test_audio_render_integration_runs_for_integration_branch_pushes() -> None:
     assert 'branches: ["integration/**"]' in workflow
     assert '"barrot_agent/creative/**"' in workflow
     assert '"tests/test_audio_render_integration.py"' in workflow
+
+def test_loudness_metrics_measure_bs1770_integrated_lufs_lra_and_crest_factor() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_loudness
+
+    sample_rate = 48000
+    sample_count = sample_rate * 20
+    time = np.arange(sample_count, dtype=np.float64) / sample_rate
+    signal = np.empty(sample_count, dtype=np.float64)
+    signal[: sample_rate * 10] = 0.10 * np.sin(
+        2.0 * np.pi * 440.0 * time[: sample_rate * 10]
+    )
+    signal[sample_rate * 10 :] = 0.05 * np.sin(
+        2.0 * np.pi * 440.0 * time[sample_rate * 10 :]
+    )
+    stereo = np.column_stack((signal, signal * 0.9)).astype(np.float32)
+
+    report = _measure_loudness(stereo, sample_rate)
+
+    assert report["standard"] == "ITU-R BS.1770-4"
+    assert report["loudness_range_standard"] == "EBU R128 LRA"
+    assert report["implementation"] == "pyloudnorm"
+    assert report["implementation_version"] == "0.2.0"
+    assert report["status"] == "MEASURED"
+    assert report["integrated_lufs"] is not None
+    assert report["loudness_range_lu"] is not None
+    assert report["loudness_range_lu"] >= 0.0
+    assert report["crest_factor_db"] > 0.0
+    assert report["normalization_applied"] is False
+    assert report["measurement_only"] is True
+
+
+def test_loudness_metrics_mark_silence_without_inventing_a_loudness_value() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_loudness
+
+    report = _measure_loudness(np.zeros((48000 * 5, 2), dtype=np.float32), 48000)
+
+    assert report["status"] == "SILENT"
+    assert report["integrated_lufs"] is None
+    assert report["loudness_range_lu"] is None
+    assert report["normalization_applied"] is False
+

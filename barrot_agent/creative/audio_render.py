@@ -18,6 +18,9 @@ from .midi_export import export_midi
 from .musical_dna import MusicalManifest
 
 
+AUDIO_QUALITY_BENCHMARK_VERSION = "1.1.0"
+
+
 @dataclass(frozen=True)
 class AudioRenderResult:
     """Facts about a rendered WAV artifact; not an artistic-quality score."""
@@ -33,6 +36,10 @@ class AudioRenderResult:
     stereo_correlation: float | None = None
     mono_fold_down_loss_db: float | None = None
     stereo_warnings: tuple[str, ...] = ()
+    integrated_lufs: float | None = None
+    loudness_range_lu: float | None = None
+    crest_factor_db: float | None = None
+    quality_benchmark_version: str = AUDIO_QUALITY_BENCHMARK_VERSION
 
 
 def _headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
@@ -262,6 +269,78 @@ def _measure_audio_levels(audio, resample_poly, *, oversample: int = 4):
 
     rms = math.sqrt(square_sum / value_count) if value_count else 0.0
     return sample_peak, true_peak, rms
+
+
+def _measure_loudness(audio, sample_rate: int) -> dict[str, object]:
+    """Measure BS.1770 integrated loudness and EBU R128 LRA without processing audio."""
+    import numpy as np
+    import pyloudnorm as pyln
+    from importlib.metadata import PackageNotFoundError, version
+
+    samples = np.asarray(audio, dtype=np.float64)
+    if samples.ndim == 1:
+        samples = samples.reshape(-1, 1)
+    if samples.ndim != 2 or samples.shape[0] == 0:
+        raise ValueError("loudness measurement requires non-empty frames-by-channels audio")
+    if sample_rate <= 0:
+        raise ValueError("sample_rate must be positive")
+    if not np.isfinite(samples).all():
+        raise ValueError("loudness measurement cannot process non-finite audio")
+
+    peak = float(np.max(np.abs(samples)))
+    rms = math.sqrt(float(np.mean(np.square(samples), dtype=np.float64)))
+    crest_factor_db = (
+        20.0 * math.log10(max(peak, 1e-12) / max(rms, 1e-12))
+        if rms > 0.0
+        else None
+    )
+    try:
+        library_version = version("pyloudnorm")
+    except PackageNotFoundError:
+        library_version = "unknown"
+
+    report: dict[str, object] = {
+        "standard": "ITU-R BS.1770-4",
+        "loudness_range_standard": "EBU R128 LRA",
+        "implementation": "pyloudnorm",
+        "implementation_version": library_version,
+        "sample_rate_hz": int(sample_rate),
+        "duration_seconds": float(samples.shape[0] / sample_rate),
+        "integrated_lufs": None,
+        "loudness_range_lu": None,
+        "loudness_range_status": "UNMEASURED",
+        "crest_factor_db": crest_factor_db,
+        "normalization_applied": False,
+        "measurement_only": True,
+    }
+    if peak <= 1e-12 or rms <= 1e-12:
+        report.update(
+            status="SILENT",
+            loudness_range_status="SILENT",
+        )
+        return report
+
+    meter = pyln.Meter(sample_rate)
+    try:
+        integrated = float(meter.integrated_loudness(samples))
+    except ValueError:
+        integrated = float("nan")
+    try:
+        loudness_range = float(meter.loudness_range(samples))
+    except (ValueError, ZeroDivisionError):
+        loudness_range = float("nan")
+
+    if math.isfinite(integrated):
+        report["integrated_lufs"] = integrated
+    if math.isfinite(loudness_range) and loudness_range >= 0.0:
+        report["loudness_range_lu"] = loudness_range
+        report["loudness_range_status"] = "MEASURED"
+    else:
+        report["loudness_range_status"] = "INSUFFICIENT_DURATION_OR_GATED"
+    report["status"] = (
+        "MEASURED" if report["integrated_lufs"] is not None else "INSUFFICIENT_DURATION"
+    )
+    return report
 
 
 def _measure_stereo_integrity(
@@ -527,6 +606,7 @@ def render_audio(
     rms = source_rms * gain
     duration = float(audio.shape[0] / sample_rate)
     stereo_integrity = _measure_stereo_integrity(audio)
+    loudness_report = _measure_loudness(audio, sample_rate)
 
     created = False
     try:
@@ -550,4 +630,7 @@ def render_audio(
         stereo_correlation=stereo_integrity["stereo_correlation"],
         mono_fold_down_loss_db=stereo_integrity["mono_fold_down_loss_db"],
         stereo_warnings=tuple(stereo_integrity["warnings"]),
+        integrated_lufs=loudness_report["integrated_lufs"],
+        loudness_range_lu=loudness_report["loudness_range_lu"],
+        crest_factor_db=loudness_report["crest_factor_db"],
     )

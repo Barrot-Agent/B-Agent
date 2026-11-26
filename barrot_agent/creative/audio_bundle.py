@@ -16,8 +16,10 @@ import re
 from pathlib import Path
 
 from .audio_render import (
+    AUDIO_QUALITY_BENCHMARK_VERSION,
     _headroom_gain,
     _measure_audio_levels,
+    _measure_loudness,
     _measure_stereo_integrity,
     _limit_stereo_side_for_mono_compatibility,
     _render_midi_stereo,
@@ -303,6 +305,9 @@ def render_production_bundle(
     rendered_stereo_integrity = [
         _measure_stereo_integrity(audio) for audio in rendered_arrays
     ]
+    rendered_loudness = [
+        _measure_loudness(audio, sample_rate) for audio in rendered_arrays
+    ]
 
     rendered_mix = rendered_arrays[0]
 
@@ -350,11 +355,12 @@ def render_production_bundle(
     _write_float32_wav(mix_path, rendered_mix, sample_rate, wavfile)
     stem_paths = []
     stem_metadata = []
-    for descriptor, audio, levels, stereo_integrity, dc_correction, stereo_correction in zip(
+    for descriptor, audio, levels, stereo_integrity, loudness_report, dc_correction, stereo_correction in zip(
         stem_descriptors,
         rendered_arrays[1:],
         rendered_levels[1:],
         rendered_stereo_integrity[1:],
+        rendered_loudness[1:],
         dc_offset_corrections[1:],
         stereo_compatibility_corrections,
     ):
@@ -371,6 +377,7 @@ def render_production_bundle(
                 "peak_dbfs": _dbfs(sample_peak),
                 "true_peak_dbtp": _dbfs(true_peak),
                 "rms_dbfs": _dbfs(rms),
+                "loudness": loudness_report,
                 "clip_sample_count": int(np.count_nonzero(np.abs(audio) >= 1.0)),
                 "stereo_integrity": stereo_integrity,
                 "dc_offset_correction": dc_correction,
@@ -409,6 +416,7 @@ def render_production_bundle(
     )
     metadata = {
         "schema_version": "1.0.0",
+        "audio_quality_benchmark_version": AUDIO_QUALITY_BENCHMARK_VERSION,
         "artifact_type": "barrot.audio.production_bundle",
         "created_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "manifest_fingerprint": manifest.fingerprint,
@@ -445,6 +453,7 @@ def render_production_bundle(
             "peak_dbfs": _dbfs(sample_peak),
             "true_peak_dbtp": _dbfs(true_peak),
             "rms_dbfs": _dbfs(rms),
+            "loudness": rendered_loudness[0],
             "clip_sample_count": int(np.count_nonzero(np.abs(rendered_mix) >= 1.0)),
             "stereo_integrity": rendered_stereo_integrity[0],
             "dc_offset_correction": dc_offset_corrections[0],

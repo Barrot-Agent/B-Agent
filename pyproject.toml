@@ -50,6 +50,7 @@ music = [
     "pretty_midi>=0.2.10",
     "pyfluidsynth>=1.3.3",
     "scipy>=1.13.0",
+    "pyloudnorm>=0.2.0,<0.3",
 ]
 
 [tool.setuptools.packages.find]
