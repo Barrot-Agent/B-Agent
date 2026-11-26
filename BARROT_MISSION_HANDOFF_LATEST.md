@@ -13,7 +13,7 @@ The root and packaged `primary_mission.json` files are byte-identical (Git blob 
 - The prior merge of #1712 triggered Pages deployment [run 45735003837](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735003837), which succeeded. Merge-to-main therefore has a deployment side effect. No merge or deployment was performed in this run.
 - Main is protected. Visible required checks: Full repository test suite, audit, pip-audit, and Verify PR merge tree against current base. The detailed branch-protection endpoint returns HTTP 403; required approving-review count and some policy settings remain unknown.
 - **11 PRs remain open.** Mission branches #1702–#1705 and gate-repair branch #1713 compare **0 commits behind** current main. No new branch or PR was created.
-- The canonical handoff and nine-platform map are refreshed together in one fast-forward commit on the existing #1702 branch. Parent head before this update: `b90d7f66d8bd78f2e051ead64c7a631c8b58066f`. Exact-head CI for the new documentation commit is pending.
+- The canonical handoff and nine-platform map were refreshed on the existing #1702 branch in fast-forward commits. First Run45 commit: `db62b2d6faee7fcb6addcc998b0395e807e992dd`; a follow-up map-schema correction reconciles the operational-map contract tests. Exact-head CI for the final documentation commit is pending.
 
 ## Merge-gate defect — VERIFIED; existing fix is in #1713
 
@@ -73,7 +73,7 @@ This is not network synchronization. Automatic key exchange, separately controll
 
 | PR | Classification | Current evidence / blocker |
 |---|---|---|
-| [#1702](https://github.com/Barrot-Agent/B-Agent/pull/1702) | unique handoff/platform map; blocked | Pre-update head `b90d7f66`, 104 ahead / 0 behind; full suite 4,701 passed; dependency, money and conflict checks passed; legacy gate false-blocks on cached base SHA; zero reviews; Run45 commit awaits exact-head CI |
+| [#1702](https://github.com/Barrot-Agent/B-Agent/pull/1702) | unique handoff/platform map; blocked | Pre-Run45 tested head `b90d7f66`, 104 ahead / 0 behind; full suite 4,701 passed; first Run45 commit `db62b2d6` was 105 ahead / 0 behind; map-schema correction awaits exact-head CI; legacy gate false-blocks on cached base SHA |
 | [#1703](https://github.com/Barrot-Agent/B-Agent/pull/1703) | unique continuity; blocked | 16 ahead / 0 behind; full suite 4,715 passed; dependency, money and conflict checks passed; legacy gate false-blocks; physical cross-host sync unverified; zero reviews |
 | [#1704](https://github.com/Barrot-Agent/B-Agent/pull/1704) | unique audio; blocked | 21 ahead / 0 behind; full suite 4,701 passed; audio render/QC passed; no native DAW project, distinct timbres, blind listening or user acceptance; legacy gate false-blocks; zero reviews |
 | [#1705](https://github.com/Barrot-Agent/B-Agent/pull/1705) | unique XRP/RLUSD research; blocked | 12 ahead / 0 behind; full suite 4,712 passed; dependency, money and conflict checks passed; research-only; primary event capture pending; overlaps #1706 |
@@ -90,7 +90,7 @@ No duplicate PRs were closed because no successor was merged and verified on mai
 ## DESIGNED / EXECUTED / VERIFIED
 
 - **DESIGNED:** three co-equal priority-1 missions on Barrot V3; durable round-robin selection; fail-closed XRP forecast admission; audio technical/listening gates; long-horizon state/evidence controls; Barrot-only Sellbird boundary.
-- **EXECUTED:** refreshed main/tree/PR/ancestry/CI evidence; inspected XRP run #177 receipt/feature-store/event outputs; downloaded and inspected audio QC artifact #15094323089; refreshed the existing #1702 handoff and nine-platform map in one fast-forward commit.
+- **EXECUTED:** refreshed main/tree/PR/ancestry/CI evidence; inspected XRP run #177 receipt/feature-store/event outputs; downloaded and inspected audio QC artifact #15094323089; refreshed the existing #1702 handoff and nine-platform map in fast-forward commits.
 - **VERIFIED:** three priority-1 mission definitions and round-robin test on main; main SHA/tree; XRP ingestion and receipt-chain continuation; audio technical QC metadata; continuity cross-process file transfer; exact-head test evidence for #1702–#1705 and #1713; the stale-base gate false positive and the existing #1713 ancestry fix.
 - **NOT VERIFIED / BLOCKED:** event-to-raw-receipt linkage and external anchoring; raw-artifact rebuild; XRP predictive edge/calibration; distinct production timbres, native DAW project, blind listening and user acceptance; physical cross-host continuity; eight external platform connections; Sellbird authentication/prospecting/outreach; review/approval policy and deployment authorization; exact-head CI for this Run45 documentation commit.
 

@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T08:19:25Z",
-  "capture_basis": "Run 45: refreshed main SHA/tree, 11 open PRs, branch ancestry and exact-head test/audit evidence; inspected main XRP ingestion #177, cross-analysis #4641 and audio QC artifact #15094323089; updated existing #1702 handoff and platform map in one fast-forward commit. No new branch/PR, merge, deployment, external platform transfer, outreach or financial action.",
+  "captured_at_utc": "2026-11-26T08:32:29Z",
+  "capture_basis": "Run45 schema correction: repository contract tests require current_main_state.latest_xrp_ingestion_run to match run #177, verified_receipt_links=0, and canonical backlog classifications for #1708/#1713. Updated the existing #1702 branch with fast-forward-only history; no new branch/PR, merge, deployment or external action.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -60,9 +60,11 @@
         "number": 1702,
         "title": "docs: refresh current three-mission handoff and platform map",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
-        "head_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
+        "head_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
         "state": "open",
-        "classification": "unique_handoff; Run45 update awaits exact-head CI"
+        "classification": "unique_handoff; Run45 map-schema correction pending exact-head CI",
+        "commits_ahead": 105,
+        "commits_behind": 0
       },
       {
         "number": 1703,
@@ -179,7 +181,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-26T06:04:27Z",
+      "observed_at_utc": "2026-11-26T08:32:29Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -233,12 +235,12 @@
         1713
       ],
       "latest_xrp_ingestion_run": {
-        "run_number": 174,
-        "run_id": 45760239339,
+        "run_number": 177,
+        "run_id": 45782009890,
         "conclusion": "success",
         "head_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-        "data_cutoff_utc": "2026-11-26T05:14:37.232050Z",
-        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45760239339"
+        "data_cutoff_utc": "2026-11-26T08:18:37.868091Z",
+        "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45782009890"
       },
       "branch_protection_gate_status": "protected=true; required checks enforced for non-admins; classic details 403; approval count unknown; visible fallback ruleset disabled",
       "pages_deployment_side_effect": {
@@ -654,7 +656,8 @@
       "sha256": "70d1673f1d9f4e38793a109e0e594d9ac23e13b633d85f2de2479e4714b6fe2b",
       "receipt_complete": false,
       "verified_receipt_count": 0,
-      "model_eligible": false
+      "model_eligible": false,
+      "verified_receipt_links": 0
     },
     "evaluation": {
       "walk_forward_entries": 504,
@@ -719,8 +722,8 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "head_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
-      "commits_ahead": 104,
+      "head_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
+      "commits_ahead": 105,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -774,11 +777,14 @@
           "run_id": 45774704432,
           "conclusion": "failure",
           "blocker": "unique_handoff_blocked_gate_false_positive_and_post_update_ci"
-        }
+        },
+        "tested_head_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
+        "commits_ahead": 104,
+        "commits_behind": 0
       },
       "observed_at_utc": "2026-11-26T08:19:25Z",
-      "exact_head_validation": "FAILED_ON_8BBB0E6_ONE_INVENTORY_ASSERTION",
-      "last_exact_head_passed_sha": "7e78cd598dd8e1ac54dc70a634c79a22bf6266a1"
+      "exact_head_validation": "PREVIOUS_PASS_ON_B90D7F; RUN45_MAP_SCHEMA_CORRECTION_PENDING",
+      "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f"
     },
     {
       "number": 1703,
@@ -1109,7 +1115,7 @@
       "changed_paths": [
         ".github/workflows/xrp-public-ingestion.yml"
       ],
-      "classification": "duplicate_subset_of_1706",
+      "classification": "superseded_pending_successor_merge",
       "workstream_uniqueness": "duplicate_subset_of_1706",
       "review_count": 0,
       "mergeable": true,
@@ -1139,7 +1145,7 @@
       "overlaps_with": [
         1706
       ],
-      "validation_status": "DRAFT; EXACT DUPLICATE SUBSET OF #1706; CLOSE ONLY AFTER SUCCESSOR MERGED AND VERIFIED"
+      "validation_status": "DRAFT; EXACT DUPLICATE SUBSET OF #1706; DO NOT CLOSE UNTIL SUCCESSOR IS MERGED AND VERIFIED"
     },
     {
       "number": 1709,
@@ -1360,48 +1366,48 @@
     ]
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T06:04:27Z",
+    "observed_at_utc": "2026-11-26T08:32:29Z",
     "pr_number": 1702,
-    "tested_head_sha": "d77a7eb12c2089006c988e9c69341bb27a867c68",
+    "tested_head_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 100,
+    "commits_ahead": 104,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45760680985,
+      "run_id": 45774704280,
       "conclusion": "success",
       "passed": 4701,
       "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "coverage_percent": 74,
-      "duration_seconds": 173.67
+      "coverage_percent": 74.21,
+      "duration_seconds": 210.62
     },
     "other_checks": {
-      "audit": {
-        "run_id": 45760680984,
+      "dependency_audit": {
+        "run_id": 45774704394,
         "conclusion": "success"
       },
-      "pip_audit": {
-        "run_id": 45760680936,
+      "money_audit": {
+        "run_id": 45774705623,
         "conclusion": "success"
       },
-      "merge_tree": {
-        "run_id": 45760681018,
+      "conflict_integrity": {
+        "run_id": 45774704290,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45760680979,
+        "run_id": 45774704432,
         "conclusion": "failure",
-        "blocker": "legacy gate compares cached PR base.sha to current main; GitHub compare reports 0 behind and merge base equals current main"
+        "blocker": "legacy cached base.sha false-positive; live compare confirms current main is ancestor"
       }
     },
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "legacy base.sha gate false-positive; #1713 contains tested ancestry-based correction",
+      "legacy base.sha gate false-positive; #1713 carries ancestry-based fix",
       "zero independent reviews",
-      "required approval count unavailable via HTTP 403",
-      "merge triggers Pages deployment; explicit deployment approval absent"
+      "approval count unavailable via HTTP 403",
+      "Pages deployment authorization absent"
     ]
   },
   "latest_primary_source_research": {
@@ -1692,7 +1698,7 @@
         "tests/test_dual_agent_deliberation.py",
         "tests/test_v3_acceptance_matrix.py"
       ],
-      "classification": "unique_v3_gate_and_validation_repair_ready_checks_passed_review_and_deployment_blocked",
+      "classification": "unique_v3_governance_ready_checks_review_and_deployment_blocked",
       "workstream_uniqueness": "unique",
       "review_count": 0,
       "mergeable": true,
@@ -1872,12 +1878,12 @@
     "forecast_eligibility": "NOT_ESTABLISHED_BY_RUN_SUMMARY"
   },
   "latest_execution_checkpoint": {
-    "observed_at_utc": "2026-11-26T08:19:25Z",
+    "observed_at_utc": "2026-11-26T08:32:29Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "recursive_tree_entries": 3164,
     "tree_truncated": false,
     "handoff_branch": "integration/mission-handoff-refresh-20261125",
-    "handoff_branch_parent_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
+    "handoff_branch_parent_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
     "open_pr_count": 11,
     "open_pr_numbers": [
       1702,
@@ -1899,7 +1905,7 @@
     "latest_audio_artifact_id": 15093789930,
     "latest_audio_qc_artifact_id": 15094323089,
     "latest_continuity_full_suite_run_id": 45736556559,
-    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN45_COMMIT",
+    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN45_MAP_SCHEMA_CORRECTION",
     "no_new_branch": true,
     "no_new_pr": true,
     "no_merge": true,
@@ -3584,7 +3590,8 @@
       "sha256": "70d1673f1d9f4e38793a109e0e594d9ac23e13b633d85f2de2479e4714b6fe2b",
       "receipt_complete": false,
       "verified_receipt_count": 0,
-      "model_eligible": false
+      "model_eligible": false,
+      "verified_receipt_links": 0
     },
     "evaluation": {
       "walk_forward_entries": 504,
@@ -3643,7 +3650,7 @@
     "paper_trade_executed": false
   },
   "latest_run45_checkpoint": {
-    "observed_at_utc": "2026-11-26T08:19:25Z",
+    "observed_at_utc": "2026-11-26T08:32:29Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_entries": 3164,
     "open_pr_count": 11,
@@ -3761,7 +3768,9 @@
       "paper_trade": false,
       "real_money": false
     },
-    "handoff_branch_parent_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
-    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN45_COMMIT"
+    "handoff_branch_parent_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
+    "handoff_update_validation": "PENDING_EXACT_HEAD_CI_AFTER_RUN45_MAP_SCHEMA_CORRECTION",
+    "previous_handoff_commit_sha": "db62b2d6faee7fcb6addcc998b0395e807e992dd",
+    "map_schema_correction": "updated current_main_state latest XRP run, verified_receipt_links, and canonical PR classifications"
   }
 }
