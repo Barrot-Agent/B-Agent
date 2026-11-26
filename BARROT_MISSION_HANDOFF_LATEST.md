@@ -5353,3 +5353,55 @@ Audited `ethanplusai/sellbird` main SHA `8c743f1c475f61f7b2c04e50501cf6938a126ed
 6. Keep Sellbird outbound paused until a reproducible Barrot-only one-source demo, buyer profile, offer, mailbox/domain, suppression and compliance gates are approved.
 
 No merge, deployment, force-push, branch rewrite, secret rotation, Space restart, paid lookup, external model dispatch, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+## Run 57 evidence addendum — 2026-11-26T19:17:59Z
+
+### Repository validation correction
+
+The first Run 57 handoff refresh updated the top-level XRP observation to main run #190 but left the nested `repository.current_main_state.latest_xrp_ingestion_run` at run #187. Exact-head full-suite run [#7433](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881311713) correctly caught this mismatch: **4,700 passed, 1 failed, 1 skipped**. The failure is a handoff-map consistency error, not a production-code regression. Dependency audit [#4850](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881311775), money audit [#1047](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881311666), conflict integrity [#771](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881311798) and core CI [#7432](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881306031) passed. The gated merge [#12354](https://github.com/Barrot-Agent/B-Agent/actions/runs/45881311661) failed on both the stale PR base SHA and the full-suite failure. This commit synchronizes the nested run pointer to #190, preserves previous evidence fields, and refreshes the open-PR inventory. New exact-head CI remains pending; no merge.
+
+### Japan SBIC identity — RESOLVED FROM PRIMARY SOURCES
+
+The 1963 Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963) identifies three distinct regional companies:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-15; corporate number 9011001030621; 18 eastern prefectures.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-18; Aichi, Gifu, Mie, Toyama and Ishikawa.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established 1963-11-20; 24 western prefectures.
+
+The statute enumerates the Tokyo, Nagoya and Osaka companies; their official profiles show distinct names, headquarters, capital and regional remits. These are not the same organization as SBI Holdings. No direct SBI Holdings ownership link was identified in the official profiles examined. Sources: [Act No. 101](https://elaws.e-gov.go.jp/document?lawid=338AC0000000101), [East](https://www.sbic.co.jp/company/profile/), [Central](https://www.sbic-cj.co.jp/company/about/), [West](https://www.sbic-wj.co.jp/profiles/profile/).
+
+### SBI Holdings, Evernorth and actual capital — PRIMARY SEC RECORD
+
+Evernorth's SEC prospectus explicitly defines **“SBI” as SBI Holdings, Inc.**, a Japanese corporation. The four named SBI stockholders are SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. The filing attributes 9,431,914 Class A shares (**36.1% of Class A**) and 2,359,038 Class C shares (**7.5% of Class C**, non-voting) to the SBI group, with a 39.9% ownership limitation. This is a direct Evernorth investment by SBI Holdings-controlled entities; it is not an SBIC East/Central/West investment. [Evernorth SEC 424B3](https://www.sec.gov/Archives/edgar/data/2092592/000162828026068590/evernorth-424b3.htm).
+
+The same SEC record separates **actual cash** from financing capacity. Evernorth's Cantor/CF Principal Investments facility covers up to 5,218,935 shares at 97% of VWAP, with a 20% daily-volume cap and 4.99% beneficial-ownership cap. The prospectus's $76.8M figure is a maximum estimate at the Oct. 29 $14.71 share price, not cash already raised; the company chooses whether and how much to draw. No actual draw was disclosed in the filings reviewed. Separate disclosed capital includes $272.6M gross closing cash, 388,910,554 XRP contributed in kind, $30M convertible-note principal (about $29M net) and $35.3M gross warrant-exercise proceeds. Do not treat the ELOC as realized proceeds or assume corporate cash was all used to buy XRP.
+
+Evernorth's SEC 10-Q further states that it **does not actively trade XRP** and selected Coinbase as its principal market for accounting/impairment measurement; it identifies BitGo Trust as the initial post-close custodian. Coinbase is therefore an accounting reference market in this disclosure, not proof of active Coinbase execution or Coinbase custody. The filing reports 346,284,972 XRP at historical cost of $846.575M, cumulative impairment of about $504.688M and a $341.887M carrying value as of Sep. 30, 2026. Those are historical-cost/impairment figures, not a live mark. The Sep. 30 cash balance of $91,397 is pre-close and must not be represented as post-close cash. [Evernorth SEC 10-Q supplement](https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm).
+
+### Coinbase, Circle and Ripple — relationship map
+
+- **Coinbase–Circle:** Circle bought Coinbase's remaining 50% Centre interest in 2023 for 8.4M Circle shares valued at $209.9M, dissolved Centre and took sole USDC governance. Coinbase retained minority Circle equity and a USDC distribution/revenue-sharing arrangement. The 2025 SEC filing lists Coinbase with 7,901,791 Circle shares, 3.7% of common equity and 2.6% voting power after the offering; the agreement ties Coinbase economics to USDC reserve income and distribution. [Circle SEC 424B4](https://www.sec.gov/Archives/edgar/data/1876042/000119312525181916/d839239d424b4.htm).
+- **Circle–XRPL:** USDC launched natively on XRPL on 2025-06-12, with Circle Mint and APIs for eligible institutional mint/redeem. Circle's official page showed $67.8B USDC across 38 networks as of 2026-11-23; that is total supply, not XRPL-specific supply. [Circle XRPL launch](https://www.circle.com/blog/usdc-launches-natively-on-the-xrp-ledger), [USDC statistics](https://www.circle.com/usdc).
+- **Ripple–Coinbase:** on 2026-10-28, RLUSD became available through Coinbase Prime, Exchange and retail, with deposits/withdrawals on XRPL, Base and Ethereum. Ripple said it would provide liquidity on **Base**. Coinbase Global Exchange collateral availability was explicitly future (“will follow”) in the announcement; it is not verified as live here. This distribution partnership does not prove incremental XRP spot demand. [Coinbase announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase), [Ripple announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/).
+
+### Exact-phrase research and creator identity
+
+- `ASK Coin` and `SBIC, ChatGPT SBIC`: no relevant exact-match public result surfaced in this pass; unresolved.
+- `actual capital`: a secondary Evernorth/Cantor story surfaced, but the SEC filings above show why the ELOC is potential capacity, not realized capital.
+- **Kamilah, not Camilla, is the verified creator identity in this pass.** The public channel [@drkamilahstevenson](https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA) links to Prescribe Wealth; the official [Prescribe Wealth site](https://prescribewealth.com) identifies Dr Kamilah Stevenson as founder. A separate same-name channel was excluded because no official identity link was established. This verifies the channel/brand link, not the factual accuracy of individual videos. Recent public inventory (displayed views/ages are a search-time snapshot):
+
+- This NEW Bank Deal Shows Exactly Where XRP Is Headed — 29K views; 1 day; 12:58
+- This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes) — 28K views; 2 days; 11:33
+- Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor) — 41K views; 4 days; 15:45
+- XRP vs Banks: Why Your Money Needs Autonomy NOW — 9.8K views; 5 days; 11:41
+- Did SWIFT Just Change XRP Forever? (The Truth) — 77K views; 5 days; 13:09
+- BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention. — 21K views; 8 days; 11:37
+- A $119 Billion African Bank Just Put Its License Behind XRP — 27K views; 9 days; 13:38
+- A New XRP Tool Can Buy and Sell for You — 13K views; 11 days; 16:45
+- Invest NOW or Get Left Behind. Institutions Are Already Moving. — 16K views; 12 days; 8:33
+- The CFTC Just Said What XRP Holders Waited Years to Hear — 44K views; 12 days; 10:27
+- Wall Street Just Got a Company Built to Keep BUYING XRP — 16K views; 2 weeks; 12:51
+- XRP Ledger Technology Just Reached Europe's Central Bank — 11K views; 2 weeks; 14:41
+
+Titles are research leads only. Transcripts and underlying claims have not yet been independently audited. “Camilla Stevenson” remains unverified and is not merged with Kamilah.
