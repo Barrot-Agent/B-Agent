@@ -17,8 +17,21 @@ def test_merge_gate_is_read_only_and_uses_minimal_permissions() -> None:
 
 def test_merge_gate_checks_exact_head_and_current_main_without_admin_or_review_gates() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
-    for required in ("EXPECTED_HEAD_SHA", "actual_head", "current_main", "mergeable", "base_ref"):
+    for required in (
+        "EXPECTED_HEAD_SHA",
+        "actual_head",
+        "current_main",
+        "mergeable",
+        "base_ref",
+        "compare/${current_main}...${actual_head}",
+        "behind_by",
+        "merge_base_commit.sha",
+    ):
         assert required in source
+    # GitHub's PR base.sha can be the original base commit after main advances.
+    # Read actual commit ancestry instead of comparing that cached field.
+    assert 'base_sha="$(jq' not in source
+    assert '[[ "$base_sha" == "$current_main" ]]' not in source
     for obsolete in (
         "branches/main/protection",
         "independent approving review",
