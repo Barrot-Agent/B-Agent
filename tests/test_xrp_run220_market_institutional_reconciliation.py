@@ -55,11 +55,11 @@ def test_run220_market_providers_remain_separate_and_quality_gated():
 
 def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     registry = _load(REGISTRY_PATH)
-    assert registry["registry_version"] == "run223-20261126-ripple-coinbase-primary-capture"
-    assert registry["event_count"] == len(registry["events"]) == 151
+    assert registry["registry_version"] == "run224-20261126-ripple-holdings-primary-capture"
+    assert registry["event_count"] == len(registry["events"]) == 152
     coverage = registry["publisher_timestamp_coverage"]
     assert coverage["exact_publisher_timestamps"] == 59
-    assert coverage["missing_exact_publisher_timestamps"] == 92
+    assert coverage["missing_exact_publisher_timestamps"] == 93
     assert coverage["exact_publisher_timestamps"] + coverage["missing_exact_publisher_timestamps"] == registry["event_count"]
 
     assert registry["run220_update"]["appended_event_count"] == 15
@@ -68,7 +68,7 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     update = registry["run222_update"]
     assert update["prior_event_count"] == 140
     assert update["appended_event_count"] == 10
-    assert registry["run223_update"]["resulting_event_count"] == registry["event_count"]
+    assert registry["run223_update"]["resulting_event_count"] == 151
     assert update["raw_source_sha256_receipts_added"] == 0
     added_ids = set(update["added_event_ids"])
     assert len(added_ids) == 10
@@ -89,6 +89,28 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert ripple_coinbase["raw_source_sha256"] is None
     assert ripple_coinbase["model_eligible"] is False
     assert ripple_coinbase["feature_admission_status"] == "EXCLUDED_NO_BYTE_EXACT_RECEIPT"
+
+    run224 = registry["run224_update"]
+    assert run224["prior_event_count"] == 151
+    assert run224["appended_event_count"] == 1
+    assert run224["resulting_event_count"] == registry["event_count"] == 152
+    assert run224["added_event_ids"] == ["ripple-xrp-holdings-2026-09-30"]
+    assert run224["raw_source_sha256_receipts_added"] == 0
+    assert run224["missing_exact_publisher_timestamp_count"] == 93
+    assert run224["model_eligible"] is False
+    assert run224["forecast_status"] == "NOT_ISSUED"
+    ripple_holdings = next(
+        event for event in registry["events"]
+        if event["event_id"] == "ripple-xrp-holdings-2026-09-30"
+    )
+    assert ripple_holdings["source_url"] == "https://ripple.com/xrp/"
+    assert ripple_holdings["source_published_at_utc"] is None
+    assert ripple_holdings["raw_source_sha256"] is None
+    assert ripple_holdings["model_eligible"] is False
+    assert "36,809,481,946 XRP" in ripple_holdings["claim"]
+    assert "31,700,000,000 XRP in escrow" in ripple_holdings["claim"]
+    assert "do not by themselves measure net market selling" in ripple_holdings["hypothesis"]
+    assert "re-escrow" in ripple_holdings["counter_hypothesis"]
     assert all(event["feature_admission_status"] == "EXCLUDED_NO_BYTE_EXACT_RECEIPT" for event in added)
 
     kamilah = next(event for event in registry["events"] if event["event_id"] == "kamilah-stevenson-youtube-identity-unresolved-20260611")
