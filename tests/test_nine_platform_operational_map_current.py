@@ -123,7 +123,7 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     assert {item["number"] for item in data["supporting_prs"]} == set()
     assert any(item["number"] == 1712 for item in repository["merged_pull_requests"])
     assert {item["number"] for item in data["repair_prs"]} == {1713}
-    assert next(item for item in data["repair_prs"] if item["number"] == 1713)["classification"] == "unique_draft_blocked_pending_review"
+    assert next(item for item in data["repair_prs"] if item["number"] == 1713)["classification"] == "unique_v3_governance_ready_checks_review_and_deployment_blocked"
     assert next(item for item in repository["merged_pull_requests"] if item["number"] == 1712)["classification"] == "merged"
 
     assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "superseded_pending_successor_merge"
