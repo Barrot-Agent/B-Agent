@@ -113,7 +113,7 @@ def test_three_missions_remain_coequal_active_and_round_robin() -> None:
 def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     data = load_map()
     repository = data["repository"]
-    expected = {1702, 1703, 1704, 1705, 1706, 1707, 1708, 1709, 1710, 1711, 1713}
+    expected = {1702, 1703, 1704, 1705, 1706, 1707, 1708, 1709, 1710, 1711, 1713, 1714}
 
     assert repository["current_main_state"]["open_pull_request_count"] == len(expected)
     assert set(repository["current_main_state"]["open_pull_request_numbers"]) == expected
@@ -122,8 +122,16 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     assert {item["number"] for item in data["dependency_prs"]} == {1706, 1707, 1708, 1709, 1710, 1711}
     assert {item["number"] for item in data["supporting_prs"]} == set()
     assert any(item["number"] == 1712 for item in repository["merged_pull_requests"])
-    assert {item["number"] for item in data["repair_prs"]} == {1713}
-    assert next(item for item in data["repair_prs"] if item["number"] == 1713)["classification"] == "unique_v3_governance_ready_checks_review_and_deployment_blocked"
+    assert {item["number"] for item in data["repair_prs"]} == {1713, 1714}
+    source = next(item for item in data["repair_prs"] if item["number"] == 1713)
+    successor = next(item for item in data["repair_prs"] if item["number"] == 1714)
+    assert source["draft"] is True
+    assert source["successor_pr"] == 1714
+    assert source["classification"] == "superseded_source_preserved_as_draft"
+    assert successor["draft"] is False
+    assert successor["classification"].startswith("active_clean_v3_governance_successor")
+    assert successor["checks"]["full_suite"]["conclusion"] == "success"
+    assert successor["checks"]["gated_merge"]["conclusion"] == "success"
     assert next(item for item in repository["merged_pull_requests"] if item["number"] == 1712)["classification"] == "merged"
 
     assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "superseded_pending_successor_merge"

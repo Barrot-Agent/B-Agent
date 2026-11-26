@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T17:18:18Z",
-  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress. Run 56 atomic refresh: handoff and map updated together in one commit from parent a7c786ec; resulting #1702 branch tip is the commit containing this map, so the GitHub branch ref is authoritative for its exact SHA. Run 56 final verification: #1714 exact-head full suite, dependency, money, conflict and ancestry gate all passed; #1702 handoff/map refreshed atomically from parent 18ffea1c, with resulting branch ref authoritative.",
+  "captured_at_utc": "2026-11-26T17:26:10Z",
+  "capture_basis": "Run 56: refreshed current main metadata/tree, exact-main CI and scheduled XRP run #187, current 12-PR inventory, branch ancestry and overlap; isolated the ancestry-based V3 gate and dual-agent evidence fixes into clean successor #1714; preserved #1713 as a draft source because it included unauthorized Telegram scope. Run 56 post-write check: handoff/map commits advanced #1702 to 0984b7ac; exact-head checks restarted and remain pending; #1714 dependency, money and conflict checks passed while PR full suite and gate remain in progress. Run 56 atomic refresh: handoff and map updated together in one commit from parent a7c786ec; resulting #1702 branch tip is the commit containing this map, so the GitHub branch ref is authoritative for its exact SHA. Run 56 final verification: #1714 exact-head full suite, dependency, money, conflict and ancestry gate all passed; #1702 handoff/map refreshed atomically from parent 18ffea1c, with resulting branch ref authoritative. Run 56 inventory-test correction: current open PR count is 12 after clean successor #1714; updated the handoff-branch regression test to include #1714 and distinguish it from draft source #1713.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -64,10 +64,10 @@
         "state": "open",
         "draft": false,
         "classification": "unique_canonical_handoff; Run56 atomic handoff/map refresh; exact-head checks pending on resulting tip; zero independent reviews; Pages deployment authorization absent",
-        "commits_ahead": 135,
+        "commits_ahead": 131,
         "commits_behind": 0,
         "latest_status": "full suite passed on exact head; merge gate compares stale base SHA",
-        "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read GitHub branch ref for exact SHA."
+        "head_sha_note": "Atomic handoff/map/test correction is the current branch tip; read GitHub branch ref for exact SHA."
       },
       {
         "number": 1703,
@@ -290,7 +290,8 @@
         1709,
         1710,
         1711,
-        1713
+        1713,
+        1714
       ],
       "latest_xrp_ingestion_run": {
         "run_number": 187,
@@ -676,10 +677,12 @@
     "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
   },
   "next_actions": [
-    "V3 governance: obtain an independent review of #1714 and verify required approval policy and Pages deployment authorization; do not merge until all are satisfied.",
+    "V3 governance: #1714 exact-head checks are complete; obtain independent review and verify approval policy and Pages deployment authorization. Do not merge until all are satisfied.",
+    "Handoff PR #1702: verify the new inventory-test/map correction on the resulting exact head; do not reuse the previous-head failure or pass.",
     "XRP: repair event-to-receipt linkage by capturing exact primary-source URL, capture timestamp, raw bytes/hash, source identity and receipt ID before linking; keep the forecast gate closed.",
-    "Audio: test byte-distinct rights-cleared SoundFonts end-to-end, inspect rendered stem differences, then run level-matched listening and record user acceptance; native DAW project remains absent.",
+    "Audio: distinct per-track CC0 soundfont output is technically verified; conduct level-matched human listening, record user acceptance and preserve rights provenance. Native DAW project remains absent.",
     "Continuity: preserve the tested portable ledger; do not add network sync until authenticated sender identity, key exchange, encrypted transport and multi-host acceptance are implemented.",
+    "Research: preserve the SBIC entity distinctions and keep the Kamilah/Camilla video inventory disabled until reciprocal creator identity verification.",
     "Commercial: validate a reproducible Barrot-only provenance/ingestion pilot demo and delivery scope before Sellbird prospecting; keep outbound sending paused."
   ],
   "a2a_bridge": {
@@ -819,7 +822,7 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "branch": "integration/mission-handoff-refresh-20261125",
       "base": "main",
-      "commits_ahead": 135,
+      "commits_ahead": 131,
       "commits_behind": 0,
       "draft": false,
       "changed_paths": [
@@ -885,7 +888,7 @@
       "last_exact_head_passed_sha": "b90d7f66d8bd78f2e051ead64c7a631c8b58066f",
       "head_sha_role": "parent_before_Run48_documentation_commit",
       "latest_status": "Run54 map refresh committed; exact-head full suite pending",
-      "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read GitHub branch ref for exact SHA."
+      "head_sha_note": "Atomic handoff/map/test correction is the current branch tip; read GitHub branch ref for exact SHA."
     },
     {
       "number": 1703,
@@ -1406,16 +1409,16 @@
     "forecast": "NOT_ISSUED"
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T16:46:59.837Z",
+    "observed_at_utc": "2026-11-26T17:24:25Z",
     "pr_number": 1702,
-    "tested_head_sha": "46368463742755adf29db50822bc340b5c96fe6e",
-    "current_branch_parent_sha": "ad07aafcc52837859ee884cc63ebc7a51590df23",
-    "current_branch_head_status": "RUN54_MAP_REFRESH_COMMITTED; EXACT_HEAD_CI_PENDING",
+    "tested_head_sha": "69b8a113fea05c059c117fe77ba075fda6f65e92",
+    "current_branch_parent_sha": "69b8a113fea05c059c117fe77ba075fda6f65e92",
+    "current_branch_head_status": "RUN56_INVENTORY_ASSERTION_FIX_COMMITTED; EXACT_HEAD_CI_PENDING",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 119,
+    "commits_ahead": 131,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45860927376,
+      "run_id": 45866670681,
       "conclusion": "failure",
       "passed": 4700,
       "failed": 1,
@@ -1423,26 +1426,26 @@
       "warnings": 11,
       "subtests": 21,
       "coverage_percent": 74.21,
-      "duration_seconds": 163.79,
-      "failure": "tests/test_nine_platform_operational_map_current.py: latest_xrp_ingestion_observation remained run 185 while current_main_state.latest_xrp_ingestion_run was updated to run 187"
+      "duration_seconds": 216.32,
+      "failure": "tests/test_nine_platform_operational_map_current.py expected 11 open PRs; the current map correctly recorded 12 after #1714. Test and map number inventory are being reconciled in this branch."
     },
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45838320047,
+        "run_id": 45866670718,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45838320331,
+        "run_id": 45866670722,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45838320151,
+        "run_id": 45866670706,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45838320259,
+        "run_id": 45866670611,
         "conclusion": "failure",
-        "blocker": "legacy gate compares cached PR base.sha 6033bcd to current main; compare confirms 119 ahead / 0 behind"
+        "blocker": "legacy gate compares stale PR base.sha to current main; compare confirms 131 ahead / 0 behind"
       }
     },
     "mergeable": true,
@@ -1450,38 +1453,11 @@
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "Prior exact-head full suite failed on stale map observation; Run54 refreshed the map and added the nested event/evaluation schema, but the new head still requires exact-head CI.",
-      "Legacy merge gate falsely blocks on cached PR base.sha despite zero commits behind; #1713 has an ancestry-based fix but mixes in unreviewed Telegram capability.",
+      "Inventory assertion updated in this branch; exact-head suite pending on resulting tip.",
+      "Legacy gate false-blocks on stale PR base metadata; #1714 contains the verified ancestry correction.",
       "Zero independent reviews; required approval count remains unavailable via HTTP 403.",
       "A merge triggers GitHub Pages deployment; specific deployment authorization is absent."
-    ],
-    "full_suite_run_id": 45860927376,
-    "full_suite_conclusion": "failure",
-    "audit": {
-      "run_id": 45860927279,
-      "conclusion": "success"
-    },
-    "pip_audit": {
-      "run_id": 45860927263,
-      "conclusion": "success"
-    },
-    "money_audit": {
-      "run_id": 45860927279,
-      "conclusion": "success"
-    },
-    "conflict_integrity": {
-      "run_id": 45860927325,
-      "conclusion": "success"
-    },
-    "merge_tree": {
-      "run_id": 45860927325,
-      "conclusion": "success"
-    },
-    "gated_merge": {
-      "run_id": 45860927292,
-      "conclusion": "failure",
-      "blocker": "legacy PR base.sha comparison reports stale base metadata despite compare API showing current main is an ancestor and behind_by=0"
-    }
+    ]
   },
   "latest_primary_source_research": {
     "observed_at_utc": "2026-11-26T14:20:00Z",
@@ -4662,10 +4638,10 @@
       "state": "open",
       "draft": false,
       "classification": "unique_canonical_handoff; Run56 atomic handoff/map refresh; exact-head checks pending on resulting tip; zero independent reviews; Pages deployment authorization absent",
-      "commits_ahead": 135,
+      "commits_ahead": 131,
       "commits_behind": 0,
       "latest_status": "full suite passed on exact head; merge gate compares stale base SHA",
-      "head_sha_note": "The atomic handoff/map refresh is the current branch tip; read GitHub branch ref for exact SHA."
+      "head_sha_note": "Atomic handoff/map/test correction is the current branch tip; read GitHub branch ref for exact SHA."
     },
     {
       "number": 1703,
@@ -5576,7 +5552,7 @@
     "artifact_url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45836037352"
   },
   "latest_run56_checkpoint": {
-    "captured_at_utc": "2026-11-26T17:18:18Z",
+    "captured_at_utc": "2026-11-26T17:26:10Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "tree_entries": 3164,
     "tree_truncated": false,
@@ -5645,15 +5621,22 @@
     "no_real_money": true,
     "next_concrete_action": "Complete exact-head PR-event full suite and ancestry gate on #1714; request independent review; do not merge without verified approvals and explicit Pages deployment authorization.",
     "handoff_pr_head": "bba6b7709a4586d16973fad78f039cf9afcd60fc",
-    "handoff_pr_full_suite": "PENDING_ON_ATOMIC_REFRESH_HEAD",
+    "handoff_pr_full_suite": "PENDING_AFTER_INVENTORY_TEST_FIX",
     "governance_pr_dependency_audit": "PASS",
     "governance_pr_money_audit": "PASS",
     "governance_pr_conflict_integrity": "PASS",
-    "handoff_pr_parent_sha": "18ffea1c1f16ca43d204663fcab0114f417fab70",
-    "handoff_pr_head_note": "atomic commit containing this map; fetch branch ref for exact SHA",
+    "handoff_pr_parent_sha": "69b8a113fea05c059c117fe77ba075fda6f65e92",
+    "handoff_pr_head_note": "atomic commit containing this map and inventory test; fetch branch ref for exact SHA",
     "governance_pr_head": "87a370d77df5703a807ad3d8128d0ca972c383fd",
     "governance_pr_review_count": 0,
-    "governance_pr_merge_authorized": false
+    "governance_pr_merge_authorized": false,
+    "handoff_pr_previous_full_suite_failure": {
+      "run_id": 45866670681,
+      "passed": 4700,
+      "failed": 1,
+      "skipped": 1,
+      "reason": "expected 11 open PRs but map had 12 after #1714"
+    }
   },
   "latest_v3_governance_successor": {
     "pr": 1714,
@@ -5686,5 +5669,116 @@
     "source_pr_state": "OPEN_DRAFT_PRESERVED",
     "telegram_scope_excluded": true,
     "merged": false
+  },
+  "latest_audio_routing_validation": {
+    "pr": 1704,
+    "head_sha": "38ffff3c4c21f14d1f216a4fdf1e54eeb4694f92",
+    "audio_render_integration_run": {
+      "run_id": 45867292176,
+      "conclusion": "success",
+      "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176"
+    },
+    "artifacts": {
+      "routing_qc": {
+        "id": 15139799666,
+        "name": "audio-soundfont-routing-qc-45867292176",
+        "size_bytes": 2748869,
+        "expires_at": "2026-12-26T17:24:58Z"
+      },
+      "production_bundle": {
+        "id": 15139779842,
+        "name": "audio-production-bundle-45867292176",
+        "size_bytes": 242108638
+      },
+      "technical_qc": {
+        "id": 15139719863,
+        "name": "audio-render-qc-45867292176",
+        "size_bytes": 7840
+      }
+    },
+    "soundfonts": {
+      "fluidr3": {
+        "sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+        "license": "MIT"
+      },
+      "upright_piano_kw": {
+        "sha256": "cf2a98eb38a32c4954b4b6e2caae4112d62dd8e892eceefdd7942b0e7d01ac2f",
+        "archive_sha256": "3bd025e7c2ffa9e6f3f99215ce383c9cebbac991cfbf9be1453cdb4328ec3492",
+        "license": "CC0-1.0 source-claimed",
+        "source": "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html"
+      },
+      "old_piano_fb": {
+        "sha256": "d67fb5bae04e13a6649e45c476ef3eb28cd475da336940b0a8874837f29d6426",
+        "archive_sha256": "e904474b1eb44088e3f508b65b9c387baa72cb58f7734f1495eab4c348cc89ce",
+        "license": "CC0-1.0 source-claimed",
+        "source": "https://freepats.zenvoid.org/Piano/honky-tonk-piano.html"
+      }
+    },
+    "per_track_results": {
+      "piano_a": {
+        "difference_rms": 0.06165634134702857,
+        "waveform_correlation": -0.08121350627777604,
+        "normalized_spectral_distance": 1.2343585893404327
+      },
+      "piano_b": {
+        "difference_rms": 0.06566027204647636,
+        "waveform_correlation": -0.30436405769774233,
+        "normalized_spectral_distance": 0.930676096322763
+      }
+    },
+    "status": "DISTINCT_PER_TRACK_TIMBRES_VERIFIED_TECHNICALLY; HUMAN_LISTENING_AND_USER_ACCEPTANCE_PENDING",
+    "native_daw_project_available": false,
+    "independent_legal_audit": false
+  },
+  "latest_research_reconciliation": {
+    "captured_at_utc": "2026-11-24T17:03:38Z",
+    "source_artifact": "research/xrp_intelligence/20261124T170338Z-sbic-tokyo-chatgpt-and-identity-recheck.json",
+    "identity_artifact": "research/xrp_intelligence/20261124T071300Z-kamilah-identity-and-exact-phrase-recheck.json",
+    "sbic": {
+      "status": "PRIMARY_ENTITY_IDENTIFICATION_RECONFIRMED",
+      "entities": [
+        {
+          "name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Eastern Japan",
+          "domain": "sbic.co.jp"
+        },
+        {
+          "name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Central Japan",
+          "domain": "sbic-cj.co.jp"
+        },
+        {
+          "name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "region": "Western Japan",
+          "domain": "sbic-wj.co.jp"
+        }
+      ],
+      "distinction": "Three regional SME investment-development companies; not SBI Holdings. JETRO IBSC and SB OAI Japan are separate acronym/entity candidates.",
+      "chatgpt_context": "Tokyo SBIC advertised a two-day ChatGPT/Copilot/RAG/generative-AI course for investee companies in June 2025. This is an advertised training event, not an OpenAI contract, sponsorship, integration or XRP relationship.",
+      "beneficial_ownership": "Complete beneficial-ownership/legal-registry reconciliation remains open."
+    },
+    "exact_phrases": {
+      "ask_coin": "No exact XRP-linked ASK Coin identity confirmed; Permission Coin (ASK) remains a separate ticker-collision candidate.",
+      "actual_capital": "No exact primary-source phrase match in the latest recheck; SBI's 'Actual XRP' is a label for reported Ripple XRP holdings, not evidence of the phrase 'actual capital'.",
+      "sbic_chatgpt": "No exact indexed 'SBIC, ChatGPT SBIC' phrase; Tokyo SBIC's ChatGPT course is contextual only."
+    },
+    "youtube_identity": {
+      "canonical_candidate": {
+        "handle": "@drkamilahstevenson",
+        "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+        "brand_domain": "prescribewealth.com",
+        "channel_to_brand_link": "https://go.prescribewealth.com/yt-bio",
+        "attribution_status": "SUPPORTED_AT_PUBLIC_BRAND_LEVEL"
+      },
+      "strict_creator_inventory_gate": "NOT_MET",
+      "reason": "The official brand page did not visibly link back to the exact YouTube channel ID; no independent identity verification was performed.",
+      "inventory_performed": false,
+      "excluded_candidates": [
+        "@KamilahStevensonXrpStocks",
+        "@KamilahStevenson-e7b"
+      ],
+      "camilla_identity": "UNVERIFIED_SEPARATE_NAMESAKE",
+      "instruction": "Do not inventory or attribute videos until a creator-controlled source or verified platform metadata reciprocally links the exact channel ID."
+    }
   }
 }
