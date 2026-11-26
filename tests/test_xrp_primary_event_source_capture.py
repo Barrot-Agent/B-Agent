@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from pathlib import Path
 import json
 
 import pytest
@@ -225,3 +226,41 @@ def test_primary_event_capture_schedule_is_daily_and_explicitly_overridable():
     assert _event_source_capture_due(before, True) is True
     with pytest.raises(XRPIngestionError, match="capture_event_sources must be a boolean or None"):
         _event_source_capture_due(daily, "yes")
+
+
+def test_ripple_coinbase_rlusd_primary_event_capture_spec_is_exact_and_allowlisted():
+    spec = next(
+        item for item in EVENT_SOURCE_CAPTURE_SPECS
+        if item["source_id"] == "ripple_coinbase_rlusd_partnership_20261028"
+    )
+    assert spec["event_id"] == "ripple-coinbase-rlusd-partnership-2026-10-28"
+    assert spec["source_uri"] == (
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    )
+    assert {
+        "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+        "Oct 28, 2026",
+        "Availability for Coinbase Global Exchange customers, including leveraging RLUSD as collateral, will follow.",
+        "On Base, Ripple will provide liquidity to support the growth of RLUSD.",
+    }.issubset(set(spec["required_markers"]))
+    assert "ripple.com" in ALLOWED_HOSTS
+
+
+def test_ripple_coinbase_primary_event_is_present_in_curated_registry():
+    root = Path(__file__).resolve().parents[1]
+    registry = json.loads(
+        (root / "research" / "xrp_intelligence" / "event_registry_current.json").read_text(encoding="utf-8")
+    )
+    matches = [
+        event for event in registry["events"]
+        if event["event_id"] == "ripple-coinbase-rlusd-partnership-2026-10-28"
+    ]
+    assert len(matches) == 1
+    event = matches[0]
+    assert event["source_id"] == "ripple_coinbase_rlusd_partnership_20261028"
+    assert event["source_url"] == (
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    )
+    assert event["source_status"] == "verified"
+    assert event["raw_source_sha256"] is None
+    assert event["captured_at_utc"] == "2026-11-26T13:13:03Z"

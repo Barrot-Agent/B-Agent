@@ -263,6 +263,10 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "SBI VC Trade's public lending terms are captured for source-change detection; raw HTML redistribution "
         "rights have not been reviewed, so retain only the SHA-256 receipt and do not publish the page bytes."
     ),
+    "ripple_coinbase_rlusd_partnership_20261028": (
+        "Public Ripple press release is captured for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only."
+    ),
 }
 
 BITBANK_SOURCE_IDS = frozenset({
@@ -316,6 +320,17 @@ EVENT_SOURCE_CAPTURE_SPECS = (
         "source_id": "coinbase_rlusd_listing_20261028",
         "source_uri": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
         "required_markers": ("RLUSD is now available on Coinbase", "Oct 28, 2026", "XRP Ledger"),
+    },
+    {
+        "event_id": "ripple-coinbase-rlusd-partnership-2026-10-28",
+        "source_id": "ripple_coinbase_rlusd_partnership_20261028",
+        "source_uri": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "required_markers": (
+            "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+            "Oct 28, 2026",
+            "Availability for Coinbase Global Exchange customers, including leveraging RLUSD as collateral, will follow.",
+            "On Base, Ripple will provide liquidity to support the growth of RLUSD.",
+        ),
     },
     {
         "event_id": "circle-usdc-xrpl-native-2025-06-12",
