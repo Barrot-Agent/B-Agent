@@ -3342,7 +3342,7 @@ Do not suppress these warnings or claim a quality improvement from technical exp
 
 ## Long-horizon continuity — EXECUTED; physical cross-host synchronization remains unverified
 
-Existing [#1703](https://github.com/Barrot-Agent/B-Agent/pull/1703), head `99561b4507d17c80d0a74bb425ce18ae3737f3d5`, remains 15 ahead / 0 behind. Its exact-head full suite passed **4,713 passed, 1 failed?** No: the recorded result is **4,713 passed, 0 failed, 1 skipped**, 11 warnings, 21 subtests, 74.36% coverage; dependency, Money, conflict and fail-closed gates passed.
+Existing [#1703](https://github.com/Barrot-Agent/B-Agent/pull/1703), head `99561b4507d17c80d0a74bb425ce18ae3737f3d5`, remains 15 ahead / 0 behind. Its exact-head full suite reported **4,713 passed, 0 failed, 1 skipped**, 11 warnings, 21 subtests, 74.36% coverage; dependency, Money, conflict and fail-closed gates passed.
 
 The ledger provides versioned provenance, stale/conflict detection, dependency-aware task selection, hash-verified bundles and Ed25519-signed transfer envelopes with replay protection. A separate sender/receiver/replay-process file-transfer test passed. This is not network synchronization: no transfer between separately controlled physical hosts, automatic key exchange or model-provider handoff was executed.
 
