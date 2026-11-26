@@ -5090,3 +5090,85 @@ Correction to the earlier shorthand that NumPy `<3` “conflicts” with Streaml
 - **NOT VERIFIED:** the new follow-up commit's exact-head CI; the #1702 merge gate fix on main; required approval policy; Pages deployment authorization; Evernorth ELOC actual drawdowns; ASK identity beyond the Permission candidate; reciprocal YouTube identity link; any directional XRP forecast.
 
 No merge, deployment, PR closure, outreach, paper trade, funds transfer, Kaggle submission, external model dispatch or real-money action occurred.
+
+
+---
+
+## Run 55 — integrated three-mission checkpoint
+**Captured:** 2026-11-26T16:30:51Z  
+**Repository:** Barrot-Agent/B-Agent  
+**Current main:** 2151843140fd770b62ef93d06a78c559f9e73bbd  
+**Canonical handoff branch:** integration/mission-handoff-refresh-20261125  
+**Handoff PR:** #1702
+
+### DESIGNED
+- XRP intelligence/prediction mastery, professional audio production, and long-horizon continuity/capability development remain three co-equal priority-1 missions.
+- Barrot V3 remains their shared execution, orchestration, provenance, safety, and verification foundation.
+- Revenue work remains a supporting commercial objective, not a fourth technical mission. Sellbird remains restricted to Barrot technology only.
+
+### EXECUTED — repository and integration inspection
+- Re-fetched main metadata, recursive tree, open PR inventory, branch ancestry, current PR heads, exact-head check-runs, workflow jobs/logs, main checks, branch protection summary, and the latest durable handoff.
+- Main is protected. Its recursive tree contains 3,164 entries and is not truncated. Main SHA is 2151843140fd770b62ef93d06a78c559f9e73bbd; main tree SHA is 428229c1dd50a757554637db67eb8e30d00ef6ed.
+- Main CI on the current SHA: full repository suite passed (4,695 passed, 0 failed, 1 skipped; 74.21% coverage); audit and pip-audit passed. The #1712 merge's Pages deployment completed successfully. Merging to main therefore has an automatic Pages deployment side effect.
+- The main branch protection summary exposes four required status contexts. The detailed protection endpoint returned HTTP 403, so the required approval count is unknown; do not infer that no approval is required.
+- The existing integration branches for #1702, #1703, #1704, #1705, and #1713 are all descendants of current main (0 commits behind). No branch was reset, force-pushed, or rewritten.
+
+### EXECUTED — XRP intelligence and prediction
+- Main scheduled XRP Public Market Ingestion run #187 completed successfully on 2151843140fd770b62ef93d06a78c559f9e73bbd: [run 45856901485](https://github.com/Barrot-Agent/B-Agent/actions/runs/45856901485).
+- Data cutoff: 2026-11-26T16:15:06.777833Z; evaluation as of 2026-11-26T16:15:11.537545Z. Adapter xrp-public-market-v3.34; parser xrp-public-market-v3.32. Snapshot: 6b1bda4f1633eccc80f42e8dd3526e8ed5096d826eb384354906c582b8ad3eba.
+- Feature store: 142 snapshots, 2,230 input feature records, 123 eligible and 367 excluded; 12 source IDs; SQLite integrity OK.
+- Receipts: 37 total, 21 retained raw payloads, 16 digest-only; hash-chain verification PASS; cross-run sequence 142. Chain head SHA-256: bb13d204824e4e5377702ccfce7a855de9cb7a99f34b3147b70696c99a7ec9f9. The chain is not externally anchored; raw-payload hashes were not independently rechecked in this run.
+- Event timeline: 150 events, zero verified receipt links, 150 missing raw receipt hashes, 11 URL matches, zero URL-plus-capture-time matches. Linkage remains INCOMPLETE; do not relax exact matching or infer provenance.
+- Quote basis: same-venue OKX top-of-book only; midpoint $0.948862547, bid $0.948807864, ask $0.948917230, spread 1.152601 bps, snapshot skew 0.604 seconds. The XRP-USDT and USDT-USD observations share one OKX publisher-independence group; this is not consolidated depth or independent corroboration.
+- Source failures: 18. Binance HTTP 451 and Bybit HTTP 403 were observed; SEC contact identity is not configured. Deribit XRP-USDC perpetual L2 remains raw-only; CFTC weekly positioning capture remains policy/schedule gated.
+- Walk-forward: 536 one-hour rows, status PARTIAL_OR_BLOCKED. Drift: 0 of 205 features evaluated; INSUFFICIENT_DATA. Forecast status NOT_ISSUED and model_eligible=false. No directional forecast, paper trade, or real-money action.
+- Main Cross Analysis run #4649 completed but XRP sentiment was STALE_INPUT at 675.204 hours and BTC sentiment at 732.039 hours; forecast eligibility remained false: [run 45853205248](https://github.com/Barrot-Agent/B-Agent/actions/runs/45853205248).
+
+### EXECUTED — audio production
+- Existing audio PR #1704 remains the single active audio integration branch: [PR #1704](https://github.com/Barrot-Agent/B-Agent/pull/1704), head 4ff0e5881a84bd1f496fefc730073194365cb8f1.
+- Exact-head full suite passed: 4,703 passed, 1 skipped, 74.29% coverage. The end-to-end FluidSynth render workflow passed: [run 45836037352](https://github.com/Barrot-Agent/B-Agent/actions/runs/45836037352).
+- Artifact 15126130418 (approximately 242 MB) contains a 44.1 kHz WAV mix, nine sample-aligned stems, MIDI, metadata, and ten section markers. The reproducible render is 80 bars / 175.545 seconds / 110 BPM / D minor / 4/4. QC: -22.4367 LUFS, LRA 7.869, crest 18.821 dB, true peak -6 dBTP, zero clipped samples.
+- The artifact is a premaster-style render, not proof of professional mastering. It is not a native DAW project; exact stem-sum reconstruction is not guaranteed. The alternate-SoundFont test uses byte-identical fixture files, so distinct timbral routing is not proven. Caller-supplied asset rights remain unverified. Blind/level-matched listening and user acceptance have not occurred.
+- Music and vocal services remain excluded from Sellbird until finished, accepted tracks exist.
+
+### EXECUTED — long-horizon continuity
+- Existing continuity PR #1703 remains the single active continuity integration branch: [PR #1703](https://github.com/Barrot-Agent/B-Agent/pull/1703), head 9ea30d044c84fc97c8354457f7227439c73442b4.
+- Exact-head full suite passed: 4,715 passed, 1 skipped, 74.34% coverage. Ed25519-signed transfer envelopes, hash-verified import/export, replay rejection, and separate-process recovery are tested.
+- Cross-host network synchronization, key exchange, and encrypted transport are not implemented or verified. The ledger is branch-only until reviewed and merged. No unattended synchronization was enabled.
+
+### EXECUTED — open PR inventory and merge safety
+There are 11 open PRs:
+- #1702 — unique canonical handoff/map and prompt alignment; 123 ahead / 0 behind. Exact-head full suite, audit, pip-audit, and merge-tree checks passed. The legacy merge-readiness check failed because it compared stale PR base SHA metadata (6033...) rather than actual ancestry; GitHub compare confirms current main is an ancestor and the branch is 0 behind. No independent review.
+- #1703 — unique continuity work; 16 ahead / 0 behind; full suite passed. Cross-host sync remains unverified. No independent review.
+- #1704 — unique audio work; 24 ahead / 0 behind; full suite and render passed. Listening, distinct timbres, and native DAW project remain unverified. No independent review.
+- #1705 — unique XRP/RLUSD research work; 17 ahead / 0 behind; full suite passed; three curated primary-event capture specifications are tested on the branch, not merged. No independent review.
+- #1713 — unique V3 governance work; 11 ahead / 0 behind; full suite and its corrected ancestry gate pass. Its diff also adds Telegram inbox/report/reply functionality and a manual Telegram report workflow, beyond the gate/dual-agent governance objective. Keep blocked until that scope and external-send path are explicitly reviewed; no independent review.
+- #1706 — stale dependency overlap; 2 ahead / 6 behind.
+- #1707 — unique setup-node update; 1 ahead / 6 behind.
+- #1708 — draft duplicate subset of #1706; 1 ahead / 6 behind.
+- #1709 — unique Databricks CLI update with shared test overlap; 2 ahead / 6 behind.
+- #1710 — unique PyYAML update; 1 ahead / 6 behind.
+- #1711 — draft NumPy compatibility change; 1 ahead / 6 behind, compatibility remains blocked pending the Hugging Face Space runtime diagnosis.
+- The corrected gate in #1713 is not on main yet. Do not merge it as-is merely to clear #1702: it contains additional Telegram functionality. Do not close unique PRs or duplicate PRs until a verified consolidated successor is merged.
+- No new branch or PR was created. No PR was merged or closed. No deployment, secret rotation, Space restart, workflow dispatch, or external send was performed.
+
+### EXECUTED — nine-platform coordination
+- ChatGPT-to-GitHub connector access is verified for repository reads, exact-head CI inspection, artifact inspection, and existing-branch writes.
+- Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks remain NOT_TESTED for authentication, permissions, and data flow. No evidence was transferred to them. Their proposed roles remain designed, not executed.
+
+### EXECUTED — Sellbird / Barrot-only commercial readiness
+- Audited the exact public repository [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird). Main SHA and v0.5.0 tag both resolve to 8c743f1c475f61f7b2c04e50501cf6938a126ed6; v0.5.0 was published 2026-11-25. License is AGPL-3.0-only; Python requirement is >=3.11. Main test matrix passed on Ubuntu, macOS, and Windows with Python 3.11/3.12.
+- Sellbird is an AI prospecting/outreach and pipeline platform, not a persistent-execution/approval framework. Its documented agents can read, draft, estimate costs, and pause sending; their agent token cannot approve/send, resume sending, start discovery, confirm signals, change settings/keys, or delete data.
+- Codex CLI 0.159.3 is documented on macOS/Linux and uses ChatGPT sign-in, but no local Codex login was tested. Direct ChatGPT desktop integration is explicitly unverified. Claude Code/Claude Desktop and Codex are the documented native MCP targets.
+- The template enables email but defaults to approval-required, Gmail, a 50/day ceiling, risky addresses off, and a 5% bounce kill threshold. Warmup start date, postal address, do-not-contact list, mailbox credentials, and Precleared are not configured by the template. Autopilot exists and can be enabled by changing require_approval; it must remain off. Instantly is not suitable for the required per-email approval queue.
+- Free discovery is available through OpenStreetMap and free signals (26 of 29 documented signals); paid providers must be cost-estimated first. No paid lookup was used. Dedicated sending domain, SPF/DKIM/DMARC, 2–4 weeks of warmup, postal address, suppression list, verified mailbox, legal review, and explicit campaign approval are prerequisites before any sending.
+- Static code review observed loopback dashboard binding, scoped agent tokens, no-tool model calls, deterministic pre-send checks, SSRF-aware public HTTP, keyring-backed secrets, and log redaction. This is not an independent security audit. Dependabot/code-scanning alert counts were not accessible through the connector and remain unknown. Upstream safety PRs #302 (SMTP/IMAP failure must hold sends), #306 (Arabic opt-outs), #300 (verifier health/retry), #301 (quota backoff), and #303 (opt-in auto-discovery) remain open.
+- Sellbird is not installed or authenticated here. Sending remains PAUSED. Qualified prospects 0; approved messages 0; sent 0; replies 0; meetings 0; proposals 0; revenue $0; paid lookup cost $0.
+- The only candidate offer remains an unapproved hypothesis: a one-source public-data provenance pilot for a digital-asset research/fintech team. The $500–$750 price range is unvalidated. Do not prospect until a reproducible demo, buyer scope, acceptance criteria, and delivery capacity are verified. Music, songwriting/vocal services, TrekFlex, and all separate ventures remain excluded from Sellbird.
+
+### VERIFIED — blockers and next concrete action
+- **XRP blocker:** event-to-receipt linkage is 0/150; 150 raw hashes are missing from event records. Next XRP implementation must capture exact primary-source URL, capture timestamp, raw bytes/hash, source identity, and receipt ID before linking; do not weaken the exact-match gate.
+- **Audio blocker:** distinct per-track timbres are not demonstrated because the alternate SoundFont fixtures are byte-identical. Next audio implementation must use a rights-cleared, byte-distinct fixture and compare rendered stems, then conduct level-matched listening. No native DAW project exists yet.
+- **Continuity blocker:** cross-host sync lacks authenticated key exchange and encrypted transport. Keep synchronization local/export-based until a security-reviewed protocol and multi-host acceptance test exist.
+- **Shared V3 blocker:** isolate the ancestry-based merge-gate correction from the unrelated Telegram functionality in the existing #1713 governance workstream, or apply only the gate correction through an already-open coherent integration branch. Then rerun exact-head full-suite, audit, pip-audit, merge-tree, and fail-closed gate checks. Independent review and explicit Pages deployment authorization are still required before merge.
+- No product-code change was safe to make in this run: the remaining mission gaps require exact source receipts, rights-cleared audio assets, or a security-reviewed cross-host protocol. Only this canonical handoff and its operational map were refreshed on the existing #1702 branch.
