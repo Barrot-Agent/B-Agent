@@ -3,7 +3,7 @@
   "schema_version": "1.0.0",
   "registry_version": "run223-20261126-ripple-coinbase-primary-capture",
   "captured_at_utc": "2026-11-26T13:13:03Z",
-  "source_receipt_status": "150 of 150 curated events have null raw_source_sha256; exact external publisher response bytes were not captured for this registry. 59 events have exact publisher timestamps; 91 lack an exact publisher timestamp. Rendered pages and browser-returned API output are not byte-exact publisher receipts. All remain research-only and model-ineligible.",
+  "source_receipt_status": "151 of 151 curated events have null raw_source_sha256; exact external publisher response bytes were not captured for this registry. 59 events have exact publisher timestamps; 92 lack an exact publisher timestamp. Rendered pages and browser-returned API output are not byte-exact publisher receipts. All remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -7027,7 +7027,9 @@
         "Ethereum",
         "stablecoin",
         "distribution"
-      ]
+      ],
+      "model_eligible": false,
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT"
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -7347,10 +7349,10 @@
     "source_receipt_policy": "No rendered HTML or web excerpt was hashed as publisher raw bytes. The GitHub artifact ZIP digest is retained separately; log files are identified by Git SHA-1 blob IDs and exact sizes. All five events remain model-ineligible.",
     "note": "Canonical publisher/lineage groups recomputed with the repository's domain-alias and declared-lineage union rules; SBIC regional aliases remain grouped separately from SBI Holdings."
   },
-  "event_count": 150,
+  "event_count": 151,
   "publisher_timestamp_coverage": {
     "exact_publisher_timestamps": 59,
-    "missing_exact_publisher_timestamps": 91
+    "missing_exact_publisher_timestamps": 92
   },
   "run192_update": {
     "captured_at_utc": "2026-11-16T16:11:30Z",
@@ -7458,6 +7460,21 @@
     "note": "Run222 adds Kraken XRP/USD top-of-book/VWAP, separate Fuelmaps spot and Basis Binance-perpetual depth snapshots, two non-comparable exchange-balance universes, TradRadar derivatives, Coinbase cbXRP proof-of-reserves growth, DBS/Circle USDC institutional access, Circle's dated USDC supply/network disclosure, and Coinbase's effective national trust-bank charter. Kamilah/Camilla identity remains unresolved: the iHeart transcript gives display names but not exact handles and warns of fake pages; two YouTube channel candidates are quarantined, with no videos admitted to the verified inventory. Exact phrase “actual capital” remains unresolved; SBI's “Actual XRP” is a token-holdings label, not capital. All ten new observations lack byte-exact publisher receipts and remain model-ineligible. No directional forecast is issued. Timestamp schema follow-up: event timeline records require non-empty event_time_utc, available_at_utc and captured_at_utc. Timestamp-less Kraken/Coinbase page observations now use the registry cutoff as observation time while leaving publisher timestamps null.",
     "timestamp_policy": "For exact publisher timestamps, event_time_utc and available_at_utc preserve the source time. For date-only sources, event_time_utc is normalized to midnight UTC with date_only precision. For sources without a usable publisher timestamp, event_time_utc and available_at_utc use the registry observation cutoff and precision is capture_time_only; source_published_at_utc remains null. captured_at_utc is the registry cutoff. No publisher timestamp is fabricated."
   },
-  "declared_independence_group_count": 112,
-  "canonical_publisher_lineage_group_count": null
+  "declared_independence_group_count": 113,
+  "canonical_publisher_lineage_group_count": null,
+  "run223_update": {
+    "captured_at_utc": "2026-11-26T13:13:03Z",
+    "prior_event_count": 150,
+    "appended_event_count": 1,
+    "resulting_event_count": 151,
+    "added_event_ids": [
+      "ripple-coinbase-rlusd-partnership-2026-10-28"
+    ],
+    "raw_source_sha256_receipts_added": 0,
+    "exact_publisher_timestamp_count": 59,
+    "missing_exact_publisher_timestamp_count": 92,
+    "declared_independence_group_count": 113,
+    "canonical_publisher_lineage_group_count": null,
+    "note": "Added Ripple's official October 28, 2026 release as a separate publisher-origin record for the Coinbase RLUSD distribution partnership. It records XRPL/Base/Ethereum availability, Ripple-provided Base liquidity and the fact that Coinbase Global Exchange collateral support was future availability at launch. The page was reviewed but raw publisher response bytes have not yet been captured; the event remains model-ineligible and no XRP spot-demand inference is made."
+  }
 }

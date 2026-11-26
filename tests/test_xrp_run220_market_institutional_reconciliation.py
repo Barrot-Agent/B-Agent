@@ -55,11 +55,11 @@ def test_run220_market_providers_remain_separate_and_quality_gated():
 
 def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     registry = _load(REGISTRY_PATH)
-    assert registry["registry_version"] == "run222"
-    assert registry["event_count"] == len(registry["events"]) == 150
+    assert registry["registry_version"] == "run223-20261126-ripple-coinbase-primary-capture"
+    assert registry["event_count"] == len(registry["events"]) == 151
     coverage = registry["publisher_timestamp_coverage"]
     assert coverage["exact_publisher_timestamps"] == 59
-    assert coverage["missing_exact_publisher_timestamps"] == 91
+    assert coverage["missing_exact_publisher_timestamps"] == 92
     assert coverage["exact_publisher_timestamps"] + coverage["missing_exact_publisher_timestamps"] == registry["event_count"]
 
     assert registry["run220_update"]["appended_event_count"] == 15
@@ -68,7 +68,7 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     update = registry["run222_update"]
     assert update["prior_event_count"] == 140
     assert update["appended_event_count"] == 10
-    assert update["resulting_event_count"] == registry["event_count"]
+    assert registry["run223_update"]["resulting_event_count"] == registry["event_count"]
     assert update["raw_source_sha256_receipts_added"] == 0
     added_ids = set(update["added_event_ids"])
     assert len(added_ids) == 10
@@ -76,6 +76,19 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert len(added) == 10
     assert all(event["raw_source_sha256"] is None for event in added)
     assert all(event["model_eligible"] is False for event in added)
+    run223 = registry["run223_update"]
+    assert run223["prior_event_count"] == 150
+    assert run223["appended_event_count"] == 1
+    assert run223["resulting_event_count"] == 151
+    assert run223["added_event_ids"] == ["ripple-coinbase-rlusd-partnership-2026-10-28"]
+    assert run223["raw_source_sha256_receipts_added"] == 0
+    ripple_coinbase = next(
+        event for event in registry["events"]
+        if event["event_id"] == "ripple-coinbase-rlusd-partnership-2026-10-28"
+    )
+    assert ripple_coinbase["raw_source_sha256"] is None
+    assert ripple_coinbase["model_eligible"] is False
+    assert ripple_coinbase["feature_admission_status"] == "EXCLUDED_NO_BYTE_EXACT_RECEIPT"
     assert all(event["feature_admission_status"] == "EXCLUDED_NO_BYTE_EXACT_RECEIPT" for event in added)
 
     kamilah = next(event for event in registry["events"] if event["event_id"] == "kamilah-stevenson-youtube-identity-unresolved-20260611")

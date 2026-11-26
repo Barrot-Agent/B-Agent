@@ -283,6 +283,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
         "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
         "ripple-national-trust-bank-occ-effective-2026-10-26",
+        "ripple-coinbase-rlusd-partnership-2026-10-28",
         "xrp-okx-spot-2026-11-12T0447Z",
         "xrp-kraken-spot-2026-11-12T0502Z",
         "xrp-fuelmaps-depth-2026-11-12T0400Z",
