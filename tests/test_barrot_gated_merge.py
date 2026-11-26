@@ -30,7 +30,11 @@ def test_merge_gate_checks_exact_head_and_current_main_without_admin_or_review_g
         assert required in source
     # GitHub's PR base.sha can be the original base commit after main advances.
     # Read actual commit ancestry instead of comparing that cached field.
-    assert 'base_sha="$(jq' not in source
+    # Match the variable as a complete line token: merge_base_sha is valid.
+    assert not any(
+        line.lstrip().startswith('base_sha="$(jq')
+        for line in source.splitlines()
+    )
     assert '[[ "$base_sha" == "$current_main" ]]' not in source
     for obsolete in (
         "branches/main/protection",
@@ -51,7 +55,7 @@ def test_merge_gate_requires_only_named_exact_head_validation_checks() -> None:
         '"pip-audit"',
         '"audit"',
         '"Verify PR merge tree against current base"',
-        'commits/${actual_head}/check-runs',
+        "commits/${actual_head}/check-runs",
     ):
         assert required in source
     assert "GitHub Pages build (validation only)" not in source
