@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_capability_authentication_permission_data_flow_map",
-  "captured_at_utc": "2026-11-27T16:17:15Z",
-  "capture_basis": "Current main/tree, all 12 open PRs and shared diffs, exact-head CI/security/gate logs, XRP run 220, audio QC artifacts, and Sellbird v0.5.0 upstream source audit.",
+  "captured_at_utc": "2026-11-27T16:35:53Z",
+  "capture_basis": "Current main/tree, current PR heads and exact-head CI results through 16:35:53Z; XRP run 220; audio QC artifacts; Sellbird v0.5.0 source audit; primary-source corporate relationship research.",
   "archive": {
     "previous_handoff": "docs/handoffs/archive/BARROT_MISSION_HANDOFF_2026-11-27_RUN13.md",
     "previous_map": "research/operations/archive/nine_platform_operational_map_2026-11-27_run13.json"
@@ -43,9 +43,9 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "b42ed89b3ad6f23f9a79ebf1b026f3d5bf3b394a",
+        "head_sha": "0454127e1e9a6503e4b250915212c9571df84755",
         "head_ref": "integration/mission-handoff-refresh-20261125",
-        "commits_ahead": 199,
+        "commits_ahead": 200,
         "commits_behind": 0,
         "classification": "active_canonical_handoff_platform_map"
       },
@@ -159,12 +159,12 @@
       },
       {
         "number": 1713,
-        "title": "V3 governance: preserve evidence and Telegram draft",
+        "title": "Invalidate stale dual-agent validation and preserve acceptance evidence",
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1713",
         "state": "open",
         "draft": true,
-        "head_sha": "e57cd3f8a3a7f3a0e3f54a0c7f1a5d8f6e7c3a1b",
-        "head_ref": "integration/v3-governance-telegram-draft-20261126",
+        "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
+        "head_ref": "repair/dual-agent-state-invalidation",
         "commits_ahead": 11,
         "commits_behind": 0,
         "classification": "superseded_source_preserved_as_draft; Telegram additions intentionally excluded from #1714"
@@ -183,7 +183,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-27T16:17:15Z",
+      "observed_at_utc": "2026-11-27T16:35:53Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "recursive_tree_entries": 3164,
       "open_pull_request_count": 12,
@@ -380,7 +380,7 @@
       "external_scan": "NOT_PERFORMED",
       "dependency_and_money_audits": "Latest main and listed PR runs passed where recorded; not a complete external security audit."
     },
-    "last_reconciled_at_utc": "2026-11-27T16:17:15Z"
+    "last_reconciled_at_utc": "2026-11-27T16:35:53Z"
   },
   "mission_portfolio": {
     "schema_version": "barrot.mission-portfolio.v1",
@@ -638,18 +638,19 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "b42ed89b3ad6f23f9a79ebf1b026f3d5bf3b394a",
-      "ahead_of_current_main": 199,
+      "head_sha": "0454127e1e9a6503e4b250915212c9571df84755",
+      "ahead_of_current_main": 200,
       "behind_current_main": 0,
-      "full_suite": "4705 passed, 1 skipped, 11 warnings, 21 subtests",
-      "ci_run": 46031711753,
+      "full_suite": "4704 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage",
+      "ci_run": 46034113268,
       "dependency_audit": "success",
       "money_audit": "success",
       "conflict_audit": "success",
-      "gated_merge_run": 46031712028,
+      "gated_merge_run": 46034113105,
       "gated_merge": "FAILURE_STALE_BASE_CHECK",
       "independent_reviews": 0,
-      "classification": "active_canonical_handoff_pending_new_exact_head_validation"
+      "classification": "active_canonical_handoff_with_documentation_index_failure_under_correction",
+      "test_failure": "docs/INDEX.md omitted the new archived handoff; corrective index entry is in the current commit"
     },
     {
       "number": 1703,
@@ -753,11 +754,13 @@
   "repair_prs": [
     {
       "number": 1713,
-      "title": "V3 governance source with Telegram draft",
+      "title": "Invalidate stale dual-agent validation and preserve acceptance evidence",
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1713",
       "draft": true,
       "successor_pr": 1714,
-      "classification": "superseded_source_preserved_as_draft; Telegram additions intentionally excluded from #1714"
+      "classification": "superseded_source_preserved_as_draft; Telegram additions intentionally excluded from #1714",
+      "head_sha": "e57cd3054d872a63b54c6e8faf8b4bf9f64ccd84",
+      "branch": "repair/dual-agent-state-invalidation"
     },
     {
       "number": 1714,
@@ -831,21 +834,54 @@
   },
   "latest_integration_validation": {
     "pr_number": 1702,
-    "tested_head_sha": "b42ed89b3ad6f23f9a79ebf1b026f3d5bf3b394a",
+    "tested_head_sha": "0454127e1e9a6503e4b250915212c9571df84755",
     "full_suite": {
-      "run_id": 46031711753,
-      "conclusion": "success",
-      "passed": 4705,
-      "failed": 0,
+      "run_id": 46034113268,
+      "conclusion": "failure",
+      "passed": 4704,
+      "failed": 1,
       "skipped": 1,
       "warnings": 11,
-      "subtests": 21
+      "subtests": 21,
+      "coverage_percent": 74.21
+    },
+    "dependency_audit": {
+      "run_id": 46034113100,
+      "conclusion": "success"
+    },
+    "money_audit": {
+      "run_id": 46034113114,
+      "conclusion": "success"
+    },
+    "conflict_audit": {
+      "run_id": 46034113076,
+      "conclusion": "success"
     },
     "gated_merge": {
-      "run_id": 46031712028,
+      "run_id": 46034113105,
       "conclusion": "failure",
-      "reason": "Stale stored base SHA; actual ancestry 199 ahead / 0 behind."
-    }
+      "reason": "Legacy gate compares stale stored base SHA despite GitHub compare reporting 200 ahead / 0 behind."
+    },
+    "test_failure": {
+      "test": "tests/test_cross_domain_audit.py::test_all_links_resolve_or_are_documented",
+      "cause": "Archived handoff missing from docs/INDEX.md",
+      "corrective_action": "Add exact docs-relative path to docs/INDEX.md in this commit."
+    },
+    "previous_head_validation": {
+      "tested_head_sha": "b42ed89b3ad6f23f9a79ebf1b026f3d5bf3b394a",
+      "full_suite": {
+        "run_id": 46031711753,
+        "conclusion": "success",
+        "passed": 4705,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21
+      }
+    },
+    "independent_reviews": 0,
+    "branch_update_after_test": "Corrective docs-index commit pending exact-head full-suite and gate validation."
   },
   "latest_audio_full_song_qc": {
     "pr": 1704,
@@ -978,7 +1014,20 @@
     "security_scan": "NOT_PERFORMED",
     "legal_notes": [
       "AGPL-3.0-only; legal review required before copying code into Barrot or operating a modified network service."
-    ]
+    ],
+    "test_matrix": {
+      "run_id": 45576760134,
+      "conclusion": "success",
+      "matrix": [
+        "macOS Python 3.11",
+        "macOS Python 3.12",
+        "Windows Python 3.11",
+        "Windows Python 3.12",
+        "Ubuntu Python 3.11",
+        "Ubuntu Python 3.12"
+      ],
+      "android_termux": "NOT_TESTED"
+    }
   },
   "commercial_readiness_run66_4": {
     "scope": "Barrot technology and Barrot-related services only",
@@ -1020,22 +1069,60 @@
     "status": "MANIFEST_AND_SCHEDULER_VERIFIED; RUNTIME_PROMPT_FIX_BRANCH_ONLY_NOT_MERGED"
   },
   "latest_primary_source_research": {
-    "sbic": "Primary-source identity reconciliation separates SBIC East/Central/West regional entities from SBI Holdings; retain legal-entity distinctions and source provenance.",
-    "coinbase_circle_ripple_sbi": "Relationship research continues; distinguish corporate ownership, product distribution, custody, stablecoin issuance, payment rails, announcements and measured flows.",
-    "exact_phrases": {
-      "ask_coin": "UNRESOLVED",
-      "actual_capital": "UNRESOLVED_AS_SINGLE_VERIFIABLE_TOTAL",
-      "sbic_chatgpt": "EXACT_PHRASE_UNRESOLVED"
+    "sbic": {
+      "status": "RESOLVED_HIGH_CONFIDENCE",
+      "east": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), corporate number 9011001030621",
+      "central": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan)",
+      "west": "Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan)",
+      "legal_basis": "Act No. 101 of 1963, Article 2",
+      "distinction": "Three distinct regional statutory investment companies; not SBI Holdings subsidiaries. Historical SBI CAPITAL Co., Ltd. is a separate name collision; current status unresolved.",
+      "chatgpt": "SBIC East's 2025-06-12/13 investee-company training included ChatGPT and Copilot; educational use, not OpenAI partnership.",
+      "sources": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic-cj.co.jp/",
+        "https://www.sbic-wj.co.jp/",
+        "https://laws.e-gov.go.jp/law/338AC0000000101"
+      ]
     },
-    "youtube": "Kamilah/Camilla Stevenson identity is not legally established; retain channel-level attribution only and do not merge namesake channels."
+    "exact_phrases": {
+      "ask_coin": "Permission ASK token is the best-supported candidate; context identity unconfirmed; no XRP/SBI link.",
+      "actual_capital": "Unresolved; do not conflate with SBI deck's Actual XRP category.",
+      "sbic_chatgpt": "SBIC East educational training, not OpenAI partnership."
+    },
+    "corporate_relationships": {
+      "circle_coinbase_q3_2026": "Circle 10-Q reports $331.3M Q3 and $986.6M YTD distribution costs paid to Coinbase; derived shares of total distribution/transaction costs approximately 81.0% and 80.5%. Coinbase 10-Q says same-terms renewal and $22B average USDC held in Coinbase products.",
+      "sbi_circle_arc": "SBI subsidiary joined ARC token presale; SBI Group is a founding validator on Circle Arc. Arc is separate from XRPL.",
+      "ripple_bny": "BNY custody support for XRP and RLUSD; BNY primary RLUSD reserve custodian. Future mint/redeem and trade-finance plans subject to approval; no actual XRP balances disclosed.",
+      "coinbase_ripple_rlusd": "RLUSD Coinbase distribution across Prime/Exchange/app; XRPL/Base/Ethereum rails. Global Exchange collateral feature was future at launch.",
+      "circle_dbs": "Direct institutional USDC mint/redeem and 24/7 USD-USDC settlement.",
+      "circle_paribu": "Exploratory Arc MOU; not XRP.",
+      "sbi_smbc": "Exploratory stablecoin/tokenization alliance; not XRP.",
+      "sbi_jpysc": "Initial account-limited trust-type yen stablecoin; public-chain launch contingent on legal/tax clarification."
+    },
+    "counter_hypothesis": "These partnerships and stablecoin/custody rails do not by themselves prove XRP demand, XRP collateral, net XRPL flows, or realized throughput.",
+    "youtube": "Kamilah/Camilla identity and channel attribution remain distinct; channel attribution strong but not legally verified; inventory incomplete; namesake channels remain unmerged.",
+    "research_artifact": {
+      "path": "research/xrp_intelligence/20261127T161715Z-sbi-circle-coinbase-ripple-primary-source-network-update.json",
+      "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
+      "pr": 1705,
+      "head_sha": "b668ab72b3b91993b7391d9a55ce9123b9277781",
+      "relationship_records": 14,
+      "primary_source_records": 24,
+      "raw_bytes_retained": false,
+      "raw_receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT",
+      "model_eligible": false,
+      "ci_status": "PENDING"
+    }
   },
   "next_actions": [
-    "Review #1714 independently and obtain explicit authorization for its automatic Pages deployment side effect.",
-    "Run exact-head full suite and gate on the new #1702 handoff commit.",
+    "Run exact-head full suite and gate on the current corrective #1702 commit; the only prior full-suite failure was the docs index omission.",
+    "Review #1714 independently and obtain explicit authorization for its automatic Pages deployment side effect before any merge.",
     "Consolidate #1706/#1708/#1709 overlap without creating another fragmented PR.",
+    "Review the new #1705 primary-source relationship artifact after exact-head CI completes; preserve web-only provenance and keep it model-ineligible until raw receipts exist.",
     "Fix XRP event-to-receipt linkage and immutable raw retention/anchoring; then expand multi-horizon evaluation and resolve SEC/Morpho blockers.",
     "Listen to the full-song bundle, capture user acceptance, verify asset rights independently, and add native DAW project/interchange support.",
     "Implement authenticated cross-host continuity and safe key exchange.",
-    "Keep Sellbird uninstalled and outbound paused pending legal, technical, compliance, and explicit campaign approvals."
+    "Keep Sellbird uninstalled and outbound paused pending AGPL review, verified Barrot offer, mailbox/domain/compliance readiness, and explicit campaign approval."
   ]
 }

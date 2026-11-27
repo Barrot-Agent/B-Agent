@@ -129,3 +129,7 @@ Regenerate after adding a doc: python3 scripts/build_docs_index.py
 - docs/synthesis/cross-domain-audit.md - Cross-domain audit
 - docs/synthesis/cross-domain-convergence.md - Cross-domain synthesis and convergence
 - docs/synthesis/paradigm-cycle-01.md - Paradigm cycle 01: cross-analysis, bounded
+
+## docs/handoffs/archive
+
+- docs/handoffs/archive/BARROT_MISSION_HANDOFF_2026-11-27_RUN13.md - Archived prior Barrot mission handoff; retained for audit history.

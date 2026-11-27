@@ -1,9 +1,9 @@
 # Barrot mission handoff — latest
 
-Captured: 2026-11-27T16:17:15Z  
+Captured: 2026-11-27T16:35:53Z; primary-source research retrieved earlier in this run.  
 Repository: https://github.com/Barrot-Agent/B-Agent  
 Current main: `2151843140fd770b62ef93d06a78c559f9e73bbd`  
-Current handoff branch before this refresh: `b42ed89b3ad6f23f9a79ebf1b026f3d5bf3b394a`
+Current handoff branch before this corrective refresh: `0454127e1e9a6503e4b250915212c9571df84755`.
 
 The prior large handoff and operational map are preserved unchanged in:
 - [Previous handoff archive](docs/handoffs/archive/BARROT_MISSION_HANDOFF_2026-11-27_RUN13.md)
@@ -28,7 +28,7 @@ Revenue/customer acquisition is an immediate cross-mission objective, not a four
 
 | PR | Workstream | Current state |
 |---|---|---|
-| [#1702](https://github.com/Barrot-Agent/B-Agent/pull/1702) | Canonical handoff, nine-platform map, runtime prompt | Active; exact-head suite passed on `b42ed89`; legacy merge gate falsely blocks on stale stored base SHA; no independent review |
+| [#1702](https://github.com/Barrot-Agent/B-Agent/pull/1702) | Canonical handoff, nine-platform map, runtime prompt | Active; current head `0454127`; 4,704 passed, 1 failed, 1 skipped because the archived handoff was omitted from `docs/INDEX.md`; corrective index entry is in this commit; legacy merge gate still blocks on stale base; no independent review |
 | [#1703](https://github.com/Barrot-Agent/B-Agent/pull/1703) | Long-horizon project-state ledger | Active; 4,715 passed, 1 skipped; local continuity tested, cross-host sync unimplemented; no review |
 | [#1704](https://github.com/Barrot-Agent/B-Agent/pull/1704) | Audio SoundFont routing and full-song bundle | Active; 4,703 passed, 1 skipped; FluidSynth integration passed; no review |
 | [#1705](https://github.com/Barrot-Agent/B-Agent/pull/1705) | XRP/RLUSD research and source capture | Active; 4,727 passed, 1 skipped; dependency/money/conflict checks passed; legacy gate falsely blocks on stale base; no review |
@@ -50,7 +50,7 @@ No PR was merged or closed in this run. Do not bulk-close unique/unreviewed work
 - Dependency, money, and conflict-integrity checks passed.
 - Merge gate [46031712028](https://github.com/Barrot-Agent/B-Agent/actions/runs/46031712028) failed closed because the legacy gate compares the PR's stored base SHA with current main. GitHub ancestry comparison is 199 commits ahead / 0 behind; this is a stale-base gate defect, not evidence that the branch is behind.
 - #1714 contains the corrected ancestry gate and passed its own exact-head gate, but still has no independent review. Do not merge either PR without required review and authorization for the automatic Pages side effect.
-- This handoff refresh is a documentation/map/test-only commit. Its new commit still requires its own exact-head CI.
+- First refresh head `0454127e1e9a6503e4b250915212c9571df84755` ran full suite [46034113268](https://github.com/Barrot-Agent/B-Agent/actions/runs/46034113268): 4,704 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage. The sole failure was `tests/test_cross_domain_audit.py::test_all_links_resolve_or_are_documented`: the new archived handoff was not listed in `docs/INDEX.md`. Dependency audit [46034113100](https://github.com/Barrot-Agent/B-Agent/actions/runs/46034113100), money audit [46034113114](https://github.com/Barrot-Agent/B-Agent/actions/runs/46034113114), and conflict integrity [46034113076](https://github.com/Barrot-Agent/B-Agent/actions/runs/46034113076) passed. This corrective commit adds the missing index entry; its exact-head full suite is pending.
 
 ## Mission 1 — XRP intelligence and prediction-engine mastery
 
@@ -67,6 +67,22 @@ Main scheduled ingestion run [#220](https://github.com/Barrot-Agent/B-Agent/acti
 - Forecast status: **NOT_ISSUED**. No paper trade or real-money action.
 
 The next XRP implementation target is event-to-receipt linkage and durable raw-source retention/anchoring, followed by synchronized multi-horizon evaluation, SEC configuration, and Morpho block alignment. Do not issue a directional forecast while receipt linkage, historical point-in-time coverage, walk-forward completeness, and drift remain blocked.
+
+## Primary-source relationship update — branch-only research artifact
+
+A new evidence record was added to the existing XRP integration branch #1705: `research/xrp_intelligence/20261127T161715Z-sbi-circle-coinbase-ripple-primary-source-network-update.json` (14 relationship records, 24 primary-source/counterparty/SEC references). It is **research-only**, has no byte-exact raw receipts, and is not model-eligible. Its CI was pending at this handoff capture.
+
+Key findings:
+- **SBIC identity:** SBIC East is Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (corporate number 9011001030621); Central is Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; West is Osaka Small and Medium Business Investment & Consultation Co., Ltd. They are distinct regional statutory investment companies, not SBI Holdings subsidiaries. SBIC East's official June 12–13, 2025 investee-company training included ChatGPT and Copilot; that is training, not an OpenAI partnership.
+- **Circle–Coinbase economics:** Circle's Q3 2026 Form 10-Q reports $331.3M of Coinbase distribution costs in Q3 and $986.6M for the first nine months. Those amounts are approximately 81.0% and 80.5% of Circle's respective distribution-and-transaction-cost totals (derived ratios, not separately reported). Coinbase's Q3 2026 10-Q says its Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached $22B. This is a large USDC distribution relationship, not XRP demand.
+- **SBI–Circle–Arc:** SBI disclosed subsidiary participation in Circle's ARC token presale; Circle named SBI Group a founding Arc validator. Arc is Circle's separate EVM-compatible network, not XRPL. SBI's allocation and actual validator economics are undisclosed.
+- **Ripple–BNY:** BNY supports XRP and RLUSD custody and is identified as RLUSD's primary reserve custodian. Direct mint/redeem and tokenized trade-finance use cases were future plans subject to client/regulatory approvals; no XRP custody balance or utilization was disclosed.
+- **Coinbase–Ripple–RLUSD:** RLUSD launched across Coinbase Prime, Exchange and app with XRPL, Base and Ethereum deposits/withdrawals. Coinbase Global Exchange collateral functionality was described as future, not live at launch.
+- **Other rails:** Circle–DBS announced direct institutional USDC mint/redeem with 24/7 USD-USDC settlement; Circle–Paribu signed an exploratory Arc MOU; SBI–SMBC announced an exploratory stablecoin/tokenization alliance; SBI's JPYSC launch was initially account-limited. None establishes XRP settlement volume.
+- **Exact phrases:** ASK Coin's best-supported candidate remains Permission's ASK token, but context identity is unconfirmed and no XRP/SBI link is established. "Actual capital" remains unresolved and must not be conflated with SBI's "Actual XRP" category. "SBIC, ChatGPT SBIC" resolves to SBIC East educational training, not partnership.
+- **Kamilah/Camilla Stevenson:** person identity and channel attribution remain separate questions; the public channel attribution is strong but not legally verified, the video inventory is incomplete, and namesake channels remain unmerged.
+
+Counter-hypothesis retained: corporate investment, stablecoin distribution, custody support, exchange listing, and future tokenized-finance plans do not establish XRP demand, XRP collateral usage, net XRPL flows, or realized transaction throughput. The research artifact preserves counterparty corroboration and limitations; raw publisher bytes were not captured by the web retrieval path.
 
 ## Mission 2 — professional audio production
 
