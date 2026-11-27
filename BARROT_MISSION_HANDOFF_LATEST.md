@@ -1099,3 +1099,8 @@ Sellbird remains **source-audited only**: not installed, not authenticated, host
 4. Run a level-matched human listening review of the audio bundle, resolve the lead mono-fold-down issue, and produce a genuine editable DAW project before calling the audio path production-ready.
 5. Demonstrate cross-run state recovery and conflict/staleness handling across an authenticated handoff before claiming long-horizon continuity beyond local export/import.
 6. Keep Sellbird discovery and sending disabled until a verified Barrot offer, audience, message, mailbox/domain authentication, suppression, opt-out and user approval are all in place.
+
+
+### Post-update exact-head validation checkpoint — 2026-11-27 10:51 UTC
+
+The 10:31 handoff and platform-map refresh advanced the existing #1702 branch. On the preceding head `709c6a815bdc689094fab3766fbb3aa90d275fdb`, fresh CI started at 10:50 UTC: the full repository suite was queued; Tests, audit, pip-audit, merge-tree verification, Pages validation-only and merge readiness were still running. The earlier 4,704-pass result belongs to the previous pre-refresh head and must not be carried forward to either refreshed head. The platform map records this pending state. This final handoff update also advances #1702 and therefore requires its own exact-head checks. No merge is permitted while those checks are pending.
