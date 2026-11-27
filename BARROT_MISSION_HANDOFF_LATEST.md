@@ -176,7 +176,7 @@ All eight open PRs were compared against current main. None should be merged fro
 | #1710 | UNIQUE DEPENDENCY CHANGE / BLOCKED | PyYAML >=6.0.4 in legacy requirements; 1 ahead and 61 behind. |
 | #1711 | BLOCKED / COMPATIBILITY UNRESOLVED | NumPy upper bound changes to <3 while the same file's comment says Streamlit 1.35 requires <2. Do not merge until the Streamlit/NumPy compatibility constraint is resolved and tested. |
 
-PR #1715 was created as the current-main-based successor to #1702; no PR was merged in this run. PR #1715 changes only the handoff and nine-platform map. Its exact-head CI/security/merge-tree checks are pending. The push-triggered gated-merge check failed before the PR existed because it could not resolve an open PR for the branch; the pull_request-triggered gate is the relevant check. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
+PR #1715 was created as the current-main-based successor to #1702; current head 894a78e9b169f327ccc5e8ae5d5980b013320ddb is 4 commits ahead and 0 behind main. It changes only the handoff and nine-platform map. Exact-head CI, dependency audit, money audit, conflict-integrity and gated-merge checks are running; the earlier push-triggered gate failure is not the PR-event gate. The push-triggered gated-merge check failed before the PR existed because it could not resolve an open PR for the branch; the pull_request-triggered gate is the relevant check. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
 
 ## Next concrete actions
 
