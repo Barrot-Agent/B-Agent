@@ -1223,3 +1223,25 @@ The 10:31 handoff and platform-map refresh advanced the existing #1702 branch. O
 - **Next concrete work:** (1) repair event-to-receipt linkage on the existing #1705 branch without admitting unverified events; (2) run level-matched listening and improve mono translation on #1704, then produce a genuine DAW project; (3) test #1703 export/import across independently authenticated workspaces and conflict/replay cases; (4) obtain independent review and resolve the deployment authorization before any merge; (5) build the read-only Barrot provenance demo before any Sellbird prospect discovery. Keep one active integration PR per mission and do not create another audit-only branch.
 
 This checkpoint is appended to the existing #1702 handoff branch. The append creates a new branch head; all checks for the resulting head must be treated as pending until they run. No new PR, merge, deployment, secret change, external message, paper trade or real-money action was performed.
+
+
+## Dependency overlap and XRP event-receipt implementation correction — 2026-11-27 11:38 UTC
+
+### Dependency PR ancestry and overlap
+A path/compare audit of the six Dependabot PRs corrects the provisional classifications above:
+- **#1706** is 2 ahead / 6 behind main and changes `.github/workflows/xrp-public-ingestion.yml`, coverage/action-pin tests and XRP ingestion tests. Its patch updates **both** `actions/cache/restore` and `actions/cache/save` to the same v6.1.0 commit.
+- **#1708** is 1 ahead / 6 behind and changes only the cache-save hunk in `.github/workflows/xrp-public-ingestion.yml`. Its change is fully subsumed by #1706. Classify #1708 as **duplicate/superseded candidate by #1706**; preserve it until #1706 is updated, passes exact-head checks, is merged and its content is verified on main. Only then close #1708 with an explicit cross-reference.
+- **#1706 and #1709** both touch `tests/test_workflow_action_pins.py`, but the inspected patches change different entries (cache action pins versus Databricks CLI pin). They are distinct updates with shared-file integration risk; recheck the combined file before promotion.
+- **#1707** (setup-node), **#1709** (Databricks setup CLI), **#1710** (legacy PyYAML requirement) and **#1711** (Hugging Face Space NumPy requirement) are distinct dependency proposals. Their comparisons are respectively 1/6, 2/6, 1/6 and 1/6 ahead/behind; all are diverged from current main and remain **blocked pending reconciliation and exact-head validation**. Do not merge stale heads or bulk-close them.
+- Mission PRs #1702–#1705 share the CI/coverage files `.github/workflows/ci.yml`, `tests/test_ci_coverage_scope.py` and `tests/test_ci_mission_package_coverage.py`. Their mission-specific changes are distinct, but the shared paths require combined-diff review and fresh exact-head checks after any preceding merge. #1713/#1714 share V3 governance paths; #1714 is the clean governance successor, while #1713 retains separate Telegram functionality.
+
+### XRP event-to-receipt work is already implemented on #1705
+The 0/150 event receipt-link result on main run #211 is **not evidence that the #1705 implementation failed**. Main SHA `2151843…` predates the unmerged #1705 branch. Inspection of #1705 head `3f9e0e65e771fc2034c1fce82c6839d68a5a439d` confirms it already adds:
+- Curated first-party `EVENT_SOURCE_CAPTURE_SPECS` with allowlisted source URLs and required publisher markers.
+- Digest-only raw receipt capture and source-ID-based, point-in-time relinking into the event timeline.
+- Fail-closed handling for marker mismatch, future-dated receipts and tampered receipt IDs.
+- Tests in `tests/test_xrp_primary_event_source_capture.py` proving successful relinkage, digest-only status, no backdating, marker-mismatch quarantine and tamper rejection. Event discovery remains explicitly unimplemented; the capture is curated, not an unrestricted crawler. Event evidence remains research-only/model-ineligible.
+- Exact-head CI #7539, dependency #4956, Money #1100 and Conflict Integrity #824 passed on the inspected #1705 head. A successful live branch capture of the complete curated event set was not independently established in this checkpoint. After lawful promotion, the next mainline scheduled capture must prove receipt linkage; until then, main's 0/150 state remains the correct baseline.
+- Do not create another event-receipt branch or duplicate the implementation. Finish validation on the existing #1705 workstream and keep forecasts disabled.
+
+This correction supersedes the earlier provisional statement that #1708 was a unique dependency proposal and the earlier next-action wording that implied event-receipt linkage still needed to be implemented. The implementation exists on #1705; live branch/mainline execution evidence and governance promotion remain outstanding.
