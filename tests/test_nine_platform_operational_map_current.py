@@ -42,7 +42,7 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
         fragment in evidence
         for fragment in (
             "current main metadata and complete recursive tree",
-            "all twelve open PRs and shared diffs",
+            "all ten current open PRs and shared diffs",
             "exact-head CI/security/gate checks",
             "workflow logs and artifact manifests",
         )
@@ -113,7 +113,7 @@ def test_three_missions_remain_coequal_active_and_round_robin() -> None:
 def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     data = load_map()
     repository = data["repository"]
-    expected = {1702, 1703, 1704, 1705, 1706, 1707, 1708, 1709, 1710, 1711, 1713, 1714}
+    expected = {1702, 1703, 1704, 1705, 1706, 1707, 1708, 1709, 1710, 1711}
 
     assert repository["current_main_state"]["open_pull_request_count"] == len(expected)
     assert set(repository["current_main_state"]["open_pull_request_numbers"]) == expected
@@ -130,9 +130,12 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     successor = next(item for item in data["repair_prs"] if item["number"] == 1714)
     assert source["draft"] is True
     assert source["successor_pr"] == 1714
+    assert source["state"] == "closed" and source["merged"] is False
     assert source["classification"].startswith("superseded_source_preserved_as_draft")
     assert "Telegram additions intentionally excluded from #1714" in source["classification"]
     assert successor["draft"] is False
+    assert successor["state"] == "closed" and successor["merged"] is True
+    assert successor["merge_commit_sha"] == repository["main_sha"]
     assert successor["classification"].startswith("active_clean_v3_governance_successor")
     assert successor["checks"]["full_suite"]["conclusion"] == "success"
     assert successor["checks"]["gated_merge"]["conclusion"] == "success"
@@ -163,7 +166,7 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
 def test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence():
     data = load_map()
     xrp = data["latest_xrp_ingestion_observation"]
-    assert xrp["run_number"] == 220
+    assert xrp["run_number"] == 222
     assert xrp["forecast_status"] == "NOT_ISSUED"
     assert xrp["event_timeline"]["events"] == 150
     assert xrp["event_timeline"]["verified_receipt_links"] == 0

@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_capability_authentication_permission_data_flow_map",
-  "captured_at_utc": "2026-11-27T18:23:15Z",
-  "capture_basis": "Current main SHA and complete recursive tree; current 10-PR inventory and ancestry; exact-head CI for four active mission PRs; main CI and latest XRP ingestion run 222 with downloaded artifact/hash verification; audio QC artifacts independently inspected; continuity PR tests; Sellbird v0.5.0 source/license/configuration audit.",
+  "captured_at_utc": "2026-11-27T18:43:15Z",
+  "capture_basis": "Current main SHA and complete recursive tree; current 10-PR inventory and ancestry; exact-head CI for four active mission PRs; main CI and latest XRP ingestion run 222 with downloaded artifact/hash verification; audio QC artifacts independently inspected; continuity PR tests; Sellbird v0.5.0 source/license/configuration audit. Correction pass: the first checkpoint commit's exact-head full suite exposed two stale assertions in the operational-map test (old 12-PR inventory and run 220); this commit updates the test to the observed 10 open PRs, closed/merged repair PRs, and run 222.",
   "archive": {
     "previous_handoff": "docs/handoffs/archive/BARROT_MISSION_HANDOFF_2026-11-27_RUN13.md",
     "previous_map": "research/operations/archive/nine_platform_operational_map_2026-11-27_run13.json"
@@ -43,9 +43,9 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "c55e35203bab58705ba3c70f41a519aeb42611b7",
+        "head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
         "head_ref": "integration/mission-handoff-refresh-20261125",
-        "commits_ahead": 204,
+        "commits_ahead": 205,
         "commits_behind": 0,
         "classification": "active_canonical_handoff_platform_map"
       },
@@ -159,7 +159,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-27T18:23:15Z",
+      "observed_at_utc": "2026-11-27T18:43:15Z",
       "sha": "1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a",
       "recursive_tree_entries": 3164,
       "open_pull_request_count": 10,
@@ -417,16 +417,16 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Inspected current main metadata and complete recursive tree; all twelve open PRs and shared diffs; exact-head CI/security/gate checks; workflow logs and artifact manifests. Existing integration branch write tested. No external model data transfer occurred.",
-        "last_verified_at_utc": "2026-11-27T16:17:15Z",
-        "last_verified_main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd"
+        "evidence": "Inspected current main metadata and complete recursive tree; all ten current open PRs and shared diffs; exact-head CI/security/gate checks; workflow logs and artifact manifests. Updated the existing handoff and platform-map branch. No external model data transfer occurred.",
+        "last_verified_at_utc": "2026-11-27T18:43:15Z",
+        "last_verified_main_sha": "1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a"
       },
       "permissions": {
         "status": "OBSERVED_ACTIONS_RECORDED",
         "verified": true,
         "observed_actions": [
-          "Read current main metadata, complete recursive tree, all twelve open PRs and shared diffs, CI logs and artifacts",
-          "Write existing handoff and platform-map files on integration/mission-handoff-refresh-20261125"
+          "Read current main metadata, complete recursive tree, ten current open PRs, shared diffs, CI logs and artifacts",
+          "Write existing handoff, platform-map and regression-test files on integration/mission-handoff-refresh-20261125"
         ],
         "not_used": [
           "Merge to main",
@@ -643,20 +643,33 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "c55e35203bab58705ba3c70f41a519aeb42611b7",
-      "ahead_of_current_main": 204,
+      "head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
+      "ahead_of_current_main": 205,
       "behind_current_main": 0,
-      "full_suite": "SUCCESS; exact-head run 46043661432 (test count not extracted in this checkpoint)",
-      "ci_run": 46043661432,
+      "full_suite": {
+        "run_id": 46050848508,
+        "conclusion": "failure",
+        "passed": 4705,
+        "failed": 2,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.24
+      },
+      "ci_run": 46050848508,
       "required_checks": {
         "audit": "success",
         "pip_audit": "success",
         "merge_tree": "success",
-        "merge_readiness": "success"
+        "pages_validation": "success",
+        "money_audit": "success",
+        "conflict_integrity": "success",
+        "merge_readiness": "failure_due_to_full_suite"
       },
       "independent_reviews": 0,
-      "classification": "active_canonical_handoff_blocked_on_independent_review_branch_protection_visibility_and_pages_authorization",
-      "head_sha_note": "This checkpoint commit advances the same branch; fetch PR metadata for the post-commit head."
+      "classification": "active_canonical_handoff_with_two_stale_map_test_assertions_under_correction",
+      "head_sha_note": "This correction commit advances the same branch; fresh exact-head CI is required.",
+      "test_failure": "Operational-map tests expected 12 open PRs and XRP run 220; observed repository has 10 open PRs because #1713 is closed and #1714 merged, and latest XRP run is 222."
     },
     {
       "number": 1703,
@@ -797,7 +810,7 @@
       "merged": false,
       "draft": true,
       "successor_pr": 1714,
-      "classification": "closed_superseded_source; Telegram additions intentionally excluded from #1714"
+      "classification": "superseded_source_preserved_as_draft_then_closed; Telegram additions intentionally excluded from #1714"
     },
     {
       "number": 1714,
@@ -805,19 +818,25 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1714",
       "state": "closed",
       "merged": true,
+      "draft": false,
       "merged_at": "2026-11-27T17:03:43Z",
       "merge_commit_sha": "1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a",
-      "classification": "merged_and_verified_on_main",
+      "classification": "active_clean_v3_governance_successor_merged_and_verified_on_main",
       "review_count": 0,
       "checks": {
         "full_suite": {
           "run_id": 46038774085,
           "conclusion": "success",
           "passed": 4697,
+          "failed": 0,
           "skipped": 1,
           "warnings": 11,
           "subtests": 21,
           "coverage_percent": 74.24
+        },
+        "gated_merge": {
+          "run_id": 46066586785,
+          "conclusion": "success"
         },
         "dependency_audit": {
           "run_id": 46038774188,
@@ -884,25 +903,33 @@
   },
   "latest_integration_validation": {
     "pr_number": 1702,
-    "tested_head_sha": "c55e35203bab58705ba3c70f41a519aeb42611b7",
+    "tested_head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
     "full_suite": {
-      "run_id": 46043661432,
-      "conclusion": "success",
-      "test_count": "NOT_EXTRACTED_FROM_JOB_LOG"
+      "run_id": 46050848508,
+      "conclusion": "failure",
+      "passed": 4705,
+      "failed": 2,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.24
     },
     "required_checks": {
       "audit": "success",
       "pip_audit": "success",
       "merge_tree": "success",
-      "merge_readiness": "success"
+      "pages_validation": "success",
+      "money_audit": "success",
+      "conflict_integrity": "success",
+      "merge_readiness": "failure_due_to_full_suite"
     },
     "independent_reviews": 0,
-    "branch_update_after_test": "This checkpoint is a new commit on the existing PR branch; exact-head CI must complete again before the new head is considered verified.",
-    "merge_blockers": [
-      "No independent reviews recorded on #1702-#1705.",
-      "Detailed branch-protection endpoint returns HTTP 403; required approval count is unknown.",
-      "Main merges trigger automatic GitHub Pages deployment; explicit authorization for another deployment is absent."
-    ]
+    "test_failure": [
+      "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams expected 12 open PRs; actual open inventory is #1702-#1711 (10). #1713 is closed and #1714 is merged.",
+      "tests/test_nine_platform_operational_map_current.py::test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence expected XRP run 220; latest successful main ingestion is run 222."
+    ],
+    "corrective_action": "Update the existing regression test to match the verified current PR states and XRP run 222; no production code changed.",
+    "branch_update_after_test": "The correction commit advances the existing #1702 branch. Fresh exact-head full-suite and gate results are pending."
   },
   "latest_audio_full_song_qc": {
     "pr": 1704,
@@ -1156,7 +1183,7 @@
     }
   },
   "next_actions": [
-    "Run exact-head full suite and required gates for the new #1702 checkpoint commit; do not treat the prior head's green CI as verification of this commit.",
+    "Run exact-head full-suite and required gates for this correction commit. The preceding head failed only two stale operational-map assertions; do not treat the corrected commit as verified until its own checks finish.",
     "Obtain independent review and explicit authorization for the automatic GitHub Pages deployment side effect before any mission PR is merged.",
     "For XRP, resolve event-to-receipt linkage and raw-source evidence limitations, expand beyond the 12 curated pages, repair SEC EDGAR configuration and Morpho block alignment, and keep forecasts disabled until chronological out-of-sample gates pass.",
     "For audio, retain #1704; inspect/listen to the full-song bundle in a DAW, record user acceptance, independently review sample/SoundFont rights, and implement a tested DAW project or interchange path.",
@@ -1164,5 +1191,5 @@
     "Reconcile stale dependency PRs #1706-#1711; consolidate #1706/#1708/#1709 overlap and preserve the NumPy<2 Streamlit Space constraint.",
     "Keep Sellbird uninstalled and outbound paused until AGPL review, a verified Barrot offer, mailbox/domain/compliance readiness, and explicit campaign/audience/message/sending approval."
   ],
-  "last_reconciled_at_utc": "2026-11-27T18:23:15Z"
+  "last_reconciled_at_utc": "2026-11-27T18:43:15Z"
 }

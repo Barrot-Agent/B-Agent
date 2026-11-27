@@ -1,3 +1,18 @@
+# Correction checkpoint — 2026-11-27 18:43 UTC
+
+The first exact-head run of the 18:23 handoff/map commit exposed **two stale assertions in the operational-map regression test**, not production-code failures. The failure was diagnosed from the full-suite job log and is being corrected on the same existing #1702 branch.
+
+- Tested head: `489d263c64c1dcbef1d39acd2902386cd446acfd`.
+- [Full repository test suite #46050848508](https://github.com/Barrot-Agent/B-Agent/actions/runs/46050848508): **4,705 passed, 2 failed, 1 skipped, 11 warnings, 21 subtests; 74.24% coverage**.
+- The two failures were in `tests/test_nine_platform_operational_map_current.py`: it still expected 12 open PRs and XRP ingestion run 220. The verified current repository has **10 open PRs (#1702–#1711)**; #1713 is closed and #1714 is merged. The latest successful main XRP ingestion is **run 222**.
+- Audit, pip-audit, merge-tree verification, Pages build validation, money audit and conflict-integrity checks passed on the failed head. Merge readiness failed because the full suite failed.
+- Corrective change: update the existing regression test and map snapshot to reflect the observed repository state. No production code, mission code, XRP logic, audio logic, continuity implementation, or main-branch file changed.
+- The correction is a single commit on the existing #1702 branch; no new branch or PR. The new head's full suite and merge-readiness result are pending. Do not treat the prior green #1702 head or the failed intermediate head as verification of the correction commit.
+
+Main remains `1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a`. No merge or deployment was performed. The 18:23 operational checkpoint and its evidence are preserved immediately below.
+
+---
+
 # Operational checkpoint — 2026-11-27 18:23 UTC
 
 This checkpoint supersedes earlier operational facts only where stated. Historical evidence remains preserved below. It is recorded on the existing #1702 handoff/platform-map branch; no new branch or PR was created.
