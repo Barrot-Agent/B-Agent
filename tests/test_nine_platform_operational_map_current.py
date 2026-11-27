@@ -140,7 +140,7 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
 
     assert repository["security_posture"]["alert_counts"] == "UNKNOWN_NOT_ZERO"
     latest_observation = data["latest_xrp_ingestion_observation"]
-    latest_ingestion = repository["current_main_state"]["latest_xrp_ingestion_run"]
+    latest_ingestion = repository["latest_xrp_ingestion"]
     assert latest_observation["run_number"] == latest_ingestion["run_number"]
     assert latest_observation["run_id"] == latest_ingestion["run_id"]
     assert latest_observation["run_number"] > 0
@@ -163,11 +163,11 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
 def test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence():
     data = load_map()
     xrp = data["latest_xrp_ingestion_observation"]
-    assert xrp["run_number"] == 212
+    assert xrp["run_number"] == 219
     assert xrp["forecast_status"] == "NOT_ISSUED"
     assert xrp["event_timeline"]["events"] == 150
     assert xrp["event_timeline"]["verified_receipt_links"] == 0
-    assert xrp["evaluation"]["walk_forward_rows"] == 616
+    assert xrp["evaluation"]["walk_forward_rows"] == 628
     assert xrp["evaluation"]["horizons"] == ["1h"]
 
     audio = data["latest_audio_full_song_qc"]
