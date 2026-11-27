@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
@@ -39,8 +40,14 @@ from tests.v3_test_harness import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-ARTIFACT_DIR = REPO_ROOT / ".barrot" / "collaboration_records" / "v3_acceptance_matrix"
-SUMMARY_PATH = REPO_ROOT / ".barrot" / "collaboration_records" / "barrot_v3_acceptance_matrix.json"
+ACCEPTANCE_ROOT = Path(
+    os.environ.get(
+        "BARROT_ACCEPTANCE_ROOT",
+        str(REPO_ROOT / ".barrot" / "collaboration_records" / "v3_acceptance_matrix" / "runs"),
+    )
+).expanduser()
+ARTIFACT_DIR = ACCEPTANCE_ROOT
+SUMMARY_PATH = ARTIFACT_DIR / "barrot_v3_acceptance_matrix.json"
 STATUS_LEVELS = {
     "NOT_VERIFIED": 0,
     "DESIGNED — NOT EXECUTED": 1,
@@ -122,9 +129,18 @@ def record_case(
 
 
 def test_v3_acceptance_matrix(tmp_path: Path) -> None:
-    ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
-    for path in ARTIFACT_DIR.glob("case-*.json"):
-        path.unlink()
+    global ARTIFACT_DIR, SUMMARY_PATH
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    run_label = "".join(
+        char if char.isalnum() or char in "._-" else "_"
+        for char in os.environ.get("BARROT_ACCEPTANCE_RUN_ID", "")
+    ).strip("._-")
+    run_name = f"{timestamp}-{run_label}" if run_label else timestamp
+    ARTIFACT_DIR = ACCEPTANCE_ROOT / run_name
+    SUMMARY_PATH = ARTIFACT_DIR / "barrot_v3_acceptance_matrix.json"
+    # Each execution gets a new directory. Earlier acceptance evidence is
+    # immutable and is never removed or overwritten by a later run.
+    ARTIFACT_DIR.mkdir(parents=True, exist_ok=False)
     records: list[dict[str, object]] = []
 
     records.append(
