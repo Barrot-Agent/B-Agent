@@ -6166,7 +6166,7 @@ class _VisibleHTMLTextParser(HTMLParser):
 
 def _normalize_event_marker_text(value: str) -> str:
     normalized = unicodedata.normalize("NFKC", value)
-    return re.sub(r"\\s+", " ", normalized).strip().casefold()
+    return re.sub(r"\s+", " ", normalized).strip().casefold()
 
 
 def _normalized_event_source_html_text(raw_bytes: bytes) -> str:
