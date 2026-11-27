@@ -1460,7 +1460,9 @@ def test_run60_evidence_keeps_unreceipted_observations_and_identity_candidates_q
             / "kamilah_stevenson_channel.json"
         ).read_text(encoding="utf-8")
     )
-    assert profile["video_inventory_status"]["verified_inventory_count"] == 0
+    assert profile["video_inventory_status"]["verified_inventory_count"] == 2
+    assert len(profile["verified_channel_videos"]) == 2
+    assert all(not video["eligible_for_forecast_feature"] for video in profile["verified_channel_videos"])
     assert all(
         video["eligible_for_forecast_feature"] is False
         for video in profile["seed_videos"]

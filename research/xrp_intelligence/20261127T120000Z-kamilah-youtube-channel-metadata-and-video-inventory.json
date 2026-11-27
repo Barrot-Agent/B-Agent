@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "kamilah-stevenson-youtube-channel-metadata-inventory-20261127T120000Z",
+  "artifact_type": "partial_public_youtube_channel_metadata_and_video_inventory",
+  "captured_at_utc": "2026-11-27T12:00:00Z",
+  "identity_resolution": {
+    "person_name": "Dr. Kamilah Stevenson",
+    "person_identity_status": "CONFIRMED_BY_PRIOR_FIRST_PARTY_BIO_AND_PUBLIC_INTERVIEW",
+    "channel_display_name": "Kamilah Stevenson",
+    "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "channel_handle": "@drkamilahstevenson",
+    "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+    "handle_url": "https://www.youtube.com/@drkamilahstevenson",
+    "channel_metadata_status": "FIRST_PARTY_YOUTUBE_CHANNEL_PAGE_SHOWS_ID_HANDLE_AND_DISPLAY_NAME",
+    "person_channel_association_status": "STRONG_NOT_LEGAL_IDENTITY_VERIFIED",
+    "legal_identity_verified": false,
+    "evidence": [
+      "The YouTube channel page itself renders the canonical channel URL, the handle @drkamilahstevenson and the display name Kamilah Stevenson together.",
+      "The channel page links to go.prescribewealth.com/yt-bio; that redirect was not accessible during this capture, so its destination was not independently verified.",
+      "The first-party Kamilah Stevenson website and the iHeart interview support the person identity; the interview transcript uses a Camila/Camilla spelling variant and warns about fake pages.",
+      "Two first-party YouTube video results list Kamilah Stevenson as author and expose exact video IDs and publication dates."
+    ],
+    "caveats": [
+      "The channel page verifies platform metadata, not the operator's civil/legal identity.",
+      "No YouTube verification badge or reciprocal link from the first-party website to the exact channel was captured.",
+      "The two individual video results do not expose a channel ID; attribution is based on the YouTube author byline matching the self-identifying channel display name.",
+      "Do not merge other Camilla/Kamilah near-name accounts or third-party clips."
+    ]
+  },
+  "source_registry": [
+    {
+      "id": "youtube_channel_page",
+      "publisher": "YouTube",
+      "source_independence_group": "youtube_platform",
+      "url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "source_type": "first-party public channel page",
+      "retrieved_at_utc": "2026-11-27T12:00:00Z",
+      "observed_display_name": "Kamilah Stevenson",
+      "observed_handle": "@drkamilahstevenson",
+      "observed_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "displayed_subscribers_label": "142K",
+      "displayed_video_count_label": "1.2K",
+      "crawl_age_label": "last month",
+      "raw_bytes_captured": false,
+      "direct_open_status": "CONTENT_TOO_LARGE",
+      "capture_method": "YouTube channel page indexed result"
+    },
+    {
+      "id": "youtube_video_vRlw4BV-cGE",
+      "publisher": "YouTube",
+      "source_independence_group": "youtube_platform",
+      "url": "https://www.youtube.com/watch?v=vRlw4BV-cGE",
+      "source_type": "first-party video search result",
+      "retrieved_at_utc": "2026-11-27T12:00:00Z",
+      "author_as_displayed": "Kamilah Stevenson",
+      "published_at": "2026-10-20",
+      "views": 29824,
+      "likes": 1100,
+      "raw_bytes_captured": false,
+      "crawl_age_label": "last month"
+    },
+    {
+      "id": "youtube_video_dAKrq3c9hts",
+      "publisher": "YouTube",
+      "source_independence_group": "youtube_platform",
+      "url": "https://www.youtube.com/watch?v=dAKrq3c9hts",
+      "source_type": "first-party video search result",
+      "retrieved_at_utc": "2026-11-27T12:00:00Z",
+      "author_as_displayed": "Kamilah Stevenson",
+      "published_at": "2026-08-23",
+      "views": 24868,
+      "likes": 1400,
+      "raw_bytes_captured": false,
+      "crawl_age_label": "two months"
+    },
+    {
+      "id": "kamilah_first_party_site",
+      "publisher": "Kamilah Stevenson branded website",
+      "source_independence_group": "creator_first_party_site",
+      "url": "https://www.kamilahstevenson.com/",
+      "source_type": "first-party identity/brand site",
+      "retrieved_at_utc": "2026-11-27T12:00:00Z",
+      "raw_bytes_captured": false,
+      "role": "supports person identity; no reciprocal link to exact YouTube channel captured"
+    },
+    {
+      "id": "iheart_kamilah_interview",
+      "publisher": "iHeart / The XRP Podcast with Paul Barron",
+      "source_independence_group": "independent_podcast_publisher",
+      "url": "https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/",
+      "source_type": "public podcast page and auto-generated transcript",
+      "retrieved_at_utc": "2026-11-27T12:00:00Z",
+      "published_at": "2026-06-11",
+      "raw_bytes_captured": false,
+      "role": "person self-identification context; transcript spelling is Camila/Camilla"
+    }
+  ],
+  "verified_channel_videos": [
+    {
+      "video_id": "vRlw4BV-cGE",
+      "title": "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+      "canonical_url": "https://www.youtube.com/watch?v=vRlw4BV-cGE",
+      "published_at": "2026-10-20",
+      "duration_label": "12:58",
+      "duration_seconds": 778,
+      "author_as_displayed": "Kamilah Stevenson",
+      "publisher": "YouTube",
+      "attribution_status": "YOUTUBE_FIRST_PARTY_AUTHOR_BYLINE_MATCHED_TO_SELF_IDENTIFYING_CHANNEL",
+      "channel_id": null,
+      "channel_id_exposed_on_video_result": false,
+      "views_at_indexed_capture": 29824,
+      "likes_at_indexed_capture": 1100,
+      "channel_followers_at_indexed_capture": 142000,
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "creator_claims_summary": "Description claims Standard Chartered provides institutional custody for RLUSD on XRPL and describes a planned Ripple/LMAX collateral collaboration; creator-reported claims require primary-source corroboration.",
+      "claims_admissible_as_market_facts": false,
+      "eligible_for_forecast_feature": false,
+      "retrieval_note": "YouTube search result; indexed crawl age last month; counts are dynamic."
+    },
+    {
+      "video_id": "dAKrq3c9hts",
+      "title": "SWIFT Built Its Own Blockchain. It Still Can't Do XRP's Job",
+      "canonical_url": "https://www.youtube.com/watch?v=dAKrq3c9hts",
+      "published_at": "2026-08-23",
+      "duration_label": null,
+      "duration_seconds": null,
+      "author_as_displayed": "Kamilah Stevenson",
+      "publisher": "YouTube",
+      "attribution_status": "YOUTUBE_FIRST_PARTY_AUTHOR_BYLINE_MATCHED_TO_SELF_IDENTIFYING_CHANNEL",
+      "channel_id": null,
+      "channel_id_exposed_on_video_result": false,
+      "views_at_indexed_capture": 24868,
+      "likes_at_indexed_capture": 1400,
+      "channel_followers_at_indexed_capture": 139000,
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "creator_claims_summary": "Description argues SWIFT's shared ledger uses tokenized bank deposits rather than XRP and frames cross-currency liquidity as a separate bridge-asset problem; creator commentary, not independent evidence.",
+      "claims_admissible_as_market_facts": false,
+      "eligible_for_forecast_feature": false,
+      "retrieval_note": "YouTube search result; indexed crawl age two months; counts are dynamic."
+    }
+  ],
+  "channel_page_listing_snapshot": {
+    "source_id": "youtube_channel_page",
+    "reported_channel_video_count_label": "1.2K",
+    "reported_subscriber_count_label": "142K",
+    "recent_public_listing_count": 12,
+    "popular_public_listing_count": 12,
+    "public_live_stream_listing_count": 12,
+    "public_shorts_listing_count": 20,
+    "members_only_excluded_count": 12,
+    "members_only_included": false,
+    "visible_listing_slots": 56,
+    "unique_video_count": null,
+    "deduplication_status": "NOT_POSSIBLE_WITHOUT_VIDEO_IDS",
+    "crawl_age": "last month",
+    "recent_public_titles": [
+      "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+      "This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)",
+      "Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)",
+      "XRP vs Banks: Why Your Money Needs Autonomy NOW",
+      "Did SWIFT Just Change XRP Forever? (The Truth)",
+      "BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.",
+      "A $119 Billion African Bank Just Put Its License Behind XRP",
+      "A New XRP Tool Can Buy and Sell for You",
+      "Invest NOW or Get Left Behind. Institutions Are Already Moving.",
+      "The CFTC Just Said What XRP Holders Waited Years to Hear",
+      "Wall Street Just Got a Company Built to Keep BUYING XRP",
+      "XRP Ledger Technology Just Reached Europe's Central Bank"
+    ],
+    "note": "Visible listing slots overlap and most lack IDs. 56 is not a unique-video count or an exhaustive inventory; members-only videos are excluded."
+  },
+  "prior_seed_references": {
+    "count": 21,
+    "status": "CANDIDATE_ONLY_NOT_PROMOTED",
+    "reason": "The new channel-page evidence does not independently verify author/channel provenance for these older video IDs."
+  },
+  "source_independence": {
+    "youtube_channel_and_video_results": "Same YouTube publisher; not independent sources from each other.",
+    "branded_site": "Separate first-party person/brand evidence; no reciprocal exact-channel link captured.",
+    "iheart": "Independent podcast publisher; transcript is auto-generated and spelling is uncertain."
+  },
+  "prediction_and_market_use": {
+    "market_feature_admission": false,
+    "directional_forecast_issued": false,
+    "reason": "Creator metadata and opinions are not ground-truth market data. Claims about banks, XRP, custody, liquidity or policy require independent primary-source verification."
+  },
+  "provenance": {
+    "raw_http_bytes_captured": false,
+    "source_sha256_receipts": false,
+    "independent_timestamp_anchor": false,
+    "retrieval_timestamp_utc": "2026-11-27T12:00:00Z",
+    "no_automated_platform_api_or_authenticated_youtube_connection_claimed": true
+  }
+}
