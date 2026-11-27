@@ -15,7 +15,7 @@ def load():
     return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
-def test_person_identity_is_confirmed_but_channel_handle_remains_probable():
+def test_historical_person_channel_association_record_remains_probable_as_of_its_capture():
     identity = load()["identity_resolution"]
     assert identity["person_identity_status"] == "CONFIRMED"
     assert identity["candidate_youtube_channel"]["handle"] == "@drkamilahstevenson"
@@ -133,7 +133,7 @@ def test_all_web_research_remains_model_ineligible_and_no_forecast_is_issued():
     assert len(load()["next_actions"]) >= 5
 
 
-def test_main_creator_source_profile_uses_probable_channel_candidates_without_claiming_verification():
+def test_main_creator_source_profile_uses_platform_metadata_and_keeps_older_candidates_quarantined():
     profile_path = (
         ROOT
         / "data"
@@ -146,20 +146,22 @@ def test_main_creator_source_profile_uses_probable_channel_candidates_without_cl
     inventory = profile["video_inventory_status"]
 
     assert creator["person_identity_status"] == "CONFIRMED"
-    assert creator["channel_identity_status"] == "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED"
+    assert creator["channel_identity_status"] == "PLATFORM_METADATA_VERIFIED_SELF_IDENTIFIED_CHANNEL"
     assert creator["youtube_channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
-    assert creator["youtube_handle_candidate"] == "@drkamilahstevenson"
-    assert creator["handle_channel_id_relation"] == "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
+    assert creator["youtube_handle"] == "@drkamilahstevenson"
+    assert creator["handle_channel_id_relation"] == "VERIFIED_BY_YOUTUBE_CHANNEL_PAGE"
+    assert creator["person_channel_association_status"] == "STRONG_NOT_LEGAL_IDENTITY_VERIFIED"
+    assert creator["legal_identity_verified"] is False
     seed_videos = profile["seed_videos"]
     seed_ids = [item["video_id"] for item in seed_videos]
-    assert inventory["indexed_seed_video_count"] == len(seed_videos)
+    assert inventory["indexed_seed_video_count"] == len(seed_videos) == 21
     assert inventory["candidate_reference_count"] == len(seed_videos)
     assert len(seed_ids) == len(set(seed_ids))
-    assert len(seed_ids) == inventory["indexed_seed_video_count"]
     assert inventory["person_identity_verified"] is True
-    assert inventory["canonical_channel_verified"] is False
+    assert inventory["canonical_channel_verified"] is True
+    assert inventory["verified_inventory_count"] == 2
     assert inventory["completeness_verified"] is False
-    own_ids = set(seed_ids)
-    assert "Sulo54IlQ60" not in own_ids
-    assert "5DzBk8DfoLs" not in own_ids
+    assert len(profile["verified_channel_videos"]) == 2
+    assert "Sulo54IlQ60" not in seed_ids
+    assert "5DzBk8DfoLs" not in seed_ids
     assert len(profile["related_public_video_references"]) == 2
