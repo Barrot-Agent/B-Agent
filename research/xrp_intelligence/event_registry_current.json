@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run224-20261126-ripple-holdings-primary-capture",
-  "captured_at_utc": "2026-11-26T20:17:00Z",
-  "source_receipt_status": "152 of 152 curated events have null raw_source_sha256; exact external publisher response bytes have not been retained in the curated registry. 59 events have exact publisher timestamps; 93 lack an exact publisher timestamp. A separate digest-only receipt capture is pending for the new Ripple holdings page; all events remain research-only and model-ineligible.",
+  "registry_version": "run225-20261127-multichain-institutional-custody-refresh",
+  "captured_at_utc": "2026-11-27T04:21:36.418Z",
+  "source_receipt_status": "159 of 159 curated events have null raw_source_sha256; original publisher response bytes have not been retained in this registry. The separate latest mainline receipt chain contains 37 receipts (21 raw payloads, 16 digest-only), but event-to-receipt linkage remains incomplete; the latest mainline timeline reported 0 verified receipt links for 150 events. 59 events have exact publisher timestamps; 100 lack an exact publisher timestamp. All events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -7074,6 +7074,422 @@
         "supply",
         "December-2026"
       ]
+    },
+    {
+      "event_id": "ripple-treasury-always-on-platform-2026-10-26",
+      "event_type": "product_launch",
+      "event_name": "Ripple Treasury introduces an always-on corporate treasury platform",
+      "hypothesis_id": "ripple-treasury-growth-may-expand-stablecoin-and-tokenized-fund-rails",
+      "domain": "institutional_payments_and_treasury",
+      "hypothesis": "Ripple is expanding beyond cross-border payments into corporate treasury orchestration, stablecoin liquidity and tokenized money-market products.",
+      "counter_hypothesis": "The release is issuer-reported; it does not establish product-level volumes, customer adoption, XRP usage or material XRP demand.",
+      "claim": "Ripple's October 26, 2026 release describes an always-on CFO treasury platform connecting cash management, forecasting, liquidity and payments. Ripple says its 24/7 Returns feature lets customers put idle operating cash to work outside banking hours through RLUSD, tokenized money-market funds on XRPL and Ripple institutional liquidity infrastructure, and reports more than 1,000 customers across 160 countries. The release does not state that XRP is the settlement asset for this product or disclose XRP purchases, flows or balances.",
+      "source_id": "ripple_treasury_platform_release_20261026",
+      "source_name": "Ripple official press release",
+      "source_url": "https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/",
+      "independence_group": "ripple",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-26T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Customer and product metrics are treated as Ripple-reported claims, not independently audited results.",
+        "Tokenized money-market funds on XRPL are not assumed to require XRP as the settlement asset."
+      ],
+      "falsification_conditions": [
+        "Independent customer disclosures or transaction data establish material XRP settlement flows.",
+        "Ripple corrects or revises the stated customer count, product description or supported assets."
+      ],
+      "related_entities": [
+        "Ripple",
+        "Ripple Treasury",
+        "RLUSD",
+        "XRP Ledger",
+        "XRP",
+        "American Airlines",
+        "Trax"
+      ],
+      "tags": [
+        "Ripple",
+        "treasury",
+        "RLUSD",
+        "XRPL",
+        "tokenized-money-market-funds",
+        "issuer-claim",
+        "not-direct-XRP-demand"
+      ],
+      "source_date": "2026-10-26",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/",
+        "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "ripple-national-trust-bank-effective-2026-10-26",
+      "event_type": "regulatory",
+      "event_name": "Ripple National Trust Bank application becomes consummated/effective",
+      "hypothesis_id": "ripple-regulated-custody-and-stablecoin-reserve-capability-expansion",
+      "domain": "regulation_and_custody",
+      "hypothesis": "Ripple's national trust-bank authorization expands its regulated trust/custody and stablecoin-reserve infrastructure.",
+      "counter_hypothesis": "A trust-bank charter is not equivalent to a full-service deposit-taking bank; it does not by itself establish retail deposits, FDIC-insured accounts, XRP custody balances or XRP demand.",
+      "claim": "The OCC Corporate Applications Search record for control number 2025-Charter-342347 identifies the proposed Ripple National Trust Bank as a national trust bank. It records preliminary approval on 2025-12-12 and Consummated/Effective on 2026-10-26. The OCC record is the regulatory source; Ripple's October 28 release separately described final OCC approval.",
+      "source_id": "occ_ripple_national_trust_bank_cas_20261026",
+      "source_name": "Office of the Comptroller of the Currency Corporate Applications Search",
+      "source_url": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+      "independence_group": "occ_regulator",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-26T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The OCC CAS filing status is interpreted as the regulator's public status record.",
+        "The bank is described as a trust bank, not a full-service retail bank."
+      ],
+      "falsification_conditions": [
+        "The OCC amends the CAS status or publishes a decision changing the effective date or permitted activity scope."
+      ],
+      "related_entities": [
+        "Office of the Comptroller of the Currency",
+        "Ripple National Trust Bank",
+        "Ripple Labs",
+        "RLUSD"
+      ],
+      "tags": [
+        "OCC",
+        "national-trust-bank",
+        "Ripple",
+        "regulatory-approval",
+        "custody",
+        "RLUSD",
+        "not-full-service-bank"
+      ],
+      "source_date": "2026-10-26",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/ca1359.pdf",
+        "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "ripple-product-revenue-run-rate-and-multisolution-expansion-2026-10-28",
+      "event_type": "corporate",
+      "event_name": "Ripple reports expected $900m annualized product-revenue run rate and multi-solution expansion",
+      "hypothesis_id": "ripple-diversification-beyond-xrp-payments",
+      "domain": "corporate_strategy_and_institutional_adoption",
+      "hypothesis": "Ripple is broadening its enterprise business across payments, custody, stablecoins, prime brokerage and treasury, reducing dependence on any single XRP use case.",
+      "counter_hypothesis": "All headline scale metrics are company-reported and aggregate multiple products; they are not audited FY revenue, XRP transaction volume or XRP spot demand.",
+      "claim": "Ripple's October 28, 2026 release says it is on track to exit 2026 with a $900m annualized product-revenue run rate, reports more than 85 licenses and 1,700+ institutional/corporate/enterprise relationships, cites over $16tn of transactions enabled across Ripple products in 2025, and says its payments network is approaching $150bn in lifetime volume by year-end 2026. These are issuer claims across multiple product lines, not XRP-only metrics.",
+      "source_id": "ripple_2026_product_revenue_run_rate_release_20261028",
+      "source_name": "Ripple official press release",
+      "source_url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+      "independence_group": "ripple",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-10-28T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "Annualized run rate is not treated as audited annual revenue.",
+        "Transactions enabled and network lifetime volume are not treated as XRP settlement volume."
+      ],
+      "falsification_conditions": [
+        "Ripple's audited filings or subsequent correction materially revise the stated run rate, licenses, customer count or volume figures."
+      ],
+      "related_entities": [
+        "Ripple",
+        "BNY",
+        "Robinhood",
+        "Coinbase",
+        "Ripple Prime",
+        "Ripple Treasury",
+        "RLUSD",
+        "XRP Ledger",
+        "XRP"
+      ],
+      "tags": [
+        "Ripple",
+        "corporate-strategy",
+        "revenue-run-rate",
+        "payments",
+        "custody",
+        "prime-brokerage",
+        "treasury",
+        "issuer-claim"
+      ],
+      "source_date": "2026-10-28",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/",
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "circle-dbs-usdc-institutional-access-2026-11-18",
+      "event_type": "stablecoin_distribution",
+      "event_name": "DBS and Circle expand institutional USDC mint/redeem and 24/7 settlement access in Asia",
+      "hypothesis_id": "usdc-institutional-rail-competition-in-asia",
+      "domain": "stablecoins_and_payment_rails",
+      "hypothesis": "Circle is expanding USDC's direct institutional access through major banks, reducing dependence on secondary-market liquidity for mint/redeem needs.",
+      "counter_hypothesis": "This is a USDC rail and does not establish XRP use, XRP purchases or an XRPL settlement flow.",
+      "claim": "Circle's November 18, 2026 joint announcement says eligible institutional clients can directly mint and redeem USDC through DBS with 24/7 USD-USDC settlement. The release frames this as an expansion of institutional stablecoin infrastructure across Asia.",
+      "source_id": "dbs_circle_usdc_institutional_access_20261118",
+      "source_name": "DBS and Circle joint press release",
+      "source_url": "https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia",
+      "independence_group": "dbs-circle-joint-primary-release",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-18T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The announcement is treated as a partnership capability statement; actual transaction volumes are not published in this source."
+      ],
+      "falsification_conditions": [
+        "DBS or Circle withdraws the announcement or subsequent operational disclosures show the service was not made available to eligible institutions."
+      ],
+      "related_entities": [
+        "DBS",
+        "Circle",
+        "USDC",
+        "Asia",
+        "Project BLOOM"
+      ],
+      "tags": [
+        "Circle",
+        "DBS",
+        "USDC",
+        "institutional-access",
+        "24-7-settlement",
+        "stablecoin-competition",
+        "not-XRP-demand"
+      ],
+      "source_date": "2026-11-18",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "circle-paribu-usdc-arc-mou-turkiye-2026-11-24",
+      "event_type": "stablecoin_distribution",
+      "event_name": "Paribu and Circle sign exploratory MOU for USDC access and on-chain finance in Türkiye",
+      "hypothesis_id": "usdc-and-arc-distribution-expansion-in-turkiye",
+      "domain": "stablecoins_and_payment_rails",
+      "hypothesis": "Circle is extending Arc/USDC ecosystem distribution in Türkiye through a local digital-asset platform and institutional custodian.",
+      "counter_hypothesis": "The MOU is exploratory and does not prove a completed launch, committed transaction volume, or XRP integration.",
+      "claim": "Circle's November 24, 2026 release says Paribu and Circle International Bermuda signed an MOU to explore Arc-based products, real-world-asset tokenization and institutional digital-asset custody in Türkiye. It also says Paribu already supported USDC deposits and withdrawals over Arc and that Paribu Custody added Arc support.",
+      "source_id": "circle_paribu_usdc_arc_mou_20261124",
+      "source_name": "Circle official press release",
+      "source_url": "https://www.circle.com/pressroom/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye",
+      "independence_group": "circle.com",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-24T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The MOU is not treated as a binding commercial launch or proof of future transaction volume."
+      ],
+      "falsification_conditions": [
+        "The parties terminate the MOU or disclose that the described Arc/USDC integrations are not active."
+      ],
+      "related_entities": [
+        "Circle",
+        "Circle International Bermuda Limited",
+        "Paribu",
+        "USDC",
+        "Arc",
+        "Türkiye"
+      ],
+      "tags": [
+        "Circle",
+        "Paribu",
+        "USDC",
+        "Arc",
+        "MOU",
+        "Türkiye",
+        "stablecoin-competition",
+        "not-XRP-demand"
+      ],
+      "source_date": "2026-11-24",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://www.circle.com/pressroom/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "sbi-solana-global-commences-onchain-operations-2026-11-25",
+      "event_type": "corporate",
+      "event_name": "SBI Solana Global commences full-scale on-chain business operations",
+      "hypothesis_id": "sbi-multi-network-strategy-not-exclusive-xrpl",
+      "domain": "sbi_corporate_strategy",
+      "hypothesis": "SBI's on-chain strategy spans multiple networks, including a new Solana joint venture, while existing Ripple/XRPL relationships continue.",
+      "counter_hypothesis": "The Solana venture may be ring-fenced and does not show that SBI is reducing its Ripple partnership, selling XRP or abandoning XRPL.",
+      "claim": "The November 25, 2026 joint release by SBI Holdings, SMFG, Solana Foundation and SBI Solana Global says SBI R3 Japan transitioned to a new joint-venture structure among the three parties and commenced full-scale operations as SBI Solana Global. Four stated areas are stablecoin payment rails, tokenization of financial assets, tokenization of real-world assets and on-chain asset management; the release also mentions AI-agent micropayments. Ownership percentages, invested capital and live transaction volumes are not disclosed.",
+      "source_id": "sbi_solana_global_operations_20261125",
+      "source_name": "SBI Holdings, SMFG, Solana Foundation and SBI Solana Global joint release",
+      "source_url": "https://www.sbigroup.co.jp/english/news/pdf/2026/1125_a_en.pdf",
+      "independence_group": "sbi-holdings-official",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-25T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The new joint-venture structure is recorded as announced; no ownership split is inferred.",
+        "The release is not treated as evidence of XRP divestment or of completed payment volume."
+      ],
+      "falsification_conditions": [
+        "Subsequent official filings show the transition did not take effect or materially revise the JV structure or business scope."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "Sumitomo Mitsui Financial Group",
+        "SMFG",
+        "Solana Foundation",
+        "SBI Solana Global",
+        "SBI R3 Japan",
+        "Solana",
+        "Ripple",
+        "XRP Ledger"
+      ],
+      "tags": [
+        "SBI",
+        "Solana",
+        "multi-chain",
+        "joint-venture",
+        "stablecoin-payments",
+        "tokenization",
+        "AI-agent-micropayments",
+        "counterhypothesis"
+      ],
+      "source_date": "2026-11-25",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://www.sbigroup.co.jp/english/news/pdf/2026/1125_a_en.pdf"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "yapi-kredi-ripple-institutional-custody-partnership-2026-11-25",
+      "event_type": "custody",
+      "event_name": "Yapı Kredi partners with Ripple for institutional digital-asset custody in Türkiye",
+      "hypothesis_id": "ripple-custody-expansion-does-not-prove-xrp-balance-growth",
+      "domain": "institutional_custody_and_regulation",
+      "hypothesis": "Ripple Custody is expanding into Turkish bank infrastructure, potentially supporting broader institutional digital-asset services.",
+      "counter_hypothesis": "The custody platform can support multiple assets; no XRP-specific custody balance, customer flow, purchase or collateral amount is disclosed.",
+      "claim": "Ripple's November 25, 2026 announcement says Ripple Custody is deployed on Yapı Kredi's own premises to support the Yapı Kredi Kripto platform. Ripple says Yapı Kredi received regulatory approval for crypto-asset custody services under Türkiye's CMB framework in 2026 and describes a requirement for trading platforms to hold at least 95% of customer crypto assets with an authorised custodian. The 95% legal interpretation is Ripple's statement in this release and has not been independently checked against the Turkish rule text in this capture.",
+      "source_id": "ripple_yapi_kredi_custody_20261125",
+      "source_name": "Ripple official press release",
+      "source_url": "https://ripple.com/ripple-press/yapi-kredi-and-ripple-partner-to-advance-institutional-digital-asset-custody-in-turkey/",
+      "independence_group": "ripple",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-11-25T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T04:21:36.418Z",
+      "captured_at_utc": "2026-11-27T04:21:36.418Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The partnership and deployment are recorded as Ripple-reported; customer asset balances are not inferred.",
+        "The 95% requirement is attributed to Ripple until checked against the primary Turkish regulation."
+      ],
+      "falsification_conditions": [
+        "Yapı Kredi or the Turkish CMB publishes a correction or regulatory text inconsistent with the stated custody deployment or 95% requirement."
+      ],
+      "related_entities": [
+        "Yapı Kredi",
+        "Ripple",
+        "Ripple Custody",
+        "Yapı Kredi Kripto",
+        "Capital Markets Board of Türkiye",
+        "XRP",
+        "Türkiye"
+      ],
+      "tags": [
+        "Ripple",
+        "Yapı-Kredi",
+        "Türkiye",
+        "custody",
+        "institutional-adoption",
+        "not-XRP-flow"
+      ],
+      "source_date": "2026-11-25",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "date_only",
+      "related_source_urls": [
+        "https://ripple.com/ripple-press/yapi-kredi-and-ripple-partner-to-advance-institutional-digital-asset-custody-in-turkey/"
+      ],
+      "raw_http_bytes_captured": false,
+      "source_capture_method": "Official public page/PDF inspected in rendered form; original publisher response bytes were not retained and no raw SHA-256 receipt is claimed.",
+      "feature_admission_status": "EXCLUDED_NO_BYTE_EXACT_RECEIPT",
+      "model_eligible": false,
+      "research_only": true,
+      "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -7393,10 +7809,10 @@
     "source_receipt_policy": "No rendered HTML or web excerpt was hashed as publisher raw bytes. The GitHub artifact ZIP digest is retained separately; log files are identified by Git SHA-1 blob IDs and exact sizes. All five events remain model-ineligible.",
     "note": "Canonical publisher/lineage groups recomputed with the repository's domain-alias and declared-lineage union rules; SBIC regional aliases remain grouped separately from SBI Holdings."
   },
-  "event_count": 152,
+  "event_count": 159,
   "publisher_timestamp_coverage": {
     "exact_publisher_timestamps": 59,
-    "missing_exact_publisher_timestamps": 93
+    "missing_exact_publisher_timestamps": 100
   },
   "run192_update": {
     "captured_at_utc": "2026-11-16T16:11:30Z",
@@ -7504,7 +7920,7 @@
     "note": "Run222 adds Kraken XRP/USD top-of-book/VWAP, separate Fuelmaps spot and Basis Binance-perpetual depth snapshots, two non-comparable exchange-balance universes, TradRadar derivatives, Coinbase cbXRP proof-of-reserves growth, DBS/Circle USDC institutional access, Circle's dated USDC supply/network disclosure, and Coinbase's effective national trust-bank charter. Kamilah/Camilla identity remains unresolved: the iHeart transcript gives display names but not exact handles and warns of fake pages; two YouTube channel candidates are quarantined, with no videos admitted to the verified inventory. Exact phrase “actual capital” remains unresolved; SBI's “Actual XRP” is a token-holdings label, not capital. All ten new observations lack byte-exact publisher receipts and remain model-ineligible. No directional forecast is issued. Timestamp schema follow-up: event timeline records require non-empty event_time_utc, available_at_utc and captured_at_utc. Timestamp-less Kraken/Coinbase page observations now use the registry cutoff as observation time while leaving publisher timestamps null.",
     "timestamp_policy": "For exact publisher timestamps, event_time_utc and available_at_utc preserve the source time. For date-only sources, event_time_utc is normalized to midnight UTC with date_only precision. For sources without a usable publisher timestamp, event_time_utc and available_at_utc use the registry observation cutoff and precision is capture_time_only; source_published_at_utc remains null. captured_at_utc is the registry cutoff. No publisher timestamp is fabricated."
   },
-  "declared_independence_group_count": 113,
+  "declared_independence_group_count": 114,
   "canonical_publisher_lineage_group_count": null,
   "run223_update": {
     "captured_at_utc": "2026-11-26T13:13:03Z",
@@ -7535,5 +7951,28 @@
     "model_eligible": false,
     "forecast_status": "NOT_ISSUED",
     "summary": "Added Ripple's official XRP holdings page as a primary source event. Ripple reports 36,809,481,946 XRP held, including 31,700,000,000 in escrow, and 63,176,123,712 distributed as of 2026-09-30. SBI's May 1, 2026 investor deck reported 5.1bn XRP in Ripple wallets and 33.2bn in escrow as of 2026-04-27. The 1.5bn escrow decline is not evidence of spot-market selling; reconcile on-ledger escrow releases, re-escrows and third-party transfers before interpreting supply pressure. Digest-only capture is pending; no forecast is issued."
+  },
+  "run225_update": {
+    "captured_at_utc": "2026-11-27T04:21:36.418Z",
+    "prior_event_count": 152,
+    "appended_event_count": 7,
+    "resulting_event_count": 159,
+    "added_event_ids": [
+      "ripple-treasury-always-on-platform-2026-10-26",
+      "ripple-national-trust-bank-effective-2026-10-26",
+      "ripple-product-revenue-run-rate-and-multisolution-expansion-2026-10-28",
+      "circle-dbs-usdc-institutional-access-2026-11-18",
+      "circle-paribu-usdc-arc-mou-turkiye-2026-11-24",
+      "sbi-solana-global-commences-onchain-operations-2026-11-25",
+      "yapi-kredi-ripple-institutional-custody-partnership-2026-11-25"
+    ],
+    "raw_source_sha256_receipts_added": 0,
+    "exact_publisher_timestamp_count": 59,
+    "missing_exact_publisher_timestamp_count": 100,
+    "declared_independence_group_count": 114,
+    "canonical_publisher_lineage_group_count": null,
+    "model_eligible": false,
+    "forecast_status": "NOT_ISSUED",
+    "summary": "Added seven official-source events covering Ripple Treasury, Ripple National Trust Bank effectiveness, Ripple's issuer-reported product-revenue run rate, Circle/DBS USDC access, Circle/Paribu's exploratory Arc MOU, SBI Solana Global's multi-chain JV launch and Ripple/Yapı Kredi custody. These are ecosystem and corporate-strategy events, not direct XRP spot-demand observations. All seven remain excluded because original publisher bytes and immutable raw-source receipts were not captured. No directional forecast is issued."
   }
 }

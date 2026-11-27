@@ -409,3 +409,105 @@ A search aggregator surfaced the candidate handle `@drkamilahstevenson`, but tha
 The episode's discussion of XRP, Japan, SBI, RLUSD and institutional adoption is commentary by the guest/host, not primary evidence for those underlying claims. Use it as attributed opinion only; independently verify factual claims against issuers, regulators, filings and transaction data.
 
 Primary interview source: https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/ (June 11, 2026; transcript around 40:07–40:26). No YouTube video inventory was created in this update.
+
+
+---
+
+## 9.13 2026-11-27 issuer refresh, multi-chain counterhypotheses and channel-level video inventory
+
+**Capture time:** 2026-11-27T04:21:36.418Z  
+**Capture method:** public official press releases, regulatory application records, the public YouTube channel page, the channel-linked business site and the previously cited iHeart interview. Original HTTP response bytes were not retained by this research capture; the new event records remain excluded from model features.
+
+### 9.13.1 Institutional custody, collateral and XRP-demand separation
+
+**Standard Chartered / Ripple / LMAX — 12 October 2026.** Standard Chartered's official release confirms that institutional custody for RLUSD issued on XRPL is live for eligible clients through its DIFC branch, regulated by the DFSA. The same release describes the LMAX collateral-mirroring connection as a planned capability: final documentation, testing, applicable law/regulation, internal approvals and jurisdictional readiness remain conditions. LMAX and Ripple published matching partner releases. The three announcements are one coordinated partnership, not three independent confirmations.
+
+- Primary sources: [Standard Chartered](https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/), [Ripple](https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/), [LMAX](https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/).
+- **What is live:** eligible institutional custody of XRPL-issued RLUSD through Standard Chartered's DIFC branch.
+- **What is not established as live:** RLUSD collateral mirroring into LMAX products. The partners have not published a launch date, eligible product list, haircut, collateral balances or client adoption.
+- **XRP interpretation:** the custody asset is RLUSD, not XRP. The announcement does not say Standard Chartered bought XRP, accepted XRP as collateral or received a material XRP treasury allocation. XRPL account reserves and transaction fees can create small network-level XRP usage, but the release gives no scale. This is institutional infrastructure on XRPL, not proof of material XRP spot demand.
+
+The public video **“This NEW Bank Deal Shows Exactly Where XRP Is Headed”** (channel-published 20 October 2026, video ID vRlw4BV-cGE) describes the live custody / planned collateral split and explicitly distinguishes RLUSD adoption from XRP demand. Its description discloses affiliate links for iTrustCapital, Lantern, Caleb & Brown and Tangem. The video is attributed to the verified public channel described in 9.13.4; its broader long-term XRP thesis remains opinion, not primary evidence. [Video](https://www.youtube.com/watch?v=vRlw4BV-cGE).
+
+### 9.13.2 New SBI, Ripple, Coinbase and Circle developments
+
+| Date | Primary-source event | What the source establishes | What it does not establish |
+|---|---|---|---|
+| 26 Oct 2026 | Ripple National Trust Bank became consummated/effective in the OCC Corporate Applications Search record. [OCC CAS](https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2) | OCC record lists the proposed Ripple National Trust Bank as a national trust bank; preliminary conditional approval was dated 12 Dec 2025 and the application became consummated/effective 26 Oct 2026. | This is not evidence of a full-service deposit-taking retail bank, deposit insurance, customer balances or XRP demand. Treat it as a trust-bank regulatory milestone. |
+| 26 Oct 2026 | Ripple Treasury introduced its always-on corporate treasury platform. [Ripple](https://ripple.com/ripple-press/ripple-treasury-introduces-always-on-corporate-treasury-platform-to-modernize-corporate-cash-management/) | Ripple describes a CFO orchestration layer for cash management, forecasting, liquidity and payments. Its 24/7 Returns product is described as using RLUSD, tokenized money-market funds on XRPL and Ripple institutional liquidity infrastructure; Ripple reports more than 1,000 customers across 160 countries. | The release does not state that XRP is the settlement asset for 24/7 Returns, provide product-level volumes, or disclose XRP purchases. Customer counts and product descriptions are issuer claims. |
+| 28 Oct 2026 | Ripple reported an expected exit-2026 annualized product-revenue run rate approaching $900m and multi-solution partnerships. [Ripple](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/) | Ripple reports 85+ licenses, 1,700+ institutional/corporate/enterprise relationships, more than $16tn of transactions enabled across its products in 2025 and a payments network approaching $150bn in lifetime volume by year-end. It also describes BNY, Robinhood, Ripple Prime, treasury and custody expansion. | The $900m figure is a company-reported annualized run-rate expectation, not audited FY2026 revenue. The $16tn and $150bn figures are not XRP spot volume or XRP settlement volume. Product revenue spans payments, custody, stablecoins, prime brokerage and treasury. |
+| 18 Nov 2026 | DBS and Circle expanded institutional USDC access in Asia. [Circle](https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia) | Eligible institutions can mint/redeem USDC through DBS with 24/7 USD-USDC settlement. | This is a USDC access and settlement rail, not an XRP or XRPL announcement. The source is a joint Circle/DBS announcement. |
+| 24 Nov 2026 | Paribu and Circle signed an MOU to explore USDC access and on-chain finance in Türkiye. [Circle](https://www.circle.com/pressroom/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye) | Paribu already supported USDC deposits/withdrawals over Arc and Paribu Custody supported Arc; the MOU explores Arc products, RWA tokenization and institutional custody. | The MOU is exploratory; it is not a completed launch, binding transaction-volume commitment or XRP integration. |
+| 25 Nov 2026 | SBI Solana Global commenced full-scale on-chain business operations. [SBI / SMFG / Solana Foundation joint release](https://www.sbigroup.co.jp/english/news/pdf/2026/1125_a_en.pdf) | SBI R3 Japan transitioned to SBI Solana Global under a new joint-venture structure among SBI Holdings, SMFG and Solana Foundation. The stated business areas are stablecoin payment rails, tokenization of financial assets, tokenization of real-world assets and on-chain asset management, including AI-agent micropayments. | The release does not disclose ownership percentages, invested capital, live transaction volume or XRP use. It does not show that SBI is abandoning Ripple/XRPL. It does establish that SBI's on-chain strategy is multi-network, not exclusively XRP. |
+| 25 Nov 2026 | Yapı Kredi and Ripple announced an institutional custody partnership in Türkiye. [Ripple](https://ripple.com/ripple-press/yapi-kredi-and-ripple-partner-to-advance-institutional-digital-asset-custody-in-turkey/) | Ripple Custody is deployed on the bank's own premises to support the Yapı Kredi Kripto platform. Ripple says the bank received CMB approval for crypto-asset custody services in 2026 and describes a 95% customer-asset custody requirement under Türkiye's framework. | The announcement does not disclose assets held, XRP balances, XRP purchases or XRP collateral. Ripple's statement that XRP is among Türkiye's widely held assets is not a measured custody or flow series. |
+
+**SBI strategy reconciliation:** SBI's Ripple relationship remains material: the group has collaborated since 2016; SBI VC Trade began handling RLUSD on 24 June 2026 and previously listed USDC; SBI Ripple Asia has separately studied XRPL-based tokenized-deposit concepts. SBI also invested in Circle and established SBI Circle Holdings, while SBI Solana Global now combines SBI, SMFG and Solana Foundation capabilities. The correct interpretation is a multi-stablecoin, multi-network strategy. The Solana venture is a counterweight to any claim of exclusive SBI alignment with XRP, but it does not disprove continuing SBI/Ripple activity.
+
+### 9.13.3 Coinbase and Circle Q3 2026 operating cross-check
+
+**Coinbase Q3 2026 (29 October; issuer release):** Coinbase reported $719m GAAP net income, $78m adjusted net income, $333m adjusted EBITDA, 10.7% crypto trading-volume market share and $22bn average USDC held in Coinbase products, up 49% year over year. Prediction markets exceeded $200m annualized revenue; subscription and services represented 49% of net revenue. [Coinbase investor release](https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx).
+
+**Independent counterweight:** Reuters reported that transaction revenue fell 43% year over year to approximately $590m and that crypto-investment gains helped offset weaker trading. Net income therefore should not be read as a clean measure of recurring exchange activity. [Reuters, 29 October 2026](https://www.reuters.com/business/finance/coinbase-snaps-losing-streak-with-third-quarter-profit-crypto-trading-rebound-2026-10-29/).
+
+**Circle Q3 2026 (4 November; issuer release):** average USDC in circulation was $73.3bn (+8% year over year); Q3 on-chain transaction volume was $13.9tn (+49%); total revenue and reserve income was $865m (+17%); net income was $226m (+5%); adjusted EBITDA was $317m (+85%). Reserve income was $658m, down 8%, partly due to a 61-basis-point decline in reserve return rate. Other revenue was $207m, including $182m from the ARC token presale. Circle reported $41.3bn annualized TPV for Circle Payments Network. [Circle Q3 release](https://www.circle.com/pressroom/circle-reports-third-quarter-2026-results).
+
+**Interpretation and controls:**
+- Coinbase's $22bn average USDC held is a platform balance metric within the wider USDC supply; do not add it to Circle's $73.3bn average circulation.
+- Circle's $13.9tn on-chain volume is not automatically net economic payment value; repeated transfers, trading and other on-chain activity may contribute.
+- Circle's ARC presale materially affected other revenue and adjusted EBITDA; do not treat the $182m as recurring stablecoin reserve income.
+- Coinbase's 10.7% market share and USDC holdings are not XRP market share, XRP liquidity or evidence of XRP purchases.
+- Coinbase remains Evernorth's disclosed principal-market price reference, while BitGo is the disclosed custodian. That accounting reference role is not evidence of exclusive liquidity or active XRP trading.
+- Circle's Q3 10-Q reports Coinbase distribution costs of $331.3m for Q3 and $986.6m for the first nine months of 2026; the existing Coinbase/Circle equity and revenue-sharing relationship remains a direct economic relationship, not merely an exchange listing. These figures are issuer filings and not independent observations.
+
+### 9.13.4 Kamilah / Camilla Stevenson — public channel identity and inventory
+
+**Channel-level attribution is now verified; civil identity is not independently verified.** The public YouTube channel page identifies itself as **Kamilah Stevenson**, handle **@drkamilahstevenson**, channel ID **UCqUPJMQdkCN6lsLVDnichPA**, with a snapshot showing approximately 142K subscribers and 1.2K videos. The channel links to go.prescribewealth.com/yt-bio. The linked [Prescribe Wealth site](https://prescribewealth.com/) identifies MKS Health LLC as a financial-education company founded by Dr. Kamilah Stevenson. The 11 June 2026 [iHeart interview](https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/) has the guest self-reporting a YouTube identity as “doctor Camilla Stevenson”; its transcript is automatically generated and the host uses variant spellings. These independent public surfaces support attribution of the channel to the same public-facing Kamilah/Camilla Stevenson brand/persona. They do not establish civil/legal identity, and no unrelated namesakes are merged.
+
+**Inventory scope:** the channel page reports 1.2K total videos. The following is a deduplicated snapshot inventory of 12 recent public uploads and 12 public past live streams visible in the channel-page result, not a complete 1.2K-video archive. View counts and relative ages below are cached page values; the page was crawled last month and its exact crawl timestamp is unavailable. Do not treat relative ages or counts as current. Members-only videos are excluded. The channel's separately announced @PrescribeWealth second channel is not included.
+
+**Recent public uploads visible in the channel snapshot**
+
+| Video title | Snapshot views | Duration | Relative age in cached snapshot |
+|---|---:|---:|---:|
+| This NEW Bank Deal Shows Exactly Where XRP Is Headed | 29K | 12:58 | 1d |
+| This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes) | 28K | 11:33 | 2d |
+| Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor) | 41K | 15:45 | 4d |
+| XRP vs Banks: Why Your Money Needs Autonomy NOW | 9.8K | 11:41 | 5d |
+| Did SWIFT Just Change XRP Forever? (The Truth) | 77K | 13:09 | 5d |
+| BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention. | 21K | 11:37 | 8d |
+| A $119 Billion African Bank Just Put Its License Behind XRP | 27K | 13:38 | 9d |
+| A New XRP Tool Can Buy and Sell for You | 13K | 16:45 | 11d |
+| Invest NOW or Get Left Behind. Institutions Are Already Moving. | 16K | 8:33 | 12d |
+| The CFTC Just Said What XRP Holders Waited Years to Hear | 44K | 10:27 | 12d |
+| Wall Street Just Got a Company Built to Keep BUYING XRP | 16K | 12:51 | 2w |
+| XRP Ledger Technology Just Reached Europe's Central Bank | 11K | 14:41 | 2w |
+
+The first video has an exact video page and date: [This NEW Bank Deal Shows Exactly Where XRP Is Headed](https://www.youtube.com/watch?v=vRlw4BV-cGE), published 20 October 2026; the video page showed 29,824 views and 1,100 likes at capture. Its description includes an affiliate disclosure and links to iTrustCapital, Lantern, Caleb & Brown and Tangem. Its description's custody/collateral distinction is consistent with the Standard Chartered primary release above. Its wider XRP thesis remains opinion.
+
+**Public past live streams visible in the channel snapshot**
+
+| Live-stream title | Snapshot views | Duration | Relative age in cached snapshot |
+|---|---:|---:|---:|
+| XRP Got Everything We Waited For. So Why Isn't It Soaring? | 19K | 1:07:44 | 1d |
+| XRP's Next Big Move Could Come Down to These 4 Days | 26K | 54:00 | 3d |
+| Bank Of America's CEO Just ADMITTED What XRP Holders Already Knew | 20K | 1:16:42 | 6d |
+| I Was WRONG About XRP. The Timeline Just Changed. | 35K | 1:18:41 | 8d |
+| 191,000 Traders Got Wiped Out While XRP Became Wall Street Collateral | 22K | 1:01:24 | 10d |
+| Bad Jobs. Higher Rates. Something Just Broke. Watch Your XRP. | 23K | 1:12:11 | 2w |
+| Your XRP Can Now Trade Without You | 21K | 56:45 | 2w |
+| America's Biggest Banks Just Picked Quant. XRP Was Never the Competition. | 42K | 1:15:30 | 3w |
+| The White House Is Done Waiting on Congress. XRP Moves Forward Anyway | 19K | 1:11:57 | 3w |
+| The CLARITY Act Exposed the Banks. XRP Just Became More Important | 23K | 1:08:55 | 4w |
+| The SEC Just Approved Stocks Onchain. XRP Was Built for What Comes Next | 24K | 49:51 | 1mo |
+| The CLARITY Act Vote Failed. XRP Ran 580% Without It | 22K | 1:10:28 | 1mo |
+
+The channel page also exposes a separate popular-video list, with some duplicates from the recent-upload list; those duplicates were not counted twice. This snapshot does not inventory every public upload, playlist or archive entry. Individual video IDs were not retrieved for the other 23 titles; use the channel page as their locator: [@drkamilahstevenson](https://www.youtube.com/@drkamilahstevenson).
+
+**Attribution and claim discipline:** the channel is self-published and its website is the same brand's own property; these are not independent confirmations of its factual claims. The iHeart interview is a separate publication but its transcript is autogenerated. The video list is an inventory of channel-published material, not validation of the titles' claims. Each material claim must be checked against issuer, regulator, filing, ledger or exchange evidence before it enters the XRP evidence ledger.
+
+### 9.13.5 Exact-phrase status and evidence limitations
+
+- Exact-phrase searches for “ASK Coin” and “SBIC, ChatGPT SBIC” still produce no credible primary-source match tying either phrase to Ripple, XRP, SBI Holdings or the regional SBIC companies. Keep both unresolved; do not invent an entity or infer a transcription.
+- “Actual capital” continues to be resolved from the SEC transaction ledger in sections 3–6, not from secondary commentary or a single headline number.
+- The new corporate releases are primary evidence that the announcements occurred. They are not independent evidence of transaction volume, customer adoption, XRP purchases, XRP collateral balances or exchange flows.
+- The new events below are date-only, with no raw publisher bytes or immutable SHA-256 receipts captured. They remain research-only and model-ineligible. No forecast is issued.
