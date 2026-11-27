@@ -39,7 +39,7 @@ APPROVED_ACTION_SHAS = {
     "actions/cache/restore": "0057852bfaa89a56745cba8c7296529d2fc39830",
     "actions/cache/save": "0057852bfaa89a56745cba8c7296529d2fc39830",
     "cloudflare/wrangler-action": "953926a2e2182532811c01a25e53647d93bf07c0",
-    "databricks/setup-cli": "4f41a4c5291b531c1bb1e5760d677999cd484f89",
+    "databricks/setup-cli": "12452ad4003a2dd61d5a7cee30bc068f750a2e00",
 }
 ACTION_LINE = re.compile(r"^\s*(?:-\s*)?uses:\s*(?P<reference>\S+)(?:\s+#\s*(?P<annotation>.*))?$")
 

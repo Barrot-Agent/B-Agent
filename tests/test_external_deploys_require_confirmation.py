@@ -23,7 +23,7 @@ def test_external_deploy_workflows_are_manual_and_fail_closed() -> None:
             assert "github.ref == 'refs/heads/main'" in workflow
             assert "workspace/get-status" in workflow
             assert "--overwrite" not in workflow
-            assert "databricks/setup-cli@4f41a4c5291b531c1bb1e5760d677999cd484f89" in workflow
+            assert "databricks/setup-cli@12452ad4003a2dd61d5a7cee30bc068f750a2e00" in workflow
             assert "kaggle datasets submit" not in workflow
             assert "contents: read" in workflow
         else:
