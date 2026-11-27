@@ -41,10 +41,10 @@ def test_chatgpt_connector_scope_is_verified_without_overstating_permissions() -
     assert all(
         fragment in evidence
         for fragment in (
-            "main metadata/tree",
-            "open PRs",
-            "workflow runs/jobs/logs",
-            "file reads",
+            "current main metadata and complete recursive tree",
+            "all twelve open PRs and shared diffs",
+            "exact-head CI/security/gate checks",
+            "workflow logs and artifact manifests",
         )
     )
     observed_actions = chatgpt["permissions"]["observed_actions"]
@@ -113,13 +113,16 @@ def test_three_missions_remain_coequal_active_and_round_robin() -> None:
 def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
     data = load_map()
     repository = data["repository"]
-    expected = {1702, 1703, 1704, 1705, 1713, 1714}
+    expected = {1702, 1703, 1704, 1705, 1706, 1707, 1708, 1709, 1710, 1711, 1713, 1714}
 
     assert repository["current_main_state"]["open_pull_request_count"] == len(expected)
     assert set(repository["current_main_state"]["open_pull_request_numbers"]) == expected
     assert {item["number"] for item in repository["current_open_pull_requests"]} == expected
     assert {item["number"] for item in data["current_prs"]} == {1702, 1703, 1704, 1705}
-    assert data["dependency_prs"] == []
+    dependency_expected = {1706, 1707, 1708, 1709, 1710, 1711}
+    assert {item["number"] for item in data["dependency_prs"]} == dependency_expected
+    assert next(item for item in data["dependency_prs"] if item["number"] == 1711)["classification"] == "blocked_dependency_compatibility"
+    assert next(item for item in data["dependency_prs"] if item["number"] == 1708)["classification"] == "duplicate_subset_of_1706"
     assert {item["number"] for item in data["supporting_prs"]} == set()
     assert any(item["number"] == 1712 for item in repository["merged_pull_requests"])
     assert {item["number"] for item in data["repair_prs"]} == {1713, 1714}
