@@ -55,11 +55,11 @@ def test_run220_market_providers_remain_separate_and_quality_gated():
 
 def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     registry = _load(REGISTRY_PATH)
-    assert registry["registry_version"] == "run225-20261127-multichain-institutional-custody-refresh"
-    assert registry["event_count"] == len(registry["events"]) == 159
+    assert registry["registry_version"] == "run226-20261127-jpysc-reserve-management-refresh"
+    assert registry["event_count"] == len(registry["events"]) == 160
     coverage = registry["publisher_timestamp_coverage"]
     assert coverage["exact_publisher_timestamps"] == 59
-    assert coverage["missing_exact_publisher_timestamps"] == 100
+    assert coverage["missing_exact_publisher_timestamps"] == 101
     assert coverage["exact_publisher_timestamps"] + coverage["missing_exact_publisher_timestamps"] == registry["event_count"]
 
     assert registry["run220_update"]["appended_event_count"] == 15
@@ -118,6 +118,27 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert normalization["ripple-treasury-always-on-platform-2026-10-26"] == "corporate"
     assert normalization["circle-dbs-usdc-institutional-access-2026-11-18"] == "stablecoin"
     assert normalization["circle-paribu-usdc-arc-mou-turkiye-2026-11-24"] == "stablecoin"
+    run226 = registry["run226_update"]
+    assert run226["prior_event_count"] == 159
+    assert run226["appended_event_count"] == 1
+    assert run226["resulting_event_count"] == 160
+    assert run226["added_event_ids"] == ["sbi-jpysc-short-term-jgb-reserve-2026-09-07"]
+    assert run226["raw_source_sha256_receipts_added"] == 0
+    assert run226["model_eligible"] is False
+    assert run226["forecast_status"] == "NOT_ISSUED"
+    jpysc = next(
+        event for event in registry["events"]
+        if event["event_id"] == "sbi-jpysc-short-term-jgb-reserve-2026-09-07"
+    )
+    assert jpysc["source_url"] == "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+    assert jpysc["raw_source_sha256"] is None
+    assert jpysc["raw_http_bytes_captured"] is False
+    assert jpysc["model_eligible"] is False
+    assert jpysc["independence_group"] == "sbi-vc-trade-official-jpysc"
+    assert "JPY 1.0 billion" in jpysc["claim"]
+    assert "JPY 20.1 billion" in jpysc["claim"]
+    assert "JPY 6.9 billion" in jpysc["claim"]
+    assert "does not establish XRP collateral" in jpysc["counter_hypothesis"]
     ripple_holdings = next(
         event for event in registry["events"]
         if event["event_id"] == "ripple-xrp-holdings-2026-09-30"
