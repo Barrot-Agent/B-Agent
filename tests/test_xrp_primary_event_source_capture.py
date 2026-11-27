@@ -298,3 +298,85 @@ def test_ripple_xrp_holdings_event_is_present_in_curated_registry():
     assert event["source_status"] == "verified"
     assert event["raw_source_sha256"] is None
     assert event["captured_at_utc"] == "2026-11-26T20:17:00Z"
+
+
+
+@pytest.mark.parametrize(
+    ("source_id", "event_id", "source_uri", "host", "markers"),
+    [
+        (
+            "occ_ripple_national_trust_bank_cas_20261026",
+            "ripple-national-trust-bank-occ-effective-2026-10-26",
+            "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+            "apps.occ.gov",
+            ("2025-Charter-342347", "Ripple National Trust Bank", "Consummated/Effective", "10/26/2026"),
+        ),
+        (
+            "occ_coinbase_national_trust_bank_20261106",
+            "coinbase-national-trust-bank-occ-effective-2026-11-06",
+            "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+            "apps.occ.gov",
+            ("2025-Charter-343449", "Coinbase National Trust Company", "Consummated/Effective", "11/06/2026"),
+        ),
+        (
+            "pnc_coinbase_usdc_pilot_20261109",
+            "pnc-coinbase-usdc-incoming-pilot-2026-11-09",
+            "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+            "pnc.mediaroom.com",
+            ("Nov. 9, 2026", "USDC", "Ethereum blockchain", "Coinbase Payment products"),
+        ),
+        (
+            "dbs_circle_usdc_access_20261118",
+            "dbs-circle-usdc-institutional-access-2026-11-18",
+            "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+            "www.dbs.com",
+            ("Singapore, 18 Nov 2026", "USDC", "24/7 USD-USDC settlement", "Project BLOOM"),
+        ),
+        (
+            "sbi_holdings_circle_investment_release_20250609",
+            "sbi-circle-investment-and-ripple-equity-stake-20250605",
+            "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+            "www.sbigroup.co.jp",
+            ("2025年6月9日", "5,000万ドル", "SBIホールディングス", "Circle社", "約9%の株式を保有"),
+        ),
+        (
+            "sbi_circle_holdings_jv_establishment_20250822",
+            "sbi-circle-holdings-jv-established-20250822",
+            "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+            "www.sbigroup.co.jp",
+            ("2025年8月22日", "Circle Internet Holdings, Inc.", "合弁会社を設立", "USDC"),
+        ),
+        (
+            "sbi_startale_open_standard_jpysc_ousd_20261016",
+            "sbi-startale-open-standard-jpysc-ousd-20261016",
+            "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+            "www.sbigroup.co.jp",
+            ("2026年10月16日", "Open Standard", "JPYSC", "Open USD（OUSD）", "実証実験を検討"),
+        ),
+        (
+            "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
+            "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+            "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+            "www.sbigroup.co.jp",
+            ("2026年6月24日", "RLUSD", "Ripple Labs Inc.", "イーサリアムチェーンのみの対応となります"),
+        ),
+    ],
+)
+def test_additional_first_party_event_specs_are_exact_and_present_in_registry(
+    source_id, event_id, source_uri, host, markers
+):
+    spec = next(item for item in EVENT_SOURCE_CAPTURE_SPECS if item["source_id"] == source_id)
+    assert spec["event_id"] == event_id
+    assert spec["source_uri"] == source_uri
+    assert set(markers).issubset(set(spec["required_markers"]))
+    assert host in ALLOWED_HOSTS
+
+    root = Path(__file__).resolve().parents[1]
+    registry = json.loads(
+        (root / "research" / "xrp_intelligence" / "event_registry_current.json").read_text(encoding="utf-8")
+    )
+    matches = [event for event in registry["events"] if event["event_id"] == event_id]
+    assert len(matches) == 1
+    assert matches[0]["source_id"] == source_id
+    assert matches[0]["source_url"] == source_uri
+    assert matches[0]["source_status"] == "verified"

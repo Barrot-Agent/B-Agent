@@ -34,7 +34,7 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 _SHA256_RE = re.compile(r"[0-9a-f]{64}")
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.remit.co.jp", "www.deribit.com"}
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.remit.co.jp", "www.deribit.com", "apps.occ.gov", "pnc.mediaroom.com", "www.dbs.com", "www.sbigroup.co.jp"}
 ADAPTER_VERSION = "xrp-public-market-v3.36"
 PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
@@ -271,6 +271,30 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "Public Ripple press release is captured for research; raw HTML redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only."
     ),
+    "occ_ripple_national_trust_bank_cas_20261026": (
+        "Public OCC regulatory filing detail is captured for point-in-time event provenance; retain only its SHA-256 receipt."
+    ),
+    "occ_coinbase_national_trust_bank_20261106": (
+        "Public OCC regulatory filing detail is captured for point-in-time event provenance; retain only its SHA-256 receipt."
+    ),
+    "pnc_coinbase_usdc_pilot_20261109": (
+        "Public PNC corporate announcement is captured for point-in-time event provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "dbs_circle_usdc_access_20261118": (
+        "Public DBS/Circle joint announcement is captured for point-in-time event provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_holdings_circle_investment_release_20250609": (
+        "Public SBI Holdings corporate disclosure is captured for point-in-time relationship provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_circle_holdings_jv_establishment_20250822": (
+        "Public SBI Holdings corporate disclosure is captured for point-in-time relationship provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_startale_open_standard_jpysc_ousd_20261016": (
+        "Public SBI Holdings corporate announcement is captured for point-in-time stablecoin interoperability provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24": (
+        "Public SBI VC Trade/Ripple corporate announcement is captured for point-in-time RLUSD distribution provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
 }
 
 BITBANK_SOURCE_IDS = frozenset({
@@ -315,7 +339,7 @@ SCHEDULED_ENDPOINTS = tuple(
     and source_id not in WEEKLY_SOURCE_IDS
 )
 
-# Capture only five exact, curated primary-source disclosures once daily.
+# Capture a bounded set of exact, curated first-party disclosures once daily.
 # HTML is marker-checked in memory and retained as a digest-only receipt because
 # publisher-page redistribution terms have not been reviewed.
 EVENT_SOURCE_CAPTURE_SPECS = (
@@ -361,6 +385,93 @@ EVENT_SOURCE_CAPTURE_SPECS = (
             "TOTAL XRP DISTRIBUTED: 63,176,123,712",
             "TOTAL XRP PLACED IN ESCROW: 31,700,000,000",
             "As of 09/30/26",
+        ),
+    },
+    {
+        "event_id": "ripple-national-trust-bank-occ-effective-2026-10-26",
+        "source_id": "occ_ripple_national_trust_bank_cas_20261026",
+        "source_uri": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "required_markers": ("2025-Charter-342347", "Ripple National Trust Bank", "Approved", "Consummated/Effective", "10/26/2026"),
+    },
+    {
+        "event_id": "coinbase-national-trust-bank-occ-effective-2026-11-06",
+        "source_id": "occ_coinbase_national_trust_bank_20261106",
+        "source_uri": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "required_markers": ("2025-Charter-343449", "Coinbase National Trust Company", "Approved", "Consummated/Effective", "11/06/2026"),
+    },
+    {
+        "event_id": "pnc-coinbase-usdc-incoming-pilot-2026-11-09",
+        "source_id": "pnc_coinbase_usdc_pilot_20261109",
+        "source_uri": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+        "required_markers": (
+            "PNC Bank Launches Incoming Stablecoin Payments for Corporate and Institutional Banking Clients",
+            "Nov. 9, 2026",
+            "USDC",
+            "Ethereum blockchain",
+            "Coinbase Payment products",
+            "limited basis to eligible clients as part of a pilot program",
+        ),
+    },
+    {
+        "event_id": "dbs-circle-usdc-institutional-access-2026-11-18",
+        "source_id": "dbs_circle_usdc_access_20261118",
+        "source_uri": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+        "required_markers": (
+            "DBS and Circle expand institutional access to USDC in Asia",
+            "Singapore, 18 Nov 2026",
+            "eligible institutional clients can directly mint and redeem USDC through DBS",
+            "24/7 USD-USDC settlement",
+            "Project BLOOM",
+        ),
+    },
+    {
+        "event_id": "sbi-circle-investment-and-ripple-equity-stake-20250605",
+        "source_id": "sbi_holdings_circle_investment_release_20250609",
+        "source_uri": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "required_markers": (
+            "米Circle社への出資に関するお知らせ",
+            "2025年6月9日",
+            "5,000万ドル",
+            "SBIホールディングス：2,500万ドル",
+            "SBI新生銀行：2,500万ドル",
+            "約9%の株式を保有",
+        ),
+    },
+    {
+        "event_id": "sbi-circle-holdings-jv-established-20250822",
+        "source_id": "sbi_circle_holdings_jv_establishment_20250822",
+        "source_uri": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+        "required_markers": (
+            "Circle Internet Holdings, Inc.との合弁会社設立に関するお知らせ",
+            "2025年8月22日",
+            "Circle Internet Holdings, Inc.",
+            "合弁会社を設立",
+            "USDC",
+        ),
+    },
+    {
+        "event_id": "sbi-startale-open-standard-jpysc-ousd-20261016",
+        "source_id": "sbi_startale_open_standard_jpysc_ousd_20261016",
+        "source_uri": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "required_markers": (
+            "SBIホールディングスとスターテイル、Open Standardに参画",
+            "2026年10月16日",
+            "Open Standard",
+            "JPYSC",
+            "Open USD（OUSD）",
+            "実証実験を検討",
+        ),
+    },
+    {
+        "event_id": "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+        "source_id": "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
+        "source_uri": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "required_markers": (
+            "国内初の4号電子決済手段",
+            "2026年6月24日",
+            "RLUSD",
+            "Ripple Labs Inc.",
+            "イーサリアムチェーンのみの対応となります",
         ),
     },
 )
