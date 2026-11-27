@@ -1755,3 +1755,31 @@ Sources inspected:
 - EXECUTED: downloaded event and raw artifacts, inspected receipt manifest and source failures, checked official SBI/Coinbase primary pages, and corrected the #1705 regression test on its existing branch.
 - VERIFIED: the four marker mismatches, one Coinbase HTTP 403, eight digest-only linked events, zero retained event payloads, exact cause of the second test failure, and the primary-source distinction among SBI/Circle/Ripple/Coinbase relationships.
 - NOT VERIFIED: new #1705 full-suite result, successful raw-byte capture for the four SBI pages, Coinbase runner access, complete event receipt coverage, SEC capture or forecast readiness.
+
+
+## Japan SBIC legal-identity primary-source reconciliation — 2026-11-27
+
+### VERIFIED: SBIC East, Central and West are three distinct statutory companies
+
+The current Japanese Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963, promulgated June 10, 1963) resolves the acronym ambiguity directly. Article 2 names exactly three companies: Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd., with their respective principal offices in Tokyo, Nagoya and Osaka. This is primary e-Gov legislation, not a third-party acronym match.
+
+Official company profiles independently map the English regional labels:
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd.; corporate number 9011001030621; established November 15, 1963; official profile: `https://www.sbic.co.jp/company/profile/`.
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd.; established November 18, 1963; central five-prefecture service area; official profile: `https://www.sbic-cj.co.jp/company/about/`.
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd.; established November 20, 1963; western 24-prefecture service area; official profile: `https://www.sbic-wj.co.jp/profiles/profile/`.
+
+SBI Holdings is a separate corporate entity. SBI's own official corporate disclosure identifies SBI Holdings, Inc., established July 8, 1999, with the business of controlling and managing the SBI Group through share ownership. Official source: `https://www.sbigroup.co.jp/news/2026/0114_16025.html`. The regional SBIC companies' official profiles identify their respective legal names and list the other two as sister companies. Do not merge these legal entities into SBI Holdings, and do not infer an ownership or operating relationship with XRP from the shared letters "SBI"/"SBIC".
+
+### Evidence and remaining limits
+
+- DESIGNED: preserve separate legal-entity nodes for the three statutory regional SBIC companies, SBI Holdings, SBI Capital entities and SBI Group subsidiaries; require legal name, corporate number/registration, official profile and dated primary evidence before joining them.
+- EXECUTED: checked e-Gov Act No. 101/1963 Article 2, all three official regional company profiles, and SBI Holdings' official corporate disclosure.
+- VERIFIED: the statute names the three regional companies; the regional profiles confirm their SBIC East/Central/West identities; SBI Holdings' official profile gives a different legal name and 1999 establishment date.
+- NOT VERIFIED: a comprehensive current shareholder/beneficial-owner reconciliation for every regional SBIC company. The Tokyo profile lists local governments, chambers of commerce, financial institutions and business companies among its shareholders, but this does not justify an unqualified statement that no SBI Group entity has any indirect relationship.
+
+Primary sources:
+- e-Gov law: `https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20260101`
+- Tokyo / SBIC East: `https://www.sbic.co.jp/company/profile/`
+- Nagoya / SBIC Central: `https://www.sbic-cj.co.jp/company/about/`
+- Osaka / SBIC West: `https://www.sbic-wj.co.jp/profiles/profile/`
+- SBI Holdings corporate disclosure: `https://www.sbigroup.co.jp/news/2026/0114_16025.html`
