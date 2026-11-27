@@ -3,8 +3,11 @@ import json
 from scripts import ask_barrot
 
 
-def test_system_identity_uses_current_xrp_mission_without_stale_capability_claims():
-    assert "highest-priority mission is XRP intelligence" in ask_barrot.SYSTEM_BASE
+def test_system_identity_preserves_three_coequal_missions_without_stale_capability_claims():
+    assert "three co-equal highest-priority missions" in ask_barrot.SYSTEM_BASE
+    assert "xrp intelligence" in ask_barrot.SYSTEM_BASE.lower()
+    assert "professional audio production" in ask_barrot.SYSTEM_BASE.lower()
+    assert "long-horizon continuity and capability development" in ask_barrot.SYSTEM_BASE.lower()
     assert "hourly knowledge ingestion" not in ask_barrot.SYSTEM_BASE
     assert "You do not have technical indicators" not in ask_barrot.SYSTEM_BASE
 
