@@ -1,3 +1,30 @@
+# Run 66.3b — full-suite regression, correction and refreshed XRP research head — 2026-11-27T04:24:23.090Z
+
+## Regression diagnosis and correction — EXECUTED
+
+- The first Run 66.3 handoff/map refresh advanced PR #1702 to b8ac52d. Its exact-head full repository test run [45938259997](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938259997) failed **one** test: tests/test_nine_platform_operational_map_current.py::test_chatgpt_connector_scope_is_verified_without_overstating_permissions. The core test job passed. Full-suite result: **4,703 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**.
+- Root cause was introduced by the handoff edit: I replaced the map's ChatGPT evidence string and removed four exact phrases required by the existing regression test: “current main metadata and complete recursive tree”, “all twelve open PRs and shared diffs”, “exact-head CI/security/gate checks”, and “workflow logs and artifact manifests”. The test correctly caught the lost invariant. This was not an authentication failure.
+- Dependency audit [45938260001](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938260001), money audit [45938259991](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938259991) and conflict integrity [45938259990](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938259990) passed on b8ac52d. Gated merge [45938260069](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938260069) failed. The stale-base equality defect remains; the full-suite failure is an additional blocker on this pre-fix head.
+- The correction preserves all four required evidence phrases and appends the new run evidence. This update is a single fast-forward commit on the existing #1702 branch. Exact-head CI for the corrected commit is pending; no previous-head result is carried forward.
+
+## Refreshed XRP research integration — EXECUTED; new-head CI pending
+
+- Existing PR #1705 advanced from 631fea9 to **65fc8029f8aa9c29021ba4afd011306956d7ef94**, now **30 ahead / 0 behind** current main. No new branch or PR was created.
+- The commit appends seven official-source events to the existing event registry and a source-grounded research addendum covering Ripple Treasury, Ripple National Trust Bank effectiveness, Ripple's issuer-reported product-revenue run rate, Circle/DBS USDC access, Circle/Paribu's exploratory Arc MOU, SBI Solana Global's multi-chain JV launch, Yapı Kredi/Ripple custody, Coinbase/Circle Q3 metrics and the Kamilah Stevenson public-channel inventory.
+- Registry is now **159 events**, **59 exact publisher timestamps / 100 missing**, **114 unique declared publisher-independence groups**. All 159 have null raw_source_sha256; none of the seven new records has byte-exact source receipts. The separate mainline chain still has 37 receipts (21 raw, 16 digest-only) but the latest run 202 linked 0 of 150 timeline events to verified receipts. All records remain research-only and model-ineligible; forecast remains NOT_ISSUED.
+- Channel-level attribution is now cross-verified: YouTube channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson link to the Prescribe Wealth brand founded by Dr. Kamilah Stevenson. This verifies the public channel/persona attribution, not civil/legal identity. A deduplicated sample of 12 recent public uploads and 12 public past live streams is recorded; it is not an exhaustive 1.2K-video archive.
+- Exact-head checks for the new #1705 head are still in progress: CI [45939503720](https://github.com/Barrot-Agent/B-Agent/actions/runs/45939503720), dependency [45939503603](https://github.com/Barrot-Agent/B-Agent/actions/runs/45939503603), money [45939503635](https://github.com/Barrot-Agent/B-Agent/actions/runs/45939503635), conflict [45939503602](https://github.com/Barrot-Agent/B-Agent/actions/runs/45939503602), gated merge [45939503619](https://github.com/Barrot-Agent/B-Agent/actions/runs/45939503619). The previous #1705 head 631fea9 had passed its full suite and security checks; those results do not apply to 65fc8029.
+
+## Shared ancestry and PR overlap reconciliation
+
+The PR API's changed-file listing for #1702–#1705 still reflects the stale base snapshot 6033bcd. It therefore lists common CI and coverage paths that are already present on main. The branches share the same commits d43ee75 and b9e8de2 and the main merge commit 215184 in their histories. Comparing each branch directly with current main is the correct view: #1702 is 165 ahead / 0 behind and has seven current changed paths; #1705 is 30 ahead / 0 behind and has eleven current changed paths. The common CI/coverage paths are shared ancestry, not four independent implementations. Do not create replacement PRs or close mission PRs on the basis of the stale PR-file listing.
+
+## Current action boundary
+
+Main remains 2151843140fd770b62ef93d06a78c559f9e73bbd. No merge, PR close, main write, branch rewrite, force-push or deployment is authorized by these updates. PR #1714 still has passing code checks but lacks independent review/known approval count and explicit Pages-publication authorization. The three mission PRs remain #1705 XRP, #1704 audio and #1703 continuity; #1702 remains the single canonical handoff/map integration.
+
+---
+
 # Run 66.3 — current main, PR-gate and three-mission reconciliation — 2026-11-27T04:00:29Z
 
 ## Repository and integration — EXECUTED / VERIFIED
