@@ -1,3 +1,57 @@
+# Run 66.1 — latest ingestion, verified runtime hardening and SBI primary-source update — 2026-11-27T03:24:30Z
+
+## Mainline and exact-head validation
+
+- Main remains `2151843140fd770b62ef93d06a78c559f9e73bbd`; recursive tree remains **3,164 entries, not truncated**. No main changes or merges occurred.
+- Main CI [45735004570](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735004570), dependency audit [45735004518](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735004518), and money audit [45735004503](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735004503) passed on that exact SHA.
+- PR #1702's new head is `08ab355be7643fbfe18fe1a00d3c2b6478b16e5c`. The full repository suite passed on that exact head: **4,704 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Core tests, Pages validation, dependency audit, money audit and conflict-integrity checks passed. Its merge gate still fails solely because main's current gate compares stale PR `base.sha` by equality.
+- PR #1705's new head is `59ea88aed1974f2ac6b47fb8352b2b790a28edf7`. Its exact-head full suite passed: **4,717 passed, 1 skipped, 11 warnings, 21 subtests; 74.25% coverage**. Core tests, Pages validation, dependency audit, money audit and conflict-integrity checks passed. Its merge gate fails on the same stale-base equality check.
+- The two PR heads remain ancestry-clean against current main (0 commits behind). No branch rewrite, rebase, new PR or merge was performed.
+
+## Verified implementation on existing PR #1702
+
+The runtime prompt loader had three fail-closed defects: malformed JSON roots could raise instead of returning an explicit invalid state; the substring test could classify the literal status `UNVERIFIED` as verified because it contains `VERIFIED`; and new context strings contained literal backslash-n text instead of actual line breaks. These are corrected on the existing #1702 branch, with regression tests for malformed manifest/map roots, `UNVERIFIED` and `NOT_VERIFIED` authentication states, and real newline formatting. Authentication now requires an explicit allowlisted status (`VERIFIED` or `VERIFIED_FOR_GITHUB_CONNECTOR`), plus observed permission evidence and tested data flow. The exact-head full suite above passed. This is branch-only; it is not on main.
+
+## Latest main XRP ingestion — run 202
+
+[Run 202](https://github.com/Barrot-Agent/B-Agent/actions/runs/45933167455) completed successfully on main SHA `2151843140fd770b62ef93d06a78c559f9e73bbd`; data cutoff **2026-11-27 03:16:35 UTC**. Snapshot `122cfc1e5799604e0e058558c887bbc472769bd2dd62167d25cb6cc374f9e53b`, previous snapshot `284456c3b50d8f6a9909d21a358d05c9d995a1a2da62b3475b84320e68b6b417`.
+
+- Feature store: **153 snapshots / 38,055 history records**, **123 eligible / 367 excluded**, SQLite integrity `ok`.
+- Receipt chain: **37 receipts / 21 retained raw payloads / 16 digest-only**, cross-run sequence **154**, chain verification `PASS`. Storage remains 90-day GitHub artifacts, not WORM or externally timestamp-anchored. GitHub Actions cache is now read-only after its configured budget; artifacts still uploaded.
+- Event timeline: **150 events, zero raw hashes, zero verified receipt links**. Eleven URLs match, but zero URL-plus-capture-time matches. The timeline remains incomplete and is not receipt-backed.
+- Baseline evaluator: **580 rows**, `PARTIAL_OR_BLOCKED`; drift remains `INSUFFICIENT_DATA`. No candidate-model superiority or independent shadow cohort; no directional forecast.
+- SEC EDGAR remains `BLOCKED_CONFIGURATION` with zero filing events/receipts. Morpho cbXRP remains `BLOCKED_INDEXER_BLOCK_MISMATCH`. No paper trade or real-money action.
+
+## New SBI primary-source reconciliation on existing PR #1705
+
+The November 2, 2026 SBI Holdings results presentation adds two important facts to the Evernorth/Ripple capital ledger:
+
+- Page 52 reports Evernorth at approximately **473 million XRP**, with SBI Group's **36.1% voting-rights ratio** and **20.5% economic interest**. The footnote calculates voting rights against Class A shares and economic interest against Class A plus Class C. This is not the same as the **39.9% maximum Class A cap** in the S-4/A. The approximate 473m figure aligns with the SEC component sum of 473,276,430 XRP but is not an exact custody statement.
+- Page 51 reports Ripple-held XRP as approximately **5.23bn “actual” XRP** and **31.4bn under escrow**, with quantities dated October 28, 2026. This is SBI's supply classification, not a real-time liquid float or proof that escrowed XRP is immediately available.
+
+Primary source: [SBI Holdings, 1H FY2026 results presentation, pages 51–52](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf). The research remains on PR #1705, not main.
+
+The existing research note also resolves Tokyo/SBIC East, Nagoya/SBIC Central and Osaka/SBIC West as separate Japanese regional companies, not SBI Holdings subsidiaries; identifies the Tokyo SBIC course that taught ChatGPT and Copilot as portfolio-company training rather than an OpenAI partnership; and preserves the exact-phrase results for “ASK Coin”, “actual capital” and “SBIC, ChatGPT SBIC”. The public Kamilah Stevenson channel is linked to the June 11, 2026 iHeart interview: the guest says her YouTube is “doctor Camilla Stevenson” and warns about fake pages. This supports channel-persona attribution, not civil-identity verification. Sources: [Tokyo SBIC training](https://www.sbic.co.jp/training/20250612co/), [iHeart transcript](https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/), [public channel](https://www.youtube.com/@drkamilahstevenson).
+
+## Three co-equal missions and commercial status
+
+- **XRP:** live public-data ingestion and source research continue; predictive eligibility remains blocked as above.
+- **Professional audio:** PR #1704 remains the one audio integration workstream. Its full-song artifact is technically inspected (175.545 seconds, 44.1-kHz float32 mix plus nine aligned stereo stems, zero clipped samples; -22.44 LUFS, -6.02 dBFS sample peak, -6.00 dBTP, 7.87 LU LRA; MIDI type 1 with 11 tracks, 1,751 note-on events, 110 BPM, 4/4, ten markers). Lead stereo correlation 0.0074 and 2.978 dB mono-fold-down loss require listening/translation review. No rights-cleared production SoundFont, native DAW project or user acceptance is verified.
+- **Long-horizon continuity:** PR #1703 remains the one continuity integration workstream. It adds versioned project state, hash-verified export/import, conflict/staleness preservation and dependency-aware task selection. Cross-host network synchronization and automatic key exchange remain unimplemented.
+- All three remain priority 1 on the preserved Barrot V3 foundation in main's `data/missions/primary_mission.json`. The runtime prompt guard is on #1702 only until merged.
+- Nine-platform map: only ChatGPT-to-GitHub is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no cross-platform evidence transfer is claimed.
+- Sellbird remains unauthenticated/uninstalled; no verified prospects, approved outreach, messages, replies, meetings, proposals or revenue. Barrot technology only; sending paused.
+
+## Governance and next actions
+
+PR #1714 remains the clean ancestry-gate successor, with exact-head CI/full suite (4,697 passed, 1 skipped, 11 warnings; 74.24%), dependency, money, conflict and gated-merge checks passing. It has zero independent reviews. Main is protected, but the branch-protection detail endpoint returns HTTP 403, so required approval count remains unknown. A merge triggers GitHub Pages deployment; explicit authorization for that side effect is absent. Do not merge #1714 or any other PR yet. Do not close #1713 until #1714 is merged and its shared changes are verified; preserve its Telegram-specific remainder separately.
+
+Next: obtain independent review and verify actual required approvals for #1714; obtain explicit approval for its Pages deployment side effect; then merge only if all branch-protection and exact-head gates pass. After verifying the merge on main, rerun the gate for #1702–#1705 without rewriting ancestry-clean branches. Continue fixing event-to-receipt linkage and SEC configuration without weakening forecast gates. Keep audio listening/rights/DAW acceptance and cross-host continuity as co-equal workstreams. Keep Sellbird sending paused.
+
+No merge, deployment, Space restart, secret rotation, external model dispatch, paid lookup, outreach, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # Run 66 — integrated portfolio and latest mainline evidence — 2026-11-27T03:06:00Z
 
 ## Repository and integration governance — EXECUTED / VERIFIED
