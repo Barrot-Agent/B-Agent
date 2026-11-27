@@ -1,3 +1,58 @@
+# Execution checkpoint — 2026-11-27 12:22 UTC
+
+**Capture:** 2026-11-27T12:22Z. **Main SHA:** `2151843140fd770b62ef93d06a78c559f9e73bbd`. **Handoff branch before this commit:** `fbc4568f74e2022acd00f69d4488ee9bd73de927`. **No mainline write, merge, deployment, external model transfer, paid lookup or outreach occurred.**
+
+## Mission portfolio — unchanged, three co-equal priority-1 missions
+
+XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development remain co-equal highest priorities. Barrot V3 remains the shared execution, orchestration, MMI, evidence, safety and verification foundation. Revenue/customer acquisition supports Barrot only; it does not become a fourth engineering mission.
+
+## New verified research: Kamilah Stevenson public-channel metadata
+
+The existing XRP integration PR #1705 now contains a single six-file research/test commit `ff1a6453ee68577350f35808e787f117b22aa71f`; no new branch or PR was created.
+
+- A first-party YouTube channel page now maps channel ID `UCqUPJMQdkCN6lsLVDnichPA`, handle `@drkamilahstevenson`, and display name **Kamilah Stevenson** on the same page: [YouTube channel](https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA).
+- Two first-party YouTube video results expose author bylines and exact IDs: [This NEW Bank Deal Shows Exactly Where XRP Is Headed](https://www.youtube.com/watch?v=vRlw4BV-cGE) (2026-10-20; indexed 29,824 views / 1,100 likes) and [SWIFT Built Its Own Blockchain. It Still Can't Do XRP's Job](https://www.youtube.com/watch?v=dAKrq3c9hts) (2026-08-23; indexed 24,868 views / 1,400 likes).
+- The channel page displayed 12 recent public videos, 12 popular public videos, 12 public live streams and 20 Shorts; 12 members-only listings were excluded. These are **56 visible listing slots, not 56 unique videos**. Most entries still lack video IDs. The exact-ID inventory is currently **2 records**, not exhaustive.
+- The 21 earlier seed references remain quarantined as candidates. The two new video records have YouTube author bylines matching the channel's self-identifying display name, but the individual video results did not expose their channel IDs. The person-to-channel association is strong, not legal-identity verified. No government identity, platform verification badge or reciprocal website-to-channel link was captured.
+- Creator commentary is not ground truth and is not a market feature. The video descriptions' claims about Standard Chartered/RLUSD/LMAX and SWIFT must be checked against independent primary sources; no XRP forecast input was admitted.
+- The previous dated identity artifacts remain historical; they were not rewritten. The new profile and regression tests preserve the distinction between verified channel metadata, strong person association and unverified legal identity.
+
+## PR #1705 — new exact-head validation pending
+
+Current head `ff1a6453ee68577350f35808e787f117b22aa71f`; compare to current main: **37 ahead / 0 behind**. Changed files: 20. On this exact head, the core Tests job, audit, pip-audit, GitHub Pages validation-only build and merge-tree integrity check have passed. The **Full repository test suite is still running**; the exact-head merge-readiness job is waiting on it. No completion claim is made until the full-suite job and gate finish. Prior-head results do not substitute for this head.
+
+## PR #1702 handoff branch — exact-head CI passed; merge gate still blocked
+
+Current head before this checkpoint `fbc4568f74e2022acd00f69d4488ee9bd73de927`. Exact-head full suite passed: **4,704 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Audit, pip-audit, core Tests, Pages validation-only and merge-tree checks passed. The legacy merge gate failed because it compares the historical PR `base.sha=6033bcd…` to current main rather than checking ancestry; direct compare still shows **0 commits behind**. PR #1714 contains the ancestry-based gate correction, but it is not merged or independently reviewed. This new handoff commit will create another #1702 head; the `fbc4568…` results do not transfer to it, and exact-head CI must rerun.
+
+## Audio production — artifact independently inspected
+
+Downloaded and inspected the small QC artifact from [Audio Render Integration run 45867292176](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176); the separate full production bundle artifact is present (242,108,638 bytes).
+
+- Full-song render: **80 bars, 110 BPM, D minor, 4/4, 175.545 seconds, stereo 44.1 kHz**.
+- **Nine WAV stems** are sample-aligned, same sample count/rate and timeline origin; Standard MIDI File and JSON metadata are included.
+- No clipped samples. Mix sample peak **−6.024 dBFS**, true peak **−6.000 dBTP**, integrated loudness **−22.44 LUFS**, loudness range **7.87 LU**, crest factor **18.82 dB**. Stereo integrity passed; correlation **0.718**, mono fold-down loss **0.66 dB**, no DC/mono warning. No normalization was applied.
+- SoundFont: FluidR3/FluidSynth, MIT; the SoundFont binary is not included in the bundle. The routing test also exercised two CC0 piano libraries, but the full-song render used FluidR3.
+- This is a low-loudness, headroom-preserving mix/premaster, not a finished loudness master. It is **not** a native DAW project. No comparative listening or user acceptance has been recorded.
+
+## XRP prediction state and operational constraints
+
+Latest mainline XRP ingestion remains run #211 on main SHA `2151843140fd770b62ef93d06a78c559f9e73bbd`: SQLite integrity `ok`; 37 receipt-chain entries, 16 digest-only; 150-event registry still has 0 raw hashes and 0 verified receipt links; 612 walk-forward rows remain `PARTIAL_OR_BLOCKED`; drift is 0/205 and insufficient; model eligibility false; forecast `NOT_ISSUED`. Morpho indexer mismatch, SEC zero-receipt/configuration block and 18 source failures remain. GitHub Actions cache save is read-only due exhausted cache budget; artifacts uploaded successfully. Do not issue directional forecasts.
+
+## Continuity, platform map and commercial status
+
+- PR #1703 remains the unique continuity workstream: workspace-local versioned state and hash-verified export/import are tested; authenticated cross-host synchronization/key exchange remain unverified.
+- Only ChatGPT-to-GitHub connector access has tested authentication and data flow. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no live external model coordination is claimed.
+- Sellbird remains source-audited but not installed/authenticated/prospecting-tested. No verified Barrot prospects, approved campaign, outbound messages, replies, meetings, proposals or revenue. Keep outbound sending paused and scope limited to Barrot technology.
+
+## Current promotion decision
+
+No PR is merged. PR #1702 and #1705 have no independent submitted review recorded; #1703/#1704/#1714 also lack independent review in the current inventory. The detailed branch-protection endpoint remains HTTP 403, so approval count and hidden rules are unknown. A prior main merge triggered GitHub Pages deployment; no deployment approval is present. Preserve all branches and unique work. Do not merge or deploy until review, required protection checks and deployment side effects are resolved.
+
+**Next concrete actions:** finish exact-head #1705 full-suite validation; keep #1714 as the single V3 ancestry-gate successor; continue XRP event-receipt linkage and durable raw-source recovery; advance audio from technical bundle to listening-reviewed DAW-editable production; validate cross-host continuity with authenticated transport; keep Sellbird discovery-only and sending paused.
+
+---
+
 # Execution checkpoint — 2026-11-27 12:01 UTC
 
 **Capture:** 2026-11-27T12:01Z. **Current main:** `2151843140fd770b62ef93d06a78c559f9e73bbd`. **Recursive tree:** 3,164 entries; `truncated=false`. **Handoff branch before this documentation commit:** `96cc54a4271c7e14c894a2fa028e8313cb05776b`.
