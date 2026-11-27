@@ -529,6 +529,8 @@ def test_stereo_side_reduction_preserves_mono_signal_and_repairs_phase_warning()
     assert np.allclose(corrected_mono, original_mono, atol=1e-7)
     assert measured["mono_compatibility_warning"] is False
     assert measured["mono_fold_down_loss_db"] >= -3.0
+    assert measured["mono_fold_down_loss_db"] >= -3.5
+    assert report["after"]["mono_fold_down_loss_db"] >= -3.5
     assert measured["stereo_correlation"] >= 0.0
 
 

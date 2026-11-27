@@ -452,7 +452,7 @@ def _limit_stereo_side_for_mono_compatibility(
     audio,
     *,
     mono_fold_down_warning_db: float = -3.0,
-    safety_margin: float = 0.005,
+    safety_margin: float = 0.05,
 ):
     """Reduce excessive side energy on one stem without changing its mono signal.
 
