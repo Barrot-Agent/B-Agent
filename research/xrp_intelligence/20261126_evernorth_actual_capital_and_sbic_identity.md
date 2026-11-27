@@ -391,3 +391,21 @@ Primary source: Evernorth Holdings Inc., Form 10-Q for the period ended Septembe
 https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
 
 Relevant filing locations: pre-close scope and closing date (Explanatory Note); balance sheet (cash, restricted cash, digital assets, refundable advances); Note 1 subscription/contribution disclosures and 39.9% threshold; Note 4 XRP contribution table; Note 6 refundable-advance accounting and October 9 settlement; subsequent events (October 13 convertible note, October 23 ELOC, 346,484,972 XRP transfer); and MD&A principal-market determination naming Coinbase.
+
+
+### 9.12 Camilla/Kamilah Stevenson: primary interview self-attribution, exact YouTube channel still unbound
+
+A first-party interview transcript now provides a stronger identity anchor for the XRP-content creator persona, but it does **not** yet justify a YouTube-video inventory.
+
+On **June 11, 2026**, iHeart published the 42-minute episode **“Crypto Panics! with Dr. Kamilah Stevenson”** on the XRPTracer Podcast, hosted by Paul Barron. In the transcript, the host introduces the guest as “Camila”/“Camilla”; at 40:07 the guest self-reports:
+- X: **“cam i am cam Stevenson”**
+- Instagram: **“Kamilla Stevenson”**
+- YouTube: **“doctor Camilla Stevenson”**
+
+The guest also warns that fake pages exist and asks viewers to be careful. This is useful first-party-in-context evidence that the interview guest claims those public-facing name variants and platform identities. It is not independent platform verification: iHeart labels its transcript automatically generated and warns that accuracy is not guaranteed; the transcript does not state a YouTube channel URL or immutable channel ID.
+
+A search aggregator surfaced the candidate handle `@drkamilahstevenson`, but that is secondary evidence and does not bind that handle to the interview guest. **Do not inventory, attribute or summarize videos from that channel yet.** First obtain an exact channel ID/URL and a reciprocal or platform-verified link from the guest's official X/Instagram/website or the interview's official show notes. Keep the spellings *Kamilah*, *Kamilla*, *Camila* and *Camilla* as unresolved variants rather than silently merging accounts.
+
+The episode's discussion of XRP, Japan, SBI, RLUSD and institutional adoption is commentary by the guest/host, not primary evidence for those underlying claims. Use it as attributed opinion only; independently verify factual claims against issuers, regulators, filings and transaction data.
+
+Primary interview source: https://www.iheart.com/podcast/1333-the-xrptracer-podcast-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/ (June 11, 2026; transcript around 40:07–40:26). No YouTube video inventory was created in this update.
