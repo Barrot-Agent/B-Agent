@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T20:17:19Z",
+  "captured_at_utc": "2026-11-27T20:19:42Z",
   "capture_basis": "Current-main GitHub repository, complete recursive tree, open PR inventory and branch comparisons, exact-head workflow evidence, XRP ingestion artifacts, audio bundle/QC artifacts, continuity ledger source/tests, primary-source XRP research, and Sellbird upstream source audit. Additional primary-source checks: SBI's dated Ripple shareholding disclosure, Circle SBI Japan JV and Circle annual report, SBI's Ethereum-only RLUSD service and account-only JPYSC rollout, Ripple-BNY custody, and Kamilah Stevenson public interview/channel inventory.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -171,14 +171,15 @@
       {
         "number": 1715,
         "classification": "CURRENT_MAIN_SUCCESSOR_CI_PENDING",
-        "ahead_by": 3,
+        "ahead_by": 4,
         "behind_by": 0,
         "workstream": "mission handoff",
         "supersedes": [
           1702
         ],
         "branch": "integration/mission-handoff-refresh-20261127-run14",
-        "head_sha": "816460aee856718dd6451e5a92f92b3b25e83af7"
+        "head_sha": "894a78e9b169f327ccc5e8ae5d5980b013320ddb",
+        "ci_state": "PENDING_ON_EXACT_HEAD"
       }
     ]
   },
