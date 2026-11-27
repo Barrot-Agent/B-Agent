@@ -1,6 +1,6 @@
 # CURRENT AUTHORITATIVE CHECKPOINT — 2026-11-27 19:58 UTC
 
-Captured: 2026-11-27T19:58:49Z. Base main SHA: afe0c00141f8c369ddfefdc4b31d848060ae59f1. This checkpoint supersedes the 2026-11-24 checkpoint below where newer evidence exists. Older checkpoints remain preserved in this file and Git history.
+Research checkpoint captured: 2026-11-27T19:58:49Z. Successor PR #1715 created 2026-11-27T20:17:19Z from base main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1. This checkpoint supersedes the 2026-11-24 checkpoint below where newer evidence exists. Older checkpoints remain preserved in this file and Git history.
 
 ## Mission portfolio — VERIFIED
 
@@ -62,9 +62,13 @@ The current research branch PR #1705 is still open and diverged from main. The f
 **Coinbase, Circle, Ripple and SBI**
 - Circle's Q3 2026 Form 10-Q reports USD 331.3 million of distribution costs for the quarter and USD 986.6 million for the first nine months; it also reports average USDC held on Coinbase of approximately USD 22 billion. These are issuer-reported accounting/distribution metrics, not independent proof of XRP demand or a direct Ripple partnership.
 - Coinbase's Q3 2026 filing and earnings materials provide a separate partner-side view of USDC distribution and Coinbase's stablecoin economics.
-- SBI Group's official announcements describe a USD 25 million Circle investment by SBI Holdings and a separate USD 25 million investment by SBI Shinsei Bank, plus USDC distribution activity. SBI's RLUSD Japan announcement concerns distribution/listing through SBI VC Trade. These establish direct SBI-Circle and SBI-Ripple commercial relationships; they do not establish a direct SBI-Coinbase bilateral partnership.
-- Ripple's official announcement describes an expanded BNY relationship across custody and tokenized trade finance. Coinbase's RLUSD announcement establishes Coinbase distribution/support. Neither fact by itself proves Coinbase custody of XRP or a Ripple-Circle corporate partnership.
-- USDC and RLUSD coexisting on XRPL is not evidence of a direct Circle-Ripple partnership. No primary-source evidence found in this pass establishes such a partnership.
+- SBI's June 9, 2025 primary release says SBI Holdings and SBI Shinsei Bank each invested USD 25 million in Circle (USD 50 million total). The same release says SBI had invested in Ripple in 2016 and held approximately 9% of Ripple shares at that disclosure date, and describes the SBI Ripple Asia joint venture. Treat the ~9% as a dated company disclosure, not a verified current 2026 ownership percentage.
+- SBI Holdings and Circle established a 50/50 joint venture, Circle SBI Japan K.K. Circle's 2025 annual report says the JV had no significant operating results to date at that reporting point. This is a direct SBI-Circle corporate relationship, distinct from the later RLUSD relationship with Ripple.
+- SBI VC Trade's June 24, 2026 RLUSD notice says VCTRADE deposits and withdrawals were Ethereum-only at launch; other chains, including XRPL, were not supported by that service at that time. Coinbase's October 28, 2026 announcement separately says Coinbase supports RLUSD deposits/withdrawals on XRPL, Base and Ethereum, while collateral availability was to follow. Do not infer that SBI's RLUSD service was XRPL-native merely because RLUSD exists on XRPL.
+- SBI and Startale's JPYSC announcement says the initial JPYSC offering was restricted to SBI VC Trade accounts; public-chain circulation was planned only after legal and tax practice was clarified. It is not evidence of an already-live public-chain JPYSC rail.
+- SBI Remit, SBI LY HOUR Bank and SBI Ripple Asia announced a Japan-Cambodia DLT-based fiat remittance service in October 2025. The announcement describes DLT and fiat transfers; it does not establish that XRP was the settlement asset in that service.
+- Ripple's October 27, 2026 announcement says BNY was RLUSD's primary reserve custodian and already had a Ripple Prime custody relationship; BNY's Digital Asset Custody platform now supports XRP and RLUSD. This is a direct Ripple-BNY custody relationship, not proof that Coinbase or SBI is the custodian.
+- Coinbase's October 28, 2026 RLUSD announcement establishes a direct Coinbase-Ripple distribution/support relationship. Circle's Q3 2026 filing establishes the separate Coinbase-Circle USDC distribution economics. No primary-source evidence found in this pass establishes a direct SBI-Coinbase bilateral partnership or a direct Ripple-Circle corporate partnership. USDC and RLUSD coexisting on XRPL does not prove a Circle-Ripple partnership.
 
 **Evernorth and “actual capital”**
 - Primary SEC filings distinguish cash proceeds, in-kind XRP contributions, debt proceeds, warrant proceeds and optional equity-line capacity. The research reconciliation records USD 272.6 million gross closing cash, approximately 388.91 million XRP contributed in kind, approximately USD 29.0 million net convertible-note proceeds and approximately USD 35.3 million gross warrant proceeds. The optional equity line is share capacity, not cash received.
@@ -74,7 +78,8 @@ The current research branch PR #1705 is still open and diverged from main. The f
 
 **ASK Coin and YouTube attribution**
 - “ASK Coin” remains unresolved. Permission's ASK token is a superficial name candidate, but no primary evidence links it to XRP or SBI or proves it is the coin intended by the query.
-- The public YouTube channel at UCqUPJMQdkCN6lsLVDnichPA self-identifies as Kamilah Stevenson / @drkamilahstevenson. This establishes channel-level self-attribution, not legal identity. Two video records have partial author-byline matches, but the individual video pages do not independently bind those bylines to the channel ID. Do not claim a complete inventory or expand attribution until an independent identity link is established.
+- Identity is strongly corroborated at the public-person/channel level by the first-party channel page, the Kamilah Stevenson branded site and the independent iHeart interview dated June 11, 2026. The iHeart host introduces her as Camila/Camilla; the speaker self-identifies as Camila Stevenson and gives her YouTube identity. The channel page identifies Kamilah Stevenson / @drkamilahstevenson and links to a bio. Legal/civil identity is not verified, and no reciprocal link from the branded site to the exact channel ID was captured.
+- The indexed channel snapshot reports 1.2K videos and 142K subscribers, with 12 recent public listings, 12 popular listings, 12 public live-stream listings and 20 Shorts listings (56 visible slots, not 56 unique videos; lists overlap and the crawl is stale). Two exact video IDs have YouTube first-party author-byline matches but the individual video results do not expose the channel ID: “This NEW Bank Deal Shows Exactly Where XRP Is Headed” (2026-10-20, 12:58; vRlw4BV-cGE) and “SWIFT Built Its Own Blockchain. It Still Can't Do XRP's Job” (2026-08-23; dAKrq3c9hts). Treat these as partial channel-attribution records, not a complete or independently channel-ID-bound archive. Older seed videos and other same-name channels remain candidate-only.
 
 Primary-source references:
 - SBIC East profile: https://www.sbic.co.jp/company/profile/
@@ -84,7 +89,8 @@ Primary-source references:
 - SBI-Circle investment: https://www.sbigroup.co.jp/news/2025/0609_15491.html
 - SBI-Ripple announcement: https://www.sbigroup.co.jp/news/2025/0325_15331.html
 - SBI RLUSD Japan announcement: https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
-- SBI JPYSC announcement: https://www.sbigroup.co.jp/news/pr/2026/0624_16425.html
+- SBI JPYSC announcement: https://www.sbigroup.co.jp/news/2026/0624_16425.html
+- SBI Remit / SBI Ripple Asia Japan-Cambodia DLT remittance announcement: https://www.sbigroup.co.jp/news/pr/2025/1028_15848.html
 - Circle Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm
 - Coinbase Q3 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm
 - Coinbase RLUSD support: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
@@ -94,6 +100,10 @@ Primary-source references:
 - Evernorth resale prospectus: https://www.sec.gov/Archives/edgar/data/2092592/000162828026073926/evernorth-424stickerresalea.htm
 - SBI November 2, 2026 presentation: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
 - Kamilah Stevenson channel: https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA
+- Kamilah Stevenson / iHeart public interview: https://www.iheart.com/podcast/1333-the-xrp-podcast-with-paul-284128923/episode/crypto-panics-with-dr-kamilah-stevenson-336576069/
+- Kamilah Stevenson first-party site: https://www.kamilahstevenson.com/
+- Video byline match 1: https://www.youtube.com/watch?v=vRlw4BV-cGE
+- Video byline match 2: https://www.youtube.com/watch?v=dAKrq3c9hts
 
 ## Professional audio production
 
@@ -166,7 +176,7 @@ All eight open PRs were compared against current main. None should be merged fro
 | #1710 | UNIQUE DEPENDENCY CHANGE / BLOCKED | PyYAML >=6.0.4 in legacy requirements; 1 ahead and 61 behind. |
 | #1711 | BLOCKED / COMPATIBILITY UNRESOLVED | NumPy upper bound changes to <3 while the same file's comment says Streamlit 1.35 requires <2. Do not merge until the Streamlit/NumPy compatibility constraint is resolved and tested. |
 
-No PR was created or merged in this run. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
+PR #1715 was created as the current-main-based successor to #1702; no PR was merged in this run. PR #1715 changes only the handoff and nine-platform map. Its exact-head CI/security/merge-tree checks are pending. The push-triggered gated-merge check failed before the PR existed because it could not resolve an open PR for the branch; the pull_request-triggered gate is the relevant check. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
 
 ## Next concrete actions
 
