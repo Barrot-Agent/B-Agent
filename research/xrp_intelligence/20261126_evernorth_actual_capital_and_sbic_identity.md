@@ -274,9 +274,11 @@ https://www.sbic.co.jp/training/20250612co/
 
 - SBI Holdings and Ripple jointly established SBI Ripple Asia in 2016 to develop and provide next-generation payment infrastructure in Japan and Asia. SBI separately announced an additional Ripple investment in September 2016.
 - SBI's November 2, 2026 financial-results presentation still describes Ripple as an SBI Holdings investee company and shows Ripple-held XRP as a separate supply category. The deck does not disclose a current ownership percentage in the cited section; do not carry forward an old stake estimate as current.
+- The same presentation's XRP-supply slide reports Ripple-held XRP as approximately **5.23bn “actual” XRP** plus **31.4bn under escrow**, with the quantities dated **October 28, 2026**. Treat these as SBI's supply classification, not a real-time liquid float, an independently audited custody statement, or proof that all escrowed XRP is immediately available.
 - SBI's October 21, 2025 Evernorth release announced a $200 million cash contribution by SBI Group to Evernorth's PIPE. This is an announced commitment, not a filing-level allocation to each SBI investor entity.
 
 Primary sources:
+- SBI Holdings, November 2, 2026 financial-results presentation, pages 51–52 (Ripple supply classification; Evernorth holdings and SBI voting/economic interest): https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
 - SBI Ripple Asia formation: https://www.sbigroup.co.jp/news/2016/0519_10302.html
 - SBI additional Ripple investment: https://www.sbigroup.co.jp/news/2016/0916_10407.html
 - SBI 2026 financial-results presentation: https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
@@ -340,6 +342,7 @@ Keep four quantities separate:
 2. The SEC-reported aggregate advance-subscription cash received by Evernorth as of September 30, 2026 ($214.05 million in the reviewed 10-Q), which is not allocated to SBI individually.
 3. The over-$1 billion total raise target described in SBI's 2025 announcement.
 4. Any undrawn facility or future financing capacity, which is not cash received or deployed.
+5. The November 2, 2026 SBI Holdings presentation reports Evernorth at approximately **473m XRP**, with an SBI Group **36.1% voting-rights ratio** and **20.5% economic interest**. Its footnote defines voting rights against Class A shares and economic interest against total Class A plus Class C shares. This is distinct from the **39.9% maximum Class A ownership cap** in the S-4/A: the cap is not the reported realized voting percentage. The approximately 473m presentation figure is consistent with the **473,276,430 XRP** mechanical SEC component sum, but it remains an approximate group-presentation figure, not an exact custody balance or complete transaction ledger.
 
 The SEC S-4/A identifies four SBI-controlled investor entities but does not provide an individual cash allocation for each in the reviewed section. The Evernorth 10-Q identifies Coinbase as its principal-market price reference and BitGo as its custodian; Coinbase's accounting-price role is not a custody relationship. Do not equate announced commitments, subscribed proceeds, cash on hand, XRP purchased, or XRP deployed into lending/DeFi.
 
