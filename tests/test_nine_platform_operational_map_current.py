@@ -158,3 +158,35 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
         assert suite["failed"] > 0
 
     assert latest_observation["evaluation"]["forecast_status"] == "NOT_ISSUED"
+
+
+def test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence():
+    data = load_map()
+    xrp = data["latest_xrp_ingestion_observation"]
+    assert xrp["run_number"] == 212
+    assert xrp["forecast_status"] == "NOT_ISSUED"
+    assert xrp["event_timeline"]["events"] == 150
+    assert xrp["event_timeline"]["verified_receipt_links"] == 0
+    assert xrp["evaluation"]["walk_forward_rows"] == 616
+    assert xrp["evaluation"]["horizons"] == ["1h"]
+
+    audio = data["latest_audio_full_song_qc"]
+    assert audio["aligned_stems"] == 9
+    assert audio["native_daw_project_available"] is False
+    assert audio["human_listening"] == "NOT_PERFORMED"
+    assert audio["user_acceptance"] == "NOT_VERIFIED"
+    assert audio["mix"]["clip_samples"] == 0
+
+    continuity = data["latest_continuity_validation_run11"]
+    assert continuity["local_state_ledger"] == "IMPLEMENTED_AND_TESTED"
+    assert continuity["authenticated_cross_host_sync"] == "NOT_IMPLEMENTED"
+
+    sellbird = data["latest_sellbird_audit_run11"]
+    assert sellbird["license"] == "AGPL-3.0-only"
+    assert sellbird["status"] == "SOURCE_AUDIT_EXECUTED_NOT_INSTALLED"
+    assert sellbird["outbound_sending"] == "PAUSED"
+    assert data["commercial_readiness_run66_4"]["verified_prospects"] == 0
+
+    alignment = data["latest_mission_prompt_alignment"]
+    assert alignment["manifest_status"] == "THREE_COEQUAL_ACTIVE_PRIORITY_1_MISSIONS_ON_MAIN"
+    assert alignment["status"] == "MANIFEST_AND_SCHEDULER_VERIFIED; RUNTIME_PROMPT_FIX_BRANCH_ONLY_NOT_MERGED"
