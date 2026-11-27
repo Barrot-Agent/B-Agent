@@ -988,3 +988,114 @@ Scheduled mainline ingestion [run #208 / 45964580057](https://github.com/Barrot-
 **NOT VERIFIED:** XRP predictive superiority/calibration/drift; permanent raw storage/external anchoring; audio listening acceptance, native DAW project and independent rights clearance; authenticated cross-host continuity; eight external platform connections; Sellbird prospecting or revenue; hidden branch-protection approval count and security alert totals.
 
 No merge, deployment, secret rotation, Space restart, paid lookup, external model transfer, outreach, Kaggle submission, paper trade, funds transfer or real-money action occurred.
+
+
+## Current reconciliation — 2026-11-27 10:31 UTC
+
+### DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** Keep XRP intelligence/prediction, professional audio production, and long-horizon continuity as three equal top-level missions on the shared V3 execution, orchestration, safety, provenance and verification foundation. Keep commercial work subordinate to the three missions and Sellbird restricted to Barrot technology.
+- **EXECUTED:** Re-fetched current main, the complete recursive tree, all 12 open PRs, changed-path inventories, branch ancestry, exact-head checks, reviews, workflow runs and job logs. Re-read the active XRP, audio and continuity implementations; revalidated Sellbird upstream source and current public primary-source research.
+- **VERIFIED:** Main is `2151843140fd770b62ef93d06a78c559f9e73bbd`; recursive tree is complete and untruncated at 3,164 entries. Main CI, dependency audit and money audit pass on this SHA. No main write, merge, deployment, secret change, external model transfer, paper trade, paid lookup or outbound message occurred.
+
+### Main XRP run 210
+
+- Workflow run [45980313032](https://github.com/Barrot-Agent/B-Agent/actions/runs/45980313032) completed successfully on the exact main SHA above.
+- Data cutoff: `2026-11-27T10:14:15.765810Z`. Snapshot: `49e893d3a1da1cb17fec78cadaf232743b4a694c126b0a52b3bbce3e39daf4df`.
+- 123 eligible feature records were added; the append-only feature store reports 39,896 history records and 161 snapshots. SQLite integrity, record counts, digest, lineage and manifest hash all passed.
+- 37 raw-source receipts; 18 source failures. Cross-run receipt sequence 161. External WORM/timestamp anchoring remains unverified.
+- Drift evaluated 0 of 205 features: `INSUFFICIENT_DATA`. Walk-forward produced 608 one-hour rows but remains `PARTIAL_OR_BLOCKED`. No model-eligible directional forecast was issued.
+- The main-branch event timeline contains 150 events; all 150 lack raw-source hashes and canonical receipt links. Event receipt completeness is false. Feature-store rebuild from raw artifacts is still not implemented.
+- **Important branch distinction:** XRP PR #1705 contains the newer 159-event registry and 12 exact-URL, marker-checked primary-source capture specifications. Those changes are not on main yet. Do not describe them as deployed or verified on main.
+
+### Mission status
+
+**XRP intelligence and prediction — EXECUTED / VERIFIED at ingestion level; prediction not authorized.** The scheduled pipeline, point-in-time feature store, receipt chain, source-quality controls, event/counter-hypothesis timeline and one-hour walk-forward evaluation execute. Current evidence does not support a directional forecast. The event-receipt gap and incomplete walk-forward evaluation remain blockers.
+
+**Professional audio — EXECUTED / VERIFIED for the existing test render and per-track routing branch; human quality acceptance not verified.** PR #1704 routes instruments through per-track SoundFonts. The existing reproducible bundle contains a 175.545-second 44.1 kHz float WAV, nine aligned stems, MIDI with named tracks and section markers, and metadata. Technical QC reported no clipped samples, approximately -6 dBTP true peak, -22.44 LUFS integrated loudness and 7.87 LU LRA. Lead mono-fold-down loss was near threshold. No native DAW project exists; listening review and user acceptance remain unperformed. FluidR3_GM is source-claimed MIT; caller-supplied asset rights remain unverified.
+
+**Long-horizon continuity — EXECUTED / VERIFIED for local portable state tests; cross-host continuity not verified.** PR #1703 provides versioned project-state export/import, cross-process recovery, revision/conflict preservation and dependency-aware task selection. It does not provide authenticated network synchronization, automatic key exchange or nine-platform state replication.
+
+### Open PR inventory and integration decisions
+
+| PR | Current classification | Exact-head / ancestry evidence | Decision |
+|---|---|---|---|
+| #1714 — V3 governance ancestry gate and evidence state | **Blocked pending review** | 5 commits ahead, 0 behind; 4,697 passed, 1 skipped; dependency, money, conflict, merge-tree and corrected ancestry gate pass | Best current gate-fix candidate. No independent review is recorded. Branch protection's required approval count is unknown. Do not merge yet. |
+| #1713 — dual-agent invalidation and acceptance evidence | **Unique/unreviewed draft; shared portion superseded by #1714** | 11 ahead, 0 behind; overlaps #1714's gate/dual-agent/acceptance files | Preserve the draft and its Telegram-specific work. Do not close until a successor is merged and its shared content is verified on main. |
+| #1711 — NumPy dependency | **Blocked dependency** | 1 ahead, 6 behind | Revalidate compatibility against current main before promotion. |
+| #1709 — Databricks setup CLI | **Blocked dependency** | 2 ahead, 6 behind; overlaps #1706's workflow-action-pin test | Consolidate overlap before promotion. |
+| #1710 — PyYAML legacy requirement | **Unique/unreviewed dependency** | 1 ahead, 6 behind | Confirm whether the legacy runtime is still used, then revalidate on current main. |
+| #1708 — cache/save action | **Duplicate subset of #1706** | 1 ahead, 6 behind | Keep until the exact successor is merged; do not bulk-close. |
+| #1707 — setup-node action | **Unique/unreviewed dependency** | 1 ahead, 6 behind | Revalidate the action and workflow on current main. |
+| #1706 — cache restore action | **Blocked dependency with overlap** | 2 ahead, 6 behind; overlaps #1705, #1708 and #1709 | Reconcile the shared XRP workflow and action-pin tests before promotion. |
+| #1705 — XRP / RLUSD research and ingestion | **Active XRP integration; blocked by merge gate** | 36 ahead, 0 behind; 4,725 passed, 1 skipped; full suite, dependency, money and conflict checks pass; legacy gate fails on stale PR base metadata | Prefer this existing branch. Its 12 primary-source capture specifications are not yet on main. Rerun the exact-head gate after #1714 is approved/merged. |
+| #1704 — per-track SoundFont routing | **Active audio integration; blocked by merge gate** | 26 ahead, 0 behind; 4,703 passed, 1 skipped; full suite and safety checks pass; legacy gate fails on stale PR base metadata | Prefer this existing branch. Human listening, DAW project and asset-rights review remain required. |
+| #1703 — portable project-state ledger | **Active continuity integration; blocked by merge gate** | 16 ahead, 0 behind; 4,715 passed, 1 skipped; full suite and safety checks pass; legacy gate fails on stale PR base metadata | Prefer this existing branch. Authenticated cross-host sync remains out of scope until separately implemented and tested. |
+| #1702 — canonical handoff/platform map | **Active operations handoff; blocked by merge gate** | 175 ahead, 0 behind; 4,704 passed, 1 skipped; broad coverage 74.21%; dependency, money, conflict and merge-tree checks pass; legacy gate fails on stale PR base metadata | Keep this as the single canonical handoff branch. This checkpoint is being committed here; no new PR is created. |
+
+The shared CI workflow and coverage-scope tests overlap across the four mission/handoff branches. Preserve the separate XRP, audio and continuity workstreams, but do not merge their shared CI edits independently or create another copy. The old gate compares the PR API's cached `.base.sha` with current main; for #1702 the PR base field is `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407` while current main is `2151843140fd770b62ef93d06a78c559f9e73bbd`, even though the compare endpoint reports the branch is 175 commits ahead and 0 behind. #1714 replaces this false stale-base check with actual ancestry verification. The corrected gate passes on #1714's exact head.
+
+Main branch protection is confirmed enabled, with required checks enforced for non-admins: Full repository test suite, audit, pip-audit, and Verify PR merge tree against current base. The detailed protection endpoint returns HTTP 403, so the required approving-review count and several other detailed settings remain unknown. No open mission PR has an independent approving review recorded in this pass. **No merge is authorized until review/approval and all required checks are verifiably satisfied.**
+
+### Primary-source research update
+
+**Japan SBIC identity resolved from primary sources.** The three legal entities are Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (SBIC East Japan), Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (SBIC Central Japan), and Osaka Small and Medium Business Investment & Consultation Co., Ltd. (SBIC West Japan). Their official profiles describe them as sister companies and give distinct founding dates, capital and operating regions. They were established under Japan's Small and Medium Business Investment & Consultation Companies Act (Act No. 101 of 1963). This establishes separate legal identities; it does not prove the absence of every possible indirect business relationship. Do not conflate them with SBI Holdings. A separate historical SBI Capital Co., Ltd. was also called “SBIC” in older SBI Holdings releases.
+
+Primary sources:
+- Act: https://laws.e-gov.go.jp/law/338AC0000000101
+- East: https://www.sbic.co.jp/company/profile/
+- Central: https://www.sbic-cj.co.jp/company/about/
+- West: https://www.sbic-wj.co.jp/profiles/profile/
+- Historical SBI Capital use of “SBIC”: https://www.sbigroup.co.jp/news/2007/0521_852.html
+
+**ChatGPT/SBIC:** Tokyo SBIC advertised a 2024 seminar on generative AI/ChatGPT and a 2025 two-day training for investee companies covering ChatGPT, Copilot, information-leakage risks and RAG. SBIC West also advertised a 2024 ChatGPT-focused seminar. These are educational events, not evidence of an OpenAI partnership or a ChatGPT integration. Exact-phrase searches for “SBIC, ChatGPT SBIC” and “ASK Coin” produced no reliable primary-source entity/partnership evidence in this pass. “Actual capital” continues to appear as generic wording, not a resolved separate entity.
+
+Sources: https://www.sbic.co.jp/seminar/20240305js/ ; https://www.sbic.co.jp/training/20250612co/ ; https://www.sbic-wj.co.jp/wp/wp-content/uploads/2024/07/TF128.pdf
+
+**Kamilah Stevenson channel identity:** The public YouTube channel `@drkamilahstevenson` self-links to Prescribe Wealth, whose official site identifies Dr. Kamilah Stevenson. Channel-to-brand association is high-confidence; civil identity and any link to similarly named historical accounts are not independently established. Inventory is limited to the 12 recent public titles surfaced on the channel page, not the full ~1.2K-video archive:
+1. This NEW Bank Deal Shows Exactly Where XRP Is Headed
+2. This New SEC Proposal Could Unlock Trillions for XRP (and nobody realizes)
+3. Exactly How to Retire With Your XRP Portfolio (Even If You're Cash Poor)
+4. XRP vs Banks: Why Your Money Needs Autonomy NOW
+5. Did SWIFT Just Change XRP Forever? (The Truth)
+6. BlackRock Is Moving Wall Street Onchain. XRP Holders, Pay Attention.
+7. A $119 Billion African Bank Just Put Its License Behind XRP
+8. A New XRP Tool Can Buy and Sell for You
+9. Invest NOW or Get Left Behind. Institutions Are Already Moving.
+10. The CFTC Just Said What XRP Holders Waited Years to Hear
+11. Wall Street Just Got a Company Built to Keep BUYING XRP
+12. XRP Ledger Technology Just Reached Europe's Central Bank
+
+Channel: https://www.youtube.com/@drkamilahstevenson ; linked brand: https://prescribewealth.com/ . Titles are discovery leads only; their factual claims have not been validated.
+
+**Coinbase / Circle / Ripple / SBI relationship map:**
+- SBI Holdings' June 9, 2025 release states a $50 million Circle equity investment split $25 million from SBI Holdings and $25 million from SBI Shinsei Bank. The same dated release says SBI held approximately 9% of Ripple at that time and describes the SBI Ripple Asia joint venture. Treat the 9% as a dated company statement, not a current independently reverified percentage.
+- SBI and Circle established SBI Circle Holdings in August 2025; SBI VC Trade began USDC distribution in Japan. SBI VC Trade and Ripple subsidiary Standard Custody signed an RLUSD Japan MOU in August 2025; RLUSD officially launched in Japan through SBI VC Trade in June 2026.
+- Circle launched native USDC on XRPL on June 12, 2025. USDC and Ripple's RLUSD are separate stablecoins and issuers, despite both being available on XRPL.
+- Coinbase added RLUSD to Coinbase Prime, Coinbase Exchange and its retail app on October 28, 2026, with deposits/withdrawals on XRPL, Base and Ethereum. Ripple provides Base liquidity. Coinbase stated Global Exchange availability and RLUSD collateral use would follow; do not label that collateral feature live at launch.
+- Coinbase and Circle have a separate direct USDC commercial/economic relationship: Circle's SEC filing describes Coinbase's former 50% Centre interest being acquired by Circle in 2023, Circle becoming the sole Centre owner, Coinbase taking an equity stake in Circle, and reserve-income sharing. The filing reported Coinbase-held USDC at approximately 21% of circulation on June 30, 2025 and a 23% daily weighted average for the first half of 2025. These are dated figures, not current market shares.
+- The reviewed sources establish SBI as a direct investor/partner across Circle and Ripple, and Coinbase as a direct distribution/economic partner with Circle plus an RLUSD distribution partner with Ripple. They do not establish a Circle-Ripple corporate joint venture. Native USDC on XRPL is ecosystem coexistence, not proof that Circle uses XRP as a settlement asset.
+
+Primary sources:
+- SBI Circle investment / Ripple stake statement: https://www.sbigroup.co.jp/news/2025/0609_15491.html
+- SBI-Circle JV: https://www.sbigroup.co.jp/news/2025/0822_15679.html
+- SBI-Ripple RLUSD MOU: https://www.sbigroup.co.jp/news/2025/0822_15680.html
+- RLUSD Japan launch: https://ripple.com/ripple-press/ripple-and-sbi-group-partner-to-launch-ripple-usd-in-japan/
+- USDC on XRPL: https://www.circle.com/blog/now-available-usdc-on-the-xrpl
+- Coinbase RLUSD listing: https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase
+- Circle S-1 disclosure: https://www.sec.gov/Archives/edgar/data/1876042/000119312525178989/d839239ds1.htm
+
+### Sellbird and commercial readiness
+
+Revalidated upstream `ethanplusai/sellbird` main at `8c743f1c475f61f7b2c04e50501cf6938a126ed6`, version 0.5.0, Python >=3.11, AGPL-3.0-only. The shipped template has email enabled, Gmail selected, a 50/day cap, approval required, risky recipients disabled, but no configured warmup start date, no send window, an empty postal address and empty do-not-contact list. Do not deploy this template as-is. AGPL-3.0 Section 13 network-source obligations require legal review before hosting a modified service; keep Sellbird separate and do not copy AGPL code into Barrot.
+
+Sellbird remains **source-audited only**: not installed, not authenticated, host compatibility not tested, prospecting not tested, zero qualified prospects, zero paid lookup spend, zero sends, replies, meetings, proposals or collected revenue. Sending stays paused. Scope remains Barrot technology only; no music, songwriting, background vocals, TrekFlex or other venture campaigns.
+
+### Next concrete actions
+
+1. Obtain an independent review/approval for #1714 and verify all branch-protection requirements. If merged, verify its merge commit on main and rerun main CI.
+2. Rerun exact-head merge gates for #1702, #1703, #1704 and #1705 after the ancestry fix reaches main. Review each workstream separately; merge only exact ready heads.
+3. Continue the XRP event-receipt capture and raw-artifact rebuild work on the existing #1705 branch; preserve model-ineligible status until source receipts and out-of-sample evaluation pass.
+4. Run a level-matched human listening review of the audio bundle, resolve the lead mono-fold-down issue, and produce a genuine editable DAW project before calling the audio path production-ready.
+5. Demonstrate cross-run state recovery and conflict/staleness handling across an authenticated handoff before claiming long-horizon continuity beyond local export/import.
+6. Keep Sellbird discovery and sending disabled until a verified Barrot offer, audience, message, mailbox/domain authentication, suppression, opt-out and user approval are all in place.
