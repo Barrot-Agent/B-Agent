@@ -1,9 +1,9 @@
 {
   "artifact_type": "barrot.xrp.event_registry",
   "schema_version": "1.0.0",
-  "registry_version": "run225-20261127-multichain-institutional-custody-refresh",
-  "captured_at_utc": "2026-11-27T04:21:36.418Z",
-  "source_receipt_status": "159 of 159 curated events have null raw_source_sha256; original publisher response bytes have not been retained in this registry. The separate latest mainline receipt chain contains 37 receipts (21 raw payloads, 16 digest-only), but event-to-receipt linkage remains incomplete; the latest mainline timeline reported 0 verified receipt links for 150 events. 59 events have exact publisher timestamps; 100 lack an exact publisher timestamp. All events remain research-only and model-ineligible.",
+  "registry_version": "run226-20261127-jpysc-reserve-management-refresh",
+  "captured_at_utc": "2026-11-27T14:45:35.125Z",
+  "source_receipt_status": "160 of 160 curated events have null raw_source_sha256; original publisher response bytes have not been retained in this registry. Mainline run #214 contains 37 receipts (21 retained raw payloads, 16 digest-only); its 150-event timeline reported 0 verified event receipt links. 59 events have publisher timestamps; 101 lack an exact publisher timestamp. All events remain research-only and model-ineligible.",
   "model_eligible": false,
   "forecast_status": "NOT_ISSUED",
   "events": [
@@ -7490,6 +7490,64 @@
       "model_eligible": false,
       "research_only": true,
       "retrieval_limitations": "Exact raw response bytes and byte-exact SHA-256 receipt were unavailable in this capture; this event must not enter model features."
+    },
+    {
+      "event_id": "sbi-jpysc-short-term-jgb-reserve-2026-09-07",
+      "event_type": "stablecoin",
+      "event_name": "SBI JPYSC reserve allocation and balances",
+      "hypothesis_id": "sbi-jpysc-reserve-management-not-xrp-collateral",
+      "domain": "japan_stablecoin_reserve_management",
+      "hypothesis": "JPYSC reserve management is beginning to include short-term Japanese government bonds under Japan's amended payment-services framework while the issuer and distributor scale a separate yen-denominated stablecoin rail.",
+      "counter_hypothesis": "This is reserve management for a separate yen stablecoin. It does not establish XRP collateral, XRP settlement, XRP purchases, or XRP demand as a bridge asset; lending balances are not equivalent to circulating supply or transaction volume.",
+      "claim": "On 2026-09-07, SBI Shinsei Trust Bank and SBI VC Trade reported that JPY 1.0 billion of JPYSC trust assets had been invested in short-term Japanese government bonds. The release reported a JPYSC issuance balance of approximately JPY 20.1 billion and a JPYSC lending balance of approximately JPY 6.9 billion (combined approximately JPY 27.0 billion) as of that date. It stated that the amended Payment Services Act effective 2026-06-01 permits, subject to conditions, short-term government bonds or term deposits up to 50% of issuance, with maturities no longer than three months. SBI Shinsei Trust Bank is the issuer; SBI VC Trade is the distributor/operator.",
+      "source_id": "sbi_jpysc_short_term_jgb_reserve_20260907",
+      "source_name": "SBI Shinsei Trust Bank / SBI VC Trade official release",
+      "source_url": "https://www.sbigroup.co.jp/news/2026/0907_16567.html",
+      "independence_group": "sbi-vc-trade-official-jpysc",
+      "source_status": "verified",
+      "stance": "context",
+      "event_status": "occurred",
+      "event_time_utc": "2026-09-07T00:00:00Z",
+      "source_published_at_utc": null,
+      "available_at_utc": "2026-11-27T14:45:35.125Z",
+      "captured_at_utc": "2026-11-27T14:45:35.125Z",
+      "raw_source_sha256": null,
+      "assumptions": [
+        "The disclosed balances are rounded issuer/distributor-reported figures, not transaction volume or an audited measure of circulating supply.",
+        "The 50% figure is a legal ceiling under stated conditions, not the actual reserve allocation.",
+        "The JPY 1.0 billion short-term JGB allocation is a reported portion of trust assets; the release does not disclose the entire reserve portfolio.",
+        "JPYSC is distinct from XRP and RLUSD."
+      ],
+      "falsification_conditions": [
+        "A later audited issuer disclosure materially revises the JPY 1.0 billion JGB allocation or the reported JPYSC issuance/lending balances.",
+        "A subsequent legal or regulatory amendment changes the eligible reserve assets or maturity constraints."
+      ],
+      "related_entities": [
+        "SBI Holdings",
+        "SBI Shinsei Trust Bank",
+        "SBI VC Trade",
+        "JPYSC",
+        "Japanese Government Bonds",
+        "Payment Services Act"
+      ],
+      "tags": [
+        "SBI",
+        "JPYSC",
+        "Japan",
+        "reserve-assets",
+        "short-term-JGB",
+        "Payment-Services-Act",
+        "not-XRP-collateral"
+      ],
+      "source_date": "2026-09-07",
+      "event_time_precision": "date-only",
+      "publisher_timestamp_precision": "Official release date stated; exact publication time not disclosed.",
+      "related_source_urls": [
+        "https://www.sbigroup.co.jp/news/2026/0624_16425.html",
+        "https://www.sbigroup.co.jp/news/2026/1102_16704.html"
+      ],
+      "raw_http_bytes_captured": false,
+      "model_eligible": false
     }
   ],
   "run64_note": "Run64 captured 2026-11-12T15:30:44Z; nine research-only events appended; raw_source_sha256 remains null for every event.",
@@ -7809,10 +7867,10 @@
     "source_receipt_policy": "No rendered HTML or web excerpt was hashed as publisher raw bytes. The GitHub artifact ZIP digest is retained separately; log files are identified by Git SHA-1 blob IDs and exact sizes. All five events remain model-ineligible.",
     "note": "Canonical publisher/lineage groups recomputed with the repository's domain-alias and declared-lineage union rules; SBIC regional aliases remain grouped separately from SBI Holdings."
   },
-  "event_count": 159,
+  "event_count": 160,
   "publisher_timestamp_coverage": {
     "exact_publisher_timestamps": 59,
-    "missing_exact_publisher_timestamps": 100
+    "missing_exact_publisher_timestamps": 101
   },
   "run192_update": {
     "captured_at_utc": "2026-11-16T16:11:30Z",
@@ -7980,5 +8038,20 @@
       "circle-paribu-usdc-arc-mou-turkiye-2026-11-24": "stablecoin",
       "reason": "Use the existing event-timeline taxonomy; retain product/distribution detail in each event's domain and claim fields."
     }
+  },
+  "run226_update": {
+    "captured_at_utc": "2026-11-27T14:45:35.125Z",
+    "prior_event_count": 159,
+    "appended_event_count": 1,
+    "resulting_event_count": 160,
+    "added_event_ids": [
+      "sbi-jpysc-short-term-jgb-reserve-2026-09-07"
+    ],
+    "raw_source_sha256_receipts_added": 0,
+    "exact_publisher_timestamp_count": 59,
+    "missing_exact_publisher_timestamp_count": 101,
+    "declared_independence_group_count": 114,
+    "canonical_publisher_lineage_group_count": null,
+    "note": "Added SBI's 2026-09-07 primary disclosure of JPYSC reserve management: JPY 1.0B allocated to short-term Japanese government bonds, approximately JPY 20.1B issuance balance and JPY 6.9B lending balance; the release describes the amended 2026-06-01 Payment Services Act ceiling of up to 50% of issuance in eligible short-term government bonds or term deposits with maturities no longer than three months. This is a separate yen-stablecoin reserve and distribution rail, not XRP collateral or XRP settlement. The later 2026-11-02 SBI VC Trade disclosure is a distinct balance update (>JPY 30B handling balance and >JPY 10B lending balance), not transaction volume. The official page was reviewed, but publisher response bytes were not captured; no hash was fabricated and the event remains model-ineligible. The original SBI VC Trade RLUSD marker phrase is present in the official release; the alternate marker change was unnecessary and is reverted. Live capture still reports the SBI pages as marker mismatches, so the extraction gap remains unresolved and markers were not relaxed."
   }
 }
