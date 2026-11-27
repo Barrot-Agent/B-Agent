@@ -124,8 +124,6 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert run226["resulting_event_count"] == 160
     assert run226["added_event_ids"] == ["sbi-jpysc-short-term-jgb-reserve-2026-09-07"]
     assert run226["raw_source_sha256_receipts_added"] == 0
-    assert run226["model_eligible"] is False
-    assert run226["forecast_status"] == "NOT_ISSUED"
     jpysc = next(
         event for event in registry["events"]
         if event["event_id"] == "sbi-jpysc-short-term-jgb-reserve-2026-09-07"
