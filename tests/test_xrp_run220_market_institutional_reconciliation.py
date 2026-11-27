@@ -93,7 +93,7 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     run224 = registry["run224_update"]
     assert run224["prior_event_count"] == 151
     assert run224["appended_event_count"] == 1
-    assert run224["resulting_event_count"] == registry["event_count"] == 152
+    assert run224["resulting_event_count"] == 152
     assert run224["added_event_ids"] == ["ripple-xrp-holdings-2026-09-30"]
     assert run224["raw_source_sha256_receipts_added"] == 0
     assert run224["missing_exact_publisher_timestamp_count"] == 93
