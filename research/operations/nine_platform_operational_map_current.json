@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T15:11:00Z",
-  "capture_basis": "Run 13: fresh main SHA and complete recursive tree; identical root/packaged three-mission manifests; all 12 open PR metadata, branch ancestry and changed-path overlap; exact-head CI and gate logs; main XRP run #214; branch #1705 capture run 46018826104; stale test failure diagnosis and same-branch correction; dependency/security configuration; latest durable handoff. No external platform dispatch or deployment. Follow-up: downloaded and inspected the #1705 branch event/raw artifacts; identified the exact one HTTP-403 event-source failure and four marker-mismatch records; verified the publisher claims through official SBI/Coinbase public source search records without treating those as ingestion receipts; diagnosed and corrected a second #1705 test-authoring failure on the same branch.",
+  "captured_at_utc": "2026-11-27T15:18:00Z",
+  "capture_basis": "Run 13: fresh main SHA and complete recursive tree; identical root/packaged three-mission manifests; all 12 open PR metadata, branch ancestry and changed-path overlap; exact-head CI and gate logs; main XRP run #214; branch #1705 capture run 46018826104; stale test failure diagnosis and same-branch correction; dependency/security configuration; latest durable handoff. No external platform dispatch or deployment. Follow-up: downloaded and inspected the #1705 branch event/raw artifacts; identified the exact one HTTP-403 event-source failure and four marker-mismatch records; verified the publisher claims through official SBI/Coinbase public source search records without treating those as ingestion receipts; diagnosed and corrected a second #1705 test-authoring failure on the same branch. Final Run 13 validation: exact-head #1705 full repository suite passed 4,727 tests with 1 skipped and 74.28% coverage; dependency, money and conflict checks passed; legacy gate failed closed solely on stale stored base SHA despite actual ancestry 44 ahead/0 behind. Added e-Gov Act No. 101/1963 Article 2 and official Tokyo/Nagoya/Osaka SBIC company profiles to resolve regional SBIC identities separately from SBI Holdings.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -32,11 +32,11 @@
       "latest_audio_render_integration": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176",
       "latest_main_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45936593466",
       "latest_branch_creation_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45515917889",
-      "latest_pr_1702_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023159477",
-      "latest_pr_1702_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023159567",
+      "latest_pr_1702_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023579263",
+      "latest_pr_1702_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023579254",
       "latest_pr_1702_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023159411",
       "latest_pr_1702_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023159389",
-      "latest_pr_1702_merge_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023159465",
+      "latest_pr_1702_merge_gate": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46023579821",
       "latest_pr_1705_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510112",
       "latest_pr_1705_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510118",
       "latest_pr_1705_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510096",
@@ -210,8 +210,8 @@
         "commits_ahead": 44,
         "commits_behind": 0,
         "compare_status": "ahead",
-        "classification": "active_xrp_integration_pending_exact_head_full_suite",
-        "classification_detail": "Corrected stale run225 expectation and removed invalid run226 summary-field assertions; current exact-head full suite is running. Dependency, money and conflict checks pass; gate is in progress."
+        "classification": "active_xrp_integration_full_suite_passed_gate_blocked",
+        "classification_detail": "Exact-head full suite 4,727 passed, 1 skipped, 74.28% coverage; dependency, money and conflict checks pass. Legacy gate falsely labels stale base SHA as behind despite actual ancestry 44/0. No independent review; no merge."
       },
       {
         "number": 1704,
@@ -251,15 +251,15 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "68765826f8352fdf0e4401e196f21f625a51a790",
+        "head_sha": "e2a87041cf84671ba83249faa626eb3f8f3280e7",
         "head_ref": "integration/mission-handoff-refresh-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "commits_ahead": 193,
+        "commits_ahead": 196,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "active_canonical_handoff_platform_map",
-        "classification_detail": "Run 13 handoff and source-artifact follow-up appended; current head 68765826 exact-head CI/security/conflict/gate checks queued or in progress."
+        "classification_detail": "Run 13 handoff, source-artifact, primary SBIC identity and exact-head XRP test validation appended. Current handoff head e2a87041 has exact-head CI/dependency/gate checks queued."
       }
     ],
     "merged_pull_requests": [
@@ -561,7 +561,7 @@
     "branch_inventory_count": 819,
     "branch_inventory_pages_fetched": 9,
     "branch_inventory_complete": true,
-    "last_reconciled_at_utc": "2026-11-27T15:11:00Z",
+    "last_reconciled_at_utc": "2026-11-27T15:18:00Z",
     "branch_inventory_pages": 9,
     "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; merge triggers Pages deployment requiring specific authorization."
   },
@@ -604,8 +604,8 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Run 12 re-fetched current main metadata and complete recursive tree; all twelve open PRs and shared diffs (changed-path inventory across all 12, with shared CI, XRP workflow and action-pin patches inspected); exact-head CI/security/gate checks; workflow logs and artifact manifests. Inspected main XRP ingestion run 208 and its artifacts, and diagnosed the exact-head #1702 evidence-string test failure. GitHub connector writes are limited to the existing #1702 handoff branch. No external model data transfer occurred. Run 13 re-fetched main/tree/mission manifests, compared all 12 open PRs and changed-path overlaps, inspected main XRP run #214 and branch #1705 ingestion run 46018826104, diagnosed the stale registry test failure and committed its correction on the existing #1705 branch, and refreshed the canonical handoff/map on existing #1702. No external model transfer. Run 13 follow-up: downloaded and inspected branch #1705 event and raw artifacts; verified the exact four marker-mismatch source IDs, one Coinbase 403, eight digest-only event links and zero retained event payloads; cross-checked key claims against official SBI and Coinbase publisher pages; corrected a second test assertion on the existing #1705 branch. No external model transfer.",
-        "last_verified_at_utc": "2026-11-27T15:11:00Z",
+        "evidence": "Run 12 re-fetched current main metadata and complete recursive tree; all twelve open PRs and shared diffs (changed-path inventory across all 12, with shared CI, XRP workflow and action-pin patches inspected); exact-head CI/security/gate checks; workflow logs and artifact manifests. Inspected main XRP ingestion run 208 and its artifacts, and diagnosed the exact-head #1702 evidence-string test failure. GitHub connector writes are limited to the existing #1702 handoff branch. No external model data transfer occurred. Run 13 re-fetched main/tree/mission manifests, compared all 12 open PRs and changed-path overlaps, inspected main XRP run #214 and branch #1705 ingestion run 46018826104, diagnosed the stale registry test failure and committed its correction on the existing #1705 branch, and refreshed the canonical handoff/map on existing #1702. No external model transfer. Run 13 follow-up: downloaded and inspected branch #1705 event and raw artifacts; verified the exact four marker-mismatch source IDs, one Coinbase 403, eight digest-only event links and zero retained event payloads; cross-checked key claims against official SBI and Coinbase publisher pages; corrected a second test assertion on the existing #1705 branch. No external model transfer. Run 13 final: verified exact-head #1705 full suite 4,727 passed/1 skipped at 74.28% coverage and diagnosed the stale-base merge-gate false block; checked e-Gov Act No. 101/1963 Article 2 and official SBIC East/Central/West profiles versus SBI Holdings' official company disclosure.",
+        "last_verified_at_utc": "2026-11-27T15:18:00Z",
         "last_verified_main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd"
       },
       "permissions": {
@@ -640,7 +640,10 @@
           "Run 13: updated the canonical mission handoff and nine-platform operational map on the existing #1702 branch.",
           "Run 13 follow-up: downloaded and inspected existing #1705 event/raw artifacts and source_failures.json.",
           "Run 13 follow-up: verified official SBI and Coinbase source statements through public publisher pages without substituting them for ingestion receipts.",
-          "Run 13 follow-up: corrected a second exact-head #1705 test assertion on the existing branch."
+          "Run 13 follow-up: corrected a second exact-head #1705 test assertion on the existing branch.",
+          "Run 13 final: verified #1705 exact-head full repository suite 4,727 passed, 1 skipped and 74.28% coverage.",
+          "Run 13 final: confirmed the #1705 gate failure is the legacy stored-base-SHA check despite actual ancestry 44 ahead/0 behind.",
+          "Run 13 final: checked e-Gov Act No. 101/1963 Article 2 and official East/Central/West SBIC company profiles."
         ],
         "not_used": [
           "Merge to main",
@@ -657,7 +660,7 @@
         "verified": true,
         "status": "LIVE_TESTED",
         "external_transfer_occurred": false,
-        "details": "Re-fetched current main SHA and complete 3,164-entry recursive tree; reviewed all 12 open PRs, changed paths, ancestry, selected shared diffs, exact-head checks and job logs; inspected main XRP run 210 and its integrity/forecast summary; audited Sellbird upstream source and primary XRP/SBIC sources. Updated only the existing canonical handoff and platform map on PR #1702. No external model data transfer, main write, merge, deployment, secret change, paid lookup or outbound sending. Run 13: all 12 PRs compared with main; current main XRP run #214 and branch-only #1705 capture reviewed; same-branch test correction and canonical handoff/map update performed. No external model dispatch, merge or deployment. Follow-up artifact inspection and public primary-source cross-check completed; source mismatches remain fail-closed because the actual response bytes were not retained."
+        "details": "Re-fetched current main SHA and complete 3,164-entry recursive tree; reviewed all 12 open PRs, changed paths, ancestry, selected shared diffs, exact-head checks and job logs; inspected main XRP run 210 and its integrity/forecast summary; audited Sellbird upstream source and primary XRP/SBIC sources. Updated only the existing canonical handoff and platform map on PR #1702. No external model data transfer, main write, merge, deployment, secret change, paid lookup or outbound sending. Run 13: all 12 PRs compared with main; current main XRP run #214 and branch-only #1705 capture reviewed; same-branch test correction and canonical handoff/map update performed. No external model dispatch, merge or deployment. Follow-up artifact inspection and public primary-source cross-check completed; source mismatches remain fail-closed because the actual response bytes were not retained. Exact-head #1705 full-suite and dependency/security results verified; merge gate failed closed on stale base SHA, so no merge. Primary-source SBIC legal-identity resolution added to handoff."
       },
       "sellbird_upstream_integration": "ChatGPT desktop dashboard pane/cards are documented by Sellbird but explicitly not tested upstream; Sellbird's direct model providers are Claude and Codex, not a native ChatGPT provider."
     },
@@ -847,7 +850,7 @@
     "minority_objection_retention": "REQUIRED; no cross-platform exchange executed",
     "red_team_review": "DESIGNED; no external-platform red-team review executed",
     "policy": "Do not transfer private, credential-bearing or user-sensitive data to another platform without explicit authorization. Use redacted, source-linked evidence packets and least-privilege scopes.",
-    "observed_at_utc": "2026-11-27T15:11:00Z",
+    "observed_at_utc": "2026-11-27T15:18:00Z",
     "verified_live_data_flows": [
       "ChatGPT GitHub connector -> Barrot-Agent/B-Agent"
     ],
@@ -1008,16 +1011,16 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "68765826f8352fdf0e4401e196f21f625a51a790",
-      "ahead_of_current_main": 193,
+      "head_sha": "e2a87041cf84671ba83249faa626eb3f8f3280e7",
+      "ahead_of_current_main": 196,
       "behind_current_main": 0,
-      "full_suite": "IN_PROGRESS on current head; previous head 35097d9 full suite passed",
-      "ci_run": 46023159477,
-      "dependency_audit": "IN_PROGRESS",
-      "money_audit": "IN_PROGRESS",
-      "conflict_audit": "IN_PROGRESS",
-      "gated_merge_run": 46023159465,
-      "gated_merge": "IN_PROGRESS",
+      "full_suite": "QUEUED on current handoff head; previous head 35097d9 passed",
+      "ci_run": 46023579263,
+      "dependency_audit": "PENDING",
+      "money_audit": "NOT_STARTED",
+      "conflict_audit": "NOT_STARTED",
+      "gated_merge_run": 46023579821,
+      "gated_merge": "QUEUED",
       "independent_reviews": 0,
       "classification": "active_canonical_handoff_pending_exact_head_validation"
     },
@@ -1059,16 +1062,16 @@
       "head_sha": "11bcc974369702e9d22a728ca0c00e51f232ae69",
       "ahead_of_current_main": 44,
       "behind_current_main": 0,
-      "full_suite": "IN_PROGRESS after second test correction; predecessor failed one invalid summary-field assertion",
+      "full_suite": "4727 passed, 1 skipped, 11 warnings, 21 subtests; 74.28% coverage",
       "ci_run": 46022510112,
       "dependency_audit": "success",
       "money_audit": "success",
       "conflict_audit": "success",
       "merge_tree": "success",
       "gated_merge_run": 46022510101,
-      "gated_merge": "IN_PROGRESS",
+      "gated_merge": "FAILURE_STALE_BASE_CHECK",
       "independent_reviews": 0,
-      "classification": "active_xrp_pending_exact_head_full_suite",
+      "classification": "active_xrp_full_suite_passed_gate_blocked",
       "forecast": "NOT_ISSUED"
     },
     {
@@ -9066,7 +9069,7 @@
     "current_pr1702_head_at_map_capture": "750ea9eaa2769356834f697dc0e06cee290f332a",
     "current_pr1702_validation": "IN_PROGRESS; previous verified head 672e0b0 passed 4,704"
   },
-  "last_reconciled_at_utc": "2026-11-27T15:11:00Z",
+  "last_reconciled_at_utc": "2026-11-27T15:18:00Z",
   "latest_audio_validation_run66_4": {
     "observed_at_utc": "2026-11-27T13:00:00Z",
     "pr_number": 1704,
@@ -11012,23 +11015,21 @@
   },
   "latest_pr_1705_run13_validation": {
     "head_sha": "11bcc974369702e9d22a728ca0c00e51f232ae69",
-    "previous_head_sha": "878d6e31e81dcaca95576115e4c5462869030cac",
     "compare": {
       "status": "ahead",
       "ahead_by": 44,
       "behind_by": 0,
       "merge_base": "2151843140fd770b62ef93d06a78c559f9e73bbd"
     },
-    "predecessor_full_suite": {
-      "run_id": 46021034516,
-      "conclusion": "FAILURE",
-      "failure": "KeyError: model_eligible; test incorrectly asserted a timeline/event field on run226_update summary"
-    },
-    "correction_commit": "11bcc974369702e9d22a728ca0c00e51f232ae69",
-    "correction": "removed invalid run226_update.model_eligible/forecast_status assertions; retained event-level model_eligible=false and existing timeline forecast_status=NOT_ISSUED assertions",
-    "current_full_suite": {
+    "full_suite": {
       "run_id": 46022510112,
-      "status": "IN_PROGRESS"
+      "conclusion": "SUCCESS",
+      "passed": 4727,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.28,
+      "coverage_thresholds": "ALL_PASS"
     },
     "dependency_audit": {
       "run_id": 46022510118,
@@ -11042,16 +11043,21 @@
       "run_id": 46022510120,
       "status": "SUCCESS"
     },
+    "merge_tree": {
+      "status": "SUCCESS"
+    },
     "gated_merge": {
       "run_id": 46022510101,
-      "status": "IN_PROGRESS"
+      "status": "FAILURE_CLOSED",
+      "reason": "legacy workflow compares stored PR base.sha 6033bcd... to current main instead of actual merge-base/ancestry; actual compare is 44 ahead/0 behind"
     },
-    "mergeable": true,
     "independent_reviews": 0,
-    "forecast_status": "NOT_ISSUED"
+    "branch_protection_detail": "HTTP 403; required approval count unknown",
+    "forecast_status": "NOT_ISSUED",
+    "merge_performed": false
   },
   "latest_run13_checkpoint": {
-    "observed_at_utc": "2026-11-27T15:11:00Z",
+    "observed_at_utc": "2026-11-27T15:18:00Z",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "main_tree_entries": 3164,
     "main_tree_truncated": false,
@@ -11066,7 +11072,7 @@
     "open_pr_count": 12,
     "all_open_prs_compared_with_main": true,
     "changed_path_overlap_audit_complete": true,
-    "current_handoff": "BARROT_MISSION_HANDOFF_LATEST.md run 13 follow-up appended on existing #1702 branch at commit 68765826f8352fdf0e4401e196f21f625a51a790",
+    "current_handoff": "BARROT_MISSION_HANDOFF_LATEST.md run 13 final validation and SBIC legal-identity reconciliation appended on existing #1702 branch at commit e2a87041cf84671ba83249faa626eb3f8f3280e7",
     "platform_status": {
       "live_tested": [
         "ChatGPT-to-GitHub"
@@ -11122,7 +11128,16 @@
     },
     "next_action": "Finish exact-head #1705 full suite; diagnose four event-source marker mismatches and retain raw event bytes only where rights permit; continue independent audio listening/DAW and cross-host continuity milestones; keep merge blocked pending approvals and Pages deployment authorization.",
     "xrp_test_status": "Current #1705 head 11bcc974 exact full suite pending; second test-authoring failure corrected on same branch.",
-    "event_artifact_review": "Eight canonical event links, all digest-only; zero retained event payload bytes; one Coinbase HTTP 403 and four SBI marker mismatches; raw bytes absent for mismatches."
+    "event_artifact_review": "Eight canonical event links, all digest-only; zero retained event payload bytes; one Coinbase HTTP 403 and four SBI marker mismatches; raw bytes absent for mismatches.",
+    "xrp_exact_head_validation": {
+      "head_sha": "11bcc974369702e9d22a728ca0c00e51f232ae69",
+      "full_suite": "4727 passed, 1 skipped, 74.28% coverage",
+      "dependency_audit": "PASS",
+      "money_audit": "PASS",
+      "conflict_integrity": "PASS",
+      "merge_gate": "FAIL_CLOSED_STALE_BASE"
+    },
+    "sbic_entity_resolution": "Primary e-Gov statute and three official company profiles confirm East/Central/West legal identities distinct from SBI Holdings."
   },
   "latest_research_primary_source_run13": {
     "observed_at_utc": "2026-11-27T15:11:00Z",
@@ -11182,6 +11197,43 @@
         "scope_limit": "Future collateral availability must not be reported as live at launch."
       }
     ],
-    "capture_discrepancy": "Four SBI event-source marker mismatches and one Coinbase HTTP 403 remain unresolved in the GitHub runner. Public source content confirms key marker claims, but no raw bytes were retained for the mismatches; do not relax marker validation or substitute search results for receipts."
+    "capture_discrepancy": "Four SBI event-source marker mismatches and one Coinbase HTTP 403 remain unresolved in the GitHub runner. Public source content confirms key marker claims, but no raw bytes were retained for the mismatches; do not relax marker validation or substitute search results for receipts.",
+    "sbic_entity_resolution": {
+      "law": {
+        "name": "Small and Medium Business Investment & Consultation Companies Act",
+        "law_number": "Act No. 101 of 1963",
+        "promulgated": "1963-06-10",
+        "article_2": "Names exactly Tokyo Small and Medium Business Investment & Consultation Co., Ltd., Nagoya Small and Medium Business Investment & Consultation Co., Ltd., and Osaka Small and Medium Business Investment & Consultation Co., Ltd.; principal offices Tokyo, Nagoya and Osaka.",
+        "url": "https://laws.e-gov.go.jp/law/338AC0000000101?occasion_date=20260101"
+      },
+      "east": {
+        "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_label": "SBIC East Japan",
+        "corporate_number": "9011001030621",
+        "established": "1963-11-15",
+        "url": "https://www.sbic.co.jp/company/profile/"
+      },
+      "central": {
+        "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_label": "SBIC Central Japan",
+        "established": "1963-11-18",
+        "service_area": "Aichi, Gifu, Mie, Toyama, Ishikawa",
+        "url": "https://www.sbic-cj.co.jp/company/about/"
+      },
+      "west": {
+        "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+        "english_label": "SBIC West Japan",
+        "established": "1963-11-20",
+        "service_area": "24 prefectures west of Fukui/Shiga/Nara/Wakayama",
+        "url": "https://www.sbic-wj.co.jp/profiles/profile/"
+      },
+      "sbi_holdings": {
+        "legal_name": "SBI Holdings, Inc.",
+        "established": "1999-07-08",
+        "business": "Group management/control through share ownership",
+        "url": "https://www.sbigroup.co.jp/news/2026/0114_16025.html"
+      },
+      "conclusion": "The three regional SBIC companies are distinct statutory legal entities, not SBI Holdings. Do not infer absence of every possible indirect shareholding without current ownership records."
+    }
   }
 }
