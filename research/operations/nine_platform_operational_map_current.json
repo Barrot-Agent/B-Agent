@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T20:19:42Z",
+  "captured_at_utc": "2026-11-27T20:20:34Z",
   "capture_basis": "Current-main GitHub repository, complete recursive tree, open PR inventory and branch comparisons, exact-head workflow evidence, XRP ingestion artifacts, audio bundle/QC artifacts, continuity ledger source/tests, primary-source XRP research, and Sellbird upstream source audit. Additional primary-source checks: SBI's dated Ripple shareholding disclosure, Circle SBI Japan JV and Circle annual report, SBI's Ethereum-only RLUSD service and account-only JPYSC rollout, Ripple-BNY custody, and Kamilah Stevenson public interview/channel inventory.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -26,7 +26,7 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054765366",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46062126528",
       "latest_pr_1699_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991841",
       "latest_pr_1699_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991844",
       "latest_pr_1699_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991955",
@@ -80,7 +80,11 @@
       "pages_deployment_run_id": 46055542164,
       "pages_deployment_conclusion": "success",
       "pages_deployment_was_automatic_merge_side_effect": true,
-      "future_merge_requires_explicit_deployment_approval": true
+      "future_merge_requires_explicit_deployment_approval": true,
+      "latest_xrp_ingestion_run_id": 46062126528,
+      "latest_xrp_ingestion_conclusion": "success",
+      "latest_xrp_data_cutoff_utc": "2026-11-27T20:13:52.843372Z",
+      "latest_xrp_forecast_status": "NOT_ISSUED"
     },
     "merged_prs": [
       {
@@ -171,15 +175,15 @@
       {
         "number": 1715,
         "classification": "CURRENT_MAIN_SUCCESSOR_CI_PENDING",
-        "ahead_by": 4,
+        "ahead_by": 6,
         "behind_by": 0,
         "workstream": "mission handoff",
         "supersedes": [
           1702
         ],
         "branch": "integration/mission-handoff-refresh-20261127-run14",
-        "head_sha": "894a78e9b169f327ccc5e8ae5d5980b013320ddb",
-        "ci_state": "PENDING_ON_EXACT_HEAD"
+        "head_sha": "85c0a0ec474613aef3e5a7aca0441c87a00f993a",
+        "ci_state": "IN_PROGRESS_ON_EXACT_HEAD"
       }
     ]
   },
@@ -237,7 +241,8 @@
           "inspect primary SBIC, SBI, Circle, Coinbase, Ripple and Evernorth sources",
           "audit exact Sellbird main source, license, dependencies, configuration, sending controls and upstream open safety PRs",
           "create a current-main-based handoff successor branch and update the durable handoff file",
-          "created current-main-based handoff successor PR #1715; exact-head CI/security/gated-merge checks are pending"
+          "created current-main-based handoff successor PR #1715; exact-head CI/security/gated-merge checks are pending",
+          "verified latest scheduled XRP ingestion run #46062126528 on exact current main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1; parsed receipt, feature-store, event, drift and forecast gates"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -278,7 +283,8 @@
         "https://github.com/Barrot-Agent/B-Agent/pull/1704",
         "https://github.com/Barrot-Agent/B-Agent/pull/1705",
         "https://github.com/ethanplusai/sellbird",
-        "https://github.com/Barrot-Agent/B-Agent/pull/1715"
+        "https://github.com/Barrot-Agent/B-Agent/pull/1715",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46062126528"
       ]
     },
     "Claude": {
