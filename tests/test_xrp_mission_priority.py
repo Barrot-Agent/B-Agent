@@ -19,6 +19,7 @@ from barrot_agent.orchestration.verified_learning_store import (
 )
 
 from scripts.ask_barrot import (
+    INFRASTRUCTURE_CONSTRAINTS,
     SYSTEM_BASE,
     load_mission_portfolio_status,
     load_platform_capability_map,
@@ -374,3 +375,64 @@ def test_ask_barrot_platform_map_unavailable_never_claims_connections(tmp_path: 
 
     assert "UNAVAILABLE" in status
     assert "no external platform connection may be claimed" in status
+
+
+def test_ask_barrot_mission_loader_fails_closed_on_malformed_json_shapes(tmp_path: Path) -> None:
+    path = tmp_path / "data" / "missions"
+    path.mkdir(parents=True)
+    malformed_manifests = [
+        [],
+        {"mission_portfolio": [], "foundation": {}},
+        {**_manifest(), "foundation": []},
+    ]
+
+    for manifest in malformed_manifests:
+        (path / "primary_mission.json").write_text(
+            json.dumps(manifest),
+            encoding="utf-8",
+        )
+        status = load_mission_portfolio_status(tmp_path)
+        assert "INVALID" in status
+        assert "\n" in status
+        assert "\\n" not in status
+
+
+def test_ask_barrot_platform_map_fails_closed_on_malformed_root_and_unverified_auth(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "research" / "operations"
+    path.mkdir(parents=True)
+    map_path = path / "nine_platform_operational_map_current.json"
+    map_path.write_text("[]", encoding="utf-8")
+
+    invalid_status = load_platform_capability_map(tmp_path)
+    assert "INVALID" in invalid_status
+    assert "\n" in invalid_status
+    assert "\\n" not in invalid_status
+
+    payload = {
+        "platforms": {
+            "ChatGPT": {
+                "authentication": {"status": "UNVERIFIED"},
+                "permissions": {"observed_actions": ["read repository"]},
+                "data_flow": {"verified": True, "status": "LIVE_TESTED"},
+            },
+            "Claude": {
+                "authentication": {"status": "NOT_VERIFIED"},
+                "permissions": {"observed_actions": ["read profile"]},
+                "data_flow": {"verified": True, "status": "LIVE_TESTED"},
+            },
+        }
+    }
+    map_path.write_text(json.dumps(payload), encoding="utf-8")
+    status = load_platform_capability_map(tmp_path)
+
+    assert "ChatGPT: connection=UNVERIFIED" in status
+    assert "Claude: connection=UNVERIFIED" in status
+    assert "\n" in status
+    assert "\\n" not in status
+
+
+def test_ask_barrot_infrastructure_constraints_use_actual_newlines() -> None:
+    assert "\n" in INFRASTRUCTURE_CONSTRAINTS
+    assert "\\n" not in INFRASTRUCTURE_CONSTRAINTS

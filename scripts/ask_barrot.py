@@ -150,13 +150,26 @@ def load_mission_portfolio_status(repository_root: str | Path = ".") -> str:
         manifest = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError):
         return (
-            "\\n\\nMission portfolio status: UNVERIFIED; the primary mission manifest "
+            "\n\nMission portfolio status: UNVERIFIED; the primary mission manifest "
             "is unavailable. Preserve all three co-equal missions and do not infer a "
             "priority downgrade."
         )
 
+    if not isinstance(manifest, dict):
+        return (
+            "\n\nMission portfolio status: INVALID; the mission manifest root must be "
+            "an object. Fail closed and do not silently demote any mission."
+        )
+
     portfolio = manifest.get("mission_portfolio")
-    missions = portfolio.get("missions") if isinstance(portfolio, dict) else None
+    foundation = manifest.get("foundation")
+    if not isinstance(portfolio, dict) or not isinstance(foundation, dict):
+        return (
+            "\n\nMission portfolio status: INVALID; mission_portfolio and foundation "
+            "must both be objects. Fail closed and do not silently demote any mission."
+        )
+
+    missions = portfolio.get("missions")
     expected_ids = {
         "xrp_intelligence_prediction_engine",
         "professional_audio_production",
@@ -177,17 +190,17 @@ def load_mission_portfolio_status(repository_root: str | Path = ".") -> str:
             or not item["title"].strip()
             for item in missions
         )
-        or manifest.get("foundation", {}).get("id") != "barrot_v3"
-        or manifest.get("foundation", {}).get("preserve") is not True
+        or foundation.get("id") != "barrot_v3"
+        or foundation.get("preserve") is not True
     ):
         return (
-            "\\n\\nMission portfolio status: INVALID; the manifest does not prove "
+            "\n\nMission portfolio status: INVALID; the manifest does not prove "
             "exactly three active priority-1 missions on the preserved Barrot V3 "
             "foundation. Fail closed and do not silently demote any mission."
         )
 
     lines = [
-        "\\n\\nVerified co-equal mission portfolio from data/missions/primary_mission.json:"
+        "\n\nVerified co-equal mission portfolio from data/missions/primary_mission.json:"
     ]
     for item in missions:
         lines.append(
@@ -198,11 +211,11 @@ def load_mission_portfolio_status(repository_root: str | Path = ".") -> str:
         "behind the others. Barrot V3 is their shared execution, orchestration, safety, "
         "provenance, authorization, and verification foundation."
     )
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 
 def load_platform_capability_map(repository_root: str | Path = ".") -> str:
-    """Report only platform connections backed by authentication, permissions and data flow."""
+    """Report only platform connections backed by explicit authentication, permissions and data flow."""
     path = (
         Path(repository_root)
         / "research"
@@ -213,14 +226,20 @@ def load_platform_capability_map(repository_root: str | Path = ".") -> str:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError):
         return (
-            "\\n\\nNine-platform coordination map: UNAVAILABLE; no external platform "
+            "\n\nNine-platform coordination map: UNAVAILABLE; no external platform "
             "connection may be claimed."
+        )
+
+    if not isinstance(data, dict):
+        return (
+            "\n\nNine-platform coordination map: INVALID; the map root must be an "
+            "object. No external platform connection may be claimed."
         )
 
     platforms = data.get("platforms")
     if not isinstance(platforms, dict):
         return (
-            "\\n\\nNine-platform coordination map: INVALID; no external platform "
+            "\n\nNine-platform coordination map: INVALID; no external platform "
             "connection may be claimed."
         )
 
@@ -236,7 +255,7 @@ def load_platform_capability_map(repository_root: str | Path = ".") -> str:
         "Databricks",
     )
     lines = [
-        "\\n\\nNine-platform capability/authentication/permission/data-flow map "
+        "\n\nNine-platform capability/authentication/permission/data-flow map "
         f"(captured_at_utc={data.get('captured_at_utc', 'unknown')}):"
     ]
     for name in names:
@@ -253,8 +272,10 @@ def load_platform_capability_map(repository_root: str | Path = ".") -> str:
         permissions = record.get("permissions")
         permissions = permissions if isinstance(permissions, dict) else {}
         permission_status = permissions.get("status")
-        permission_verified = permissions.get("verified") is True or bool(
-            permissions.get("observed_actions")
+        observed_actions = permissions.get("observed_actions")
+        permission_verified = permissions.get("verified") is True or (
+            isinstance(observed_actions, list)
+            and any(isinstance(action, str) and action.strip() for action in observed_actions)
         )
         if not permission_status:
             permission_status = (
@@ -262,14 +283,14 @@ def load_platform_capability_map(repository_root: str | Path = ".") -> str:
             )
         data_flow = record.get("data_flow")
         data_flow = data_flow if isinstance(data_flow, dict) else {}
-        flow_status = data_flow.get("status", "NOT_TESTED")
-        authentication_verified = (
-            "VERIFIED" in str(auth_status).upper()
-            and "NOT_" not in str(auth_status).upper()
-        )
+        flow_status = str(data_flow.get("status", "NOT_TESTED")).strip().upper()
+        authentication_verified = str(auth_status).strip().upper() in {
+            "VERIFIED",
+            "VERIFIED_FOR_GITHUB_CONNECTOR",
+        }
         flow_verified = (
             data_flow.get("verified") is True
-            and str(flow_status).upper() in {"LIVE_TESTED", "VERIFIED"}
+            and flow_status in {"LIVE_TESTED", "VERIFIED"}
         )
         connection = (
             "VERIFIED"
@@ -302,10 +323,10 @@ def load_platform_capability_map(repository_root: str | Path = ".") -> str:
     )
     lines.append(
         "Account existence, documentation, model names, or configured endpoints are not "
-        "proof of a live connection. Require tested authentication, least-privilege "
-        "permission, and successful data flow; preserve minority objections."
+        "proof of a live connection. Require explicitly verified authentication, "
+        "least-privilege permission, and successful data flow; preserve minority objections."
     )
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 
 def load_xrp_intelligence_status():
@@ -526,11 +547,11 @@ def append_memory(question, answer):
 
 
 INFRASTRUCTURE_CONSTRAINTS = (
-    "\\n\\nInfrastructure and provider constraints - verify current evidence before every action:\\n"
-    "- The known local phone target includes Termux on Android ARM64 without root or a local GPU; GitHub Actions runners are ephemeral. Treat these as local/CI constraints only. Do not infer that cloud GPU or provider capacity is available or unavailable without a current authenticated test.\\n"
-    "- The nine-platform capability map is authoritative for ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks. Account creation, documentation, model labels, configured endpoints, or a successful GitHub read do not prove another platform is connected. Mark a connection verified only when authentication, least-privilege permissions, and end-to-end data flow are tested. Preserve external-transfer status; do not transfer private, credential-bearing, or user data without explicit authorization.\\n"
-    "- This script currently posts to the Groq Chat Completions endpoint. That identifies this script's configured inference backend only; it does not verify any of the nine platform connections. Test the current credential and response at runtime; never expose keys. Do not claim unsupported Groq embeddings.\\n"
-    "- Do not assume a free tier is permanent or unlimited. Verify current prices, quotas, retention, license, and provider terms before resource-intensive or paid use. Do not assume training or fine-tuning infrastructure exists without current execution evidence.\\n"
+    "\n\nInfrastructure and provider constraints - verify current evidence before every action:\n"
+    "- The known local phone target includes Termux on Android ARM64 without root or a local GPU; GitHub Actions runners are ephemeral. Treat these as local/CI constraints only. Do not infer that cloud GPU or provider capacity is available or unavailable without a current authenticated test.\n"
+    "- The nine-platform capability map is authoritative for ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle, and Databricks. Account creation, documentation, model labels, configured endpoints, or a successful GitHub read do not prove another platform is connected. Mark a connection verified only when authentication, least-privilege permissions, and end-to-end data flow are tested. Preserve external-transfer status; do not transfer private, credential-bearing, or user data without explicit authorization.\n"
+    "- This script currently posts to the Groq Chat Completions endpoint. That identifies this script's configured inference backend only; it does not verify any of the nine platform connections. Test the current credential and response at runtime; never expose keys. Do not claim unsupported Groq embeddings.\n"
+    "- Do not assume a free tier is permanent or unlimited. Verify current prices, quotas, retention, license, and provider terms before resource-intensive or paid use. Do not assume training or fine-tuning infrastructure exists without current execution evidence.\n"
     "- Prefer Python standard-library tools for small local tasks. Before adding ML frameworks, native audio libraries, or GPU dependencies, inspect current hardware, dependency compatibility, licensing, memory/compute requirements, and full-suite impact."
 )
 
