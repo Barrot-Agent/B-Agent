@@ -7,6 +7,7 @@ and true-peak headroom. Its metrics are technical QC, not an artistic-quality sc
 """
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
 import math
 from pathlib import Path
@@ -15,6 +16,9 @@ import tempfile
 
 from .midi_export import export_midi
 from .musical_dna import MusicalManifest
+
+
+AUDIO_QUALITY_BENCHMARK_VERSION = "1.1.0"
 
 
 @dataclass(frozen=True)
@@ -28,6 +32,14 @@ class AudioRenderResult:
     true_peak_level: float
     rms_level: float
     channels: int
+    dc_offset_dbfs: float = -240.0
+    stereo_correlation: float | None = None
+    mono_fold_down_loss_db: float | None = None
+    stereo_warnings: tuple[str, ...] = ()
+    integrated_lufs: float | None = None
+    loudness_range_lu: float | None = None
+    crest_factor_db: float | None = None
+    quality_benchmark_version: str = AUDIO_QUALITY_BENCHMARK_VERSION
 
 
 def _headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
@@ -42,12 +54,19 @@ def _headroom_gain(peak_level: float, ceiling_dbfs: float) -> float:
     return min(1.0, ceiling / peak_level)
 
 
-def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, render_duration_seconds: float | None = None):
-    """Render MIDI events through one FluidSynth instance into interleaved stereo.
+def _render_midi_stereo(
+    midi,
+    *,
+    soundfont_path: str | Path | Mapping[str, str | Path],
+    sample_rate: int,
+    render_duration_seconds: float | None = None,
+):
+    """Render MIDI through one FluidSynth instance with optional per-track SF2s.
 
-    Pitched instruments receive independent MIDI channels; channel 10 (index 9)
-    is reserved for General MIDI percussion. Notes are scheduled on the sample
-    clock, with note-off events ordered before note-on events at the same sample.
+    A mapping selects a SoundFont by MIDI instrument name. Every distinct SF2 is
+    loaded once into the same synth, so tracks retain a shared render timeline and
+    shared FluidSynth effects. Pitched instruments receive independent channels;
+    channel 10 (index 9) is reserved for General MIDI percussion.
     """
     try:
         import fluidsynth
@@ -61,23 +80,47 @@ def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, r
     if not any(getattr(instrument, "notes", ()) for instrument in instruments):
         return np.zeros((0, 2), dtype=np.float32)
 
+    active_indices = {
+        index
+        for index, instrument in enumerate(instruments)
+        if (
+            getattr(instrument, "notes", ())
+            or getattr(instrument, "pitch_bends", ())
+            or getattr(instrument, "control_changes", ())
+        )
+    }
+    if isinstance(soundfont_path, Mapping):
+        soundfont_by_instrument: dict[int, Path] = {}
+        for index in sorted(active_indices):
+            name = getattr(instruments[index], "name", None)
+            if not isinstance(name, str) or not name or name not in soundfont_path:
+                raise ValueError(
+                    f"No SoundFont mapping was supplied for MIDI instrument {name!r}."
+                )
+            soundfont_by_instrument[index] = Path(soundfont_path[name])
+    else:
+        default_soundfont = Path(soundfont_path)
+        soundfont_by_instrument = {
+            index: default_soundfont for index in active_indices
+        }
+
     synth = fluidsynth.Synth(samplerate=sample_rate)
     try:
-        soundfont_id = synth.sfload(str(soundfont_path))
-        if soundfont_id < 0:
-            raise RuntimeError("FluidSynth could not load the supplied SoundFont.")
+        soundfont_ids: dict[Path, int] = {}
+        for soundfont in dict.fromkeys(soundfont_by_instrument.values()):
+            soundfont_id = synth.sfload(str(soundfont))
+            if soundfont_id < 0:
+                raise RuntimeError(
+                    f"FluidSynth could not load SoundFont {soundfont.name!r}."
+                )
+            soundfont_ids[soundfont] = soundfont_id
 
         channel_by_instrument: dict[int, int] = {}
         next_channel = 0
         drum_program: int | None = None
 
         for index, instrument in enumerate(instruments):
-            has_events = bool(
-                getattr(instrument, "notes", ())
-                or getattr(instrument, "pitch_bends", ())
-                or getattr(instrument, "control_changes", ())
-            )
-            if not has_events:
+            if index not in active_indices:
                 continue
 
             if instrument.is_drum:
@@ -101,7 +144,10 @@ def _render_midi_stereo(midi, *, soundfont_path: str | Path, sample_rate: int, r
                 bank = 0
 
             selected = synth.program_select(
-                channel, soundfont_id, bank, int(instrument.program)
+                channel,
+                soundfont_ids[soundfont_by_instrument[index]],
+                bank,
+                int(instrument.program),
             )
             if selected == -1:
                 raise RuntimeError(
@@ -225,6 +271,273 @@ def _measure_audio_levels(audio, resample_poly, *, oversample: int = 4):
     return sample_peak, true_peak, rms
 
 
+def _measure_loudness(audio, sample_rate: int) -> dict[str, object]:
+    """Measure BS.1770 integrated loudness and EBU R128 LRA without processing audio."""
+    import numpy as np
+    import pyloudnorm as pyln
+    from importlib.metadata import PackageNotFoundError, version
+
+    samples = np.asarray(audio, dtype=np.float64)
+    if samples.ndim == 1:
+        samples = samples.reshape(-1, 1)
+    if samples.ndim != 2 or samples.shape[0] == 0:
+        raise ValueError("loudness measurement requires non-empty frames-by-channels audio")
+    if sample_rate <= 0:
+        raise ValueError("sample_rate must be positive")
+    if not np.isfinite(samples).all():
+        raise ValueError("loudness measurement cannot process non-finite audio")
+
+    peak = float(np.max(np.abs(samples)))
+    rms = math.sqrt(float(np.mean(np.square(samples), dtype=np.float64)))
+    crest_factor_db = (
+        20.0 * math.log10(max(peak, 1e-12) / max(rms, 1e-12))
+        if rms > 0.0
+        else None
+    )
+    try:
+        library_version = version("pyloudnorm")
+    except PackageNotFoundError:
+        library_version = "unknown"
+
+    report: dict[str, object] = {
+        "standard": "ITU-R BS.1770-4",
+        "loudness_range_standard": "EBU R128 LRA",
+        "implementation": "pyloudnorm",
+        "implementation_version": library_version,
+        "sample_rate_hz": int(sample_rate),
+        "duration_seconds": float(samples.shape[0] / sample_rate),
+        "integrated_lufs": None,
+        "loudness_range_lu": None,
+        "loudness_range_status": "UNMEASURED",
+        "crest_factor_db": crest_factor_db,
+        "normalization_applied": False,
+        "measurement_only": True,
+    }
+    if peak <= 1e-12 or rms <= 1e-12:
+        report.update(
+            status="SILENT",
+            loudness_range_status="SILENT",
+        )
+        return report
+
+    meter = pyln.Meter(sample_rate)
+    try:
+        integrated = float(meter.integrated_loudness(samples))
+    except ValueError:
+        integrated = float("nan")
+    try:
+        loudness_range = float(meter.loudness_range(samples))
+    except (ValueError, ZeroDivisionError):
+        loudness_range = float("nan")
+
+    if math.isfinite(integrated):
+        report["integrated_lufs"] = integrated
+    if math.isfinite(loudness_range) and loudness_range >= 0.0:
+        report["loudness_range_lu"] = loudness_range
+        report["loudness_range_status"] = "MEASURED"
+    else:
+        report["loudness_range_status"] = "INSUFFICIENT_DURATION_OR_GATED"
+    report["status"] = (
+        "MEASURED" if report["integrated_lufs"] is not None else "INSUFFICIENT_DURATION"
+    )
+    return report
+
+
+def _measure_stereo_integrity(
+    audio,
+    *,
+    dc_offset_warning_dbfs: float = -60.0,
+    mono_fold_down_warning_db: float = -3.0,
+    chunk_frames: int = 262144,
+) -> dict[str, object]:
+    """Measure DC offset, inter-channel correlation, and mono fold-down loss.
+
+    The calculation uses bounded float64 accumulators so long stereo renders do
+    not require another full-size audio copy. Thresholds are warning indicators,
+    not artistic-quality scores or automatic audio processing.
+    """
+    import numpy as np
+
+    if audio.ndim != 2 or audio.shape[1] != 2:
+        raise ValueError("audio must be a stereo frames-by-channels array")
+    if audio.shape[0] == 0:
+        raise ValueError("audio contains no samples")
+    if chunk_frames <= 0:
+        raise ValueError("chunk_frames must be positive")
+    if not math.isfinite(dc_offset_warning_dbfs):
+        raise ValueError("dc_offset_warning_dbfs must be finite")
+    if not math.isfinite(mono_fold_down_warning_db):
+        raise ValueError("mono_fold_down_warning_db must be finite")
+
+    frame_count = int(audio.shape[0])
+    channel_sum = np.zeros(2, dtype=np.float64)
+    channel_square_sum = np.zeros(2, dtype=np.float64)
+    cross_sum = 0.0
+
+    for start in range(0, frame_count, chunk_frames):
+        chunk = np.asarray(audio[start : start + chunk_frames], dtype=np.float64)
+        if not np.isfinite(chunk).all():
+            raise ValueError("audio contains non-finite samples")
+        channel_sum += np.sum(chunk, axis=0, dtype=np.float64)
+        channel_square_sum += np.sum(np.square(chunk), axis=0, dtype=np.float64)
+        cross_sum += float(np.sum(chunk[:, 0] * chunk[:, 1], dtype=np.float64))
+
+    means = channel_sum / frame_count
+    variances = np.maximum(
+        0.0,
+        channel_square_sum - np.square(channel_sum) / frame_count,
+    )
+    covariance = cross_sum - (
+        channel_sum[0] * channel_sum[1] / frame_count
+    )
+    denominator = math.sqrt(float(variances[0] * variances[1]))
+    correlation = (
+        float(np.clip(covariance / denominator, -1.0, 1.0))
+        if denominator > 0.0
+        else None
+    )
+
+    stereo_rms = math.sqrt(
+        float(np.sum(channel_square_sum, dtype=np.float64))
+        / (2.0 * frame_count)
+    )
+    mono_square_sum = (
+        channel_square_sum[0]
+        + channel_square_sum[1]
+        + 2.0 * cross_sum
+    ) / 4.0
+    mono_rms = math.sqrt(max(0.0, mono_square_sum / frame_count))
+    mono_loss_db = (
+        20.0 * math.log10(max(mono_rms, 1e-12) / stereo_rms)
+        if stereo_rms > 0.0
+        else None
+    )
+
+    dc_offset = float(np.max(np.abs(means)))
+    dc_offset_dbfs = 20.0 * math.log10(max(dc_offset, 1e-12))
+    channel_dc_offset_dbfs = [
+        20.0 * math.log10(max(abs(float(value)), 1e-12))
+        for value in means
+    ]
+    warnings: list[str] = []
+    if dc_offset_dbfs > dc_offset_warning_dbfs:
+        warnings.append("dc_offset_above_threshold")
+    if mono_loss_db is not None and mono_loss_db < mono_fold_down_warning_db:
+        warnings.append("mono_fold_down_loss_below_threshold")
+    if correlation is not None and correlation < 0.0:
+        warnings.append("negative_stereo_correlation")
+
+    return {
+        "dc_offset_dbfs": dc_offset_dbfs,
+        "channel_dc_offset_dbfs": channel_dc_offset_dbfs,
+        "stereo_correlation": correlation,
+        "stereo_rms_dbfs": 20.0 * math.log10(max(stereo_rms, 1e-12)),
+        "mono_rms_dbfs": 20.0 * math.log10(max(mono_rms, 1e-12)),
+        "mono_fold_down_loss_db": mono_loss_db,
+        "dc_offset_warning": dc_offset_dbfs > dc_offset_warning_dbfs,
+        "mono_compatibility_warning": (
+            (mono_loss_db is not None and mono_loss_db < mono_fold_down_warning_db)
+            or (correlation is not None and correlation < 0.0)
+        ),
+        "thresholds": {
+            "dc_offset_warning_dbfs": dc_offset_warning_dbfs,
+            "mono_fold_down_warning_db": mono_fold_down_warning_db,
+        },
+        "warnings": warnings,
+        "status": "WARN" if warnings else "PASS",
+    }
+
+
+def _limit_stereo_side_for_mono_compatibility(
+    audio,
+    *,
+    mono_fold_down_warning_db: float = -3.0,
+    safety_margin: float = 0.05,
+):
+    """Reduce excessive side energy on one stem without changing its mono signal.
+
+    The operation is deliberately conservative: it only narrows a stem when
+    the measured mono fold-down or inter-channel correlation fails the supplied
+    threshold. A near-null mid signal cannot be repaired without deleting the
+    audible content, so that case is returned unchanged and explicitly flagged.
+    """
+    import numpy as np
+
+    samples = np.asarray(audio, dtype=np.float32)
+    if samples.ndim != 2 or samples.shape[1] != 2 or samples.shape[0] == 0:
+        raise ValueError("mono-compatibility correction requires non-empty stereo audio")
+    if not np.isfinite(samples).all():
+        raise ValueError("mono-compatibility correction cannot process non-finite audio")
+    if (
+        not math.isfinite(mono_fold_down_warning_db)
+        or not -12.0 <= mono_fold_down_warning_db < 0.0
+    ):
+        raise ValueError("mono_fold_down_warning_db must be between -12 and 0 dB")
+    if not math.isfinite(safety_margin) or not 0.0 <= safety_margin < 0.1:
+        raise ValueError("safety_margin must be between 0 and 0.1")
+
+    before = _measure_stereo_integrity(
+        samples,
+        mono_fold_down_warning_db=mono_fold_down_warning_db,
+    )
+    report = {
+        "applied": False,
+        "side_gain": 1.0,
+        "target_mono_fold_down_loss_db": mono_fold_down_warning_db,
+        "before": before,
+        "after": before,
+        "status": "NOT_REQUIRED",
+        "reason": None,
+    }
+    if not before["mono_compatibility_warning"]:
+        return samples.copy(), report
+
+    values = samples.astype(np.float64, copy=False)
+    mid = (values[:, 0] + values[:, 1]) * 0.5
+    side = (values[:, 0] - values[:, 1]) * 0.5
+    mid_power = float(np.mean(np.square(mid), dtype=np.float64))
+    side_power = float(np.mean(np.square(side), dtype=np.float64))
+    if (
+        not math.isfinite(mid_power)
+        or not math.isfinite(side_power)
+        or mid_power <= max(1e-20, side_power * 1e-12)
+        or side_power <= 0.0
+    ):
+        report.update(
+            status="UNRESOLVED",
+            reason="mid_signal_too_weak_to_preserve_mono_content",
+        )
+        return samples.copy(), report
+
+    mono_ratio = 10.0 ** (mono_fold_down_warning_db / 20.0)
+    allowed_side_power = mid_power * (1.0 / (mono_ratio * mono_ratio) - 1.0)
+    side_gain = min(
+        1.0,
+        math.sqrt(max(0.0, allowed_side_power) / side_power) * (1.0 - safety_margin),
+    )
+    if side_gain >= 1.0:
+        return samples.copy(), report
+
+    corrected = np.column_stack((mid + side * side_gain, mid - side * side_gain))
+    corrected = np.asarray(corrected, dtype=np.float32)
+    after = _measure_stereo_integrity(
+        corrected,
+        mono_fold_down_warning_db=mono_fold_down_warning_db,
+    )
+    report.update(
+        applied=True,
+        side_gain=side_gain,
+        after=after,
+        status="APPLIED" if not after["mono_compatibility_warning"] else "UNRESOLVED",
+        reason=(
+            "reduced_side_energy_to_preserve_mono_content"
+            if not after["mono_compatibility_warning"]
+            else "post_correction_mono_compatibility_still_below_threshold"
+        ),
+    )
+    return corrected, report
+
+
 def render_audio(
     manifest: MusicalManifest,
     destination: str | Path,
@@ -292,6 +605,8 @@ def render_audio(
     true_peak = source_true_peak * gain
     rms = source_rms * gain
     duration = float(audio.shape[0] / sample_rate)
+    stereo_integrity = _measure_stereo_integrity(audio)
+    loudness_report = _measure_loudness(audio, sample_rate)
 
     created = False
     try:
@@ -311,4 +626,11 @@ def render_audio(
         true_peak_level=true_peak,
         rms_level=rms,
         channels=2,
+        dc_offset_dbfs=float(stereo_integrity["dc_offset_dbfs"]),
+        stereo_correlation=stereo_integrity["stereo_correlation"],
+        mono_fold_down_loss_db=stereo_integrity["mono_fold_down_loss_db"],
+        stereo_warnings=tuple(stereo_integrity["warnings"]),
+        integrated_lufs=loudness_report["integrated_lufs"],
+        loudness_range_lu=loudness_report["loudness_range_lu"],
+        crest_factor_db=loudness_report["crest_factor_db"],
     )

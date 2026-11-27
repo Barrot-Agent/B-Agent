@@ -9,10 +9,15 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 3. **Transmutation** — controlled changes to phase, duration, swing, and dynamics while locked constraints remain fixed.
 4. **Original composition** — seeded, repeatable composition of new diatonic harmony, melody, bass, and percussion patterns. By default, it preserves the supplied instrument palette; an explicit setting can expand it. This creates new material; it does not reproduce source pitches, lyrics, hooks, or distinctive arrangements.
 5. **MIDI export** — optional `pretty_midi` adapter exports generated pitched notes and mapped percussion events. Existing files are never overwritten.
-6. **WAV rendering** — optional FluidSynth adapter renders MIDI through a caller-supplied SF2 SoundFont. It writes a new WAV file and reports duration, peak, RMS, and channel count. These are technical diagnostics, not artistic-quality judgments.
-7. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
-8. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
-9. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
+6. **WAV rendering** — optional FluidSynth adapter renders MIDI through a caller-supplied SF2 SoundFont. It writes a new WAV file and reports duration, sample/true peak, RMS, ITU-R BS.1770-4 integrated LUFS, EBU R128 loudness range (LRA), crest factor, channel count, DC offset, inter-channel correlation, and mono fold-down loss. Loudness is measurement only: no normalization, compression, or mastering is applied.
+7. **Instrument-specific rendering** — production bundles include the same peak, true-peak, RMS, integrated-LUFS, LRA, crest-factor, DC-offset, and stereo/mono compatibility diagnostics for the mix and every stem. Production bundles may map each named MIDI track to a separate caller-supplied SF2. All selected SoundFonts are loaded into the same FluidSynth instance for the mix; stem passes use the same map. The bundle records each asset's SHA-256, source and license metadata per instrument. Caller-supplied rights metadata remains unverified; Barrot does not certify licensing.
+8. **Evaluation** — verify inventory preservation and measure whether a transformation is meaningfully different.
+9. **Recursive memory** — append every attempt, including failures. Promote a reusable lesson only after the evaluator passes and the user gives explicit positive feedback.
+10. **Next iteration** — use the best verified settings as a starting point, then evaluate the next result against the same criteria.
+
+## Versioned technical QC benchmark
+
+`audio_quality_benchmark_version: 1.1.0` adds ITU-R BS.1770-4 integrated LUFS, EBU R128 loudness range (LRA), and peak-to-RMS crest factor to the existing sample/true-peak, RMS, clipping, DC-offset, stereo-correlation, mono-fold-down, stem-alignment, and stem-reconstruction checks. The measurement implementation is `pyloudnorm==0.2.0` (MIT); it is part of the optional `music` extra and the dedicated render test environment. Silence and insufficient-duration cases are represented explicitly rather than assigned fabricated values. Numeric QC is not an artistic-quality score and does not replace level-matched listening or user acceptance. No loudness normalization or destructive mastering is performed by this benchmark.
 
 ## Python entry points
 - `barrot_agent.creative.analyze_audio(path)`
@@ -22,6 +27,7 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 - `engine.record_feedback(run, feedback=..., lesson=...)` appends user feedback
 - `barrot_agent.creative.export_midi(manifest, destination)`
 - `barrot_agent.creative.render_audio(manifest, destination, soundfont_path=...)`
+- `barrot_agent.creative.render_production_bundle(manifest, destination_dir, soundfont_path=..., soundfont_map=...)`
 - `barrot_agent.creative.transmute(manifest, Transmutation(...))`
 - `barrot_agent.creative.evaluate_transmutation(source, candidate)`
 - `barrot_agent.creative.RecursiveCreativeMemory(path)`

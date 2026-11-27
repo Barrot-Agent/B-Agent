@@ -95,6 +95,24 @@ def _fake_bundle_modules() -> dict[str, ModuleType]:
     }
 
 
+def _fake_loudness_report(audio, sample_rate: int) -> dict[str, object]:
+    return {
+        "standard": "ITU-R BS.1770-4",
+        "loudness_range_standard": "EBU R128 LRA",
+        "implementation": "pyloudnorm",
+        "implementation_version": "0.2.0",
+        "sample_rate_hz": int(sample_rate),
+        "duration_seconds": float(len(audio) / sample_rate),
+        "integrated_lufs": -20.0,
+        "loudness_range_lu": 4.0,
+        "loudness_range_status": "MEASURED",
+        "crest_factor_db": 3.0,
+        "normalization_applied": False,
+        "measurement_only": True,
+        "status": "MEASURED",
+    }
+
+
 def _fake_librosa(
     signal: np.ndarray,
     *,
@@ -132,11 +150,11 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     sample_rate = 8000
     frames = sample_rate * 4
     mix = np.tile(
-        np.asarray([[0.9, -0.9], [0.45, -0.45]], dtype=np.float32),
+        np.asarray([[0.95, -0.95], [-0.65, 0.65]], dtype=np.float32),
         (frames // 2, 1),
     )
     keys = np.tile(
-        np.asarray([[0.7, -0.7], [0.3, -0.3]], dtype=np.float32),
+        np.asarray([[0.75, -0.75], [-0.25, 0.25]], dtype=np.float32),
         (frames // 2, 1),
     )
     render_calls: list[dict] = []
@@ -163,6 +181,7 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
         patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=export),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", side_effect=measure),
+        patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
     ):
         result = render_production_bundle(
             _manifest(),
@@ -189,6 +208,14 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert result.peak_level <= ceiling + 1e-6
     assert metadata["stem_alignment"]["aligned"] is True
     assert metadata["stem_alignment"]["sample_count"] == frames
+    assert metadata["dc_offset_correction"]["applied"] is True
+    assert metadata["dc_offset_correction"]["reversible"] is True
+    assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert metadata["audio_quality_benchmark_version"] == "1.1.0"
+    assert metadata["mix"]["loudness"]["integrated_lufs"] == -20.0
+    assert metadata["mix"]["loudness"]["normalization_applied"] is False
+    assert all(stem["loudness"]["integrated_lufs"] == -20.0 for stem in metadata["stems"])
+    assert all(stem["stereo_integrity"]["dc_offset_dbfs"] < -60.0 for stem in metadata["stems"])
     assert [stem["instrument"] for stem in metadata["stems"]] == ["keys", "pad"]
     assert all(stem["sample_count"] == frames for stem in metadata["stems"])
     assert metadata["common_gain_linear"] < 1.0
@@ -196,6 +223,12 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert metadata["rights"]["soundfont_sha256"] == hashlib.sha256(soundfont.read_bytes()).hexdigest()
     assert metadata["native_daw_project_available"] is False
     assert metadata["stem_sum_reconstruction_guaranteed"] is False
+    reconstruction = metadata["stem_sum_reconstruction"]
+    assert reconstruction["measured"] is True
+    assert reconstruction["guaranteed"] is False
+    assert reconstruction["relative_rms_error"] >= 0.0
+    assert reconstruction["max_abs_error"] >= 0.0
+    assert reconstruction["correlation"] is None or -1.0 <= reconstruction["correlation"] <= 1.0
     assert metadata["midi"]["track_names"] == ["keys", "pad"]
     assert len(render_calls) == 2
     assert all(call["render_duration_seconds"] == pytest.approx(4.0) for call in render_calls)
@@ -217,6 +250,7 @@ def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: 
         patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
+        patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
     ):
         result = render_production_bundle(_manifest(), target, soundfont_path=soundfont)
 
@@ -430,3 +464,144 @@ def test_audio_adapter_reports_missing_optional_dependency(tmp_path: Path) -> No
     with patch.dict(sys.modules, {"librosa": None}):
         with pytest.raises(RuntimeError, match="optional dependencies"):
             analyze_audio(source)
+
+
+
+def test_stereo_integrity_flags_dc_offset_and_mono_cancellation() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_stereo_integrity
+
+    sample_count = 8192
+    phase = np.arange(sample_count, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone + 0.01, -tone + 0.01)).astype(np.float32)
+
+    measured = _measure_stereo_integrity(anti_phase)
+
+    assert measured["dc_offset_dbfs"] > -60.0
+    assert measured["dc_offset_warning"] is True
+    assert measured["stereo_correlation"] < -0.999
+    assert measured["mono_fold_down_loss_db"] < -3.0
+    assert measured["mono_compatibility_warning"] is True
+    assert "negative_stereo_correlation" in measured["warnings"]
+    assert "mono_fold_down_loss_below_threshold" in measured["warnings"]
+
+
+def test_stereo_integrity_passes_centered_mono_compatible_audio() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_stereo_integrity
+
+    sample_count = 8192
+    phase = np.arange(sample_count, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    compatible = np.column_stack((tone, 0.8 * tone)).astype(np.float32)
+
+    measured = _measure_stereo_integrity(compatible)
+
+    assert measured["dc_offset_dbfs"] < -60.0
+    assert measured["stereo_correlation"] > 0.999
+    assert measured["mono_fold_down_loss_db"] > -1.0
+    assert measured["dc_offset_warning"] is False
+    assert measured["mono_compatibility_warning"] is False
+    assert measured["warnings"] == []
+
+
+
+def test_stereo_side_reduction_preserves_mono_signal_and_repairs_phase_warning() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import (
+        _limit_stereo_side_for_mono_compatibility,
+        _measure_stereo_integrity,
+    )
+
+    phase = np.arange(8192, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone, -0.5 * tone)).astype(np.float32)
+    original_mono = (anti_phase[:, 0] + anti_phase[:, 1]) * 0.5
+
+    corrected, report = _limit_stereo_side_for_mono_compatibility(anti_phase)
+    measured = _measure_stereo_integrity(corrected)
+    corrected_mono = (corrected[:, 0] + corrected[:, 1]) * 0.5
+
+    assert report["applied"] is True
+    assert report["status"] == "APPLIED"
+    assert report["side_gain"] < 1.0
+    assert np.allclose(corrected_mono, original_mono, atol=1e-7)
+    assert measured["mono_compatibility_warning"] is False
+    assert measured["mono_fold_down_loss_db"] >= -3.0
+    assert measured["mono_fold_down_loss_db"] >= -3.5
+    assert report["after"]["mono_fold_down_loss_db"] >= -3.5
+    assert measured["stereo_correlation"] >= 0.0
+
+
+def test_stereo_side_reduction_does_not_silence_a_true_mono_null() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import (
+        _limit_stereo_side_for_mono_compatibility,
+        _measure_stereo_integrity,
+    )
+
+    phase = np.arange(8192, dtype=np.float64) * (2.0 * np.pi / 256.0)
+    tone = np.sin(phase)
+    anti_phase = np.column_stack((tone, -tone)).astype(np.float32)
+
+    corrected, report = _limit_stereo_side_for_mono_compatibility(anti_phase)
+
+    assert report["applied"] is False
+    assert report["status"] == "UNRESOLVED"
+    assert report["reason"] == "mid_signal_too_weak_to_preserve_mono_content"
+    assert np.array_equal(corrected, anti_phase)
+    assert _measure_stereo_integrity(corrected)["mono_compatibility_warning"] is True
+
+
+def test_audio_render_integration_runs_for_integration_branch_pushes() -> None:
+    workflow = Path(".github/workflows/audio-render-integration.yml").read_text(
+        encoding="utf-8"
+    )
+    assert "push:" in workflow
+    assert 'branches: ["integration/**"]' in workflow
+    assert '"barrot_agent/creative/**"' in workflow
+    assert '"tests/test_audio_render_integration.py"' in workflow
+
+def test_loudness_metrics_measure_bs1770_integrated_lufs_lra_and_crest_factor() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_loudness
+
+    sample_rate = 48000
+    sample_count = sample_rate * 20
+    time = np.arange(sample_count, dtype=np.float64) / sample_rate
+    signal = np.empty(sample_count, dtype=np.float64)
+    signal[: sample_rate * 10] = 0.10 * np.sin(
+        2.0 * np.pi * 440.0 * time[: sample_rate * 10]
+    )
+    signal[sample_rate * 10 :] = 0.05 * np.sin(
+        2.0 * np.pi * 440.0 * time[sample_rate * 10 :]
+    )
+    stereo = np.column_stack((signal, signal * 0.9)).astype(np.float32)
+
+    report = _measure_loudness(stereo, sample_rate)
+
+    assert report["standard"] == "ITU-R BS.1770-4"
+    assert report["loudness_range_standard"] == "EBU R128 LRA"
+    assert report["implementation"] == "pyloudnorm"
+    assert report["implementation_version"] == "0.2.0"
+    assert report["status"] == "MEASURED"
+    assert report["integrated_lufs"] is not None
+    assert report["loudness_range_lu"] is not None
+    assert report["loudness_range_lu"] >= 0.0
+    assert report["crest_factor_db"] > 0.0
+    assert report["normalization_applied"] is False
+    assert report["measurement_only"] is True
+
+
+def test_loudness_metrics_mark_silence_without_inventing_a_loudness_value() -> None:
+    np = pytest.importorskip("numpy")
+    from barrot_agent.creative.audio_render import _measure_loudness
+
+    report = _measure_loudness(np.zeros((48000 * 5, 2), dtype=np.float32), 48000)
+
+    assert report["status"] == "SILENT"
+    assert report["integrated_lufs"] is None
+    assert report["loudness_range_lu"] is None
+    assert report["normalization_applied"] is False
+
