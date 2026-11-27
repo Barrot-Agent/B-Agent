@@ -350,3 +350,39 @@ The SEC S-4/A identifies four SBI-controlled investor entities but does not prov
 - **“SBIC, ChatGPT SBIC”:** the primary evidence is the Tokyo SBIC training course above. It demonstrates ChatGPT being taught in a portfolio-company course, not a formal partnership or a product integration.
 
 **Research implication:** institutional stablecoin, custody, exchange and trade-finance relationships are growing around XRPL, but stablecoin distribution and XRPL usage must remain separate from measurable XRP demand. The next data layer must distinguish RLUSD/USDC supply and flows, actual XRP transfers, market-maker inventory, exchange order books, custody balances, collateral usage, and announced versus executed capital.
+
+
+### 9.11 Evernorth 10-Q: pre-close cash, XRP contributions, post-close debt and equity capacity
+
+The September 30, 2026 Form 10-Q is explicit that its financial statements describe Evernorth's **pre-combination** condition; the business combination closed October 9, 2026. Do not treat the September 30 balance sheet as a post-close consolidated balance sheet.
+
+At September 30, the pre-close balance sheet reported:
+- Cash: **$91,397**.
+- Restricted cash: **$49,995**.
+- Digital assets: **$341,887,231**.
+- Refundable investor advances: **$524,259,563** as a noncurrent fair-value liability.
+
+The $524.26m advance balance is not a $524.26m cash balance. It represented cash and XRP contributed under refundable subscription agreements, subject to settlement in equity if the business combination closed. The filing states that the advances were settled through equity issuance at the October 9 close and **no cash was repaid to investors**.
+
+The contribution table reports **346,284,972 XRP** at historical cost of **$846,575,043**, comprising five categories:
+- 50,000,001 XRP / $124,800,002 historical cost.
+- 199,999 XRP / $484,598.
+- 211,619,196 XRP / $507,039,594.
+- 99,900 XRP / $250,849.
+- 84,365,876 XRP / $214,000,000.
+
+The separate delayed-funding disclosure says additional investors committed $10.5m cash and 200,000 XRP for delivery at closing. A subsequent-event disclosure says **346,484,972 XRP** was transferred to Pathfinder after the combination. The 200,000-XRP difference is arithmetically consistent with the delayed-funding quantity, but the filing does not explicitly state that this is the sole reconciliation; preserve it as a reconciliation hypothesis, not a proven one. The post-close transfer to Pathfinder is an internal corporate transfer, not evidence of an open-market XRP purchase or sale.
+
+Additional post-close capital distinctions:
+- On October 13, Evernorth issued a **$30.0m principal convertible note** and received **$29.0m net cash proceeds** after a $1.0m advisor fee. The note accrues 4% PIK interest and matures in 2031 unless earlier converted, redeemed or repurchased.
+- On October 23, Evernorth entered a discretionary equity line of credit with Cantor for up to 5,218,935 shares, priced at 97% of the applicable VWAP. This is a financing facility/issuance capacity, not cash received, and no draw is established by the cited disclosure.
+- Certain SBI-affiliated investors were subject to a **39.9% Class A ownership threshold**; shares otherwise above the threshold were issued as Class C. The filing separately records the number of Class A and Class C shares issued at closing.
+- Ripple received 1,678,382 Class A shares and 16,461,545 Pathfinder units, subject to the disclosed 9.9% ownership threshold. A related-party contributor entity received a separate 661,867 Class A shares and 6,491,583 Pathfinder units, also subject to a combined 9.9% threshold with Ripple.
+- Evernorth selected Coinbase as its principal market for XRP fair-value measurement and used Coinbase's September 30 closing price of $1.49. This is an accounting principal-market determination, not evidence that Coinbase custodies Evernorth's XRP or that the company executed its capital purchases on Coinbase.
+
+This is the most useful current primary-source answer to the phrase **“actual capital”**: distinguish pre-close cash on hand, restricted cash, in-kind XRP, refundable advances, post-close debt proceeds, equity issuance, and undrawn equity-facility capacity. Never add these categories together or present them as a single cash raise.
+
+Primary source: Evernorth Holdings Inc., Form 10-Q for the period ended September 30, 2026:
+https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+
+Relevant filing locations: pre-close scope and closing date (Explanatory Note); balance sheet (cash, restricted cash, digital assets, refundable advances); Note 1 subscription/contribution disclosures and 39.9% threshold; Note 4 XRP contribution table; Note 6 refundable-advance accounting and October 9 settlement; subsequent events (October 13 convertible note, October 23 ELOC, 346,484,972 XRP transfer); and MD&A principal-market determination naming Coinbase.
