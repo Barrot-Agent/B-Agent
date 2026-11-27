@@ -1,6 +1,7 @@
 """Barrot orchestration components."""
 
 from .autonomous_state import AutonomousTaskStore
+from .project_state import ProjectStateLedger, generate_transfer_keypair
 from .capability_cycle import (
     CapabilityCycleController,
     CapabilityCycleError,
@@ -80,6 +81,8 @@ from .repository_repair import (
 
 __all__ = [
     "AutonomousTaskStore",
+    "ProjectStateLedger",
+    "generate_transfer_keypair",
     "CapabilityCycleController",
     "CapabilityCycleError",
     "CapabilityCycleLedger",
