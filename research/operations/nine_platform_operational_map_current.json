@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T03:40:00Z",
-  "capture_basis": "Run 66.2: refreshed current main metadata and complete recursive tree, all 12 open PRs and branch ancestry/overlap, exact-head workflow evidence for the three mission workstreams, latest mainline XRP ingestion run 202, and the current handoff branch write. Only ChatGPT-to-GitHub authentication/data flow is verified; no external model data transfer.",
+  "captured_at_utc": "2026-11-27T03:50:00Z",
+  "capture_basis": "Run 66.2 map repair: current main SHA/tree, all 12 open PRs and ancestry/overlap, latest main XRP run 202, exact verified prior #1702 suite, and pending exact-head checks on the current handoff branch. Snapshot taken before this map commit; the current PR head may advance when the map write is committed.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
@@ -106,7 +106,7 @@
         "commits_behind": 6,
         "compare_status": "diverged",
         "classification": "blocked_dependency_compatibility",
-        "classification_detail": "NumPy <3 admits 2.x while the same Space requirements document Streamlit 1.35 requires NumPy <2. Keep draft pending runtime compatibility validation.",
+        "classification_detail": "NumPy <3 admits 2.x while Streamlit 1.35 requires NumPy <2. Keep draft pending runtime compatibility validation.",
         "changed_paths": [
           "hf_space/requirements.txt"
         ]
@@ -233,16 +233,16 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
         "state": "open",
         "draft": false,
-        "head_sha": "63ac815926d1e7e10f3b12fe1509fb43d7cd3acd",
+        "head_sha": "631fea944d7e8c30610755a95831f33fb219cd39",
         "head_ref": "integration/xrp-rlusd-cross-chain-research-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "updated_at": "2026-11-27T03:27:38Z",
-        "commits_ahead": 28,
+        "updated_at": "2026-11-27T03:44:02Z",
+        "commits_ahead": 29,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "active_xrp_integration_workstream",
-        "classification_detail": "Exact-head full suite 4,717 passed; dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Research-only/model-ineligible; no forecast promotion."
+        "classification_detail": "Research addendum 9.12 records iHeart interview self-attribution; exact YouTube channel ID remains unbound. Prior exact-head suite 4,717 passed; latest research commit CI pending."
       },
       {
         "number": 1704,
@@ -259,7 +259,7 @@
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "active_audio_integration_workstream",
-        "classification_detail": "Exact-head full suite 4,703 passed; FluidSynth integration and dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Listening, native DAW project and rights clearance remain open."
+        "classification_detail": "Exact-head full suite 4,703 passed; FluidSynth integration and dependency, money and conflict checks pass. Gate false-blocks on stale PR base SHA equality. Listening, native DAW project and rights clearance remain open."
       },
       {
         "number": 1703,
@@ -276,7 +276,7 @@
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "active_continuity_integration_workstream",
-        "classification_detail": "Exact-head full suite 4,715 passed; dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Authenticated network sync and automatic key exchange remain unimplemented."
+        "classification_detail": "Exact-head full suite 4,715 passed; dependency, money and conflict checks pass. Gate false-blocks on stale PR base SHA equality. Authenticated network sync and automatic key exchange remain unimplemented."
       },
       {
         "number": 1702,
@@ -284,16 +284,16 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
+        "head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
         "head_ref": "integration/mission-handoff-refresh-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "updated_at": "2026-11-27T03:38:48Z",
-        "commits_ahead": 162,
+        "updated_at": "2026-11-27T03:40:59Z",
+        "commits_ahead": 163,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "active_canonical_handoff_platform_map_integration",
-        "classification_detail": "Current head b35cc050; push CI Tests and Pages validation passed, but the full suite is intentionally skipped on integration push. Exact pull_request CI, dependency audit and gated readiness are pending; previous exact head passed 4,704 tests. Known stale-base gate defect remains until #1714 is merged."
+        "classification_detail": "Current head 750ea9ea; exact PR full-suite and gated-merge checks are running. Last verified head 672e0b0 passed 4,704 tests. Current head is not yet verified."
       }
     ],
     "merged_pull_requests": [
@@ -334,7 +334,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-27T03:40:00Z",
+      "observed_at_utc": "2026-11-27T03:50:00Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -482,48 +482,64 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45924960774"
       },
       "latest_integration_validation": {
-        "observed_at_utc": "2026-11-27T03:40:00Z",
+        "observed_at_utc": "2026-11-27T03:50:00Z",
         "pr_number": 1702,
-        "tested_head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
+        "tested_head_sha": "672e0b0efa6fbb9ccd789533a27ec90e48ff7f12",
         "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-        "commits_ahead": 162,
+        "commits_ahead": 161,
         "commits_behind": 0,
         "full_suite": {
-          "run_id": 45935385252,
-          "conclusion": "in_progress",
-          "passed": null,
-          "failed": null,
-          "skipped": null,
-          "coverage_percent": null
+          "run_id": 45934149065,
+          "conclusion": "success",
+          "passed": 4704,
+          "failed": 0,
+          "skipped": 1,
+          "warnings": 11,
+          "subtests": 21,
+          "coverage_percent": 74.21
         },
         "other_checks": {
-          "push_ci": {
-            "run_id": 45935380458,
-            "conclusion": "success",
-            "full_suite": "skipped_on_integration_push"
+          "dependency_audit": {
+            "run_id": 45934149067,
+            "conclusion": "success"
           },
           "money_audit": {
-            "run_id": 45935385212,
+            "run_id": 45934149096,
             "conclusion": "success"
           },
           "conflict_integrity": {
-            "run_id": 45935385198,
+            "run_id": 45934149040,
             "conclusion": "success"
           },
-          "dependency_audit": {
-            "run_id": 45935385220,
-            "conclusion": "in_progress"
+          "pages_validation": {
+            "run_id": 45934149065,
+            "conclusion": "success"
           },
           "gated_merge": {
-            "run_id": 45935385193,
-            "conclusion": "in_progress"
+            "run_id": 45934149027,
+            "conclusion": "failure",
+            "reason": "Legacy equality check rejects stale PR base.sha despite 0 commits behind main."
           }
+        },
+        "current_head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
+        "current_head_validation": {
+          "status": "IN_PROGRESS",
+          "ci_run": 45935593811,
+          "full_suite_job": 140297951121,
+          "dependency_audit_run": 45935593732,
+          "dependency_audit": "success",
+          "money_audit_run": 45935593709,
+          "money_audit": "success",
+          "conflict_integrity_run": 45935593756,
+          "conflict_integrity": "success",
+          "gated_merge_run": 45935593753,
+          "gated_merge": "IN_PROGRESS"
         },
         "review_count": 0,
         "merge_status": "NOT_MERGED",
         "blockers": [
-          "Exact pull_request full-suite and dependency checks still running on b35cc050.",
-          "The existing gate in main still compares stale PR base.sha by equality; #1714 contains the ancestry-based fix but is not merged.",
+          "Current PR head 750ea9ea full repository suite and gated merge remain in progress; prior verified head is 672e0b0.",
+          "Legacy mainline gate compares stale PR base.sha by equality; #1714 contains the ancestry-based correction but is not merged.",
           "No independent review; approval count unknown.",
           "Merge triggers GitHub Pages deployment; explicit deployment authorization absent."
         ]
@@ -692,48 +708,64 @@
     },
     "open_pull_request_count": 12,
     "latest_integration_validation": {
-      "observed_at_utc": "2026-11-27T03:40:00Z",
+      "observed_at_utc": "2026-11-27T03:50:00Z",
       "pr_number": 1702,
-      "tested_head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
+      "tested_head_sha": "672e0b0efa6fbb9ccd789533a27ec90e48ff7f12",
       "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-      "commits_ahead": 162,
+      "commits_ahead": 161,
       "commits_behind": 0,
       "full_suite": {
-        "run_id": 45935385252,
-        "conclusion": "in_progress",
-        "passed": null,
-        "failed": null,
-        "skipped": null,
-        "coverage_percent": null
+        "run_id": 45934149065,
+        "conclusion": "success",
+        "passed": 4704,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.21
       },
       "other_checks": {
-        "push_ci": {
-          "run_id": 45935380458,
-          "conclusion": "success",
-          "full_suite": "skipped_on_integration_push"
+        "dependency_audit": {
+          "run_id": 45934149067,
+          "conclusion": "success"
         },
         "money_audit": {
-          "run_id": 45935385212,
+          "run_id": 45934149096,
           "conclusion": "success"
         },
         "conflict_integrity": {
-          "run_id": 45935385198,
+          "run_id": 45934149040,
           "conclusion": "success"
         },
-        "dependency_audit": {
-          "run_id": 45935385220,
-          "conclusion": "in_progress"
+        "pages_validation": {
+          "run_id": 45934149065,
+          "conclusion": "success"
         },
         "gated_merge": {
-          "run_id": 45935385193,
-          "conclusion": "in_progress"
+          "run_id": 45934149027,
+          "conclusion": "failure",
+          "reason": "Legacy equality check rejects stale PR base.sha despite 0 commits behind main."
         }
+      },
+      "current_head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
+      "current_head_validation": {
+        "status": "IN_PROGRESS",
+        "ci_run": 45935593811,
+        "full_suite_job": 140297951121,
+        "dependency_audit_run": 45935593732,
+        "dependency_audit": "success",
+        "money_audit_run": 45935593709,
+        "money_audit": "success",
+        "conflict_integrity_run": 45935593756,
+        "conflict_integrity": "success",
+        "gated_merge_run": 45935593753,
+        "gated_merge": "IN_PROGRESS"
       },
       "review_count": 0,
       "merge_status": "NOT_MERGED",
       "blockers": [
-        "Exact pull_request full-suite and dependency checks still running on b35cc050.",
-        "The existing gate in main still compares stale PR base.sha by equality; #1714 contains the ancestry-based fix but is not merged.",
+        "Current PR head 750ea9ea full repository suite and gated merge remain in progress; prior verified head is 672e0b0.",
+        "Legacy mainline gate compares stale PR base.sha by equality; #1714 contains the ancestry-based correction but is not merged.",
         "No independent review; approval count unknown.",
         "Merge triggers GitHub Pages deployment; explicit deployment authorization absent."
       ]
@@ -752,7 +784,7 @@
     "branch_inventory_count": 819,
     "branch_inventory_pages_fetched": 9,
     "branch_inventory_complete": true,
-    "last_reconciled_at_utc": "2026-11-27T03:40:00Z",
+    "last_reconciled_at_utc": "2026-11-27T03:50:00Z",
     "branch_inventory_pages": 9,
     "branch_protection_gate_status": "protected=true; four required checks enforced for non-admins; detailed protection endpoint HTTP 403; approval count unknown; future merge triggers Pages deployment requiring specific authorization."
   },
@@ -1155,17 +1187,16 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
-      "ahead_of_current_main": 162,
+      "head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
+      "ahead_of_current_main": 163,
       "behind_current_main": 0,
-      "full_suite": "PENDING on exact PR head b35cc050",
-      "ci_run": 45935385252,
-      "push_ci_run": 45935380458,
-      "push_ci": "Tests and Pages validation passed; full-suite job skipped on integration push",
-      "dependency_audit": "IN_PROGRESS",
-      "money_audit": "success",
-      "conflict_audit": "success",
-      "gated_merge_run": 45935385193,
+      "full_suite": "IN_PROGRESS on exact current head 750ea9ea; previous verified head 672e0b0 passed 4,704",
+      "ci_run": 45935593811,
+      "full_suite_job": 140297951121,
+      "dependency_audit": 45935593732,
+      "money_audit": 45935593709,
+      "conflict_audit": 45935593756,
+      "gated_merge_run": 45935593753,
       "gated_merge": "IN_PROGRESS; legacy stale-base equality defect known",
       "independent_reviews": 0,
       "classification": "pending_exact_head_validation"
@@ -1352,48 +1383,64 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862982894"
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-27T03:40:00Z",
+    "observed_at_utc": "2026-11-27T03:50:00Z",
     "pr_number": 1702,
-    "tested_head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
+    "tested_head_sha": "672e0b0efa6fbb9ccd789533a27ec90e48ff7f12",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 162,
+    "commits_ahead": 161,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45935385252,
-      "conclusion": "in_progress",
-      "passed": null,
-      "failed": null,
-      "skipped": null,
-      "coverage_percent": null
+      "run_id": 45934149065,
+      "conclusion": "success",
+      "passed": 4704,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.21
     },
     "other_checks": {
-      "push_ci": {
-        "run_id": 45935380458,
-        "conclusion": "success",
-        "full_suite": "skipped_on_integration_push"
+      "dependency_audit": {
+        "run_id": 45934149067,
+        "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45935385212,
+        "run_id": 45934149096,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45935385198,
+        "run_id": 45934149040,
         "conclusion": "success"
       },
-      "dependency_audit": {
-        "run_id": 45935385220,
-        "conclusion": "in_progress"
+      "pages_validation": {
+        "run_id": 45934149065,
+        "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45935385193,
-        "conclusion": "in_progress"
+        "run_id": 45934149027,
+        "conclusion": "failure",
+        "reason": "Legacy equality check rejects stale PR base.sha despite 0 commits behind main."
       }
+    },
+    "current_head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
+    "current_head_validation": {
+      "status": "IN_PROGRESS",
+      "ci_run": 45935593811,
+      "full_suite_job": 140297951121,
+      "dependency_audit_run": 45935593732,
+      "dependency_audit": "success",
+      "money_audit_run": 45935593709,
+      "money_audit": "success",
+      "conflict_integrity_run": 45935593756,
+      "conflict_integrity": "success",
+      "gated_merge_run": 45935593753,
+      "gated_merge": "IN_PROGRESS"
     },
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "Exact pull_request full-suite and dependency checks still running on b35cc050.",
-      "The existing gate in main still compares stale PR base.sha by equality; #1714 contains the ancestry-based fix but is not merged.",
+      "Current PR head 750ea9ea full repository suite and gated merge remain in progress; prior verified head is 672e0b0.",
+      "Legacy mainline gate compares stale PR base.sha by equality; #1714 contains the ancestry-based correction but is not merged.",
       "No independent review; approval count unknown.",
       "Merge triggers GitHub Pages deployment; explicit deployment authorization absent."
     ]
@@ -4807,7 +4854,7 @@
       "commits_behind": 6,
       "compare_status": "diverged",
       "classification": "blocked_dependency_compatibility",
-      "classification_detail": "NumPy <3 admits 2.x while the same Space requirements document Streamlit 1.35 requires NumPy <2. Keep draft pending runtime compatibility validation.",
+      "classification_detail": "NumPy <3 admits 2.x while Streamlit 1.35 requires NumPy <2. Keep draft pending runtime compatibility validation.",
       "changed_paths": [
         "hf_space/requirements.txt"
       ]
@@ -4934,16 +4981,16 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
       "state": "open",
       "draft": false,
-      "head_sha": "63ac815926d1e7e10f3b12fe1509fb43d7cd3acd",
+      "head_sha": "631fea944d7e8c30610755a95831f33fb219cd39",
       "head_ref": "integration/xrp-rlusd-cross-chain-research-20261125",
       "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "base_ref": "main",
-      "updated_at": "2026-11-27T03:27:38Z",
-      "commits_ahead": 28,
+      "updated_at": "2026-11-27T03:44:02Z",
+      "commits_ahead": 29,
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "active_xrp_integration_workstream",
-      "classification_detail": "Exact-head full suite 4,717 passed; dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Research-only/model-ineligible; no forecast promotion."
+      "classification_detail": "Research addendum 9.12 records iHeart interview self-attribution; exact YouTube channel ID remains unbound. Prior exact-head suite 4,717 passed; latest research commit CI pending."
     },
     {
       "number": 1704,
@@ -4960,7 +5007,7 @@
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "active_audio_integration_workstream",
-      "classification_detail": "Exact-head full suite 4,703 passed; FluidSynth integration and dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Listening, native DAW project and rights clearance remain open."
+      "classification_detail": "Exact-head full suite 4,703 passed; FluidSynth integration and dependency, money and conflict checks pass. Gate false-blocks on stale PR base SHA equality. Listening, native DAW project and rights clearance remain open."
     },
     {
       "number": 1703,
@@ -4977,7 +5024,7 @@
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "active_continuity_integration_workstream",
-      "classification_detail": "Exact-head full suite 4,715 passed; dependency, money and conflict checks pass. Gate still false-blocks on stale PR base SHA equality. Authenticated network sync and automatic key exchange remain unimplemented."
+      "classification_detail": "Exact-head full suite 4,715 passed; dependency, money and conflict checks pass. Gate false-blocks on stale PR base SHA equality. Authenticated network sync and automatic key exchange remain unimplemented."
     },
     {
       "number": 1702,
@@ -4985,16 +5032,16 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "state": "open",
       "draft": false,
-      "head_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
+      "head_sha": "750ea9eaa2769356834f697dc0e06cee290f332a",
       "head_ref": "integration/mission-handoff-refresh-20261125",
       "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "base_ref": "main",
-      "updated_at": "2026-11-27T03:38:48Z",
-      "commits_ahead": 162,
+      "updated_at": "2026-11-27T03:40:59Z",
+      "commits_ahead": 163,
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "active_canonical_handoff_platform_map_integration",
-      "classification_detail": "Current head b35cc050; push CI Tests and Pages validation passed, but the full suite is intentionally skipped on integration push. Exact pull_request CI, dependency audit and gated readiness are pending; previous exact head passed 4,704 tests. Known stale-base gate defect remains until #1714 is merged."
+      "classification_detail": "Current head 750ea9ea; exact PR full-suite and gated-merge checks are running. Last verified head 672e0b0 passed 4,704 tests. Current head is not yet verified."
     }
   ],
   "latest_xrp_ingestion_run": {
@@ -9343,7 +9390,7 @@
     "research": "regional SBIC identity resolved; institutional relationship map expanded; 36 public YouTube videos sampled after channel attribution cross-check.",
     "next_action": "Obtain independent review/required approvals for #1714, resolve #1702 stale-base gate via #1714, then verify exact-head integration and Pages side effects before any merge."
   },
-  "captured_at": "2026-11-27T03:40:00Z",
+  "captured_at": "2026-11-27T03:50:00Z",
   "latest_run65_1_checkpoint": {
     "run": 65.1,
     "observed_at_utc": "2026-11-27T02:50:13Z",
@@ -9423,7 +9470,9 @@
       "commit_sha": "b35cc050ab70c89a29e761eca6b877c66dbaa353",
       "status": "VERIFIED_BRANCH_COMMIT"
     },
-    "merge_status": "NO_MERGE_NO_DEPLOYMENT"
+    "merge_status": "NO_MERGE_NO_DEPLOYMENT",
+    "current_pr1702_head_at_map_capture": "750ea9eaa2769356834f697dc0e06cee290f332a",
+    "current_pr1702_validation": "IN_PROGRESS; previous verified head 672e0b0 passed 4,704"
   },
-  "last_reconciled_at_utc": "2026-11-27T03:40:00Z"
+  "last_reconciled_at_utc": "2026-11-27T03:50:00Z"
 }
