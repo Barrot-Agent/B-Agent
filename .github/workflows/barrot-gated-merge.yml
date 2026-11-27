@@ -52,7 +52,6 @@ jobs:
             draft="$(jq -r 'if has("draft") then (.draft|tostring) else "unknown" end' <<< "$pr_json")"
             state="$(jq -r '.state // empty' <<< "$pr_json")"
             base_ref="$(jq -r '.base.ref // empty' <<< "$pr_json")"
-            base_sha="$(jq -r '.base.sha // empty' <<< "$pr_json")"
             mergeable="$(jq -r '.mergeable // false' <<< "$pr_json")"
 
             [[ "$actual_head" == "$EXPECTED_HEAD_SHA" ]] || add_blocker "PR head does not match the exact event commit"
@@ -62,7 +61,17 @@ jobs:
             [[ "$mergeable" == "true" ]] || add_blocker "PR is not confirmed mergeable"
 
             if current_main="$(gh api "repos/${REPOSITORY}/git/ref/heads/main" --jq '.object.sha' 2>/dev/null)"; then
-              [[ "$base_sha" == "$current_main" ]] || add_blocker "PR base is behind current main; update the branch and rerun checks"
+              # Pull-request base.sha can remain at the PR's original base commit.
+              # Verify actual ancestry instead: current main must be the merge base
+              # of current_main...head, with no commits missing from the PR head.
+              if compare_json="$(gh api "repos/${REPOSITORY}/compare/${current_main}...${actual_head}" 2>/dev/null)"; then
+                behind_by="$(jq -r '.behind_by // empty' <<< "$compare_json")"
+                merge_base_sha="$(jq -r '.merge_base_commit.sha // empty' <<< "$compare_json")"
+                compare_status="$(jq -r '.status // empty' <<< "$compare_json")"
+                [[ "$behind_by" == "0" && "$merge_base_sha" == "$current_main" ]] || add_blocker "PR head does not include current main (status=${compare_status}, behind_by=${behind_by})"
+              else
+                add_blocker "current-main ancestry could not be verified"
+              fi
             else
               add_blocker "current main commit could not be verified"
             fi
