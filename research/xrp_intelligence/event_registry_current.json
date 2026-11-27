@@ -7077,7 +7077,7 @@
     },
     {
       "event_id": "ripple-treasury-always-on-platform-2026-10-26",
-      "event_type": "product_launch",
+      "event_type": "corporate",
       "event_name": "Ripple Treasury introduces an always-on corporate treasury platform",
       "hypothesis_id": "ripple-treasury-growth-may-expand-stablecoin-and-tokenized-fund-rails",
       "domain": "institutional_payments_and_treasury",
@@ -7259,7 +7259,7 @@
     },
     {
       "event_id": "circle-dbs-usdc-institutional-access-2026-11-18",
-      "event_type": "stablecoin_distribution",
+      "event_type": "stablecoin",
       "event_name": "DBS and Circle expand institutional USDC mint/redeem and 24/7 settlement access in Asia",
       "hypothesis_id": "usdc-institutional-rail-competition-in-asia",
       "domain": "stablecoins_and_payment_rails",
@@ -7315,7 +7315,7 @@
     },
     {
       "event_id": "circle-paribu-usdc-arc-mou-turkiye-2026-11-24",
-      "event_type": "stablecoin_distribution",
+      "event_type": "stablecoin",
       "event_name": "Paribu and Circle sign exploratory MOU for USDC access and on-chain finance in Türkiye",
       "hypothesis_id": "usdc-and-arc-distribution-expansion-in-turkiye",
       "domain": "stablecoins_and_payment_rails",
@@ -7973,6 +7973,12 @@
     "canonical_publisher_lineage_group_count": null,
     "model_eligible": false,
     "forecast_status": "NOT_ISSUED",
-    "summary": "Added seven official-source events covering Ripple Treasury, Ripple National Trust Bank effectiveness, Ripple's issuer-reported product-revenue run rate, Circle/DBS USDC access, Circle/Paribu's exploratory Arc MOU, SBI Solana Global's multi-chain JV launch and Ripple/Yapı Kredi custody. These are ecosystem and corporate-strategy events, not direct XRP spot-demand observations. All seven remain excluded because original publisher bytes and immutable raw-source receipts were not captured. No directional forecast is issued."
+    "summary": "Added seven official-source events covering Ripple Treasury, Ripple National Trust Bank effectiveness, Ripple's issuer-reported product-revenue run rate, Circle/DBS USDC access, Circle/Paribu's exploratory Arc MOU, SBI Solana Global's multi-chain JV launch and Ripple/Yapı Kredi custody. These are ecosystem and corporate-strategy events, not direct XRP spot-demand observations. All seven remain excluded because original publisher bytes and immutable raw-source receipts were not captured. No directional forecast is issued.",
+    "event_type_normalization": {
+      "ripple-treasury-always-on-platform-2026-10-26": "corporate",
+      "circle-dbs-usdc-institutional-access-2026-11-18": "stablecoin",
+      "circle-paribu-usdc-arc-mou-turkiye-2026-11-24": "stablecoin",
+      "reason": "Use the existing event-timeline taxonomy; retain product/distribution detail in each event's domain and claim fields."
+    }
   }
 }
