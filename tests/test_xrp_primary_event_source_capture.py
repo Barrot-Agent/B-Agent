@@ -14,6 +14,7 @@ from barrot_agent.evolution.xrp_public_ingestion import (
     _capture_event_timeline_registry,
     _capture_public_event_sources,
     _event_source_capture_due,
+    _normalized_event_source_html_text,
 )
 
 
@@ -381,3 +382,75 @@ def test_additional_first_party_event_specs_are_exact_and_present_in_registry(
     assert matches[0]["source_id"] == source_id
     assert matches[0]["source_url"] == source_uri
     assert matches[0]["source_status"] == "verified"
+
+def test_primary_event_capture_matches_visible_html_text_across_inline_tags_and_entities(tmp_path):
+    registry = tmp_path / "events.json"
+    _write_registry(registry, [_event(spec) for spec in EVENT_SOURCE_CAPTURE_SPECS])
+    archive = RawReceiptArchive(tmp_path / "raw")
+    receipts = []
+    failures = []
+    raw_only = []
+    markup_sources = {
+        "sbi_holdings_circle_investment_release_20250609",
+        "sbi_circle_holdings_jv_establishment_20250822",
+        "sbi_startale_open_standard_jpysc_ousd_20261016",
+        "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
+    }
+    specs = {spec["source_id"]: spec for spec in EVENT_SOURCE_CAPTURE_SPECS}
+
+    def fetch(source_id, url):
+        spec = specs[source_id]
+        assert url == spec["source_uri"]
+        fragments = []
+        for marker in spec["required_markers"]:
+            rendered = marker
+            if source_id == "sbi_holdings_circle_investment_release_20250609":
+                if marker == "2025年6月9日":
+                    rendered = "&#50;" + marker[1:]
+                if "約9%" in marker:
+                    rendered = marker.replace("%", "％", 1)
+            if source_id in markup_sources:
+                split = max(1, len(rendered) // 2)
+                rendered = rendered[:split] + "<span>" + rendered[split:] + "</span>"
+            fragments.append(f"<p>{rendered}</p>")
+        body = (
+            "<html><head><script>hidden-marker-must-not-count</script>"
+            "<style>style-marker-must-not-count</style></head><body>"
+            + "".join(fragments)
+            + "</body></html>"
+        ).encode("utf-8")
+        return {
+            "raw_bytes": body,
+            "payload": {"html_text": body.decode("utf-8")},
+            "received_at_utc": "2026-11-12T04:30:00.000000Z",
+            "http_date": None,
+            "http_headers": {"content-type": "text/html; charset=utf-8"},
+        }
+
+    summary = _capture_public_event_sources(
+        registry,
+        fetcher=fetch,
+        archive=archive,
+        captured=datetime(2026, 11, 12, 4, 10, tzinfo=timezone.utc),
+        receipts=receipts,
+        failures=failures,
+        raw_only=raw_only,
+    )
+
+    assert summary["status"] == "CAPTURED"
+    assert summary["captured_event_count"] == len(EVENT_SOURCE_CAPTURE_SPECS)
+    assert summary["marker_mismatch_count"] == 0
+    assert summary["failed_event_count"] == 0
+    assert failures == []
+    assert len(receipts) == len(EVENT_SOURCE_CAPTURE_SPECS)
+    assert all(receipt["raw_bytes_retained"] is False for receipt in receipts)
+
+
+def test_event_source_visible_text_normalizer_ignores_script_and_style_content():
+    normalized = _normalized_event_source_html_text(
+        b"<script>hidden-marker</script><style>hidden-style</style><p>Visible marker</p>"
+    )
+    assert "visible marker" in normalized
+    assert "hidden-marker" not in normalized
+    assert "hidden-style" not in normalized
+

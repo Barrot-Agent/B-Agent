@@ -22,6 +22,8 @@ from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 from urllib.parse import urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from html.parser import HTMLParser
+import unicodedata
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
@@ -6123,6 +6125,60 @@ def _event_source_capture_due(
     return utc.hour == 0 and utc.minute >= 15
 
 
+class _VisibleHTMLTextParser(HTMLParser):
+    """Extract visible HTML text while preserving inline text continuity."""
+
+    _BLOCK_TAGS = frozenset({
+        "address", "article", "aside", "blockquote", "body", "br", "caption",
+        "dd", "div", "dl", "dt", "fieldset", "figcaption", "figure", "footer",
+        "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr",
+        "html", "li", "main", "nav", "ol", "p", "pre", "section", "table",
+        "tbody", "td", "tfoot", "th", "thead", "tr", "ul",
+    })
+    _IGNORED_TAGS = frozenset({"script", "style", "noscript", "template"})
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self._ignored_stack: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        normalized_tag = tag.casefold()
+        if normalized_tag in self._IGNORED_TAGS:
+            self._ignored_stack.append(normalized_tag)
+        elif not self._ignored_stack and normalized_tag in self._BLOCK_TAGS:
+            self.parts.append(" ")
+
+    def handle_endtag(self, tag: str) -> None:
+        normalized_tag = tag.casefold()
+        if self._ignored_stack:
+            for index in range(len(self._ignored_stack) - 1, -1, -1):
+                if self._ignored_stack[index] == normalized_tag:
+                    del self._ignored_stack[index:]
+                    return
+        if not self._ignored_stack and normalized_tag in self._BLOCK_TAGS:
+            self.parts.append(" ")
+
+    def handle_data(self, data: str) -> None:
+        if not self._ignored_stack:
+            self.parts.append(data)
+
+
+def _normalize_event_marker_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value)
+    return re.sub(r"\\s+", " ", normalized).strip().casefold()
+
+
+def _normalized_event_source_html_text(raw_bytes: bytes) -> str:
+    """Normalize visible HTML text for exact marker checks without changing receipt hashes."""
+    if not isinstance(raw_bytes, bytes) or not raw_bytes:
+        raise XRPIngestionError("event source HTML must be non-empty bytes")
+    parser = _VisibleHTMLTextParser()
+    parser.feed(raw_bytes.decode("utf-8", errors="replace"))
+    parser.close()
+    return _normalize_event_marker_text("".join(parser.parts))
+
+
 def _capture_public_event_sources(
     registry_path: str | Path | None,
     *,
@@ -6199,10 +6255,10 @@ def _capture_public_event_sources(
                 raise XRPIngestionError("event source response must contain non-empty raw bytes")
             if len(raw_bytes) > MAX_RESPONSE_BYTES:
                 raise XRPIngestionError("event source response exceeds the public capture size limit")
-            html_text = raw_bytes.decode("utf-8", errors="replace")
+            normalized_html_text = _normalized_event_source_html_text(raw_bytes)
             missing_markers = [
                 marker for marker in spec["required_markers"]
-                if marker.casefold() not in html_text.casefold()
+                if _normalize_event_marker_text(marker) not in normalized_html_text
             ]
             if missing_markers:
                 receipt_reason = "event_source_marker_validation_failed"
