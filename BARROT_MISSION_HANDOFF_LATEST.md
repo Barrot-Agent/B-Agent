@@ -1783,3 +1783,15 @@ Primary sources:
 - Nagoya / SBIC Central: `https://www.sbic-cj.co.jp/company/about/`
 - Osaka / SBIC West: `https://www.sbic-wj.co.jp/profiles/profile/`
 - SBI Holdings corporate disclosure: `https://www.sbigroup.co.jp/news/2026/0114_16025.html`
+
+
+## Exact-head #1705 validation result — 2026-11-27 15:17 UTC
+
+- Current XRP branch head `11bcc974369702e9d22a728ca0c00e51f232ae69` is 44 commits ahead and 0 behind current main; the merge base is the current main SHA `2151843140fd770b62ef93d06a78c559f9e73bbd`.
+- Exact-head full repository suite [46022510112](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510112) **passed: 4,727 passed, 1 skipped, 11 warnings, 21 subtests; 74.28% total coverage**. All configured package-specific coverage floors passed, including audio adapter, bundle, render and MIDI modules. The small Tests and Pages validation jobs passed.
+- Exact-head dependency audit [46022510118](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510118), Money audit [46022510096](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510096) and Conflict Integrity [46022510120](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510120) passed.
+- Gated Merge [46022510101](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510101) **failed closed**. The legacy gate compares the PR's stored `base.sha` (`6033bcd...`) with current main and labels it behind. Git's actual ancestry comparison is 44 ahead / 0 behind with merge base equal to current main; the separate merge-tree check passed. This is a stale-base gate defect, not a code conflict. Do not bypass it.
+- GitHub Actions reported that its cache reservation budget is exhausted and cache writes are read-only. The full suite still passed; this is a cache-cost/performance warning, not a test failure.
+- No independent review exists on #1705. The branch is not merged. The #1714 ancestry-gate successor remains unmerged and unreviewed; required approval count is unavailable because branch-protection detail access returns HTTP 403. Main merge would trigger Pages deployment without new authorization. Therefore the merge authorization conditions are not satisfied.
+
+The three co-equal mission priorities remain unchanged. The XRP full suite is now verified on the exact #1705 head, but XRP predictive readiness is still blocked by event receipt completeness, source failures, one-hour-only partial walk-forward evaluation, inadequate drift evidence and absent calibrated out-of-sample edge. No directional forecast is issued.
