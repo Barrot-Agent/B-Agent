@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-26T23:59:30Z",
+  "captured_at_utc": "2026-11-27T00:20:48Z",
   "capture_basis": "Run62: refreshed current main, complete recursive tree, all twelve open PRs and all twelve head comparisons; inspected exact-head CI/security/gate logs, XRP ingestion run 197 and cross-analysis run 4657; corrected the stale map assertion and incomplete PR inventory on existing PR #1702. Snapshot records #1702 pre-update head; CI for the resulting commit is pending.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -233,12 +233,12 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
         "state": "open",
         "draft": false,
-        "head_sha": "cc93ff4730d4bffaf9af07df763aaaf531a64627",
+        "head_sha": "aa6db69c09b75ce9f0a88b0b1549258352ea457c",
         "head_ref": "integration/xrp-rlusd-cross-chain-research-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "updated_at": "2026-11-26T20:39:45Z",
-        "commits_ahead": 22,
+        "updated_at": "2026-11-27T00:19:55Z",
+        "commits_ahead": 23,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "unique_xrp_rlusd_research_integration",
@@ -248,7 +248,11 @@
           "tests/test_ci_coverage_scope.py",
           "tests/test_ci_mission_package_coverage.py"
         ],
-        "shared_infrastructure_canonical_carrier_pr": 1702
+        "shared_infrastructure_canonical_carrier_pr": 1702,
+        "changed_paths": [
+          "research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md"
+        ],
+        "latest_commit_ci": "IN_PROGRESS"
       },
       {
         "number": 1704,
@@ -302,12 +306,12 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
+        "head_sha": "59acc7c59845da54fe94eb7b036774ccbaf4106d",
         "head_ref": "integration/mission-handoff-refresh-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
-        "updated_at": "2026-11-26T23:15:57Z",
-        "commits_ahead": 148,
+        "updated_at": "2026-11-27T00:14:05Z",
+        "commits_ahead": 149,
         "commits_behind": 0,
         "compare_status": "ahead",
         "classification": "unique_canonical_three_mission_handoff_and_runtime_prompt; canonical shared CI coverage carrier",
@@ -322,7 +326,7 @@
           "tests/test_xrp_mission_priority.py"
         ],
         "last_verified_head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
-        "post_handoff_commit_ci": "PENDING"
+        "post_handoff_commit_ci": "SUCCESS_ON_THIS_HEAD"
       }
     ],
     "merged_pull_requests": [
@@ -736,53 +740,50 @@
     },
     "open_pull_request_count": 12,
     "latest_integration_validation": {
-      "observed_at_utc": "2026-11-26T23:59:30Z",
+      "observed_at_utc": "2026-11-27T00:20:48Z",
       "pr_number": 1702,
-      "tested_head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
+      "tested_head_sha": "59acc7c59845da54fe94eb7b036774ccbaf4106d",
       "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-      "commits_ahead": 148,
+      "commits_ahead": 149,
       "commits_behind": 0,
       "full_suite": {
-        "run_id": 45909905598,
-        "conclusion": "failure",
-        "passed": 4700,
-        "failed": 1,
+        "run_id": 45915050993,
+        "conclusion": "success",
+        "passed": 4701,
+        "failed": 0,
         "skipped": 1,
         "warnings": 11,
         "subtests": 21,
-        "coverage_percent": 74.21,
-        "failure": "One stale evidence-fragment assertion in tests/test_nine_platform_operational_map_current.py; Run62 updates the expected evidence wording and all-open-PR inventory."
+        "coverage_percent": 74.21
       },
       "other_checks": {
         "audit": {
-          "run_id": 45909905605,
+          "run_id": 45915050988,
           "conclusion": "success"
         },
         "pip_audit": {
-          "run_id": 45909905664,
+          "run_id": 45915051019,
           "conclusion": "success"
         },
         "merge_tree": {
-          "run_id": 45909905616,
+          "run_id": 45915051065,
           "conclusion": "success"
         },
         "gated_merge": {
-          "run_id": 45909905602,
+          "run_id": 45915050991,
           "conclusion": "failure",
           "blockers": [
-            "legacy gate compares stale PR base.sha 6033bcd... instead of current-main ancestry",
-            "full suite had one stale map assertion"
+            "legacy gate compares stale PR base.sha 6033bcd... with main; compare API confirms 149 ahead / 0 behind"
           ]
         }
       },
       "review_count": 0,
       "merge_status": "NOT_MERGED",
-      "post_handoff_commit_ci": "PENDING",
+      "post_handoff_commit_ci": "PENDING_FOR_THIS_HANDOFF_ONLY_COMMIT",
       "blockers": [
-        "Run62 corrects one stale map/test assertion; exact-head CI must pass before readiness.",
         "Legacy ancestry gate remains stale; #1714 is the separate clean successor.",
         "No independent review; approval count unknown.",
-        "Merge triggers Pages deployment; explicit deployment authorization absent."
+        "Merge triggers GitHub Pages deployment; explicit deployment authorization absent."
       ]
     },
     "branch_inventory": {
@@ -826,8 +827,8 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Verified GitHub connector read/write: current main metadata and complete recursive tree (3,164 entries, not truncated), 819 branches across nine pages (last complete enumeration in Run61), all twelve open PRs and shared diffs, branch ancestry for all twelve open PR heads, exact-head CI/security/gate checks, workflow logs and artifact manifests. Read XRP run 197's exact-head workflow summary, receipt-chain status, feature-store integrity result and artifact upload hashes; raw payloads were not independently re-hashed in this run. Only ChatGPT GitHub access is verified; no evidence was transferred to the other eight platforms.",
-        "last_verified_at_utc": "2026-11-26T23:59:30Z",
+        "evidence": "Verified GitHub connector read/write: current main metadata and complete recursive tree (3,164 entries, not truncated), 819 branches across nine pages (last complete enumeration in Run61), all twelve open PRs and shared diffs, branch ancestry for all twelve open PR heads, exact-head CI/security/gate checks, workflow logs and artifact manifests. Read XRP run 197's exact-head workflow summary, receipt-chain status, feature-store integrity result and artifact upload hashes; raw payloads were not independently re-hashed in this run. Only ChatGPT GitHub access is verified; no evidence was transferred to the other eight platforms. Also read Sellbird v0.5.0 main, AGPL license, config, provider costs, sending safeguards and CI matrix; no installation/authentication.",
+        "last_verified_at_utc": "2026-11-27T00:20:48Z",
         "last_verified_main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd"
       },
       "permissions": {
@@ -1646,53 +1647,50 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862982894"
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-26T23:59:30Z",
+    "observed_at_utc": "2026-11-27T00:20:48Z",
     "pr_number": 1702,
-    "tested_head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
+    "tested_head_sha": "59acc7c59845da54fe94eb7b036774ccbaf4106d",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
-    "commits_ahead": 148,
+    "commits_ahead": 149,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45909905598,
-      "conclusion": "failure",
-      "passed": 4700,
-      "failed": 1,
+      "run_id": 45915050993,
+      "conclusion": "success",
+      "passed": 4701,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
-      "coverage_percent": 74.21,
-      "failure": "One stale evidence-fragment assertion in tests/test_nine_platform_operational_map_current.py; Run62 updates the expected evidence wording and all-open-PR inventory."
+      "coverage_percent": 74.21
     },
     "other_checks": {
       "audit": {
-        "run_id": 45909905605,
+        "run_id": 45915050988,
         "conclusion": "success"
       },
       "pip_audit": {
-        "run_id": 45909905664,
+        "run_id": 45915051019,
         "conclusion": "success"
       },
       "merge_tree": {
-        "run_id": 45909905616,
+        "run_id": 45915051065,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45909905602,
+        "run_id": 45915050991,
         "conclusion": "failure",
         "blockers": [
-          "legacy gate compares stale PR base.sha 6033bcd... instead of current-main ancestry",
-          "full suite had one stale map assertion"
+          "legacy gate compares stale PR base.sha 6033bcd... with main; compare API confirms 149 ahead / 0 behind"
         ]
       }
     },
     "review_count": 0,
     "merge_status": "NOT_MERGED",
-    "post_handoff_commit_ci": "PENDING",
+    "post_handoff_commit_ci": "PENDING_FOR_THIS_HANDOFF_ONLY_COMMIT",
     "blockers": [
-      "Run62 corrects one stale map/test assertion; exact-head CI must pass before readiness.",
       "Legacy ancestry gate remains stale; #1714 is the separate clean successor.",
       "No independent review; approval count unknown.",
-      "Merge triggers Pages deployment; explicit deployment authorization absent."
+      "Merge triggers GitHub Pages deployment; explicit deployment authorization absent."
     ]
   },
   "latest_primary_source_research": {
@@ -3329,200 +3327,80 @@
     }
   },
   "latest_sellbird_audit": {
-    "observed_at_utc": "2026-11-26T19:17:59Z",
+    "observed_at_utc": "2026-11-27T00:20:48Z",
     "repository": "ethanplusai/sellbird",
-    "repository_url": "https://github.com/ethanplusai/sellbird",
-    "upstream_main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
-    "release": "0.5.0",
-    "latest_release_tag": "v0.5.0",
-    "latest_release_published_at": "2026-11-25T08:37:30Z",
-    "license": "AGPL-3.0-only",
-    "python_requires": ">=3.11",
-    "open_prs": 88,
-    "supported_cli_providers": [
-      "Claude Code CLI",
-      "Claude Desktop",
-      "Codex CLI 0.159.3 (macOS/Linux; Windows unsupported)"
-    ],
-    "codex_chatgpt_sign_in": "DOCUMENTED_NOT_TESTED",
-    "direct_chatgpt_desktop_integration": "NOT_VERIFIED",
-    "mail_providers": [
-      "Gmail",
-      "Microsoft 365",
-      "SMTP",
-      "Instantly legacy"
-    ],
-    "discovery_sources_free": [
-      "OpenStreetMap",
-      "TinyFish",
-      "DuckDuckGo/Bing fallback"
-    ],
-    "discovery_signals_total": 29,
-    "discovery_signals_free": 26,
-    "discovery_signals_paid": 3,
-    "paid_lookup_used": false,
-    "paid_lookup_cost_usd": 0,
-    "main_ci": {
-      "run_id": 45576760134,
-      "conclusion": "success",
-      "head_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
-      "matrix": "Ubuntu/macOS/Windows; Python 3.11/3.12"
-    },
-    "repo_permissions": {
-      "pull": true,
-      "push": false,
-      "admin": false
-    },
-    "default_email_enabled": true,
-    "default_email_provider": "gmail",
-    "approval_required": true,
-    "default_daily_send_ceiling": 50,
-    "send_to_risky": false,
-    "max_bounce_rate": 0.05,
-    "autopilot_available_but_disabled": true,
-    "warmup_start_date_configured": false,
-    "postal_address_configured": false,
-    "do_not_contact_suppression_configured": false,
-    "mailbox_authentication_verified": false,
-    "precleared_enabled": false,
-    "installed": false,
-    "authenticated": false,
-    "outbound_sending": "PAUSED_NOT_CONFIGURED",
-    "agent_permissions": {
-      "can_read": true,
-      "can_draft": true,
-      "can_estimate_cost": true,
-      "can_pause": true,
-      "can_approve": false,
-      "can_send": false,
-      "can_resume": false,
-      "can_start_discovery": false,
-      "can_confirm_signals": false,
-      "can_change_settings_or_keys": false,
-      "can_delete": false
-    },
-    "security_controls_observed": [
-      "loopback dashboard",
-      "scoped agent token and allowlist",
-      "model calls have no tools",
-      "deterministic pre-send gate",
-      "SSRF-aware public HTTP",
-      "keyring-backed secrets",
-      "log redaction"
-    ],
-    "security_posture": "STATIC_SOURCE_REVIEW_ONLY_NOT_INDEPENDENTLY_AUDITED",
-    "security_alerts": "NOT_ACCESSIBLE_TO_CONNECTOR; counts unknown, not zero",
-    "open_safety_prs": [
-      {
-        "number": 302,
-        "title": "Hold sending when an SMTP inbox can't log in to IMAP",
-        "status": "OPEN",
-        "impact": "failed IMAP reads should hold sending rather than be treated as no replies"
-      },
-      {
-        "number": 306,
-        "title": "Honour Arabic opt-outs and fold Latin accents in email local parts",
-        "status": "OPEN",
-        "impact": "Arabic opt-out recognition is not yet in main"
-      },
-      {
-        "number": 300,
-        "title": "Show a broken email verifier and re-check guessed emails once it works",
-        "status": "OPEN",
-        "impact": "verifier health/retry visibility"
-      },
-      {
-        "number": 301,
-        "title": "Back off a rate-limited Claude quota and show what the usage budget went by",
-        "status": "OPEN",
-        "impact": "quota backoff/observability"
-      },
-      {
-        "number": 303,
-        "title": "Let the loop top up the company list by itself (discovery.auto)",
-        "status": "OPEN",
-        "impact": "automatic discovery remains opt-in; do not enable"
-      }
-    ],
-    "linkedin_automation": "DO_NOT_USE; repository warns browser automation violates LinkedIn Terms of Service",
-    "compliance_prerequisites": [
-      "dedicated sending domain",
-      "SPF/DKIM/DMARC",
-      "2–4 week warmup",
-      "physical postal address",
-      "do-not-contact suppression list",
-      "verified mailbox authentication",
-      "opt-out processing",
-      "jurisdictional legal review",
-      "explicit campaign/audience/message/sending approval"
-    ],
-    "license_note": "AGPL-3.0-only; do not copy/integrate code into Barrot or offer modified network-hosted Sellbird without legal review of source-offer obligations.",
-    "qualified_prospects": 0,
-    "approved_messages": 0,
-    "sent": 0,
-    "replies": 0,
-    "meetings": 0,
-    "proposals": 0,
-    "revenue_usd": 0,
-    "captured_at_utc": "2026-11-26T19:17:59Z",
+    "main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
     "version": "0.5.0",
-    "release_tag": "v0.5.0",
-    "release_published_at": "2026-11-25T08:37:30Z",
-    "latest_main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
-    "sending": "PAUSED_NOT_CONFIGURED",
-    "prospecting_tested": false,
-    "direct_chatgpt_web": "NOT_SUPPORTED_FOR_LOCAL_PROCESS",
-    "codex_cli": "DOCUMENTED",
-    "chatgpt_desktop": "NOT_TESTED",
-    "default_discovery_provider": "OpenStreetMap (free)",
-    "default_send_mode": "APPROVAL",
-    "email_channel_enabled_in_template": true,
-    "agent_token_scope": "read, draft, estimate cost, pause sending; cannot approve, send, resume, buy, change settings or delete",
-    "model_tool_access": "NO_TOOLS_IN_CLAUDE_AND_CODEX_RUNTIME",
-    "dashboard_auth": "loopback listener; separate dashboard and agent tokens; host/origin checks",
-    "mailbox_options": [
-      "Gmail OAuth",
-      "Microsoft 365 OAuth",
-      "SMTP/IMAP"
-    ],
-    "pre_send_safeguards": [
-      "deterministic recipient/address/content checks",
-      "do-not-contact suppression",
-      "bounce handling",
-      "pause switch",
-      "opt-out handling"
-    ],
-    "readiness_blockers": [
-      "No installation or authentication",
-      "No dedicated sending mailbox/domain or SPF/DKIM/DMARC verification",
-      "No warmup or inbox-placement evidence",
-      "No configured postal address; template leaves it empty and warns rather than hard-blocking",
-      "Precleared compliance check is disabled by default",
-      "No approved Barrot offer, ICP, audience, message or campaign",
-      "No prospecting test or qualified prospects"
-    ],
-    "linked_in_automation": "disabled by default; upstream README warns it may violate LinkedIn terms",
-    "outbound_approved": 0,
-    "source_review": [
-      "README.md",
-      "LICENSE",
-      "NOTICE",
-      "SECURITY.md",
-      "pyproject.toml",
-      ".env.example",
-      "sellbird.yaml",
-      "docs/approval-and-sending.md",
-      "docs/deliverability.md",
-      "docs/agent-app.md",
-      "sellbird/agent_policy.py",
-      "sellbird/mcp_server.py",
-      "sellbird/gate.py",
-      "sellbird/dashboard_auth.py",
-      "sellbird/claude_runtime.py",
-      "sellbird/codex.py",
-      "sellbird/secrets.py"
-    ],
-    "open_pr_count": 88
+    "license": "AGPL-3.0-only",
+    "release_date": "2026-11-25",
+    "python_requirement": ">=3.11",
+    "open_pr_count": 88,
+    "main_ci": {
+      "status": "success",
+      "platforms": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ],
+      "python_versions": [
+        "3.11",
+        "3.12"
+      ]
+    },
+    "security_alert_counts": "UNKNOWN_NOT_ACCESSIBLE_VIA_GITHUB_CONNECTOR",
+    "readiness": {
+      "installed": false,
+      "authenticated": false,
+      "platform_compatibility": "NOT_TESTED",
+      "prospecting_tested": false,
+      "outbound": "PAUSED",
+      "prospects": 0
+    },
+    "default_config": {
+      "email_channel_enabled": true,
+      "require_approval": true,
+      "max_daily_sends": 50,
+      "send_to_risky": false,
+      "postal_address": "EMPTY",
+      "do_not_contact": "EMPTY",
+      "warmup_start_date": "UNSET",
+      "precleared": "DISABLED"
+    },
+    "safeguards": {
+      "verified": [
+        "human approval default",
+        "risky addresses not sendable",
+        "opt-out/suppression checks",
+        "loopback dashboard auth"
+      ],
+      "must_configure": [
+        "email disabled until campaign approval",
+        "postal address and suppression list",
+        "SPF/DKIM/DMARC and dedicated domain",
+        "2–4 week warmup and bounce monitoring",
+        "jurisdiction-specific compliance review"
+      ]
+    },
+    "data_costs": {
+      "openstreetmap": "free default",
+      "dataforseo": "$0.372/1,000 businesses plus query fees; $50 minimum deposit",
+      "serper": "2,500 free then $50 prepaid",
+      "scavio": "50 free credits; $30/month for 7,000",
+      "tinyfish": "limited free tier",
+      "email_verification": "Reoon 600/month, ZeroBounce 100/month, Hunter 50 verifications +25 domain searches free",
+      "trulyinbox": "paid warmup/API tier"
+    },
+    "integration": {
+      "native_chatgpt_app": false,
+      "codex_cli": "documented but account/model access untested",
+      "claude": "documented",
+      "barrot_v3_adapter": false
+    },
+    "restrictions": [
+      "LinkedIn browser automation excluded by repository terms warning.",
+      "No paid lookup or outbound send authorized.",
+      "Barrot technology only; music and TrekFlex excluded."
+    ]
   },
   "latest_run36_checkpoint": {
     "observed_at_utc": "2026-11-26T00:04:55Z",
@@ -5326,12 +5204,12 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
       "state": "open",
       "draft": false,
-      "head_sha": "cc93ff4730d4bffaf9af07df763aaaf531a64627",
+      "head_sha": "aa6db69c09b75ce9f0a88b0b1549258352ea457c",
       "head_ref": "integration/xrp-rlusd-cross-chain-research-20261125",
       "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "base_ref": "main",
-      "updated_at": "2026-11-26T20:39:45Z",
-      "commits_ahead": 22,
+      "updated_at": "2026-11-27T00:19:55Z",
+      "commits_ahead": 23,
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "unique_xrp_rlusd_research_integration",
@@ -5341,7 +5219,11 @@
         "tests/test_ci_coverage_scope.py",
         "tests/test_ci_mission_package_coverage.py"
       ],
-      "shared_infrastructure_canonical_carrier_pr": 1702
+      "shared_infrastructure_canonical_carrier_pr": 1702,
+      "changed_paths": [
+        "research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md"
+      ],
+      "latest_commit_ci": "IN_PROGRESS"
     },
     {
       "number": 1704,
@@ -5395,12 +5277,12 @@
       "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
       "state": "open",
       "draft": false,
-      "head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
+      "head_sha": "59acc7c59845da54fe94eb7b036774ccbaf4106d",
       "head_ref": "integration/mission-handoff-refresh-20261125",
       "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
       "base_ref": "main",
-      "updated_at": "2026-11-26T23:15:57Z",
-      "commits_ahead": 148,
+      "updated_at": "2026-11-27T00:14:05Z",
+      "commits_ahead": 149,
       "commits_behind": 0,
       "compare_status": "ahead",
       "classification": "unique_canonical_three_mission_handoff_and_runtime_prompt; canonical shared CI coverage carrier",
@@ -5415,7 +5297,7 @@
         "tests/test_xrp_mission_priority.py"
       ],
       "last_verified_head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
-      "post_handoff_commit_ci": "PENDING"
+      "post_handoff_commit_ci": "SUCCESS_ON_THIS_HEAD"
     }
   ],
   "latest_xrp_ingestion_run": {
@@ -8841,16 +8723,21 @@
       "shared_foundation": "Barrot V3"
     },
     "pr1702": {
-      "head_sha": "4b02d68880c6796630f27559d59aed6167ba18dc",
-      "ahead": 148,
+      "head_sha": "59acc7c59845da54fe94eb7b036774ccbaf4106d",
+      "ahead": 149,
       "behind": 0,
-      "full_suite_run_id": 45909905598,
-      "passed": 4700,
-      "failed": 1,
+      "full_suite_run_id": 45915050993,
+      "passed": 4701,
+      "failed": 0,
       "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
       "coverage_percent": 74.21,
-      "gate_run_id": 45909905602,
-      "gate_status": "BLOCKED_STALE_BASE_AND_ONE_TEST_FAILURE",
+      "audit_run_id": 45915050988,
+      "pip_audit_run_id": 45915051019,
+      "merge_tree_run_id": 45915051065,
+      "gate_run_id": 45915050991,
+      "gate_status": "BLOCKED_ONLY_BY_STALE_BASE_SHA",
       "review_count": 0,
       "post_handoff_commit_ci": "PENDING"
     },
@@ -8930,6 +8817,50 @@
       "proposals": 0,
       "revenue_usd": 0
     },
-    "no_merge_or_deployment": true
+    "no_merge_or_deployment": true,
+    "pr1705": {
+      "head_sha": "aa6db69c09b75ce9f0a88b0b1549258352ea457c",
+      "ahead": 23,
+      "behind": 0,
+      "new_research_file": "research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md",
+      "new_commit_ci": "IN_PROGRESS"
+    }
+  },
+  "latest_xrp_research_addendum": {
+    "observed_at_utc": "2026-11-27T00:20:48Z",
+    "pr_number": 1705,
+    "head_sha": "aa6db69c09b75ce9f0a88b0b1549258352ea457c",
+    "path": "research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md",
+    "classification": "primary_source_research_only",
+    "findings": [
+      "Regional SBIC East/Central/West are separate statutory companies, not SBI Holdings.",
+      "SBI Holdings historically used SBIC for SBI CAPITAL Co., Ltd.; 2007 ownership 60/40 with Goldman, 2011 report lists 100% SBI Holdings; 2026 status unresolved.",
+      "Evernorth names four SBI-controlled investor entities; 39.9% Class A voting cap; not regional SBICs.",
+      "SEC filings identify $272.6m gross closing cash, 388.910554m XRP in-kind, $29m net note proceeds, $35.3m gross warrant exercises and optional ELOC capacity.",
+      "ASK Coin and SBIC/ChatGPT phrase unresolved; Kamilah/Camilla identity gate open."
+    ]
+  },
+  "latest_audio_full_song_qc": {
+    "observed_at_utc": "2026-11-27T00:20:48Z",
+    "pr_number": 1704,
+    "workflow_run_id": 45867292176,
+    "artifact_id": 15139719863,
+    "bars": 80,
+    "bpm": 110,
+    "key": "D minor",
+    "duration_seconds": 175.5454648526,
+    "stem_count": 9,
+    "sample_rate_hz": 44100,
+    "mix_peak_dbfs": -6.0242733912,
+    "true_peak_dbtp": -6.0000015237,
+    "integrated_lufs": -22.4407702502,
+    "loudness_range_lra": 7.87,
+    "clipping": false,
+    "stem_alignment": "PASS",
+    "stem_sum_reconstruction_correlation": 0.999979,
+    "stem_sum_relative_rms_error": 0.00648,
+    "native_daw_project_available": false,
+    "human_listening": "NOT_PERFORMED",
+    "user_acceptance": "NOT_VERIFIED"
   }
 }

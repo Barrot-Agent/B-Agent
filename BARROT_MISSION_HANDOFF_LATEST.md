@@ -1,3 +1,13 @@
+# Run 62 completion addendum — 2026-11-27T00:20:48Z
+
+- **PR #1702** head `59acc7c59845da54fe94eb7b036774ccbaf4106d`, 149 ahead / 0 behind. Exact-head full suite [45915050993](https://github.com/Barrot-Agent/B-Agent/actions/runs/45915050993): **4,701 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Audit, pip-audit and merge-tree also passed. Gate [45915050991](https://github.com/Barrot-Agent/B-Agent/actions/runs/45915050991) failed only because the legacy workflow compares stale PR base.sha with main; the compare API confirms 149 ahead / 0 behind. #1714 is the separate gate successor. No merge: review/approval state is unresolved and Pages deployment authorization is absent.
+- **PR #1705** received primary-source research commit `aa6db69c09b75ce9f0a88b0b1549258352ea457c` (23 ahead / 0 behind). New file: `research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md`. It separates regional SBICs, SBI Capital and four SBI-controlled Evernorth investors; reconciles cash, XRP-in-kind, debt, warrants and optional ELOC. Exact-head CI is running.
+- **Sellbird audit:** [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird) is v0.5.0, AGPL-3.0-only, Python 3.11+, released 25 Nov. Main CI passed Linux/Windows/macOS with Python 3.11/3.12; 88 PRs open. Security alert counts are unknown (connector cannot read them). Default YAML enables email, requires approval, permits 50/day, leaves postal address and suppression list empty, and has no warmup date. Keep email disabled until approved; configure postal address, suppression/opt-out, SPF/DKIM/DMARC, dedicated domain, bounce controls and 2–4 week warmup. OSM is free; DataForSEO $0.372/1,000 businesses plus query costs/$50 minimum; Serper 2,500 free then $50 prepaid; Scavio 50 free then $30/month for 7,000; TinyFish limited free; Reoon/ZeroBounce/Hunter have limited free verification. No paid lookup is authorized. Codex CLI is documented but account/model access and a Barrot adapter are untested; no native ChatGPT-app integration. LinkedIn automation is excluded.
+- **Audio QC:** PR #1704's full-song artifact is 80 bars / 175.545 s / 110 BPM / D minor, 9 aligned stems at 44.1 kHz; peak −6.02 dBFS, true peak −6.00 dBTP, −22.44 LUFS, LRA 7.87, no clipping. Stem-sum correlation 0.999979. No native DAW project; listening/user acceptance remain unverified.
+- This addendum records the pre-update #1702 head. The handoff/map-only commit that follows requires its own exact-head CI.
+
+---
+
 # Run 62 — integrated three-mission checkpoint — 2026-11-26T23:59:30Z
 
 This checkpoint supersedes Run61 for current PR inventory, latest XRP ingestion, cross-analysis freshness and #1702 validation. Earlier history remains preserved below.
