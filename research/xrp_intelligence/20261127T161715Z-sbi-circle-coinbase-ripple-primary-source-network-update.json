@@ -278,7 +278,8 @@
         "Circle's Q3 2026 Form 10-Q says Coinbase receives allocations based on USDC held on Coinbase's platform after issuer retention, plus half of the remaining ecosystem-growth payment base after approved third-party participant payments.",
         "Circle reported $331.3 million of distribution costs under its Coinbase agreements in Q3 2026 and $986.6 million for the first nine months of 2026.",
         "Circle reported total distribution and transaction costs of $409.169 million in Q3 and $1,224.985 million for nine months. Derived Coinbase concentration is approximately 81.0% in Q3 and 80.5% year to date.",
-        "Coinbase's Q3 2026 Form 10-Q says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached $22 billion."
+        "Coinbase's Q3 2026 Form 10-Q says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached an all-time high; the retrieved filing does not state the $22 billion amount.",
+        "Coinbase's October 29, 2026 Q3 earnings release reports the $22 billion average USDC balance and says it represented roughly 30% of average USDC market capitalization, up 49% year over year."
       ],
       "derived_metrics": {
         "q3_2026_coinbase_cost_usd_millions": 331.3,
@@ -291,7 +292,8 @@
       "caveats": [
         "These are Circle distribution expenses, not a direct measure of Coinbase net profit or USDC reserve income.",
         "Coinbase's $22 billion average USDC balance is a platform balance measure, not XRP liquidity or XRP collateral.",
-        "The 81.0% and 80.5% figures are calculations from the same Circle filing, not a separately reported ratio."
+        "The 81.0% and 80.5% figures are derived ratios of Coinbase-specific distribution costs to the broader distribution-and-transaction-cost totals; the denominator includes transaction costs and other arrangements, not only pure distribution costs.",
+        "The $22 billion average USDC balance is in Coinbase's October 29, 2026 earnings release, not the retrieved Form 10-Q. The 10-Q confirms the all-time-high trend and same-terms renewal; both disclosures are from Coinbase and are not independent corroboration."
       ],
       "sources": [
         "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
