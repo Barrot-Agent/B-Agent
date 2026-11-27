@@ -1,3 +1,24 @@
+# Supplemental evidence — 2026-11-27 14:04 UTC
+
+**Branch update:** the prior checkpoint commit is `0b9ccbd3b52ab6042efec57ad19fc89e57f53151`, which advanced PR #1702 after its 879b2c exact-head checks. The new documentation commit below advances it once more; exact-head CI for the resulting PR head must finish before any readiness claim. The prior 879b2c suite remains valid only for that exact head.
+
+## XRP primary-event capture — EXECUTED on integration branch
+
+A read-only integration capture was executed by [XRP Public Market Ingestion run 45951984342](https://github.com/Barrot-Agent/B-Agent/actions/runs/45951984342) on PR #1705 branch commit `c185e686a45befc29c4209a8399255251abb0c4e` at 2026-11-27 06:27 UTC. It ran with `CAPTURE_EVENT_SOURCES=true` and completed successfully.
+
+- Requested curated event sources: **13**.
+- Captured events: **7**; failed events: **2**.
+- Event timeline: **159** entries; **7** URL-plus-capture-time matches and **7** verified receipt links.
+- Receipt chain: **48** receipts, **21** retained raw payloads, **27** digest-only.
+- Source failures: **27** overall; SEC sub-collector had **6** failures and **0** raw receipts.
+- Walk-forward: **24** observations, `PARTIAL_OR_BLOCKED`; forecast `NOT_ISSUED`.
+
+The current PR #1705 head `e94bd2a75f6acfab09fe5c28a15167a46c1e48dd` is **4 commits ahead** of the capture-run commit. Direct comparison shows those four intervening commits changed only Kamilah/Evernorth research artifacts and related tests; they did not change the event-capture workflow or collector implementation. The capture result is therefore evidence for the unchanged capture code now present at the PR head, but it is **not** a scheduled mainline run and does not establish all 13 sources as complete. Main run #213 still has 150 events and zero verified receipt links because this feature remains branch-only.
+
+This is a measurable partial improvement: event receipt linkage moved from zero to seven on the integration capture, while two requested captures failed and six SEC sub-collector requests failed. Keep all failures visible; do not infer complete event coverage or forecast readiness.
+
+---
+
 # Execution checkpoint — 2026-11-27 14:00 UTC
 
 **Capture:** 2026-11-27T14:00:49Z. **Current main SHA:** `2151843140fd770b62ef93d06a78c559f9e73bbd`. **Recursive tree:** 3,164 entries, `truncated=false`. **Open PRs:** 12. This checkpoint supersedes earlier operational status where newer evidence exists; prior checkpoints remain intact below. No mainline write, merge, deployment, secret rotation, Space restart, Kaggle submission, paper trade, real-money action, paid prospecting or outbound message occurred.
