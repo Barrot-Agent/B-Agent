@@ -358,7 +358,7 @@ def test_ripple_xrp_holdings_event_is_present_in_curated_registry():
             "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
             "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
             "www.sbigroup.co.jp",
-            ("2026年6月24日", "RLUSD", "Ripple Labs Inc.", "イーサリアムチェーンのみの対応となります"),
+            ("2026年6月24日", "RLUSD", "Ripple Labs Inc.", "対応チェーンはイーサリアムのみとなります"),
         ),
     ],
 )

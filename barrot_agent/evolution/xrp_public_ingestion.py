@@ -473,7 +473,7 @@ EVENT_SOURCE_CAPTURE_SPECS = (
             "2026年6月24日",
             "RLUSD",
             "Ripple Labs Inc.",
-            "イーサリアムチェーンのみの対応となります",
+            "対応チェーンはイーサリアムのみとなります",
         ),
     },
 )
