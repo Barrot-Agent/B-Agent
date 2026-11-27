@@ -1,7 +1,7 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T02:32:48Z",
+  "captured_at_utc": "2026-11-27T02:50:13Z",
   "capture_basis": "Run 65 reconciliation: main metadata and full recursive tree; all 819 branches; all 12 open PRs and ancestry comparisons; exact-head CI/security/gate runs; independently downloaded and SHA-verified main XRP run #201 artifacts and feature-store SQLite; cross-analysis run #4659; primary-source SBIC/Evernorth/SBI/Circle and public Kamilah Stevenson channel checks; audio, continuity and Sellbird status retained from verified workstream evidence.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
@@ -233,7 +233,7 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
         "state": "open",
         "draft": false,
-        "head_sha": "1e54262076c72a2b9d156686589c94fbbaefb6bf",
+        "head_sha": "08176c52d7b47298fac597e701c832145ef16f29",
         "head_ref": "integration/xrp-rlusd-cross-chain-research-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
@@ -306,7 +306,7 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "c59e3aadf3d8a1109b5e99ef47eff164ffe1f5fb",
+        "head_sha": "582590b9889a39545b18622557b091bd9b09a98d",
         "head_ref": "integration/mission-handoff-refresh-20261125",
         "base_sha": "6033bcd84fdeb2a8906b3d3b9aab5293eacf9407",
         "base_ref": "main",
@@ -367,7 +367,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-27T02:32:48Z",
+      "observed_at_utc": "2026-11-27T02:50:13Z",
       "sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
       "tree_sha": "428229c1dd50a757554637db67eb8e30d00ef6ed",
       "recursive_tree_entries": 3164,
@@ -1248,18 +1248,21 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "c59e3aadf3d8a1109b5e99ef47eff164ffe1f5fb",
+      "head_sha": "582590b9889a39545b18622557b091bd9b09a98d",
       "ahead_of_current_main": 156,
       "behind_current_main": 0,
       "full_suite": "4700 passed, 1 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage",
-      "ci_run": 45928728297,
+      "ci_run": 45929935187,
       "dependency_audit": "success",
       "money_audit": "success",
       "conflict_audit": "success",
-      "gated_merge_run": 45928728215,
-      "gated_merge": "failure: legacy stale-base equality check; GitHub compare is 156 ahead / 0 behind",
+      "gated_merge_run": 45929935192,
+      "gated_merge": "failure: stale PR base SHA equality check and required full-suite failure; compare remains 156 ahead / 0 behind",
       "independent_reviews": 0,
-      "classification": "blocked"
+      "classification": "blocked",
+      "dependency_audit_run": 45929935199,
+      "money_audit_run": 45929935179,
+      "conflict_audit_run": 45929935154
     },
     {
       "number": 1703,
@@ -1299,42 +1302,45 @@
     {
       "number": 1705,
       "workstream": "XRP/RLUSD research and public-source capture",
-      "head_sha": "1e54262076c72a2b9d156686589c94fbbaefb6bf",
+      "head_sha": "08176c52d7b47298fac597e701c832145ef16f29",
       "ahead_of_current_main": 31,
       "behind_current_main": 0,
-      "full_suite": "4717 passed, 0 failed, 1 skipped, 11 warnings; 74.25% coverage",
+      "full_suite": "PENDING exact-head run 45930214468",
       "latest_ci_run": 45928345070,
       "dependency_audit": "success",
       "money_audit": "success",
       "conflict_audit": "success",
-      "gated_merge": "failure: legacy stale-base equality check; current main is an ancestor",
+      "gated_merge": "in_progress",
       "independent_reviews": 0,
       "classification": "blocked",
-      "note": "Exact-head CI passes; primary-event capture evidence remains on an earlier branch head, not this exact head.",
-      "ci_run": 45928345070,
-      "gated_merge_run": 45928345072
+      "note": "SEC 10-Q actual-capital reconciliation appended; exact-head full suite still running.",
+      "ci_run": 45930214468,
+      "gated_merge_run": 45930214451,
+      "dependency_audit_run": 45930214427,
+      "money_audit_run": 45930214439,
+      "conflict_audit_run": 45930214371
     }
   ],
   "dependency_prs": [
     {
       "number": 1706,
       "title": "actions/cache/restore 4.3.0 -> 6.1.0",
-      "classification": "blocked",
-      "ahead": 1,
+      "classification": "unique_dependency_update_blocked_by_stale_base_and_overlap",
+      "ahead": 2,
       "behind": 6,
-      "overlap": "tests/test_workflow_action_pins.py overlaps #1709"
+      "overlap": "tests/test_workflow_action_pins.py overlaps #1709; .github/workflows/xrp-public-ingestion.yml overlaps #1705"
     },
     {
       "number": 1707,
       "title": "actions/setup-node 4.4.0 -> 7.1.0",
-      "classification": "blocked",
+      "classification": "unique_unreviewed_dependency_update_stale_base",
       "ahead": 1,
       "behind": 6
     },
     {
       "number": 1708,
       "title": "actions/cache/save 4.3.0 -> 6.1.0",
-      "classification": "duplicate",
+      "classification": "duplicate_subset_of_1706",
       "ahead": 1,
       "behind": 6,
       "duplicate_of": 1706
@@ -1342,25 +1348,25 @@
     {
       "number": 1709,
       "title": "databricks/setup-cli 1.25.0 -> 1.27.0",
-      "classification": "blocked",
-      "ahead": 1,
+      "classification": "unique_dependency_update_blocked_by_stale_base_and_overlap",
+      "ahead": 2,
       "behind": 6,
       "overlap": "tests/test_workflow_action_pins.py overlaps #1706"
     },
     {
       "number": 1710,
       "title": "PyYAML >=6.0.3 -> >=6.0.4",
-      "classification": "blocked",
+      "classification": "unique_unreviewed_legacy_dependency_update",
       "ahead": 1,
       "behind": 6
     },
     {
       "number": 1711,
       "title": "NumPy <2 -> <3",
-      "classification": "blocked",
+      "classification": "blocked_dependency_compatibility",
       "ahead": 1,
       "behind": 6,
-      "reason": "upper-bound expansion lacks compatibility evidence"
+      "reason": "NumPy <3 upper-bound expansion lacks compatibility evidence"
     }
   ],
   "latest_branch_xrp_ingestion_observation": {
@@ -1434,14 +1440,14 @@
     "url": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45862982894"
   },
   "latest_integration_validation": {
-    "observed_at_utc": "2026-11-27T02:32:48Z",
+    "observed_at_utc": "2026-11-27T02:50:13Z",
     "pr_number": 1702,
-    "tested_head_sha": "c59e3aadf3d8a1109b5e99ef47eff164ffe1f5fb",
+    "tested_head_sha": "582590b9889a39545b18622557b091bd9b09a98d",
     "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
     "commits_ahead": 156,
     "commits_behind": 0,
     "full_suite": {
-      "run_id": 45928728297,
+      "run_id": 45929935187,
       "conclusion": "failure",
       "passed": 4700,
       "failed": 1,
@@ -1449,31 +1455,32 @@
       "warnings": 11,
       "subtests": 21,
       "coverage_percent": 74.21,
-      "failure": "test_current_pr_inventory_includes_integration_and_dependency_workstreams: #1714 appeared in both current_prs and repair_prs; the map correction removes it from current_prs and retains it under repair_prs."
+      "failure": "test_current_pr_inventory_includes_integration_and_dependency_workstreams: dependency_prs #1711 classification was 'blocked' instead of the required machine-readable 'blocked_dependency_compatibility'; corrected in this Run 65.1 map update."
     },
     "other_checks": {
       "dependency_audit": {
-        "run_id": 45928728294,
+        "run_id": 45929935199,
         "conclusion": "success"
       },
       "money_audit": {
-        "run_id": 45928728213,
+        "run_id": 45929935179,
         "conclusion": "success"
       },
       "conflict_integrity": {
-        "run_id": 45928728255,
+        "run_id": 45929935154,
         "conclusion": "success"
       },
       "gated_merge": {
-        "run_id": 45928728215,
+        "run_id": 45929935192,
         "conclusion": "failure",
-        "reason": "legacy PR base-SHA equality check; current-main ancestry comparison is 156 ahead / 0 behind"
+        "reason": "PR base SHA 6033bcd is not equal to current main SHA 2151843; GitHub ancestry comparison is 156 ahead / 0 behind. This is the legacy equality defect already addressed by #1714; no bypass."
       }
     },
     "review_count": 0,
     "merge_status": "NOT_MERGED",
     "blockers": [
-      "The current tested head failed one PR-inventory assertion; the duplicate category entry is corrected in this Run 65 handoff/map commit, with exact-head CI pending.",
+      "The exact-head suite failed one machine-readable dependency classification assertion; the map now records blocked_dependency_compatibility for #1711, with new exact-head CI pending.",
+      "The legacy gated-merge check still compares PR base SHA for equality with current main rather than verifying ancestry; #1714 contains the ancestry-based repair but is not merged.",
       "No independent review.",
       "Detailed branch-protection endpoint returns HTTP 403; required approval count is unknown.",
       "Merge triggers GitHub Pages deployment; specific deployment authorization is absent."
@@ -1641,7 +1648,53 @@
       "listening": "NOT_DONE"
     },
     "mix_metrics_source_head_sha": "4ff0e5881a84bd1f496fefc730073194365cb8f1",
-    "current_render_qc_metrics": "NOT_RETRIEVED_FROM_RUN_93_QC_ARTIFACT"
+    "current_render_qc_metrics": "NOT_RETRIEVED_FROM_RUN_93_QC_ARTIFACT",
+    "independent_reinspection": {
+      "observed_at_utc": "2026-11-27T02:50:13Z",
+      "artifact_id": 15139779842,
+      "zip_sha256": "f8d8cf4dcc9c26ec83030f2a5a5b4271dd8b224eb1d4de9215e8271cc448cdac",
+      "artifact_size_bytes": 242108638,
+      "zip_integrity": "PASS",
+      "mix_sha256": "6c58d9cae8ea3640d71a86ee214b9634fb372ffc778fe96a37f93b935d9217cf",
+      "midi_sha256": "5c3cb9c6c245f4107e7458668a2adb112a8e8ac4ffdae2ddaee9b8007fcece2b",
+      "sample_format": "IEEE float32 WAV",
+      "sample_rate_hz": 44100,
+      "channels": 2,
+      "frames": 7741555,
+      "duration_seconds": 175.545,
+      "aligned_stems": 9,
+      "clipped_samples": 0,
+      "dc_offset_after_correction_below_dbfs": -100,
+      "peak_dbfs": -6.02,
+      "true_peak_dbtp": -6,
+      "integrated_lufs": -22.44,
+      "lra_lu": 7.87,
+      "stem_sum_correlation": 0.999979,
+      "stem_sum_relative_rms_error": 0.006478,
+      "stem_sum_max_abs_error": 0.028158,
+      "midi": {
+        "format": 1,
+        "tracks": 11,
+        "instrument_tracks": 9,
+        "note_on_events": 1751,
+        "bpm": 110.00011,
+        "time_signature": "4/4",
+        "section_markers": 10
+      },
+      "stereo": {
+        "mix_correlation": 0.7181,
+        "mono_fold_down_loss_db": -0.6605,
+        "lead_correlation": 0.0074,
+        "lead_mono_fold_down_loss_db": -2.978,
+        "lead_status": "NEAR_THRESHOLD"
+      },
+      "soundfont": "FluidR3_GM",
+      "soundfont_license_claim": "MIT",
+      "caller_supplied_asset_rights": "UNVERIFIED",
+      "native_daw_project_available": false,
+      "human_listening": "NOT_PERFORMED",
+      "user_acceptance": "NOT_VERIFIED"
+    }
   },
   "latest_continuity_validation": {
     "pr": 1703,
@@ -3022,117 +3075,150 @@
     }
   },
   "latest_sellbird_audit": {
-    "observed_at_utc": "2026-11-27T00:35:43.106Z",
+    "observed_at_utc": "2026-11-27T02:50:13Z",
     "repository": "ethanplusai/sellbird",
     "main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
+    "tree_entries": 345,
     "version": "0.5.0",
+    "release_tag": "v0.5.0",
+    "release_published_at": "2026-11-25T08:37:30Z",
     "license": "AGPL-3.0-only",
-    "release_date": "2026-11-25",
     "python_requirement": ">=3.11",
-    "open_pr_count": 88,
-    "main_ci": {
-      "status": "success",
-      "platforms": [
+    "purpose": "AI sales prospecting/outreach engine; not a persistent-execution or approval framework.",
+    "readiness": {
+      "installed": false,
+      "authenticated": false,
+      "host_verified": false,
+      "prospecting_tested": false,
+      "outbound": "PAUSED",
+      "qualified_prospects": 0,
+      "paid_lookup_spend_usd": 0,
+      "sends": 0,
+      "replies": 0,
+      "meetings": 0,
+      "proposals": 0,
+      "revenue_usd": 0
+    },
+    "supported_platforms": {
+      "python_test_matrix": [
         "Linux",
-        "Windows",
-        "macOS"
+        "macOS",
+        "Windows"
       ],
       "python_versions": [
         "3.11",
         "3.12"
-      ]
+      ],
+      "docker_compose": "Native Linux only; host networking; dashboard remains loopback-only; remote access through SSH tunnel.",
+      "android_termux": "NOT_DOCUMENTED_OR_TESTED"
     },
-    "security_alert_counts": "UNKNOWN_NOT_ACCESSIBLE_VIA_GITHUB_CONNECTOR",
-    "readiness": {
-      "installed": false,
-      "authenticated": false,
-      "platform_compatibility": "NOT_TESTED",
-      "prospecting_tested": false,
-      "outbound": "PAUSED",
-      "prospects": 0
+    "integration": {
+      "model_providers": [
+        "Claude CLI",
+        "Codex CLI"
+      ],
+      "claude_code": "DOCUMENTED",
+      "claude_desktop": "DOCUMENTED",
+      "codex_cli": "CI tested with Codex CLI 0.159.3 on Linux/macOS using localhost mocks; local authentication not tested",
+      "chatgpt_desktop_dashboard_pane": "DOCUMENTED_UPSTREAM_NOT_TESTED",
+      "chatgpt_desktop_cards": "NOT_TESTED",
+      "direct_chatgpt_model_provider": "NOT_SUPPORTED",
+      "gemini_grok_copilot_huggingface_kaggle_databricks": "NOT_SUPPORTED_OR_NOT_DOCUMENTED",
+      "barrot_adapter": false,
+      "barrot_authentication": "NOT_TESTED"
     },
-    "default_config": {
+    "defaults": {
       "email_channel_enabled": true,
+      "provider": "gmail",
       "require_approval": true,
       "max_daily_sends": 50,
       "send_to_risky": false,
       "max_bounce_rate": 0.05,
-      "postal_address": "EMPTY",
-      "do_not_contact": "EMPTY",
       "warmup_start_date": "UNSET",
       "send_window": "NOT_CONFIGURED",
+      "quiet_hours": "22:00-07:00 America/New_York",
+      "postal_address": "EMPTY",
+      "do_not_contact": "EMPTY",
       "precleared": "DISABLED",
       "linkedin_enabled": false
     },
-    "safeguards": {
-      "verified": [
-        "human approval default",
-        "deterministic pre-send gate",
-        "opt-out and do-not-contact suppression",
-        "bounce-rate pause and global pause switch",
-        "loopback dashboard authentication",
-        "separate limited agent token",
-        "Claude/Codex model runtime has no tools"
+    "agent_permissions": {
+      "token_separate_from_dashboard": true,
+      "allowed": [
+        "read records and reports",
+        "estimate provider costs without running discovery",
+        "pause sending",
+        "draft/propose offers",
+        "move prospect stages",
+        "record meetings"
       ],
-      "must_configure": [
-        "set email.enabled=false until a separately approved campaign is ready",
-        "dedicated mailbox and sending domain",
-        "SPF/DKIM/DMARC and inbox-placement checks",
-        "postal address and explicit suppression list",
-        "warmup start date/service and conservative send cap",
-        "jurisdiction-specific compliance review; Precleared is disabled by default"
+      "forbidden": [
+        "approve or send email",
+        "resume sending",
+        "confirm paid signals",
+        "run discovery",
+        "change settings or keys",
+        "purchase",
+        "delete"
+      ],
+      "browser_pane": "A pane is a user session and can click user-visible approval controls; use only while supervised."
+    },
+    "discovery_costs": {
+      "openstreetmap": "free default",
+      "tinyfish": "limited free tier",
+      "dataforseo_business_listings": "$0.372 per 1,000",
+      "dataforseo_serp": "$0.006 per search at depth 30",
+      "dataforseo_maps": "$0.002 per search",
+      "serper": "2,500 free searches",
+      "hunter": "25 free domain searches/month",
+      "reoon": "600 free validations/month",
+      "zerobounce": "100 free validations/month",
+      "paid_lookup_spend_usd": 0
+    },
+    "security_posture": {
+      "status": "SOURCE_REVIEW_ONLY_NO_INDEPENDENT_SECURITY_AUDIT",
+      "verified": [
+        "loopback-only dashboard",
+        "separate owner and limited agent tokens",
+        "owner-only credential writes and system keychain for extra mailboxes",
+        "agent allowlist",
+        "deterministic fail-closed pre-send gate",
+        "opt-out and DNC suppression",
+        "global pause and bounce-rate pause",
+        "non-root Docker runtime"
+      ],
+      "gaps": [
+        "no dedicated dependency-audit workflow observed",
+        "no Dependabot configuration or lockfile observed",
+        "Docker build installs Claude CLI through an unpinned upstream installer",
+        "security-alert counts unavailable through connector",
+        "no independent penetration test or dependency audit"
       ]
     },
-    "data_costs": {
-      "openstreetmap": "free default",
-      "dataforseo": "$0.372/1,000 businesses plus query fees; $50 minimum deposit",
-      "serper": "2,500 free then $50 prepaid",
-      "scavio": "50 free credits; $30/month for 7,000",
-      "tinyfish": "limited free tier",
-      "email_verification": "Reoon 600/month, ZeroBounce 100/month, Hunter 50 verifications +25 domain searches free",
-      "trulyinbox": "paid warmup/API tier"
+    "safeguards": {
+      "approval_default": true,
+      "pre_send_gate": true,
+      "opt_out_and_dnc": true,
+      "bounce_pause": true,
+      "global_pause": true,
+      "linkedin_automation": "EXCLUDED; repository warns it violates LinkedIn Terms of Service."
     },
-    "integration": {
-      "brain_providers": [
-        "claude",
-        "codex"
-      ],
-      "claude_code": "DOCUMENTED_UPSTREAM",
-      "claude_desktop": "DOCUMENTED_UPSTREAM",
-      "codex_cli": "DOCUMENTED_UPSTREAM_AUTHENTICATION_NOT_TESTED",
-      "chatgpt_desktop_dashboard_pane": "UPSTREAM_DOCUMENTED_NOT_TESTED",
-      "chatgpt_desktop_cards": "UPSTREAM_DOCUMENTED_NOT_TESTED",
-      "direct_chatgpt_model_provider": "NOT_SUPPORTED_BY_SELLBIRD_BRAIN_PROVIDER",
-      "barrot_v3_adapter": false,
-      "authentication_by_barrot": "NOT_TESTED",
-      "no_external_data_flow": "VERIFIED"
-    },
-    "restrictions": [
-      "LinkedIn browser automation excluded by repository terms warning.",
-      "No paid lookup or outbound send authorized.",
-      "Barrot technology only; music and TrekFlex excluded."
+    "compliance_blockers": [
+      "Set channels.email.enabled=false until a separately approved campaign is ready; the shipped template has email enabled.",
+      "Dedicated mailbox and sending domain not configured; SPF/DKIM/DMARC and inbox placement not verified.",
+      "Warmup start date is unset and send_window is not configured; default cap 50/day is not appropriate for a new pilot.",
+      "Postal address and suppression list are empty; Precleared is disabled.",
+      "Jurisdiction-specific privacy, anti-spam and cold-email review is required before any campaign."
     ],
-    "release_tag": "v0.5.0",
-    "release_published_at": "2026-11-25T08:37:30Z",
     "license_obligations": {
       "license": "AGPL-3.0-only",
+      "barrot_license": "Apache-2.0",
       "network_use": "AGPL-3.0 Section 13 requires offering Corresponding Source to users interacting remotely with a modified version over a network.",
-      "local_use": "Private local execution alone does not trigger the network-interaction clause; distribution and modification obligations still require review.",
-      "legal_review_required_before_modified_hosted_service": true,
+      "integration_guidance": "Keep Sellbird a separate process behind its documented MCP/API boundary; do not copy AGPL code into Barrot. Obtain legal review before distributing a combined work or hosting a modified Sellbird service.",
       "legal_advice": false
     },
-    "security_posture": "SOURCE_REVIEW_ONLY_NO_INDEPENDENT_SECURITY_AUDIT",
-    "prospecting_tested": false,
-    "installed": false,
-    "authenticated": false,
-    "outbound": "PAUSED",
-    "prospects": 0,
-    "paid_lookup_cost_usd": 0,
-    "sends": 0,
-    "replies": 0,
-    "meetings": 0,
-    "proposals": 0,
-    "revenue_usd": 0
+    "no_public_hosted_service": "README describes hosted service as future work; local dashboard is not an always-on public prospecting endpoint.",
+    "commercial_scope": "Barrot technology only. No music, songwriting, background vocals, TrekFlex or unrelated venture prospecting."
   },
   "latest_run36_checkpoint": {
     "observed_at_utc": "2026-11-26T00:04:55Z",
@@ -8622,29 +8708,91 @@
     "native_daw_project_available": false,
     "human_listening": "NOT_PERFORMED",
     "user_acceptance": "NOT_VERIFIED",
-    "quality_interpretation": "Technical premaster QC passed; this does not establish professional musical quality or user acceptance."
+    "quality_interpretation": "Technical premaster QC passed; this does not establish professional musical quality or user acceptance.",
+    "independent_reinspection_run65_1": {
+      "observed_at_utc": "2026-11-27T02:50:13Z",
+      "artifact_id": 15139779842,
+      "zip_sha256": "f8d8cf4dcc9c26ec83030f2a5a5b4271dd8b224eb1d4de9215e8271cc448cdac",
+      "artifact_size_bytes": 242108638,
+      "zip_integrity": "PASS",
+      "mix_sha256": "6c58d9cae8ea3640d71a86ee214b9634fb372ffc778fe96a37f93b935d9217cf",
+      "midi_sha256": "5c3cb9c6c245f4107e7458668a2adb112a8e8ac4ffdae2ddaee9b8007fcece2b",
+      "sample_format": "IEEE float32 WAV",
+      "sample_rate_hz": 44100,
+      "channels": 2,
+      "frames": 7741555,
+      "duration_seconds": 175.545,
+      "aligned_stems": 9,
+      "clipped_samples": 0,
+      "dc_offset_after_correction_below_dbfs": -100,
+      "peak_dbfs": -6.02,
+      "true_peak_dbtp": -6,
+      "integrated_lufs": -22.44,
+      "lra_lu": 7.87,
+      "stem_sum_correlation": 0.999979,
+      "stem_sum_relative_rms_error": 0.006478,
+      "stem_sum_max_abs_error": 0.028158,
+      "midi": {
+        "format": 1,
+        "tracks": 11,
+        "instrument_tracks": 9,
+        "note_on_events": 1751,
+        "bpm": 110.00011,
+        "time_signature": "4/4",
+        "section_markers": 10
+      },
+      "stereo": {
+        "mix_correlation": 0.7181,
+        "mono_fold_down_loss_db": -0.6605,
+        "lead_correlation": 0.0074,
+        "lead_mono_fold_down_loss_db": -2.978,
+        "lead_status": "NEAR_THRESHOLD"
+      },
+      "soundfont": "FluidR3_GM",
+      "soundfont_license_claim": "MIT",
+      "caller_supplied_asset_rights": "UNVERIFIED",
+      "native_daw_project_available": false,
+      "human_listening": "NOT_PERFORMED",
+      "user_acceptance": "NOT_VERIFIED"
+    }
   },
   "sellbird_host_compatibility": {
-    "observed_at_utc": "2026-11-27T00:35:43.106Z",
+    "observed_at_utc": "2026-11-27T02:50:13Z",
     "repository": "ethanplusai/sellbird",
     "main_sha": "8c743f1c475f61f7b2c04e50501cf6938a126ed6",
     "release": "v0.5.0",
     "license": "AGPL-3.0-only",
     "python_requirement": ">=3.11",
-    "model_providers": [
-      "Claude CLI",
-      "Codex app-server CLI"
-    ],
     "upstream_host_support": {
+      "python_test_matrix": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "python_versions": [
+        "3.11",
+        "3.12"
+      ],
+      "docker_compose": "Native Linux only; host networking; dashboard remains loopback-only; remote access through SSH tunnel.",
+      "android_termux": "NOT_DOCUMENTED_OR_TESTED"
+    },
+    "upstream_integrations": {
+      "model_providers": [
+        "Claude CLI",
+        "Codex CLI"
+      ],
       "claude_code": "DOCUMENTED",
       "claude_desktop": "DOCUMENTED",
-      "codex": "DOCUMENTED",
-      "chatgpt_desktop_dashboard_pane": "DOCUMENTED_NOT_TESTED_UPSTREAM",
-      "chatgpt_desktop_cards": "DOCUMENTED_NOT_TESTED_UPSTREAM",
-      "direct_chatgpt_model_provider": "NOT_AVAILABLE"
+      "codex_cli": "CI tested with Codex CLI 0.159.3 on Linux/macOS using localhost mocks; local authentication not tested",
+      "chatgpt_desktop_dashboard_pane": "DOCUMENTED_UPSTREAM_NOT_TESTED",
+      "chatgpt_desktop_cards": "NOT_TESTED",
+      "direct_chatgpt_model_provider": "NOT_SUPPORTED",
+      "gemini_grok_copilot_huggingface_kaggle_databricks": "NOT_SUPPORTED_OR_NOT_DOCUMENTED",
+      "barrot_adapter": false,
+      "barrot_authentication": "NOT_TESTED"
     },
     "barrot_authentication": "NOT_TESTED",
-    "barrot_adapter": "NOT_IMPLEMENTED",
+    "barrot_adapter": false,
     "no_claim_of_live_connection": true
   },
   "latest_xrp_research_addendum_run63": {
@@ -9124,7 +9272,7 @@
     "tree_entries": 345,
     "license": "AGPL-3.0-only",
     "python_requirement": ">=3.11",
-    "purpose": "AI sales prospecting and outreach; not a persistent-execution/approval framework.",
+    "purpose": "AI sales prospecting/outreach engine; not a persistent-execution or approval framework.",
     "install_state": "NOT_INSTALLED",
     "authentication_state": "NOT_AUTHENTICATED",
     "prospecting_tested": false,
@@ -9133,24 +9281,28 @@
     "host_compatibility": "Android/Termux is the only verified local shell environment; Sellbird does not document Android/Termux support and was not tested there. No separate supported desktop/VPS host was verified.",
     "integrations": "Claude Code/Desktop and Codex CLI are documented; Codex CLI 0.159.3 tests run on macOS/Linux and are refused on Windows. Direct ChatGPT web UI and Gemini integration are not documented.",
     "defaults": {
-      "persona": "Alex placeholder",
-      "company": "Your Company placeholder",
-      "product": "Your Product placeholder",
-      "icp": "generic SaaS/marketing agency",
+      "email_channel_enabled": true,
+      "provider": "gmail",
       "require_approval": true,
       "max_daily_sends": 50,
-      "warmup_days": 14,
-      "precleared_enabled": false,
-      "postal_address": "blank",
-      "do_not_contact_list": "empty"
+      "send_to_risky": false,
+      "max_bounce_rate": 0.05,
+      "warmup_start_date": "UNSET",
+      "send_window": "NOT_CONFIGURED",
+      "quiet_hours": "22:00-07:00 America/New_York",
+      "postal_address": "EMPTY",
+      "do_not_contact": "EMPTY",
+      "precleared": "DISABLED",
+      "linkedin_enabled": false
     },
-    "safeguards": [
-      "agent token is restricted to read/draft/estimate-cost/pause actions; no approve/send/resume",
-      "approval required by default",
-      "dashboard loopback-only with owner token",
-      "external content fenced as untrusted",
-      "logs redact secrets and credential-bearing URLs"
-    ],
+    "safeguards": {
+      "approval_default": true,
+      "pre_send_gate": true,
+      "opt_out_and_dnc": true,
+      "bounce_pause": true,
+      "global_pause": true,
+      "linkedin_automation": "EXCLUDED; repository warns it violates LinkedIn Terms of Service."
+    },
     "blockers": [
       "no supported host verified",
       "no mailbox OAuth/SMTP authentication",
@@ -9170,8 +9322,122 @@
       "zerobounce": "100 free validations per month per docs",
       "paid_lookup_spend": 0
     },
-    "commercial_scope": "Barrot technology only; no music, songwriting, background vocals, TrekFlex or unrelated venture campaigns.",
-    "license_note": "AGPL-3.0-only; review source-disclosure obligations if modified and offered as a network service."
+    "commercial_scope": "Barrot technology only. No music, songwriting, background vocals, TrekFlex or unrelated venture prospecting.",
+    "license_note": "AGPL-3.0-only; review source-disclosure obligations if modified and offered as a network service.",
+    "observed_at_utc": "2026-11-27T02:50:13Z",
+    "repository": "ethanplusai/sellbird",
+    "release_tag": "v0.5.0",
+    "release_published_at": "2026-11-25T08:37:30Z",
+    "readiness": {
+      "installed": false,
+      "authenticated": false,
+      "host_verified": false,
+      "prospecting_tested": false,
+      "outbound": "PAUSED",
+      "qualified_prospects": 0,
+      "paid_lookup_spend_usd": 0,
+      "sends": 0,
+      "replies": 0,
+      "meetings": 0,
+      "proposals": 0,
+      "revenue_usd": 0
+    },
+    "supported_platforms": {
+      "python_test_matrix": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "python_versions": [
+        "3.11",
+        "3.12"
+      ],
+      "docker_compose": "Native Linux only; host networking; dashboard remains loopback-only; remote access through SSH tunnel.",
+      "android_termux": "NOT_DOCUMENTED_OR_TESTED"
+    },
+    "integration": {
+      "model_providers": [
+        "Claude CLI",
+        "Codex CLI"
+      ],
+      "claude_code": "DOCUMENTED",
+      "claude_desktop": "DOCUMENTED",
+      "codex_cli": "CI tested with Codex CLI 0.159.3 on Linux/macOS using localhost mocks; local authentication not tested",
+      "chatgpt_desktop_dashboard_pane": "DOCUMENTED_UPSTREAM_NOT_TESTED",
+      "chatgpt_desktop_cards": "NOT_TESTED",
+      "direct_chatgpt_model_provider": "NOT_SUPPORTED",
+      "gemini_grok_copilot_huggingface_kaggle_databricks": "NOT_SUPPORTED_OR_NOT_DOCUMENTED",
+      "barrot_adapter": false,
+      "barrot_authentication": "NOT_TESTED"
+    },
+    "agent_permissions": {
+      "token_separate_from_dashboard": true,
+      "allowed": [
+        "read records and reports",
+        "estimate provider costs without running discovery",
+        "pause sending",
+        "draft/propose offers",
+        "move prospect stages",
+        "record meetings"
+      ],
+      "forbidden": [
+        "approve or send email",
+        "resume sending",
+        "confirm paid signals",
+        "run discovery",
+        "change settings or keys",
+        "purchase",
+        "delete"
+      ],
+      "browser_pane": "A pane is a user session and can click user-visible approval controls; use only while supervised."
+    },
+    "discovery_costs": {
+      "openstreetmap": "free default",
+      "tinyfish": "limited free tier",
+      "dataforseo_business_listings": "$0.372 per 1,000",
+      "dataforseo_serp": "$0.006 per search at depth 30",
+      "dataforseo_maps": "$0.002 per search",
+      "serper": "2,500 free searches",
+      "hunter": "25 free domain searches/month",
+      "reoon": "600 free validations/month",
+      "zerobounce": "100 free validations/month",
+      "paid_lookup_spend_usd": 0
+    },
+    "security_posture": {
+      "status": "SOURCE_REVIEW_ONLY_NO_INDEPENDENT_SECURITY_AUDIT",
+      "verified": [
+        "loopback-only dashboard",
+        "separate owner and limited agent tokens",
+        "owner-only credential writes and system keychain for extra mailboxes",
+        "agent allowlist",
+        "deterministic fail-closed pre-send gate",
+        "opt-out and DNC suppression",
+        "global pause and bounce-rate pause",
+        "non-root Docker runtime"
+      ],
+      "gaps": [
+        "no dedicated dependency-audit workflow observed",
+        "no Dependabot configuration or lockfile observed",
+        "Docker build installs Claude CLI through an unpinned upstream installer",
+        "security-alert counts unavailable through connector",
+        "no independent penetration test or dependency audit"
+      ]
+    },
+    "compliance_blockers": [
+      "Set channels.email.enabled=false until a separately approved campaign is ready; the shipped template has email enabled.",
+      "Dedicated mailbox and sending domain not configured; SPF/DKIM/DMARC and inbox placement not verified.",
+      "Warmup start date is unset and send_window is not configured; default cap 50/day is not appropriate for a new pilot.",
+      "Postal address and suppression list are empty; Precleared is disabled.",
+      "Jurisdiction-specific privacy, anti-spam and cold-email review is required before any campaign."
+    ],
+    "license_obligations": {
+      "license": "AGPL-3.0-only",
+      "barrot_license": "Apache-2.0",
+      "network_use": "AGPL-3.0 Section 13 requires offering Corresponding Source to users interacting remotely with a modified version over a network.",
+      "integration_guidance": "Keep Sellbird a separate process behind its documented MCP/API boundary; do not copy AGPL code into Barrot. Obtain legal review before distributing a combined work or hosting a modified Sellbird service.",
+      "legal_advice": false
+    },
+    "no_public_hosted_service": "README describes hosted service as future work; local dashboard is not an always-on public prospecting endpoint."
   },
   "latest_run64_checkpoint": {
     "run": 64,
@@ -9203,5 +9469,31 @@
     "research": "regional SBIC identity resolved; institutional relationship map expanded; 36 public YouTube videos sampled after channel attribution cross-check.",
     "next_action": "Obtain independent review/required approvals for #1714, resolve #1702 stale-base gate via #1714, then verify exact-head integration and Pages side effects before any merge."
   },
-  "captured_at": "2026-11-27T02:32:48Z"
+  "captured_at": "2026-11-27T02:50:13Z",
+  "latest_run65_1_checkpoint": {
+    "run": 65.1,
+    "observed_at_utc": "2026-11-27T02:50:13Z",
+    "main_sha": "2151843140fd770b62ef93d06a78c559f9e73bbd",
+    "mission_priorities": {
+      "xrp_intelligence_prediction_engine": 1,
+      "professional_audio_production": 1,
+      "long_horizon_continuity_capability_development": 1,
+      "shared_foundation": "Barrot V3"
+    },
+    "pr1702": {
+      "head_sha": "582590b9889a39545b18622557b091bd9b09a98d",
+      "full_suite": "4700 passed, 1 failed, 1 skipped",
+      "failure": "dependency_prs #1711 classification mismatch",
+      "fix": "classification set to blocked_dependency_compatibility; exact-head CI pending",
+      "gate": "failed legacy base-SHA equality check; compare 156 ahead / 0 behind"
+    },
+    "pr1705": {
+      "head_sha": "08176c52d7b47298fac597e701c832145ef16f29",
+      "full_suite": "IN_PROGRESS",
+      "new_sec_10q_reconciliation": true
+    },
+    "audio": "artifact 15139779842 independently re-opened; 9 aligned float32 WAV stems, mix/MIDI hashes match QC, 11 MIDI tracks, 1,751 note events, 10 markers; technical QC passes; listening and user acceptance remain open.",
+    "sellbird": "v0.5.0 / AGPL-3.0-only / 345 tree entries; source review only; not installed or authenticated; no dependency audit workflow/lockfile/Dependabot observed; sending paused.",
+    "merge_status": "NO MERGES; main unchanged; no deployment or outbound activity."
+  }
 }
