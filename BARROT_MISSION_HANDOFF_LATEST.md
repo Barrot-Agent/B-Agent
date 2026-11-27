@@ -1716,3 +1716,42 @@ Sellbird remains the separate AGPL-3.0-only prospecting/outreach application, no
 ### Next concrete action
 
 Wait for exact-head full-suite and gate results on #1705 commit `878d6e3`. If the full suite passes, preserve the stale-base gate finding and keep merge blocked pending the mainline ancestry-gate correction, independent review/required approvals and explicit Pages deployment authorization. Continue diagnosing the four source marker mismatches and why all eight event receipts remain digest-only; do not relax markers or promote events into model features. Maintain separate audio and continuity workstreams, with the next audio milestone being rights-verified assets plus editable DAW/interchange output and comparative listening, and the next continuity milestone being authenticated cross-host recovery. No deployment, external send, paid prospecting, secret change, Space restart, Kaggle submission, paper trade, funds transfer or real-money action.
+
+
+## Run 13 evidence follow-up — 2026-11-27 15:11 UTC
+
+### #1705 second exact-head test diagnosis — EXECUTED
+
+- The first same-branch correction changed the stale registry expectation from run225/159 events to run226/160 events, but its new test asserted `model_eligible` and `forecast_status` on the `run226_update` summary object. Those fields do not exist on that update summary; they belong to the event record and top-level timeline.
+- Exact-head CI run [46021034516](https://github.com/Barrot-Agent/B-Agent/actions/runs/46021034516) therefore failed one test with `KeyError: 'model_eligible'`. This is a test-authoring defect, not a failure of the ingestion or forecast gate.
+- Corrected the assertion on the same existing #1705 branch in commit `11bcc974369702e9d22a728ca0c00e51f232ae69`: the update summary is now checked only for fields it actually carries; the SBI event itself is still required to be model-ineligible, and the existing timeline-level forecast assertion remains fail-closed.
+- Current #1705 head is `11bcc974369702e9d22a728ca0c00e51f232ae69`, 44 commits ahead / 0 behind current main. Exact-head PR CI [46022510112](https://github.com/Barrot-Agent/B-Agent/actions/runs/46022510112) has its small Tests job and Pages validation passing; full repository suite is still running. Dependency audit, Money audit and Conflict Integrity pass. Gated Merge is queued/in progress. Do not claim full-suite completion until the full-suite job finishes.
+
+### Branch event-artifact inspection — EXECUTED / VERIFIED
+
+Downloaded and inspected the preserved artifacts for branch ingestion run [46018826104](https://github.com/Barrot-Agent/B-Agent/actions/runs/46018826104), including `xrp-public-events` and `xrp-public-raw`.
+
+- The four marker-mismatch records are `sbi_holdings_circle_investment_release_20250609`, `sbi_circle_holdings_jv_establishment_20250822`, `sbi_startale_open_standard_jpysc_ousd_20261016`, and `sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24`. Each produced a SHA-256 receipt, but its raw body was deliberately not retained because marker validation failed. The artifact therefore cannot establish which exact response body the runner parsed.
+- The one failed curated source was Coinbase's official RLUSD listing page, HTTP 403. Do not proxy, rotate region or bypass the restriction. The official Coinbase page is accessible through public web research, but that does not substitute for an ingestion receipt.
+- The public source search index confirms the expected key content is present in the official SBI disclosures: the June 9, 2025 release reports USD 50 million total Circle shares, split USD 25 million each between SBI Holdings and SBI Shinsei Bank, and separately says SBI invested in Ripple in 2016 and held approximately 9% as largest external shareholder at that disclosure date; the August 22, 2025 release confirms formation of SBI Circle Holdings with Circle Internet Holdings; the October 16, 2026 release says SBI and Startale joined Open Standard and are considering a JPYSC/OUSD interoperability PoC, explicitly not a production launch; the June 24, 2026 SBI VC Trade/Ripple release describes RLUSD as a Japanese Type 4 electronic payment instrument and says VCTRADE's supported chain is Ethereum only. These are primary-publisher statements, not proof of XRP demand or transaction volume.
+- Coinbase's October 28, 2026 official notice confirms RLUSD access through Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals across XRPL, Base and Ethereum at launch. It says Coinbase Global Exchange collateral functionality would follow; do not record that collateral use as live at launch.
+- Eight canonical event links in the branch artifact are digest-only: SBI Remit's 2023 XRP remittance expansion; Circle's 2025 native USDC-on-XRPL announcement; Ripple's September 2026 XRP holdings disclosure; Ripple/Coinbase RLUSD distribution; Ripple and Coinbase national trust-bank OCC milestones; PNC/Coinbase USDC pilot; and DBS/Circle institutional USDC access. The artifact reports eight linked events, eight digest-only verified receipts and zero retained event payload bytes. The other 152 events have no raw receipt hash.
+- Since the four SBI marker strings are supported by the public publisher search records but the runner's actual response bytes were not retained, the discrepancy is unresolved. Do not relax marker validation or link those four hash-only captures to events until an authorized, reproducible response capture explains the mismatch. Keep Coinbase's 403 as an explicit source failure.
+
+### Primary-source research notes
+
+The SBI/Circle/Ripple disclosures describe separate relationships, not one pooled investment: (1) SBI Holdings and SBI Shinsei Bank's Circle equity investment; (2) SBI Holdings' historical Ripple equity position; (3) SBI Ripple Asia as a separate operating joint venture; and (4) SBI Circle Holdings as a separate Circle joint venture. The October 2026 Open Standard announcement is another parallel stablecoin rail and only a PoC consideration. SBI VC Trade's RLUSD distribution is Ethereum-only at launch and does not establish XRPL distribution through VCTRADE. Coinbase's RLUSD listing supports XRPL, Base and Ethereum deposits/withdrawals at launch; Global Exchange collateral was future functionality in the launch notice. None of these announcements alone establishes XRP net purchases, XRP collateral utilization, actual payment volume or incremental XRP demand.
+
+Sources inspected:
+- SBI, Circle investment and Ripple shareholding: `https://www.sbigroup.co.jp/news/2025/0609_15491.html`
+- SBI, Circle joint venture: `https://www.sbigroup.co.jp/news/2025/0822_15679.html`
+- SBI/Startale, Open Standard and JPYSC/OUSD PoC consideration: `https://www.sbigroup.co.jp/news/2026/1016_16665.html`
+- SBI VC Trade/Ripple, RLUSD Japan handling and Ethereum-only VCTRADE support: `https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html`
+- Coinbase, RLUSD listing and launch scope: `https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase`
+
+### Follow-up status
+
+- DESIGNED: source marker and raw-retention fail-closed rules remain unchanged pending the actual response bytes; no source is made model-eligible from search snippets.
+- EXECUTED: downloaded event and raw artifacts, inspected receipt manifest and source failures, checked official SBI/Coinbase primary pages, and corrected the #1705 regression test on its existing branch.
+- VERIFIED: the four marker mismatches, one Coinbase HTTP 403, eight digest-only linked events, zero retained event payloads, exact cause of the second test failure, and the primary-source distinction among SBI/Circle/Ripple/Coinbase relationships.
+- NOT VERIFIED: new #1705 full-suite result, successful raw-byte capture for the four SBI pages, Coinbase runner access, complete event receipt coverage, SEC capture or forecast readiness.
