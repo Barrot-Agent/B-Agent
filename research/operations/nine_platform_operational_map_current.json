@@ -1,11 +1,11 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-24T21:56:01Z",
-  "capture_basis": "Run 15: refreshed current main metadata and complete recursive tree, current open PR inventory and ancestry, exact-head #1699 full-suite/security/merge-tree/conflict/readiness checks, main CI and automatic Pages deployment side effect, XRP ingestion run #135 logs/artifacts and receipt/event/feature metrics, main audio renderer/workflow, and official FreePats asset license pages. Only the ChatGPT-to-GitHub connector is authenticated; no external model data transfer occurred.",
+  "captured_at_utc": "2026-11-27T19:58:49Z",
+  "capture_basis": "Current-main GitHub repository, complete recursive tree, open PR inventory and branch comparisons, exact-head workflow evidence, XRP ingestion artifacts, audio bundle/QC artifacts, continuity ledger source/tests, primary-source XRP research, and Sellbird upstream source audit.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
-    "main_sha": "84230d970750e3804e934e9207675879b4a266f9",
+    "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
     "main_branch_protected": true,
     "required_status_checks": [
       "Full repository test suite",
@@ -15,28 +15,33 @@
     ],
     "branch_protection_details_status": "HTTP_403_RESOURCE_NOT_ACCESSIBLE_BY_INTEGRATION",
     "required_approval_count": null,
-    "required_approval_count_note": "The branch summary confirms protection and four required checks enforced for non-admins, but the detailed endpoint returns HTTP 403. Required approval count, strict up-to-date setting, administrator enforcement, force-push policy and branch-deletion policy remain unknown.",
+    "required_approval_count_note": "No submitted reviews were recorded on merged PRs #1703 and #1704; detailed branch-protection endpoint is HTTP 403, so required approval count and administrator enforcement are not inferred.",
     "source_urls": {
       "repository": "https://github.com/Barrot-Agent/B-Agent",
       "repository_metadata": "https://api.github.com/repos/Barrot-Agent/B-Agent",
       "main_branch": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protection": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main/protection",
       "branch_summary": "https://api.github.com/repos/Barrot-Agent/B-Agent/branches/main",
-      "main_commit": "https://github.com/Barrot-Agent/B-Agent/commit/84230d970750e3804e934e9207675879b4a266f9",
-      "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568190",
-      "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
-      "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332",
+      "main_commit": "https://github.com/Barrot-Agent/B-Agent/commit/afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+      "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966",
+      "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
+      "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054765366",
       "latest_pr_1699_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991841",
       "latest_pr_1699_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991844",
       "latest_pr_1699_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991955",
       "latest_pr_1699_merge_tree": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991879",
       "latest_pr_1699_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45495073995",
       "latest_pr_1699_readiness": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45495073992",
-      "latest_main_pages_deployment": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489565901"
+      "latest_main_pages_deployment": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489565901",
+      "latest_audio_render": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107",
+      "latest_continuity_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1703",
+      "latest_audio_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
+      "latest_xrp_research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+      "sellbird_repository": "https://github.com/ethanplusai/sellbird"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-24T21:56:01Z",
+      "observed_at_utc": "2026-11-27T19:58:49Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -56,7 +61,112 @@
         "branch-deletion policy"
       ],
       "interpretation": "The branch endpoint confirms protected=true and exposes four required checks enforced for non-admins. The detailed classic protection endpoint returns HTTP 403. Do not infer unreturned settings."
-    }
+    },
+    "current_main_evidence": {
+      "ci_run_id": 46055543966,
+      "ci_conclusion": "success",
+      "full_repository_test_job_id": 140697017348,
+      "passed_lines": 4725,
+      "failed_lines": 0,
+      "collection_skips": 1,
+      "package_coverage_gates": "success",
+      "dependency_audit_run_id": 46055543856,
+      "dependency_audit_conclusion": "success",
+      "money_audit_run_id": 46055543828,
+      "money_audit_conclusion": "success",
+      "cross_analysis_run_id": 46059601948,
+      "cross_analysis_conclusion": "success",
+      "pages_deployment_run_id": 46055542164,
+      "pages_deployment_conclusion": "success",
+      "pages_deployment_was_automatic_merge_side_effect": true,
+      "future_merge_requires_explicit_deployment_approval": true
+    },
+    "merged_prs": [
+      {
+        "number": 1703,
+        "merge_commit_sha": "9265a90e363b7128b7cd6bd9b9823655d98bd1b6",
+        "merged_at_utc": "2026-11-27T19:07:23Z",
+        "workstream": "long-horizon continuity",
+        "status": "VERIFIED_ON_MAIN"
+      },
+      {
+        "number": 1704,
+        "merge_commit_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+        "merged_at_utc": "2026-11-27T19:16:35Z",
+        "workstream": "professional audio production",
+        "status": "VERIFIED_ON_MAIN"
+      }
+    ],
+    "current_open_prs": [
+      {
+        "number": 1702,
+        "classification": "SUPERSEDED_PENDING_SUCCESSOR",
+        "ahead_by": 207,
+        "behind_by": 49,
+        "workstream": "mission handoff"
+      },
+      {
+        "number": 1705,
+        "classification": "UNIQUE_UNREVIEWED_BLOCKED",
+        "ahead_by": 48,
+        "behind_by": 49,
+        "workstream": "XRP research and ingestion",
+        "overlaps": [
+          1706,
+          1708
+        ]
+      },
+      {
+        "number": 1706,
+        "classification": "UNIQUE_DEPENDENCY_CHANGE_BLOCKED",
+        "ahead_by": 2,
+        "behind_by": 61,
+        "workstream": "dependency maintenance",
+        "overlaps": [
+          1705,
+          1708,
+          1709
+        ]
+      },
+      {
+        "number": 1708,
+        "classification": "DUPLICATE_OF_1706",
+        "ahead_by": 1,
+        "behind_by": 61,
+        "workstream": "dependency maintenance"
+      },
+      {
+        "number": 1707,
+        "classification": "UNIQUE_DEPENDENCY_CHANGE_BLOCKED",
+        "ahead_by": 1,
+        "behind_by": 61,
+        "workstream": "dependency maintenance"
+      },
+      {
+        "number": 1709,
+        "classification": "UNIQUE_DEPENDENCY_CHANGE_BLOCKED",
+        "ahead_by": 2,
+        "behind_by": 61,
+        "workstream": "dependency maintenance",
+        "overlaps": [
+          1706
+        ]
+      },
+      {
+        "number": 1710,
+        "classification": "UNIQUE_DEPENDENCY_CHANGE_BLOCKED",
+        "ahead_by": 1,
+        "behind_by": 61,
+        "workstream": "dependency maintenance"
+      },
+      {
+        "number": 1711,
+        "classification": "BLOCKED_COMPATIBILITY_UNRESOLVED",
+        "ahead_by": 1,
+        "behind_by": 61,
+        "workstream": "Hugging Face dependency"
+      }
+    ]
   },
   "mission_portfolio": {
     "schema_version": "barrot.mission-portfolio.v1",
@@ -79,7 +189,7 @@
         "status": "active"
       }
     ],
-    "verification": "Both root and packaged primary_mission.json files have the same Git blob SHA and define these three active priority-1 missions."
+    "verification": "Current main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1; root and packaged mission manifests are byte-identical at blob 360643b391b5d8e67fa917913581bb459afb613c; all three missions remain active priority 1; full repository CI passed."
   },
   "platforms": {
     "ChatGPT": {
@@ -101,23 +211,17 @@
         "status": "VERIFIED",
         "path": "Current ChatGPT session -> GitHub connector -> GitHub API -> Barrot-Agent/B-Agent",
         "operations_observed": [
-          "read repository metadata and the complete recursive main tree (3,163 entries; not truncated)",
-          "read main mission manifests and verify root/package manifest byte equality",
-          "read the current open PR inventory (#1699 and #1693), reviews, branch ancestry and changed paths",
-          "verify PR #1701 merged as current main 84230d970750e3804e934e9207675879b4a266f9",
-          "read exact-main CI jobs and logs: 4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage",
-          "read exact-main dependency audit, money audit and automatic Pages deployment side effect",
-          "read and download XRP ingestion run #135 raw, event-timeline, receipt-index and feature-store artifacts; verify per-run and cross-run receipt chain",
-          "inspect main audio rendering, continuity and nine-platform map code/tests",
-          "read open PR reviews (zero submitted reviews on #1699 and #1693)",
-          "read protected-main summary and four required checks; detailed branch-protection endpoint returned HTTP 403",
-          "reconcile existing PR #1699 branch with current main using a non-force merge commit that preserves the prior branch head",
-          "update the canonical handoff, current nine-platform map and its stale-SHA test on the existing PR branch",
-          "verify current main 84230d970750e3804e934e9207675879b4a266f9 after PR #1701 and its 3,163-entry recursive tree",
-          "verify exact-main full repository suite (4,690 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage), dependency audit, money audit and automatic Pages deployment side effect",
-          "verify current open PR inventory (#1699 and #1693), #1699 exact-head full suite/security/merge-tree/conflict/readiness checks, and absence of submitted reviews",
-          "inspect latest XRP ingestion run #135 (pre-#1701 main) and verify receipt-chain, feature-store, event-timeline and source-failure metrics",
-          "inspect audio renderer/bundle implementation and official FreePats CC0/CC-BY asset license pages; no soundfont assets downloaded or rendered"
+          "read repository metadata and complete recursive main tree (3,168 entries; not truncated)",
+          "read current main code, dependency manifests, workflows and latest durable handoff",
+          "read all eight open PRs, changed paths, branch ancestry and overlap relationships",
+          "verify PR #1703 and #1704 merge commits and merged files on current main",
+          "verify current-main full repository CI, pip-audit, money audit and automatic Pages deployment side effect",
+          "read scheduled XRP ingestion run #46054765366 and parse feature-store, receipt-chain, event-timeline, drift and forecast status",
+          "download and inspect exact PR-head audio production bundle, QC and SoundFont-routing artifacts from run #46054906107",
+          "inspect ProjectStateLedger, MissionRegistry and cross-process signed-transfer tests on current main",
+          "inspect primary SBIC, SBI, Circle, Coinbase, Ripple and Evernorth sources",
+          "audit exact Sellbird main source, license, dependencies, configuration, sending controls and upstream open safety PRs",
+          "create a current-main-based handoff successor branch and update the durable handoff file"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -147,7 +251,17 @@
         "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568146",
         "https://github.com/Barrot-Agent/B-Agent/actions/runs/45489568152",
         "https://github.com/Barrot-Agent/B-Agent/actions/runs/45487455702",
-        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332"
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/45488683332",
+        "https://github.com/Barrot-Agent/B-Agent/commit/afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054765366",
+        "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1703",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1704",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1705",
+        "https://github.com/ethanplusai/sellbird"
       ]
     },
     "Claude": {
@@ -252,7 +366,7 @@
     "structured_evidence_exchange_across_nine_platforms": false,
     "cross_platform_authentication_verified_for_platforms": 1,
     "external_model_data_transfer_occurred": false,
-    "minority_objection_retention": "REQUIRED; no cross-platform exchange executed",
+    "minority_objection_retention": "REQUIRED; research disagreements are retained in repository evidence; no cross-platform exchange executed",
     "red_team_review": "DESIGNED; no external-platform red-team review executed",
     "policy": "Do not transfer private, credential-bearing or user-sensitive data to another platform without explicit authorization. Use redacted, source-linked evidence packets and least-privilege scopes."
   },
@@ -262,15 +376,19 @@
       "research/xrp_intelligence/nine_platform_capability_authentication_dataflow_map_latest.json"
     ],
     "status": "PRESERVED_HISTORICAL_SNAPSHOTS",
-    "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence."
+    "note": "Retain prior observations and run history. This operational map supersedes older permission claims when they conflict with current endpoint tests; it does not delete or rewrite historical evidence.",
+    "latest_capture": {
+      "captured_at_utc": "2026-11-27T19:58:49Z",
+      "previous_map_blob_sha": "3092e01dc0a01f5a899425cef365fa505aac44b8",
+      "note": "Previous snapshot preserved in Git history; this capture supersedes its stale main SHA and 2026-11-24 evidence."
+    }
   },
   "next_actions": [
-    "Verify the next scheduled XRP ingestion on current main and preserve exact artifact/receipt evidence; keep forecasts disabled until event linkage, walk-forward history, calibration and drift gates pass.",
-    "Implement and test per-instrument SoundFont mapping or deterministic bank combination using pinned FreePats assets with verified SHA-256 and license/attribution metadata; then expose the full WAV/stems/MIDI/metadata bundle and obtain listening acceptance.",
-    "Extend continuity beyond the workspace-local cursor with independent-host stale/conflict reconciliation and dependency-aware recovery.",
-    "Obtain a genuine independent review if required and explicit authorization for the automatic Pages deployment side effect before merging PR #1699; never bypass branch protection.",
-    "Keep PR #1693 quarantined until caller identity, immutable source lineage, parent verification and OS sandbox/egress controls pass.",
-    "Test the eight remaining platforms individually before recording any external connection as live; retain redacted evidence and minority objections.",
-    "Keep Sellbird discovery Barrot-only and outbound sending paused."
+    "XRP: repair event-to-receipt linkage for all 150 current events; configure SEC contact identity only from a legitimate authorized address; capture primary SEC documents; add an independent receipt anchor; implement raw-artifact feature-store rebuild; keep forecasts disabled until a candidate and independent chronological shadow cohort pass readiness.",
+    "Audio: render the full-song bundle on current main after merge; control render nondeterminism; extend mixed-SoundFont routing to a full song; provide a native DAW project or supported interchange; obtain blind/level-matched listening and explicit user acceptance.",
+    "Continuity: retain signed manual transfer; prove recovery on an independent host/device with user-authorized transfer before designing automated network sync.",
+    "Nine platforms: test authentication, permissions and data flow for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks individually before any transfer.",
+    "Commercial: keep Sellbird Barrot-only; validate a deliverable pilot and buyer problem before prospecting; outbound sending remains paused.",
+    "PR hygiene: reconcile #1705 with overlapping dependency work on a current-main branch; consolidate #1706/#1708 and safe dependency updates only after compatibility review; do not merge any change that triggers Pages deployment without explicit deployment approval."
   ]
 }
