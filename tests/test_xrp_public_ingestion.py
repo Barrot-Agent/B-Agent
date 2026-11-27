@@ -1410,8 +1410,8 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "actions: read" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
-    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
-    assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v4\s*$", workflow)
+    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v6.1.0\s*$", workflow)
+    assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v6.1.0\s*$", workflow)
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
     assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
     assert "cache-matched-key" not in workflow
