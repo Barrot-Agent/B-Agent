@@ -1,3 +1,100 @@
+# Run 67 — integrated three-mission checkpoint
+
+**Capture:** 2026-11-27 UTC, after exact-head verification of XRP PR #1705.  
+**Current main:** `2151843140fd770b62ef93d06a78c559f9e73bbd`.  
+**Recursive tree:** 3,164 entries, `truncated=false`.  
+**Mission rule — VERIFIED:** XRP intelligence/prediction, professional audio production and long-horizon continuity/capability development remain three co-equal priority-1 missions. Barrot V3 remains the shared execution, orchestration, MMI, provenance, authorization, safety and verification foundation.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** one integrated Barrot product with three independent domain workstreams, shared V3 governance, and commercial support restricted to Barrot technology.
+- **EXECUTED:** fetched repository metadata, current main, full recursive tree, all 12 open PRs, changed paths, current-main ancestry comparisons, required branch checks, recent CI logs, dependency manifests, workflow configuration and the latest durable handoff. GitHub access worked with existing authorization; no reconnection was requested.
+- **VERIFIED — main:** main is protected and visibly requires `Full repository test suite`, `audit`, `pip-audit` and `Verify PR merge tree against current base`. The detailed protection endpoint still returns HTTP 403; required approval count and other hidden settings remain unknown. Exact-main CI on SHA `2151843140fd770b62ef93d06a78c559f9e73bbd`, run [45735004570](https://github.com/Barrot-Agent/B-Agent/actions/runs/45735004570), passed 4,695 tests, 1 skipped, 11 warnings and 21 subtests.
+- **VERIFIED:** no PR was created, merged or closed in this run. No branch was rewritten; no force-push, reset, clean, stash, destructive restore, deployment, Space restart, secret change, external message, Kaggle submission, paper trade or real-money action occurred.
+
+## Repository integration and open-PR state
+
+Current main remains `2151843140fd770b62ef93d06a78c559f9e73bbd`. The current-main compare endpoint reports the active mission branches as descendants of main, not behind it. Most PR objects still expose the historical base SHA `6033bcd84fdeb2a8906b3d3b9aab5293eacf9407`; this is stale PR metadata, not proof that their heads omit current main.
+
+- **#1714 — V3 governance successor:** head `87a370d77df5703a807ad3d8128d0ca972c383fd`, 5 ahead / 0 behind. Exact-head full suite [45865690314](https://github.com/Barrot-Agent/B-Agent/actions/runs/45865690314) passed 4,697 tests, 1 skipped, 11 warnings and 21 subtests. Dependency audit, conflict integrity, merge-tree verification and the new ancestry-based gate passed. This branch corrects the stale-base bug using `compare(current_main...head)`, and excludes the Telegram code from #1713. **Promotion remains blocked:** no independent review is recorded; branch-protection approval requirements cannot be read; merge-triggered GitHub Pages publication was previously observed and remains unauthorized.
+- **#1705 — XRP research/ingestion:** current head `a23b7117eef202b553d4f7f058397deee5b24a17`, 35 ahead / 0 behind. The prior head `c185e686a45befc29c4209a8399255251abb0c4e` had two test failures because short evidence fragments were compared by exact set equality against longer captured source-marker strings. The test now checks fragment containment; no source, receipt, freshness, model-admission or forecast gate was weakened. Exact-head full suite [45952955053](https://github.com/Barrot-Agent/B-Agent/actions/runs/45952955053) passed **4,725 tests, 1 skipped, 11 warnings, 21 subtests; 74.25% coverage**. Exact-head Tests, audit, pip-audit and merge-tree verification passed. The legacy merge-readiness gate still fails solely on its stale `base.sha` comparison. Do not duplicate #1714's shared V3 gate fix in this XRP branch.
+- **#1704 — audio production:** head `38ffff3c4c21f14d1f216a4fdf1e54eeb4694f92`, 26 ahead / 0 behind. Exact-head full suite [45867292575](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292575) passed 4,703 tests, 1 skipped, 11 warnings and 21 subtests. Audio render integration [45867292176](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176) passed. The legacy merge gate fails on stale base metadata.
+- **#1703 — continuity ledger:** head `9ea30d044c84fc97c8354457f7227439c73442b4`, 16 ahead / 0 behind. Exact-head full suite [45736556559](https://github.com/Barrot-Agent/B-Agent/actions/runs/45736556559) passed 4,715 tests, 1 skipped, 11 warnings and 21 subtests; dependency audit, money audit and conflict integrity passed. The legacy merge gate fails on stale base metadata.
+- **#1702 — canonical handoff/platform map:** head `6f9c5a9432cb3dfeedcafcaa3291dd6762a31d7b`, 169 ahead / 0 behind. Exact-head full suite [45951066930](https://github.com/Barrot-Agent/B-Agent/actions/runs/45951066930) passed 4,704 tests, 1 skipped, 11 warnings and 21 subtests; dependency audit, money audit and conflict integrity passed. The legacy merge gate fails on stale base metadata.
+- **#1713 — superseded source preserved:** draft; contains Telegram inbox/reply/report scripts and workflow. Those paths are outside the authorized nine-platform scope. #1714 is its clean V3 successor; do not close #1713 until #1714 is promoted and verified.
+- **Dependency backlog:** #1706 is unique cache-restore work but overlaps #1705's XRP workflow and #1709's action-pin tests; #1708 is a duplicate cache-save subset of #1706; #1709 is a unique Databricks setup-CLI update with shared action-pin tests; #1707 is a unique setup-node update; #1710 is legacy-only PyYAML; #1711 remains blocked because Hugging Face Space Streamlit 1.35 requires NumPy <2 while the proposed dependency permits NumPy <3.
+
+**Promotion decision:** no merge. The new #1714 gate fix is verified on its own exact head, but the other branches still use the legacy stale-base gate. No independent reviews are recorded. The required approval count is unknown (HTTP 403), and the known GitHub Pages deployment side effect is not authorized. Do not bypass branch protection or copy the shared gate fix into multiple workstreams.
+
+## XRP intelligence and prediction — EXECUTED; forecast withheld
+
+### Research and identity resolution
+
+The current #1705 research artifact `research/xrp_intelligence/20261126_evernorth_actual_capital_and_sbic_identity.md` (captured 2026-11-27) separates the overloaded SBIC identities:
+
+- **SBIC East / Central / West** are three distinct Japanese Small and Medium Business Investment & Consultation companies: Tokyo, Nagoya and Osaka. Their official profiles identify each other as sister companies; the evidence does not make them SBI Holdings subsidiaries.
+- **SBI Holdings' historical “SBIC” usage** refers to SBI CAPITAL Co., Ltd., a separate buyout/enterprise-revitalization fund manager. SBI's 2007 release records 60% SBI Holdings / 40% Goldman Sachs-group ownership after a share transfer; its 2011 annual report later lists 100% SBI Holdings ownership. Current 2026 legal status of that entity remains unverified.
+- Evernorth's four named SBI-controlled subscribers are SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc. The SEC filings apply a 39.9% Class A voting cap to the SBI subscriber group. They do not identify the regional SBIC companies as investors.
+- **“Actual capital”** is separated into historical advance cash, closing gross cash, net convertible-note proceeds, exercised-warrant proceeds, in-kind XRP, and optional ELOC capacity. The disclosed $272.6m closing gross cash, $29.0m net note proceeds and $35.3m gross warrant exercises are not a net-cash balance. The 388.91m XRP in-kind contribution is not cash. The ELOC is optional share issuance, not cash already raised. A one-day discrepancy remains between two SEC filings on the note issuance/effectiveness date.
+- **“ASK Coin”** and **“SBIC, ChatGPT SBIC”** still have no credible primary-source match tying them to Ripple, XRP, SBI Holdings or the regional SBIC entities. Keep both unresolved; do not infer an entity from a transcription.
+- The issuer-specific relationship map distinguishes Coinbase as Evernorth's principal-market accounting reference from BitGo Trust as the disclosed custodian. Circle appears in the reviewed Evernorth registration statement as general USDC market-risk context, not as a disclosed Evernorth counterparty. Ripple's XRP contributions, SBI's investor group, Circle/USDC relationships and Coinbase price-reference role are not interchangeable evidence of XRP purchases or settlement.
+
+### Kamilah/Camilla public-channel inventory
+
+The newest research subsection (9.13.4) supports **channel-level public-brand attribution** for `@drkamilahstevenson` through the channel's own Prescribe Wealth link and the June 11, 2026 iHeart interview in which the guest self-identifies the public YouTube persona as “doctor Camilla Stevenson.” This does **not** establish civil/legal identity. A 36-item indexed sample is recorded (12 recent uploads, 12 popular items and 12 past live streams); it is not a complete export of the approximately 1.2K-video archive. Individual video IDs are absent for most entries. The same file retains an older subsection 9.12 saying the channel is still unbound. **This is a stale internal contradiction:** subsection 9.13.4 is the later attribution decision, but the old subsection needs an explicit supersession note before the file is treated as internally clean. Do not merge unrelated namesakes.
+
+### Data and prediction gate
+
+- Mainline ingestion run #203 [45938909635](https://github.com/Barrot-Agent/B-Agent/actions/runs/45938909635) reported 155 feature-store snapshots and 38,434 historical feature records; the latest snapshot held 379 records from 12 sources. SQLite integrity passed. The internal 37-receipt chain had 21 retained raw payloads and 16 digest-only receipts; it is not externally anchored.
+- The main event registry still has 150 events, 0 raw-source hashes and 0 verified receipt links. The 1-hour walk-forward remains partial/blocked (584 rows in the latest handoff); drift evaluated 0/205 features. No candidate is model-eligible. **No directional forecast is issued.**
+- #1705 adds bounded allowlisted first-party event capture and a research-only RLUSD cross-chain normalizer. The RLUSD normalizer correctly returned `BLOCKED_STALE` when the source cache was 321.593 seconds old against a 300-second limit. It remains `model_eligible=false` and `feature_store_admitted=false`. Branch-only capture artifacts do not establish mainline ingestion coverage.
+- New public issuer events in the research record remain research-only where original bytes/immutable receipts are absent. No event was silently promoted into model features.
+
+## Professional audio — EXECUTED; listening acceptance unverified
+
+The #1704 branch implements per-track SoundFont routing behind the existing FluidSynth renderer. The actual Audio Render Integration artifact [45867292176](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176) was inspected:
+
+- Full-song render: 80 bars, 110 BPM, D minor, 4/4, 175.545 seconds, stereo 44.1 kHz.
+- Deliverables in the run artifact: WAV mix, **nine sample-aligned WAV stems**, Standard MIDI File with 10 section markers (intro, verse 1, pre-chorus 1, chorus 1, verse 2, pre-chorus 2, chorus 2, bridge, final chorus, outro), JSON metadata and MIT license notice. SoundFont binary is not bundled.
+- Technical QC: 0 clipped samples; sample peak -6.024 dBFS; true peak -6.000 dBTP; integrated loudness -22.44 LUFS; LRA 7.87 LU; no loudness normalization. These are signal checks, not a musical-quality score.
+- The benchmark records `quality_status=PASS` for technical QC only. Per-track comparisons verify that two CC0-claimed FreePats piano assets produce different timbres from the FluidR3 baseline; they do not prove subjective improvement. The FreePats source pages state CC0 1.0, but the artifact records source claims, not an independent legal audit.
+- **No native DAW project exists** in the artifact. MIDI + aligned WAV stems are interchange deliverables, not an editable DAW session. No blind/level-matched listening result or user acceptance is recorded. The prior dissatisfaction remains an open quality requirement.
+
+Artifact references: [full-song editable bundle](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176/artifacts/15139779842), [routing QC](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176/artifacts/15139799666), [technical QC](https://github.com/Barrot-Agent/B-Agent/actions/runs/45867292176/artifacts/15139719863).
+
+## Long-horizon continuity — EXECUTED; cross-host sync not implemented
+
+PR #1703 adds `ProjectStateLedger` on top of the existing atomic workspace-local `AutonomousTaskStore`. It stores immutable typed records with provenance, observed/recorded timestamps, confidence, source hashes, dependencies, staleness and explicit supersession. Conflicting active values remain unresolved; dependency-aware ready-task selection excludes stale/conflicted tasks. The autonomous loop records redacted lifecycle checkpoints (goal hash, status and attempt count, not raw goal text).
+
+The branch also exposes explicit bundle export/import, signed transfer functions (Ed25519) and a transfer guard for sender/sequence/replay tracking. This is **explicit cross-workspace transfer**, not automatic cloud/network synchronization. A bundle digest alone is not sender authentication; signed transfer is a separate API. No provider credential, network sync or background transfer is enabled.
+
+## Nine-platform coordination
+
+Only **ChatGPT-to-GitHub** has tested authentication and repository data flow in this environment. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested here. The platform map must not represent them as connected. Least privilege and fallback paths remain required. No external model was used as an independently authenticated reviewer in this run.
+
+## Commercial support — Sellbird (Barrot-only)
+
+Verified upstream: [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird), main SHA `8c743f1c475f61f7b2c04e50501cf6938a126ed6`, version 0.5.0, Python >=3.11, **AGPL-3.0-only**. It is a local prospecting/outreach platform, not a persistence or approval framework. Upstream is read-only to this GitHub connection; it was not installed, configured, authenticated or prospecting-tested.
+
+- README describes discovery, company-site signals, decision-maker enrichment, email verification, personalized drafts and reply handling. Free discovery includes OpenStreetMap/TinyFish; paid DataForSEO/Serper/Scavio options have per-query costs and estimates. No paid provider was used.
+- Default email approval is enabled, but an `approve-all` command and optional autopilot exist. LinkedIn automation is disabled by default and upstream explicitly warns that it violates LinkedIn terms. Keep it disabled.
+- Current template has no real mailbox credentials; warmup start date is blank; postal address is blank; Precleared compliance checks are disabled; suppression list is empty. A dedicated secondary sending domain with SPF/DKIM/DMARC and mailbox health checks is required before any campaign.
+- **Barrot-only scope remains enforced.** No music, clothing, songwriting or unrelated venture leads. No outreach approval, audience, offer, message or sending setup has been approved. Prospects 0; verified contacts 0; messages 0; replies 0; meetings 0; proposals 0; revenue $0; paid spend $0.
+- Fastest commercial hypothesis, not yet an approved offer: a tightly scoped, read-only technical pilot for an organization that needs public-source ingestion, provenance receipts and data-quality gates. It must be backed by a reproducible demo and a clear acceptance test before it is advertised. Do not claim enterprise production readiness, certifications, customer results or predictive performance.
+
+## Next concrete actions
+
+1. Let the #1705 exact-head CI evidence stand; its 4,725-test full suite passed. Keep it open because the legacy gate still compares stale `base.sha`; use the existing #1714 ancestry fix rather than duplicating it.
+2. Resolve the #1705 research file's stale section 9.12 versus 9.13.4 channel-attribution contradiction with an explicit supersession note, preserving the distinction between channel attribution and civil identity.
+3. Keep the XRP forecast gate closed until event receipts, sufficient chronological history, calibrated baselines and drift coverage are verified on main.
+4. For audio, obtain a human blind/level-matched listening evaluation of the existing full-song render; then revise based on actual rejection notes. Do not call the current MIDI/stem bundle a native DAW project.
+5. For continuity, exercise signed cross-workspace export/import and conflict resolution in separate workspaces; automatic network sync remains a separate, unimplemented capability.
+6. Keep Sellbird discovery separate from outreach. First validate a Barrot-only pilot offer and a reproducible demo; use free/low-cost prospecting only after that offer is grounded. Sending remains paused.
+7. Do not merge until exact-head gates, independent review/required approvals and the known Pages-deployment authorization condition are satisfied.
+
+
+---
+
 # Run 66.5 — current-head CI confirmation and XRP event-receipt diagnosis
 
 **Observation checkpoint:** 2026-11-27T05:00:50Z. **Current main:** `2151843140fd770b62ef93d06a78c559f9e73bbd` (unchanged; recursive tree 3,164 entries, not truncated).
