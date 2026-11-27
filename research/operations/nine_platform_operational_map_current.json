@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T19:58:49Z",
-  "capture_basis": "Current-main GitHub repository, complete recursive tree, open PR inventory and branch comparisons, exact-head workflow evidence, XRP ingestion artifacts, audio bundle/QC artifacts, continuity ledger source/tests, primary-source XRP research, and Sellbird upstream source audit.",
+  "captured_at_utc": "2026-11-27T20:17:19Z",
+  "capture_basis": "Current-main GitHub repository, complete recursive tree, open PR inventory and branch comparisons, exact-head workflow evidence, XRP ingestion artifacts, audio bundle/QC artifacts, continuity ledger source/tests, primary-source XRP research, and Sellbird upstream source audit. Additional primary-source checks: SBI's dated Ripple shareholding disclosure, Circle SBI Japan JV and Circle annual report, SBI's Ethereum-only RLUSD service and account-only JPYSC rollout, Ripple-BNY custody, and Kamilah Stevenson public interview/channel inventory.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -38,7 +38,8 @@
       "latest_continuity_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1703",
       "latest_audio_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1704",
       "latest_xrp_research_pr": "https://github.com/Barrot-Agent/B-Agent/pull/1705",
-      "sellbird_repository": "https://github.com/ethanplusai/sellbird"
+      "sellbird_repository": "https://github.com/ethanplusai/sellbird",
+      "latest_handoff_successor": "https://github.com/Barrot-Agent/B-Agent/pull/1715"
     },
     "branch_protection_summary": {
       "observed_at_utc": "2026-11-27T19:58:49Z",
@@ -103,7 +104,8 @@
         "classification": "SUPERSEDED_PENDING_SUCCESSOR",
         "ahead_by": 207,
         "behind_by": 49,
-        "workstream": "mission handoff"
+        "workstream": "mission handoff",
+        "successor_pr": 1715
       },
       {
         "number": 1705,
@@ -165,6 +167,18 @@
         "ahead_by": 1,
         "behind_by": 61,
         "workstream": "Hugging Face dependency"
+      },
+      {
+        "number": 1715,
+        "classification": "CURRENT_MAIN_SUCCESSOR_CI_PENDING",
+        "ahead_by": 3,
+        "behind_by": 0,
+        "workstream": "mission handoff",
+        "supersedes": [
+          1702
+        ],
+        "branch": "integration/mission-handoff-refresh-20261127-run14",
+        "head_sha": "816460aee856718dd6451e5a92f92b3b25e83af7"
       }
     ]
   },
@@ -221,7 +235,8 @@
           "inspect ProjectStateLedger, MissionRegistry and cross-process signed-transfer tests on current main",
           "inspect primary SBIC, SBI, Circle, Coinbase, Ripple and Evernorth sources",
           "audit exact Sellbird main source, license, dependencies, configuration, sending controls and upstream open safety PRs",
-          "create a current-main-based handoff successor branch and update the durable handoff file"
+          "create a current-main-based handoff successor branch and update the durable handoff file",
+          "created current-main-based handoff successor PR #1715; exact-head CI/security/gated-merge checks are pending"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -261,7 +276,8 @@
         "https://github.com/Barrot-Agent/B-Agent/pull/1703",
         "https://github.com/Barrot-Agent/B-Agent/pull/1704",
         "https://github.com/Barrot-Agent/B-Agent/pull/1705",
-        "https://github.com/ethanplusai/sellbird"
+        "https://github.com/ethanplusai/sellbird",
+        "https://github.com/Barrot-Agent/B-Agent/pull/1715"
       ]
     },
     "Claude": {
