@@ -34,21 +34,22 @@ The merge of PR #1704 triggered GitHub Pages deployment run #46055542164, which 
 
 ### EXECUTED — latest scheduled mainline capture
 
-Latest successful scheduled ingestion available in this run: workflow run #46054765366, code SHA 9265a90e363b7128b7cd6bd9b9823655d98bd1b6, captured 2026-11-27T19:10:42.695584Z. It predates the final audio merge to current main, so do not describe it as a capture executed on SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1.
+Latest successful scheduled ingestion: workflow run #46062126528, executed on exact current main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1. Data cutoff 2026-11-27T20:13:52.843372Z.
 
 - Adapter xrp-public-market-v3.34; parser xrp-public-market-v3.32.
-- 170 cumulative feature-store snapshots; 42,178 historical feature records.
-- Current run: 2,230 input feature records, 731 delta records, 347 eligible, 384 excluded, 6 research-only.
-- 37 source receipts: 21 retained raw payloads and 16 digest-only receipts.
-- Cross-run receipt sequence 170 continued and verified; chain-head SHA-256 455576bc784a3a775996bcb21a0cd57d048c6abd108fcf73075b56bc0b684b1e. No independent external timestamp anchor exists; GitHub artifact retention is 90 days.
+- 171 cumulative feature-store snapshots; 42,284 historical feature records.
+- Current run: 2,230 input feature records, 490 delta records, 106 eligible, 384 excluded, 6 research-only.
+- 37 source receipts: 21 retained raw payloads and 16 digest-only receipts. Cross-run receipt sequence 171 continued and verified; chain head SHA-256 8fed0e09e61965ccf3274adefbf7d6cdd4e8525889b9f107eabc93d3a1e9c8f8. The receipt chain passes its internal digest/lineage checks but remains NOT_ANCHORED externally; GitHub artifacts are not WORM storage and do not independently timestamp provider observations.
 - 18 source failures.
-- Event timeline loaded with 150 events, but all 150 currently lack a raw receipt hash; zero event receipts are verified and receipt completeness is false. Eleven URL matches alone do not establish event-to-source identity.
-- Drift report status INSUFFICIENT_DATA: 206 features considered, zero features evaluated.
-- Walk-forward report contains 644 historical baseline rows for 1h, but status PARTIAL_OR_BLOCKED. These are not a validated predictive candidate or independent shadow cohort.
+- Event timeline has 150 events. All 150 have MISSING_RAW_RECEIPT_HASH; zero event receipts are verified; 11 URL matches but zero URL-plus-capture-time matches. Event receipt completeness is false and event-timeline forecast status is NOT_ISSUED.
+- Drift report: INSUFFICIENT_DATA, 206 features considered and zero evaluated.
+- Walk-forward report: 648 historical baseline rows for 1h, status PARTIAL_OR_BLOCKED. These are baseline evaluation rows, not a validated candidate or independent shadow cohort.
 - Forecast status NOT_ISSUED; forecast_model_eligible false; paper_trade_executed false. No directional forecast or real-money action.
-- Synchronized OKX top-of-book normalization at 19:10:32 UTC produced an observed mid of USD 0.9498041055 and spread 1.1517 bps. It is top-of-book only, from one publisher-independence group, and is not a consolidated or current quote.
-- Morpho CBXRP normalization is BLOCKED_INDEXER_BLOCK_MISMATCH and not admitted to the feature store. No borrower identity, Coinbase ownership of the permissionless market, native XRP redemption or native XRP spot flow is inferred.
-- SEC EDGAR collection is BLOCKED_CONFIGURATION: contact identity is not configured, no companyfacts or primary filing documents were captured. XRPL public-node collection is excluded from scheduled use because the free endpoints are designated non-commercial; no node observations were collected.
+- Same-venue OKX top-of-book normalization at 20:13:42 UTC produced an observed mid of USD 0.947307118 and spread 1.15447 bps. The source snapshots were approximately 10 seconds old and 0.702 seconds apart. Both components are one OKX publisher-independence group; this is not consolidated cross-venue liquidity or full-depth USD depth.
+- Twenty-six unique source IDs remain raw-only, including Coinbase CBXRP proof-of-reserves, Circle USDC transparency, Ripple RLUSD transparency, SBI VC Trade lending information, XRP ETF issuer pages/flows and attributed exchange balances. They are not admitted as model features.
+- Morpho CBXRP normalization remains BLOCKED_INDEXER_BLOCK_MISMATCH: one market observation is ahead of Morpho's Base indexer tip, no canonical Base block timestamp is captured, and no feature-store admission occurs. No borrower identity, Coinbase ownership, native XRP redemption or native XRP spot flow is inferred.
+- SEC EDGAR remains BLOCKED_CONFIGURATION: no legitimate contact identity is configured, no submissions/companyfacts or primary filing documents were captured. Do not invent a User-Agent contact.
+- XRPL free public-node endpoints remain excluded from scheduled use because their published access terms are non-commercial. No node observations were collected.
 
 ### VERIFIED research findings; not all research-branch code is merged
 
@@ -176,7 +177,7 @@ All eight open PRs were compared against current main. None should be merged fro
 | #1710 | UNIQUE DEPENDENCY CHANGE / BLOCKED | PyYAML >=6.0.4 in legacy requirements; 1 ahead and 61 behind. |
 | #1711 | BLOCKED / COMPATIBILITY UNRESOLVED | NumPy upper bound changes to <3 while the same file's comment says Streamlit 1.35 requires <2. Do not merge until the Streamlit/NumPy compatibility constraint is resolved and tested. |
 
-PR #1715 was created as the current-main-based successor to #1702; current head 894a78e9b169f327ccc5e8ae5d5980b013320ddb is 4 commits ahead and 0 behind main. It changes only the handoff and nine-platform map. Exact-head CI, dependency audit, money audit, conflict-integrity and gated-merge checks are running; the earlier push-triggered gate failure is not the PR-event gate. The push-triggered gated-merge check failed before the PR existed because it could not resolve an open PR for the branch; the pull_request-triggered gate is the relevant check. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
+PR #1715 was created as the current-main-based successor to #1702. At the 2026-11-27T20:20:34Z snapshot, head 85c0a0ec474613aef3e5a7aca0441c87a00f993a was 6 commits ahead and 0 behind main; it changes only the handoff and nine-platform map. Exact-head CI, dependency audit, money audit, conflict-integrity and gated-merge checks are running; the earlier push-triggered gate failure is not the PR-event gate. The push-triggered gated-merge check failed before the PR existed because it could not resolve an open PR for the branch; the pull_request-triggered gate is the relevant check. No branch history was rewritten. No user worktree was reset, cleaned, stashed or overwritten.
 
 ## Next concrete actions
 
