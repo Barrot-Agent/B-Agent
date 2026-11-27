@@ -1,3 +1,47 @@
+# Run checkpoint — 2026-11-27 19:00 UTC
+
+This checkpoint supersedes the 18:43 correction status below. The three priority-1 missions remain co-equal: XRP intelligence and prediction-engine mastery, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains their shared execution, orchestration, MMI, provenance, safety, authorization and verification foundation.
+
+## Repository and integration state — VERIFIED
+
+- Main remains `1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a`; the complete recursive tree remains 3,164 entries.
+- PR #1702 is on head `4c58a3c442f6f38f7d386434a57df74b739fa752`, **206 commits ahead / 0 behind** current main. Its exact-head full repository suite [run #46052060202](https://github.com/Barrot-Agent/B-Agent/actions/runs/46052060202) passed **4,707 tests, 0 failed, 1 skipped, 11 warnings, 21 subtests; 74.24% coverage**.
+- Exact-head `Tests`, `Full repository test suite`, `audit`, `pip-audit`, `Verify PR merge tree against current base`, Pages build validation, Money audit, conflict-integrity and Barrot Gated Merge all succeeded. The previous head `489d263c64c1cdbef1d39acd2902386cd446acfd` failed only two stale operational-map assertions (old PR inventory and XRP run number); the corrected current head passes. No production mission code was changed by that correction.
+- The open-PR inventory remains ten: #1702–#1711. Mission PRs #1703 (continuity), #1704 (audio) and #1705 (XRP) retain their separately verified exact-head suites and gates; all four mission PRs are based on current main.
+- Main is protected. Required checks are Full repository test suite, audit, pip-audit and Verify PR merge tree against current base. The detailed branch-protection endpoint remains HTTP 403, so the required approving-review count and administrator bypass details are unknown. The four active mission PRs have **zero independent reviews**. No merge was attempted; do not bypass branch protection or infer that the merge-readiness workflow supplies an approval.
+- A merge to main triggers automatic GitHub Pages deployment. The prior #1714 merge triggered successful Pages run [#46038772888](https://github.com/Barrot-Agent/B-Agent/actions/runs/46038772888). Treat this as a known side effect of any later merge, not as a test-only event.
+
+## XRP intelligence — EXECUTED; forecast withheld
+
+- Main scheduled ingestion [run #222](https://github.com/Barrot-Agent/B-Agent/actions/runs/46048081659) remains the latest successful main capture: cutoff **2026-11-27 18:15:56.808415 UTC**, adapter v3.34, parser v3.32.
+- The run contains 37 receipts (21 retained raw payloads, 16 digest-only); receipt-chain verification passed at sequence 169. The chain is tamper-evident relative to its stored head, but has no independent external timestamp anchor or WORM storage.
+- The feature store has 169 snapshots and 41,831 historical records; SQLite integrity is `ok`. The current run admitted 123 records and excluded 367.
+- The event timeline remains incomplete: 150 events, zero verified receipt links and 150 missing raw hashes. The 11 URL-only matches do not satisfy source-ID plus capture-time linkage.
+- Run #222 generated 640 baseline forecast records, but its walk-forward status remains `PARTIAL_OR_BLOCKED`; these are not a completed, resolved out-of-sample evaluation cohort. The last fully verified evaluation snapshot remains run #220 with 632 rows. Drift evaluated 0/206 features (`INSUFFICIENT_DATA`). **No directional forecast or paper trade is authorized.**
+- The same-venue OKX top-of-book derivation was $0.9472072385 midpoint and 1.1546 bps spread at 18:15:46.069 UTC. It is one publisher-independence group, not consolidated price, independent corroboration or full-depth liquidity.
+- PR #1705's SBIC East/Central/West distinction, exact-phrase reconciliation, Coinbase/Circle/Ripple/SBI relationship research and Kamilah Stevenson channel-attribution limits remain research-only until source receipt and model-admission requirements are met.
+
+## Audio production — EXECUTED; technical QC VERIFIED; listening NOT VERIFIED
+
+- The real FluidSynth integration run [#46040513880](https://github.com/Barrot-Agent/B-Agent/actions/runs/46040513880) produced an inspected full-song artifact: 80 bars, 110 BPM, D minor, 4/4, 175.545 seconds, 44.1 kHz stereo float WAV, nine aligned stems, Standard MIDI File and ten section markers.
+- QC: zero clipped samples; peak -6.025 dBFS; true peak -6.000 dBTP; integrated loudness -22.443 LUFS; LRA 7.839 LU; stem-sum correlation 0.999979. These are technical measurements, not a musical-quality verdict.
+- No native DAW project is present. No human listening, blind comparison or user acceptance has occurred. Do not claim professional quality or improvement over the previously rejected baseline.
+
+## Continuity and commercial state
+
+- PR #1703's ProjectStateLedger, conflict/staleness preservation, dependency-aware selection and signed explicit export/import are implemented and covered by its exact-head suite (4,708 passed, 1 skipped). Cross-host network synchronization and automatic key exchange remain unimplemented; transfer is manual through an authorized encrypted channel.
+- Sellbird remains source-audited but uninstalled and unauthenticated. The active scope is Barrot technology only. Prospecting and outbound remain paused: 0 verified prospects, 0 contacts, 0 approved messages, 0 sent, 0 replies, 0 meetings, 0 proposals and $0 revenue.
+
+## Next concrete actions
+
+1. Resolve independent review and the actual branch-protection approval requirement; do not use administrator bypass. Account for the automatic Pages deployment before any merge.
+2. Keep XRP forecasts disabled while improving event-to-receipt completeness, point-in-time evaluation coverage, drift sample sufficiency, SEC EDGAR access and Morpho block alignment.
+3. Put the audio bundle through human DAW listening and level-matched comparison; obtain user acceptance, independently review sample rights, and add a reproducible DAW project/interchange deliverable.
+4. Demonstrate signed continuity transfer and replay protection across genuinely independent hosts before claiming cross-host continuity.
+5. Keep Sellbird outbound paused until a verified Barrot-only offer, prospect qualification, AGPL review, mailbox/domain/compliance readiness and explicit campaign approval are complete.
+
+---
+
 # Correction checkpoint — 2026-11-27 18:43 UTC
 
 The first exact-head run of the 18:23 handoff/map commit exposed **two stale assertions in the operational-map regression test**, not production-code failures. The failure was diagnosed from the full-suite job log and is being corrected on the same existing #1702 branch.
@@ -7,7 +51,7 @@ The first exact-head run of the 18:23 handoff/map commit exposed **two stale ass
 - The two failures were in `tests/test_nine_platform_operational_map_current.py`: it still expected 12 open PRs and XRP ingestion run 220. The verified current repository has **10 open PRs (#1702–#1711)**; #1713 is closed and #1714 is merged. The latest successful main XRP ingestion is **run 222**.
 - Audit, pip-audit, merge-tree verification, Pages build validation, money audit and conflict-integrity checks passed on the failed head. Merge readiness failed because the full suite failed.
 - Corrective change: update the existing regression test and map snapshot to reflect the observed repository state. No production code, mission code, XRP logic, audio logic, continuity implementation, or main-branch file changed.
-- The correction is a single commit on the existing #1702 branch; no new branch or PR. The new head's full suite and merge-readiness result are pending. Do not treat the prior green #1702 head or the failed intermediate head as verification of the correction commit.
+- The correction was a single commit on the existing #1702 branch; no new branch or PR. The 19:00 UTC checkpoint above records the corrected head's exact-head full-suite and merge-readiness success. The prior intermediate failure remains historical, not the current head's result.
 
 Main remains `1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a`. No merge or deployment was performed. The 18:23 operational checkpoint and its evidence are preserved immediately below.
 

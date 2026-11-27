@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_capability_authentication_permission_data_flow_map",
-  "captured_at_utc": "2026-11-27T18:43:15Z",
-  "capture_basis": "Current main SHA and complete recursive tree; current 10-PR inventory and ancestry; exact-head CI for four active mission PRs; main CI and latest XRP ingestion run 222 with downloaded artifact/hash verification; audio QC artifacts independently inspected; continuity PR tests; Sellbird v0.5.0 source/license/configuration audit. Correction pass: the first checkpoint commit's exact-head full suite exposed two stale assertions in the operational-map test (old 12-PR inventory and run 220); this commit updates the test to the observed 10 open PRs, closed/merged repair PRs, and run 222.",
+  "captured_at_utc": "2026-11-27T19:00:40Z",
+  "capture_basis": "Current main SHA and complete recursive tree; current 10-PR inventory and ancestry; exact-head CI for four active mission PRs; main CI and latest XRP ingestion run 222 with downloaded artifact/hash verification; audio QC artifacts independently inspected; continuity PR tests; Sellbird v0.5.0 source/license/configuration audit. Correction pass: the first checkpoint commit's exact-head full suite exposed two stale assertions in the operational-map test (old 12-PR inventory and run 220); this commit updates the test to the observed 10 open PRs, closed/merged repair PRs, and run 222. 19:00 UTC reconciliation: current #1702 head 4c58a3c exact-head full suite 4,707 passed/0 failed and all exact-head gates succeeded; inspected full-song audio bundle/QC and current XRP run 222 summary.",
   "archive": {
     "previous_handoff": "docs/handoffs/archive/BARROT_MISSION_HANDOFF_2026-11-27_RUN13.md",
     "previous_map": "research/operations/archive/nine_platform_operational_map_2026-11-27_run13.json"
@@ -43,11 +43,11 @@
         "url": "https://github.com/Barrot-Agent/B-Agent/pull/1702",
         "state": "open",
         "draft": false,
-        "head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
+        "head_sha": "4c58a3c442f6f38f7d386434a57df74b739fa752",
         "head_ref": "integration/mission-handoff-refresh-20261125",
-        "commits_ahead": 205,
+        "commits_ahead": 206,
         "commits_behind": 0,
-        "classification": "active_canonical_handoff_platform_map"
+        "classification": "active_canonical_handoff_platform_map_exact_head_green_review_requirement_unknown"
       },
       {
         "number": 1703,
@@ -159,7 +159,7 @@
       }
     ],
     "current_main_state": {
-      "observed_at_utc": "2026-11-27T18:43:15Z",
+      "observed_at_utc": "2026-11-27T19:00:40Z",
       "sha": "1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a",
       "recursive_tree_entries": 3164,
       "open_pull_request_count": 10,
@@ -291,7 +291,9 @@
         "drift_status": "INSUFFICIENT_DATA",
         "forecast_status": "NOT_ISSUED",
         "forecast_model_eligible": false,
-        "last_verified_evaluation_run_number": 220
+        "last_verified_evaluation_run_number": 220,
+        "run_222_generated_forecast_records": 640,
+        "run_222_generated_forecast_status": "PARTIAL_OR_BLOCKED"
       },
       "source_failures": {
         "count": 18,
@@ -417,8 +419,8 @@
       ],
       "authentication": {
         "status": "VERIFIED_FOR_GITHUB_CONNECTOR",
-        "evidence": "Inspected current main metadata and complete recursive tree; all ten current open PRs and shared diffs; exact-head CI/security/gate checks; workflow logs and artifact manifests. Updated the existing handoff and platform-map branch. No external model data transfer occurred.",
-        "last_verified_at_utc": "2026-11-27T18:43:15Z",
+        "evidence": "Inspected current main metadata and complete recursive tree; all ten current open PRs and shared diffs; exact-head CI/security/gate checks; workflow logs and artifact manifests. Updated the existing handoff and platform-map branch. No external model data transfer occurred. Latest verification: #1702 head 4c58a3c exact-head full suite passed 4,707/0 failed with all gates green; inspected the full-song WAV/stems/MIDI artifact and run #222 XRP receipt, event and feature-store summaries.",
+        "last_verified_at_utc": "2026-11-27T19:00:40Z",
         "last_verified_main_sha": "1dbfe4eb62a060815db8b4fd8dc1914ecfbeda4a"
       },
       "permissions": {
@@ -643,20 +645,20 @@
     {
       "number": 1702,
       "workstream": "Canonical three-mission handoff and platform map",
-      "head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
-      "ahead_of_current_main": 205,
+      "head_sha": "4c58a3c442f6f38f7d386434a57df74b739fa752",
+      "ahead_of_current_main": 206,
       "behind_current_main": 0,
       "full_suite": {
-        "run_id": 46050848508,
-        "conclusion": "failure",
-        "passed": 4705,
-        "failed": 2,
+        "run_id": 46052060202,
+        "conclusion": "success",
+        "passed": 4707,
+        "failed": 0,
         "skipped": 1,
         "warnings": 11,
         "subtests": 21,
         "coverage_percent": 74.24
       },
-      "ci_run": 46050848508,
+      "ci_run": 46052060202,
       "required_checks": {
         "audit": "success",
         "pip_audit": "success",
@@ -664,12 +666,12 @@
         "pages_validation": "success",
         "money_audit": "success",
         "conflict_integrity": "success",
-        "merge_readiness": "failure_due_to_full_suite"
+        "merge_readiness": "success"
       },
       "independent_reviews": 0,
-      "classification": "active_canonical_handoff_with_two_stale_map_test_assertions_under_correction",
-      "head_sha_note": "This correction commit advances the same branch; fresh exact-head CI is required.",
-      "test_failure": "Operational-map tests expected 12 open PRs and XRP run 220; observed repository has 10 open PRs because #1713 is closed and #1714 merged, and latest XRP run is 222."
+      "classification": "active_canonical_handoff_exact_head_green_approval_requirement_unknown",
+      "head_sha_note": "Current head 4c58a3c passed its own exact-head full suite and gates; the previous 489d263 head's two stale assertion failures are historical only.",
+      "test_failure": "Previous head 489d263 failed two stale operational-map assertions; the current head passes 4,707 tests with zero failures."
     },
     {
       "number": 1703,
@@ -891,7 +893,10 @@
       "drift_total": 206,
       "drift_status": "INSUFFICIENT_DATA",
       "forecast_status": "NOT_ISSUED",
-      "last_verified_evaluation_run_number": 220
+      "last_verified_evaluation_run_number": 220,
+      "generated_forecast_records": 640,
+      "generated_forecast_status": "PARTIAL_OR_BLOCKED",
+      "generated_forecast_note": "Run 222's 640 baseline forecast records are not a completed resolved out-of-sample evaluation cohort; last fully verified evaluation snapshot remains run 220 with 632 rows."
     },
     "quote_basis": {
       "venue": "OKX",
@@ -903,33 +908,32 @@
   },
   "latest_integration_validation": {
     "pr_number": 1702,
-    "tested_head_sha": "489d263c64c1dcbef1d39acd2902386cd446acfd",
+    "tested_head_sha": "4c58a3c442f6f38f7d386434a57df74b739fa752",
     "full_suite": {
-      "run_id": 46050848508,
-      "conclusion": "failure",
-      "passed": 4705,
-      "failed": 2,
+      "run_id": 46052060202,
+      "conclusion": "success",
+      "passed": 4707,
+      "failed": 0,
       "skipped": 1,
       "warnings": 11,
       "subtests": 21,
       "coverage_percent": 74.24
     },
     "required_checks": {
+      "tests": "success",
+      "full_repository_test_suite": "success",
       "audit": "success",
       "pip_audit": "success",
       "merge_tree": "success",
       "pages_validation": "success",
       "money_audit": "success",
       "conflict_integrity": "success",
-      "merge_readiness": "failure_due_to_full_suite"
+      "merge_readiness": "success"
     },
     "independent_reviews": 0,
-    "test_failure": [
-      "tests/test_nine_platform_operational_map_current.py::test_current_pr_inventory_includes_integration_and_dependency_workstreams expected 12 open PRs; actual open inventory is #1702-#1711 (10). #1713 is closed and #1714 is merged.",
-      "tests/test_nine_platform_operational_map_current.py::test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence expected XRP run 220; latest successful main ingestion is run 222."
-    ],
-    "corrective_action": "Update the existing regression test to match the verified current PR states and XRP run 222; no production code changed.",
-    "branch_update_after_test": "The correction commit advances the existing #1702 branch. Fresh exact-head full-suite and gate results are pending."
+    "approval_requirement": "UNKNOWN_BRANCH_PROTECTION_DETAILS_HTTP_403",
+    "merge_attempted": false,
+    "classification": "exact_head_green_but_review_requirement_unverified"
   },
   "latest_audio_full_song_qc": {
     "pr": 1704,
@@ -1183,7 +1187,7 @@
     }
   },
   "next_actions": [
-    "Run exact-head full-suite and required gates for this correction commit. The preceding head failed only two stale operational-map assertions; do not treat the corrected commit as verified until its own checks finish.",
+    "The corrected #1702 head 4c58a3c passed its exact-head full suite (4,707 passed, 0 failed) and required checks. Resolve independent review and the protected-branch approval requirement (detailed endpoint HTTP 403); do not bypass. Account for automatic GitHub Pages deployment before any merge.",
     "Obtain independent review and explicit authorization for the automatic GitHub Pages deployment side effect before any mission PR is merged.",
     "For XRP, resolve event-to-receipt linkage and raw-source evidence limitations, expand beyond the 12 curated pages, repair SEC EDGAR configuration and Morpho block alignment, and keep forecasts disabled until chronological out-of-sample gates pass.",
     "For audio, retain #1704; inspect/listen to the full-song bundle in a DAW, record user acceptance, independently review sample/SoundFont rights, and implement a tested DAW project or interchange path.",
@@ -1191,5 +1195,5 @@
     "Reconcile stale dependency PRs #1706-#1711; consolidate #1706/#1708/#1709 overlap and preserve the NumPy<2 Streamlit Space constraint.",
     "Keep Sellbird uninstalled and outbound paused until AGPL review, a verified Barrot offer, mailbox/domain/compliance readiness, and explicit campaign/audience/message/sending approval."
   ],
-  "last_reconciled_at_utc": "2026-11-27T18:43:15Z"
+  "last_reconciled_at_utc": "2026-11-27T19:00:40Z"
 }
