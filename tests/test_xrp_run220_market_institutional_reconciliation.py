@@ -55,11 +55,11 @@ def test_run220_market_providers_remain_separate_and_quality_gated():
 
 def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     registry = _load(REGISTRY_PATH)
-    assert registry["registry_version"] == "run224-20261126-ripple-holdings-primary-capture"
-    assert registry["event_count"] == len(registry["events"]) == 152
+    assert registry["registry_version"] == "run225-20261127-multichain-institutional-custody-refresh"
+    assert registry["event_count"] == len(registry["events"]) == 159
     coverage = registry["publisher_timestamp_coverage"]
     assert coverage["exact_publisher_timestamps"] == 59
-    assert coverage["missing_exact_publisher_timestamps"] == 93
+    assert coverage["missing_exact_publisher_timestamps"] == 100
     assert coverage["exact_publisher_timestamps"] + coverage["missing_exact_publisher_timestamps"] == registry["event_count"]
 
     assert registry["run220_update"]["appended_event_count"] == 15
@@ -99,6 +99,25 @@ def test_current_event_registry_builds_a_cutoff_safe_research_timeline():
     assert run224["missing_exact_publisher_timestamp_count"] == 93
     assert run224["model_eligible"] is False
     assert run224["forecast_status"] == "NOT_ISSUED"
+    run225 = registry["run225_update"]
+    assert run225["prior_event_count"] == 152
+    assert run225["appended_event_count"] == 7
+    assert run225["resulting_event_count"] == 159
+    assert run225["raw_source_sha256_receipts_added"] == 0
+    assert run225["model_eligible"] is False
+    assert run225["forecast_status"] == "NOT_ISSUED"
+    run225_ids = set(run225["added_event_ids"])
+    run225_events = [event for event in registry["events"] if event["event_id"] in run225_ids]
+    assert len(run225_events) == 7
+    assert all(event["raw_source_sha256"] is None for event in run225_events)
+    assert all(event["model_eligible"] is False for event in run225_events)
+    assert {event["event_type"] for event in run225_events} == {
+        "corporate", "regulatory", "stablecoin", "custody"
+    }
+    normalization = run225["event_type_normalization"]
+    assert normalization["ripple-treasury-always-on-platform-2026-10-26"] == "corporate"
+    assert normalization["circle-dbs-usdc-institutional-access-2026-11-18"] == "stablecoin"
+    assert normalization["circle-paribu-usdc-arc-mou-turkiye-2026-11-24"] == "stablecoin"
     ripple_holdings = next(
         event for event in registry["events"]
         if event["event_id"] == "ripple-xrp-holdings-2026-09-30"
