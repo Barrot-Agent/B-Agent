@@ -1,3 +1,48 @@
+# Run 64.1 — post-checkpoint evidence — 2026-11-27T01:15:00Z
+
+This is an evidence addendum to Run 64. It records the completed exact-head checks for the Run 64 handoff commit and two additional XRP findings. It does not change code or authorize a merge.
+
+## Run 64 handoff commit validation — VERIFIED
+
+- The Run 64 handoff commit `b57d6144c5afb5ecfb481d6e79e8fe3b672470f8` compares **153 ahead / 0 behind** main.
+- Exact-head full repository suite [45920943238](https://github.com/Barrot-Agent/B-Agent/actions/runs/45920943238): **4,701 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Full active tracked test suite and all mission-critical coverage floors passed. Core test job and GitHub Pages validation-only build also passed.
+- Dependency audit [45920943182](https://github.com/Barrot-Agent/B-Agent/actions/runs/45920943182), money audit [45920943179](https://github.com/Barrot-Agent/B-Agent/actions/runs/45920943179), and conflict-integrity/merge-tree [45920943259](https://github.com/Barrot-Agent/B-Agent/actions/runs/45920943259) passed on the same head.
+- Gated merge [45920938772](https://github.com/Barrot-Agent/B-Agent/actions/runs/45920938772) failed only because the legacy gate still requires the stale PR base SHA to equal current main. Its log confirms the equality check against `6033bcd...`; GitHub compare confirms 153 ahead / 0 behind. The ancestry repair remains in #1714 and is not on main. No review, merge or deployment occurred.
+
+## XRP baseline evaluation detail — EXECUTED / VERIFIED; no predictive edge established
+
+The main run #199 feature artifact [15162229610](https://github.com/Barrot-Agent/B-Agent/actions/runs/45917814405/artifacts/15162229610) was downloaded; its ZIP digest independently matched GitHub's `sha256:c9f6f2aca173a9277853d6a08770d21d0c11221ed7b0e91f873b81dc09a98759`. The `walk_forward.json` was inspected directly.
+
+- The matrix contains **10 venue/horizon evaluations and 1,500 historical baseline forecast records**, not 1,500 live forecasts. Only Coinbase XRP/USD **1h and 4h** evaluations are scored. Binance has insufficient history across all five horizons because its scheduled endpoints are blocked. Coinbase 24h has 97 origins but overlap-adjusted effective sample size **5** and remains insufficient; 7d/30d have no eligible origins.
+- Coinbase 1h: 142 origins, effective N 141. Naive class-prior baseline: directional accuracy **51.45%**, Brier **0.17757**, log loss **0.81138**. Volatility-normal baseline: the same directional accuracy, Brier **0.17603**, log loss **0.80317**. Its paired temporal 95% confidence interval for Brier improvement is **−0.00333 to +0.00082** and for log-loss improvement **−0.02032 to +0.01166**; both include zero. Source-clustered uncertainty is unavailable because there is only one source group (Coinbase). Momentum and mean-reversion sign baselines score worse than the naive class-prior baseline on Brier/log loss.
+- Coinbase 4h: 136 hourly origins but effective N **34** after overlapping target windows. Naive class-prior and volatility-normal directional accuracy are both **52.27%**; Brier is **0.18052 vs 0.17811**, log loss **0.82200 vs 0.81209**. The effective sample size is below the 100-origin requirement. Momentum and mean-reversion baselines are worse on Brier/log loss.
+- Rolling temperature scaling uses only prior resolved out-of-sample outcomes. This is baseline calibration, not a trained XRP candidate. The evaluation explicitly states no candidate exists, each single-venue target lineage supplies only one source cluster, source-cluster cadence is inferred, and current uncertainty defaults (1,000 resamples, 30 paired origins, 95%) do not meet the stricter policy-v6 requirements (10,000 resamples, 100 paired origins, 99.375% individual confidence and at least five independently receipted source clusters). Shadow evaluation is unimplemented.
+- Interpretation: the volatility-normal baseline is marginally better than naive on two Coinbase horizons, but uncertainty intervals include zero, independent-source replication is absent, 4h effective N is too small, 24h is insufficient and longer horizons are not populated. **No demonstrated predictive edge.** Overall model eligibility remains false and no directional forecast or paper trade was issued.
+
+## Existing #1705 primary-event capture — EXECUTED on an earlier branch head; not mainline
+
+- XRP Public Market Ingestion run [45890584553](https://github.com/Barrot-Agent/B-Agent/actions/runs/45890584553) executed on #1705 ancestor commit `9eae8d8a92e72ebfc59f03bd0ab324b2a6d210a2`. Current #1705 head `c11e55e010cbf08681c9b1a32577b5463fed5a2c` is four commits ahead / zero behind that run. The compare shows the ingestion implementation and workflow are unchanged across those four commits; changes are confined to the Evernorth/SBIC research note, the event registry and its reconciliation test. The current branch registry retains all five capture event IDs.
+- The workflow requested five curated primary events and captured **3/5**. It linked three digest-only canonical receipts to three of 152 events: Circle's native USDC-on-XRPL launch, Ripple's XRP holdings disclosure, and Ripple–Coinbase RLUSD distribution partnership. The two failures were Coinbase's RLUSD listing page (HTTP 403) and SBI Remit's public release (processing/fetch error). No marker mismatch or registry mismatch occurred. Capture status is `PARTIAL`; event receipt completeness remains false; all events remain model-ineligible and forecast status is `NOT_ISSUED`.
+- Downloaded the branch-run raw and event artifacts. Both local ZIP SHA-256 values exactly match GitHub artifact digests: raw `42bd3235ef238fdf5d4bbdbfcfbdb7ec97a06b98c92fe9d66b86e855b1559ed9`, events `4cb6af71949927ca238ec791dadd96f6c0f0ba118cc92fc1e6fcc9c07b82152c`.
+- Independently validated all **40 receipt IDs**, all **40 per-run chain links**, predecessor/sequence continuity, receipt/chain log digests, and all **21/21 retained raw payload hashes and byte counts**. Nineteen receipts were digest-only. The branch run's cross-run manifest explicitly reports `CONTINUED_AFTER_GAP` and `continuity_verified=false`; it is not cross-run continuity evidence. No external anchor exists.
+- This is a useful executed proof of the #1705 capture code on an ancestor with unchanged ingestion code/workflow, not a current-main result or exact-current-head workflow run. Main run #199 still has **0/150** event receipt links. Do not count the branch's three links as merged or mainline coverage.
+
+## SEC configuration blocker — verified
+
+Main run #199's six SEC failures (Evernorth, Coinbase and Circle submissions/companyfacts) all have the same explicit reason: set repository variable `BARROT_SEC_USER_AGENT` to `Barrot-Agent` plus a **monitored project contact email**; GitHub noreply addresses are rejected. No monitored contact was verified in repository evidence, so the variable was not set. This is a configuration blocker, not an SEC HTTP denial. The remaining run #199 source failures are Binance HTTP 451 (8), Bybit HTTP 403 (5), Grayscale HTTP 429 (1), and Franklin issuer-page marker/identity failure (1). No regional bypass or paid provider was used.
+
+## Updated next actions
+
+1. Keep #1714 as the sole ancestry-gate repair; obtain independent review and establish approval and Pages-deployment requirements before any merge.
+2. On #1705, finish the two failed primary event sources through lawful publisher access and repeat the capture on the current branch head; preserve the three already verified receipts and the explicit gap in cross-run continuity.
+3. Keep XRP prediction disabled until independent source clusters, adequate non-overlapping effective samples, candidate-versus-four-baseline comparisons, policy-v6 uncertainty, calibration and shadow evaluation pass.
+4. Obtain an authorized monitored contact email before configuring `BARROT_SEC_USER_AGENT`; do not substitute a GitHub noreply address.
+5. Continue the separate audio and continuity acceptance work; no listening acceptance, native DAW project or network-synchronized continuity is newly verified here.
+
+No code change, PR creation, merge, deployment, credential change, outreach or real-money action occurred in this addendum.
+
+---
+
 # Run 64 — integrated three-mission checkpoint — 2026-11-27T01:02:00Z
 
 This checkpoint supersedes Run 63 for current main/PR state and the latest public XRP ingestion. Earlier checkpoints and evidence remain preserved.
