@@ -10,6 +10,7 @@ EARLIER_IDENTITY = ROOT / "research" / "xrp_intelligence" / "20261104T065909Z-id
 PODCAST = ROOT / "research" / "xrp_intelligence" / "20261105T2145Z-kamilah-stevenson-podcast-self-identification-addendum.json"
 VIDEO_ADDENDUM = ROOT / "research" / "xrp_intelligence" / "20261105T2150Z-kamilah-stevenson-public-youtube-inventory-addendum.json"
 NEW_INVENTORY = ROOT / "research" / "xrp_intelligence" / "20261127T120000Z-kamilah-youtube-channel-metadata-and-video-inventory.json"
+RESEARCH_NOTE = ROOT / "research" / "xrp_intelligence" / "20261126_evernorth_actual_capital_and_sbic_identity.md"
 
 
 def test_youtube_channel_page_verifies_channel_metadata_not_legal_identity():
@@ -76,3 +77,11 @@ def test_historical_identity_states_are_preserved_and_current_state_is_append_on
     assert history[0]["status"] == "UNRESOLVED_NOT_EQUIVALENT"
     assert history[1]["status"] == "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH"
     assert history[2]["status"] == "YOUTUBE_CHANNEL_METADATA_AND_TWO_AUTHOR_BYLINES_VERIFIED_PERSON_ASSOCIATION_NOT_LEGAL_IDENTITY"
+
+
+def test_cached_36_title_sample_is_not_mislabeled_as_verified_video_inventory():
+    note = RESEARCH_NOTE.read_text(encoding="utf-8")
+    assert "36 cached titles as a verified creator-video inventory" in note
+    assert "two-record partial byline-match inventory" in note
+    assert "The 21 earlier seed references remain candidate-only" in note
+    assert "Inventory completeness is false" in note

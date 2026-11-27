@@ -547,3 +547,15 @@ The two same-day Ripple releases give different RLUSD market-cap snapshots: **mo
 - **SBI ↔ Coinbase:** no direct bilateral partnership was identified in the primary sources reviewed here. Shared participation in the wider stablecoin/crypto ecosystem is not a bilateral agreement.
 
 All corporate metrics above remain issuer-reported, date-bound research observations. They are not admitted to the point-in-time XRP feature store and do not alter the forecast gate. Exact-phrase “ASK Coin” and “SBIC, ChatGPT SBIC” remain unresolved; no new primary-source match was found in this update.
+
+## 10. 2026-11-27 identity and inventory reconciliation
+
+**This correction supersedes Sections 8 and 9.13.4 wherever their wording could be read as treating the 36 cached titles as a verified creator-video inventory.**
+
+The 12:00 UTC capture verifies that YouTube's first-party channel page displays the canonical channel ID, handle and self-identifying display name together. The first-party Kamilah Stevenson site and the June 11, 2026 public interview support the person's public identity. The person-to-channel association remains **STRONG_NOT_LEGAL_IDENTITY_VERIFIED**: no civil/legal identity record, platform verification badge, or reciprocal link from the first-party website to this exact channel was captured. The channel's `go.prescribewealth.com/yt-bio` link was visible, but its redirect destination was not independently resolved in that capture.
+
+The two video search results in `20261127T120000Z-kamilah-youtube-channel-metadata-and-video-inventory.json` expose exact video IDs and first-party author bylines matching the channel display name, but neither individual video result exposes a channel ID. Retain them as a **two-record partial byline-match inventory**, not as a complete or independently channel-ID-bound archive. Both remain ineligible as XRP market features; creator descriptions and opinions require independent primary-source corroboration.
+
+The 36 titles listed in the earlier sections are a cached channel-page title snapshot. Most have no recovered video ID, and the categories overlap. They are **index-level candidate title listings, not 36 verified video records**. The 56 listing slots in the newer metadata artifact are not 56 unique videos. The 21 earlier seed references remain candidate-only. Inventory completeness is false; the displayed 1.2K count is a crawl-time label, not an enumerated archive.
+
+Operational rule: preserve the platform metadata mapping, person identity, and person-channel association as separate fields. Do not attribute additional videos, merge namesakes, treat cached relative ages/views as current, or admit creator content into forecasting until each record has exact first-party video evidence and the channel/person association is independently sufficient for the requested attribution standard.
