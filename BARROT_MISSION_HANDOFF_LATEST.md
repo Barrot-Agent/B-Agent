@@ -1,3 +1,41 @@
+# Run 68.1 — primary-source XRP relationship update and current-head verification
+
+**Capture:** 2026-11-27T07:16Z. **Main SHA:** `2151843140fd770b62ef93d06a78c559f9e73bbd` (unchanged).
+
+## New primary-source research committed to the existing XRP workstream
+
+PR #1705 now has head `3f9e0e65e771fc2034c1fce82c6839d68a5a439d` (36 ahead / 0 behind). Research addendum 9.13.6 was committed to the existing branch; no new PR was created. Exact-head full suite [45956641010](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956641010) was still running at capture. Ordinary Tests, dependency audit [45956641073](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956641073), money audit [45956641012](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956641012), and conflict integrity [45956641063](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956641063) passed. Gated-merge run [45956641018](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956641018) was still running. The previous head's 4,725-test result does not apply to this new head. No merge.
+
+### New corporate evidence
+
+- SBI Holdings' November 2, 2026 first-half results presentation reports Evernorth at approximately **473m XRP**, SBI Group voting rights **36.1%**, and economic interest **20.5%**. Voting rights use Class A shares; economic interest uses Class A plus Class C shares. This is distinct from the **39.9% Class A voting cap** in SEC filings: cap and observed voting ratio are different measures.
+- The same SBI presentation states, as of October 28, 2026, approximately **63.35bn XRP circulating**, **0.01bn burned**, and Ripple holdings not in circulation of **5.23bn actual XRP plus 31.4bn escrow**. These are SBI-reported figures, not an independent ledger reconciliation; escrow is not freely tradable float.
+- Ripple and Coinbase announced October 28, 2026 that RLUSD became available through Coinbase Prime, Coinbase Exchange and the retail app, with deposits/withdrawals across XRPL, Base and Ethereum and 1:1 USD conversion. Ripple provides Base liquidity. Coinbase Global Exchange collateral use was described as a future phase, not live at launch.
+- Ripple's separate October 28 company update reports a $900m annualized product-revenue run rate, more than $16tn in transactions enabled across Ripple products in 2025, 85+ licenses, 1,700+ institutional/corporate/enterprise customers, 60+ payout markets and lifetime Ripple Payments volume approaching $150bn. These are Ripple-reported metrics, **not XRP Ledger volume, XRP purchases, collateral balances or net capital inflows**.
+- Circle and SBI have direct USDC/financial-services links: 2023 MOU, SBI VC Trade USDC launch in 2025, SBI Holdings and SBI Shinsei Bank each investing $25m in Circle at its 2025 IPO, a 2025 SBI Circle Holdings JV, and SBI participation in Circle's ARC token presale in 2026. Circle USDC has been native on XRPL since June 2025. Circle's 2023 governance update says Coinbase took an equity stake in Circle and shares USDC reserve/distribution economics.
+- Relationship boundaries: Ripple-Coinbase RLUSD distribution is direct; Coinbase-Circle USDC economics are direct; SBI-Circle investment/distribution is direct; SBI-Ripple RLUSD Japan distribution is direct. The sources do not establish a direct Ripple-Circle partnership or direct SBI-Coinbase bilateral partnership. USDC/RLUSD coexistence on XRPL is not proof of issuer coordination or XRP demand.
+- Ripple's two October 28 releases state RLUSD market capitalization as “more than $2.4bn” and “$2.6bn.” The former is compatible with the latter; retain as differently precise company snapshots with unspecified measurement vintages, not a proven contradiction.
+- Exact-phrase searches still have no credible primary-source match for “ASK Coin” or “SBIC, ChatGPT SBIC.” They remain unresolved.
+
+Primary sources: [SBI 1H FY2026 presentation](https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf); [Ripple/Coinbase RLUSD announcement](https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/); [Coinbase RLUSD announcement](https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase); [Ripple October 28 company update](https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/); [Circle/SBI 2023 MOU](https://www.circle.com/pressroom/sbi-holdings-partners-with-circle-to-pioneer-digital-currency-innovation-in-japan-with-usdc-banking-and-web3-services); [SBI Circle investment](https://www.sbigroup.co.jp/news/2025/0609_15491.html); [SBI ARC presale notice](https://www.sbigroup.co.jp/news/2026/0512_16310.html); [Circle USDC on XRPL](https://www.circle.com/blog/now-available-usdc-on-the-xrpl); [Circle/Coinbase governance update](https://investor.circle.com/news/news-details/2023/Ushering-in-the-next-chapter-for-USDC/default.aspx).
+
+## Current handoff-branch verification
+
+The previous Run 68 handoff commit `8b072595a0348d03ad67b0a2bc5dca6c46e0f270` passed exact-head full suite [45956226616](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956226616): **4,704 passed, 1 skipped, 11 warnings, 21 subtests; 74.21% coverage**. Dependency audit [45956226693](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956226693), Money audit [45956226738](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956226738), and Conflict Integrity [45956226658](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956226658) passed. Legacy merge gate [45956226610](https://github.com/Barrot-Agent/B-Agent/actions/runs/45956226610) failed because it compares stale PR `base.sha` for equality with current main; ancestry remains 171 ahead / 0 behind. This is not branch divergence.
+
+## SBIC primary identity cross-check
+
+Official profiles confirm three distinct sister companies: [Tokyo SBIC East Japan](https://www.sbic.co.jp/company/profile/), [Nagoya SBIC Central Japan](https://www.sbic-cj.co.jp/company/about/), and [Osaka SBIC West Japan](https://www.sbic-wj.co.jp/profiles/profile/). Each has its own legal name, headquarters, capital and operating region; the East profile links Central and West as sister companies, and the other profiles reciprocate. They are not SBI Holdings subsidiaries.
+
+SBI Holdings' separate historical `SBI CAPITAL Co., Ltd.` was a buyout-fund manager: its May 21, 2007 release says SBI transferred 40% to a Goldman Sachs group company, forming a joint venture. A March 25, 2011 SBI Holdings listing prospectus lists SBI CAPITAL at 100% economic and voting ownership in the disclosed group structure; this is historical evidence, not proof of current 2026 legal status. A separate Korean `SBI Capital Co., Ltd.` was established by SBI Holdings in 2021 at 100% group ownership. Do not merge these entities with regional SBIC East/Central/West.
+
+The public YouTube channel `@drkamilahstevenson` remains attributable at the channel/brand level only; civil identity is not established. A separate near-name channel `@KamilahStevensonXrpStocks` with 2 subscribers and 14 videos is not attributed to the same person and is excluded.
+
+**DESIGNED:** three co-equal missions, V3 shared foundation, source-evidence boundaries and no-forecast rule.  
+**EXECUTED:** committed primary-source research to existing #1705 and refreshed the existing #1702 handoff/platform map.  
+**VERIFIED:** Run 68 #1702 exact-head full suite and security checks; new #1705 research commit exists and its tests were pending at capture. No forecast, merge, deployment, outbound action or real-money action occurred.
+
+---
 # Run 68 — current-main ingestion, three-mission and integration checkpoint
 
 **Capture:** 2026-11-27T06:59Z.  
