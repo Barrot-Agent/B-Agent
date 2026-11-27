@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-27T20:56:13Z",
-  "capture_basis": "Run 2 current-main reconciliation: full recursive tree and code/workflow/dependency review; all nine open PRs and branch comparisons; exact-head #1715 checks; latest main CI and gated-merge failure diagnosis; latest XRP ingestion receipt/event/feature-store/forecast results; current audio and ProjectStateLedger implementation evidence; Sellbird and nine-platform status.",
+  "captured_at_utc": "2026-11-27T22:01:50Z",
+  "capture_basis": "Run 3 current-main reconciliation: complete recursive tree, all nine open PRs and ancestry, exact PR #1715 full-suite/security/gated-merge checks, latest scheduled XRP ingestion run #46068681602 and artifact inventory, Cross Analysis #46072992801, current audio/continuity evidence, nine-platform authentication limits, and a fresh read-only Sellbird v0.5.0 license/dependency/sending-safety audit.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -26,7 +26,7 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46062126528",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46068681602",
       "latest_pr_1699_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991841",
       "latest_pr_1699_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991844",
       "latest_pr_1699_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991955",
@@ -41,7 +41,12 @@
       "sellbird_repository": "https://github.com/ethanplusai/sellbird",
       "latest_handoff_successor": "https://github.com/Barrot-Agent/B-Agent/pull/1715",
       "latest_main_merge_readiness_failure": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46066224273",
-      "latest_handoff_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46063174631"
+      "latest_handoff_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637021",
+      "latest_handoff_successor_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637064",
+      "latest_handoff_successor_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637153",
+      "latest_handoff_successor_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637018",
+      "latest_handoff_successor_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637048",
+      "latest_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46072992801"
     },
     "branch_protection_summary": {
       "observed_at_utc": "2026-11-27T19:58:49Z",
@@ -83,14 +88,14 @@
       "pages_deployment_conclusion": "success",
       "pages_deployment_was_automatic_merge_side_effect": true,
       "future_merge_requires_explicit_deployment_approval": true,
-      "latest_xrp_ingestion_run_id": 46062126528,
+      "latest_xrp_ingestion_run_id": 46068681602,
       "latest_xrp_ingestion_conclusion": "success",
-      "latest_xrp_data_cutoff_utc": "2026-11-27T20:13:52.843372Z",
+      "latest_xrp_data_cutoff_utc": "2026-11-27T21:12:09.579662Z",
       "latest_xrp_forecast_status": "NOT_ISSUED",
       "warning_count": 11,
       "subtests": 21,
       "overall_coverage_percent": 74.44,
-      "latest_xrp_snapshot_id": "608fd5bd3e5fae301f9f059730b19e199346fd802696e2f90bb0da0380170fc5",
+      "latest_xrp_snapshot_id": "e05fe1d262be89bc82627740cd3644edaa5dd127119af2703284d87edc76173f",
       "latest_xrp_receipt_count": 37,
       "latest_xrp_raw_payload_count": 21,
       "latest_xrp_digest_only_receipt_count": 16,
@@ -99,13 +104,13 @@
       "latest_xrp_verified_event_receipt_links": 0,
       "latest_xrp_drift_status": "INSUFFICIENT_DATA",
       "latest_xrp_walk_forward_status": "PARTIAL_OR_BLOCKED",
-      "latest_xrp_walk_forward_rows": 648,
+      "latest_xrp_walk_forward_rows": 652,
       "actions_cache_write_status": "READ_ONLY_BUDGET_EXHAUSTED",
       "latest_main_merge_readiness_run_id": 46066224273,
       "latest_main_merge_readiness_conclusion": "failure",
       "latest_main_merge_readiness_reason": "Push-triggered gate could not resolve exactly one open PR for integration/xrp-primary-event-receipts-20261127; fail-closed PR-resolution mismatch, not a test or source-code failure.",
       "current_handoff_pr": 1715,
-      "current_handoff_pr_pre_refresh_head": "1078bb8243bcce27a5622816f64720cbfb1a188c",
+      "current_handoff_pr_pre_refresh_head": "0c4fb2ce4e848273b47cf206be74bc0b38fc5b80",
       "current_handoff_pr_pre_refresh_exact_head_ci": "PASSED",
       "current_handoff_pr_pre_refresh_reviews": 0,
       "current_handoff_pr_new_checkpoint_commit_requires_revalidation": true
@@ -130,7 +135,7 @@
       {
         "number": 1715,
         "classification": "CURRENT_MAIN_SUCCESSOR_CHECKPOINT_REFRESH_REQUIRES_EXACT_HEAD_REVALIDATION",
-        "ahead_by": 9,
+        "ahead_by": 10,
         "behind_by": 0,
         "workstream": "mission handoff",
         "supersedes": [
@@ -138,13 +143,14 @@
         ],
         "branch": "integration/mission-handoff-refresh-20261127-run14",
         "head_sha": null,
-        "head_sha_note": "This checkpoint commit advances the branch; fetch PR #1715 for the resulting exact SHA.",
-        "pre_refresh_head_sha": "1078bb8243bcce27a5622816f64720cbfb1a188c",
+        "head_sha_note": "Run 3 two-file checkpoint commit advances the branch; fetch PR #1715 for the resulting exact SHA.",
+        "pre_refresh_head_sha": "0c4fb2ce4e848273b47cf206be74bc0b38fc5b80",
         "pre_refresh_exact_head_ci": "PASSED",
         "reviews": 0,
         "merge_blockers": [
           "required approval count unavailable (branch-protection detail HTTP 403)",
-          "automatic GitHub Pages deployment side effect lacks explicit authorization"
+          "automatic GitHub Pages deployment side effect lacks explicit authorization",
+          "Run 3 checkpoint commit requires exact-head revalidation"
         ]
       },
       {
@@ -280,7 +286,11 @@
           "compared all nine open PR heads to current main and reviewed overlapping paths",
           "verified PR #1715 predecessor head exact full-suite, security, conflict-integrity and gated-merge checks",
           "diagnosed main push-triggered merge-readiness failure as no matching open PR for the integration branch",
-          "inspected latest main XRP ingestion run #46062126528 logs and artifact inventory; forecast remained withheld"
+          "inspected latest main XRP ingestion run #46062126528 logs and artifact inventory; forecast remained withheld",
+          "verified PR #1715 exact head 0c4fb2ce4e848273b47cf206be74bc0b38fc5b80: core CI and full repository test suite passed, Pages validation passed, dependency audit, money audit, conflict-integrity and gated-merge checks passed; no reviews and approval requirements remain unknown",
+          "inspected latest scheduled XRP ingestion run #46068681602: cutoff 2026-11-27T21:12:09.579662Z, 37 receipts, 21 raw payloads, 16 digest-only, 150 events with zero verified receipt links, 363 eligible/367 excluded feature records, 652 partial/blocked walk-forward rows, insufficient drift data, forecast not issued",
+          "verified raw-source, receipt-index, event-timeline and feature-store artifacts uploaded for XRP run #46068681602; cache save remained read-only because the cache budget was exhausted",
+          "audited Sellbird main commit 8c743f1c475f61f7b2c04e50501cf6938a126ed6 and release v0.5.0: AGPL-3.0-only, Python >=3.11, dependencies, mailbox providers, manual approval, pre-send gate, opt-out/do-not-contact controls, warmup, source-documented costs and LinkedIn terms warning; no installation or outreach"
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -298,7 +308,10 @@
         "A merge to main triggered automatic GitHub Pages deployment after #1701; no further deployment is authorized without specific approval.",
         "The refreshed PR #1715 documentation commit requires new exact-head checks; predecessor-head results do not transfer.",
         "The main push-triggered merge-readiness run #46066224273 failed closed because no open PR matched integration/xrp-primary-event-receipts-20261127; this was not a test-suite or dependency-audit failure.",
-        "GitHub Actions cache write budget is exhausted and cache writes are read-only; current run artifact uploads succeeded, but cache continuity must not be claimed."
+        "GitHub Actions cache write budget is exhausted and cache writes are read-only; current run artifact uploads succeeded, but cache continuity must not be claimed.",
+        "PR #1715 has no submitted review; mergeable_state=clean does not establish required approvals because detailed branch protection is HTTP 403.",
+        "Another merge would trigger the previously observed automatic GitHub Pages deployment; that side effect is not authorized.",
+        "Sellbird v0.5.0 was source-audited only; no dynamic security test, installation, mailbox/domain authentication, prospecting or outbound sending occurred."
       ],
       "evidence": [
         "https://github.com/Barrot-Agent/B-Agent",
@@ -448,11 +461,11 @@
     }
   },
   "next_actions": [
-    "XRP: repair raw receipt linkage for all 150 timeline events, add an independent receipt anchor and rebuildable feature-store snapshots; keep directional forecasts disabled until candidate and independent chronological shadow cohorts beat baselines and pass calibration/drift gates.",
-    "Audio: rerun full-song rendering on current main, verify full-song rights-cleared per-instrument SoundFont routing, provide DAW project/interchange, and obtain level-matched listening/user acceptance.",
+    "XRP: repair raw receipt linkage for all 150 timeline events, recover SEC primary-source receipts, add an independent receipt anchor and rebuildable feature-store snapshots; latest run #46068681602 still has zero verified event-receipt links and forecast issuance remains disabled.",
+    "Audio: rerun full-song rendering on current main, verify rights-cleared full-song per-instrument routing, provide a DAW project/interchange, and obtain level-matched listening/user acceptance.",
     "Continuity: validate signed transfer between independently hosted workspaces/devices before implementing authenticated automatic synchronization.",
     "Nine platforms: authenticate and test permissions/data flow for Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks individually before any data transfer.",
-    "Commercial: validate a bounded Barrot-only pilot and delivery proof before prospecting; keep Sellbird outbound sending paused.",
-    "PR hygiene: revalidate refreshed #1715 head; preserve #1705 as unique research; keep #1702 pending #1715 verification; consolidate dependency overlaps only on a current-main branch."
+    "Commercial: Sellbird v0.5.0 is source-audited but uninstalled and unauthenticated; validate a bounded Barrot-only pilot and delivery proof before prospecting; keep outbound sending paused.",
+    "PR hygiene: revalidate the Run 3 #1715 checkpoint head; preserve #1705 as unique research; keep #1702 pending #1715 verification; do not merge until approvals and automatic Pages deployment authorization are satisfied; consolidate dependency overlaps only on a current-main branch."
   ]
 }
