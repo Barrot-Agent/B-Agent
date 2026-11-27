@@ -163,11 +163,11 @@ def test_current_pr_inventory_includes_integration_and_dependency_workstreams():
 def test_latest_reconciliation_captures_xrp_audio_continuity_and_sellbird_evidence():
     data = load_map()
     xrp = data["latest_xrp_ingestion_observation"]
-    assert xrp["run_number"] == 219
+    assert xrp["run_number"] == 220
     assert xrp["forecast_status"] == "NOT_ISSUED"
     assert xrp["event_timeline"]["events"] == 150
     assert xrp["event_timeline"]["verified_receipt_links"] == 0
-    assert xrp["evaluation"]["walk_forward_rows"] == 628
+    assert xrp["evaluation"]["walk_forward_rows"] == 632
     assert xrp["evaluation"]["horizons"] == ["1h"]
 
     audio = data["latest_audio_full_song_qc"]
