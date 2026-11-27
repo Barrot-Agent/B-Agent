@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "artifact_id": "kamilah-stevenson-youtube-channel-metadata-inventory-20261127T120000Z",
   "artifact_type": "partial_public_youtube_channel_metadata_and_video_inventory",
-  "captured_at_utc": "2026-11-27T12:00:00Z",
+  "captured_at_utc": "2026-11-27T16:14:00Z",
   "identity_resolution": {
     "person_name": "Dr. Kamilah Stevenson",
     "person_identity_status": "CONFIRMED_BY_PRIOR_FIRST_PARTY_BIO_AND_PUBLIC_INTERVIEW",
@@ -93,6 +93,32 @@
       "published_at": "2026-06-11",
       "raw_bytes_captured": false,
       "role": "person self-identification context; transcript spelling is Camila/Camilla"
+    },
+    {
+      "id": "youtube_namesake_channel_UCYFaD0cVIxjtxIW053EgZpA",
+      "publisher": "YouTube",
+      "source_independence_group": "youtube_platform",
+      "url": "https://www.youtube.com/channel/UCYFaD0cVIxjtxIW053EgZpA",
+      "source_type": "first-party public channel metadata surfaced by indexed YouTube result",
+      "retrieved_at_utc": "2026-11-27T16:14:00Z",
+      "observed_display_name": "Kamilah Stevenson",
+      "observed_handle": "@KamilahStevenson-e7b",
+      "observed_channel_id": "UCYFaD0cVIxjtxIW053EgZpA",
+      "raw_bytes_captured": false,
+      "relationship_to_existing_primary_channel": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "youtube_namesake_channel_UCkqkwYKhFWQpCxwQus5ccHg",
+      "publisher": "YouTube",
+      "source_independence_group": "youtube_platform",
+      "url": "https://www.youtube.com/channel/UCkqkwYKhFWQpCxwQus5ccHg",
+      "source_type": "first-party public channel metadata surfaced by indexed YouTube result",
+      "retrieved_at_utc": "2026-11-27T16:14:00Z",
+      "observed_display_name": "Miss Kamilah Stevenson",
+      "observed_handle": "@KamilahStevensonms",
+      "observed_channel_id": "UCkqkwYKhFWQpCxwQus5ccHg",
+      "raw_bytes_captured": false,
+      "relationship_to_existing_primary_channel": "NOT_ESTABLISHED"
     }
   ],
   "verified_channel_videos": [
@@ -179,7 +205,8 @@
   "source_independence": {
     "youtube_channel_and_video_results": "Same YouTube publisher; not independent sources from each other.",
     "branded_site": "Separate first-party person/brand evidence; no reciprocal exact-channel link captured.",
-    "iheart": "Independent podcast publisher; transcript is auto-generated and spelling is uncertain."
+    "iheart": "Independent podcast publisher; transcript is auto-generated and spelling is uncertain.",
+    "namesake_channels": "Separate YouTube channel IDs; same publisher class, no independent identity evidence and no reciprocal cross-link."
   },
   "prediction_and_market_use": {
     "market_feature_admission": false,
@@ -190,7 +217,44 @@
     "raw_http_bytes_captured": false,
     "source_sha256_receipts": false,
     "independent_timestamp_anchor": false,
-    "retrieval_timestamp_utc": "2026-11-27T12:00:00Z",
+    "retrieval_timestamp_utc": "2026-11-27T16:14:00Z",
     "no_automated_platform_api_or_authenticated_youtube_connection_claimed": true
+  },
+  "identity_disambiguation": {
+    "observed_at_utc": "2026-11-27T16:14:00Z",
+    "existing_primary_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+    "existing_primary_channel_handle": "@drkamilahstevenson",
+    "existing_verified_video_count": 2,
+    "additional_same_name_channels": [
+      {
+        "channel_id": "UCYFaD0cVIxjtxIW053EgZpA",
+        "display_name": "Kamilah Stevenson",
+        "handle": "@KamilahStevenson-e7b",
+        "url": "https://www.youtube.com/channel/UCYFaD0cVIxjtxIW053EgZpA",
+        "description": "Investing, stocks, crypto, macro awareness and long-term investing.",
+        "source_type": "YouTube indexed public channel result",
+        "retrieved_at_utc": "2026-11-27T16:14:00Z",
+        "relationship_to_existing_primary_channel": "NOT_ESTABLISHED",
+        "legal_identity_verified": false,
+        "verified_video_count": 0,
+        "video_inventory_status": "NOT_ADMITTED_PENDING_IDENTITY_AND_VIDEO_CHANNEL_ID_VERIFICATION"
+      },
+      {
+        "channel_id": "UCkqkwYKhFWQpCxwQus5ccHg",
+        "display_name": "Miss Kamilah Stevenson",
+        "handle": "@KamilahStevensonms",
+        "url": "https://www.youtube.com/channel/UCkqkwYKhFWQpCxwQus5ccHg",
+        "description": "Investor education focused on stocks, crypto and macro economics.",
+        "source_type": "YouTube indexed public channel result",
+        "retrieved_at_utc": "2026-11-27T16:14:00Z",
+        "relationship_to_existing_primary_channel": "NOT_ESTABLISHED",
+        "legal_identity_verified": false,
+        "verified_video_count": 0,
+        "video_inventory_status": "NOT_ADMITTED_PENDING_IDENTITY_AND_VIDEO_CHANNEL_ID_VERIFICATION"
+      }
+    ],
+    "cross_channel_identity_status": "UNRESOLVED",
+    "cross_channel_merge_permitted": false,
+    "rule": "Treat each YouTube channel ID as a separate source identity. Similar names and overlapping descriptions do not establish a common operator. Do not attribute any additional videos to the existing Dr. Kamilah Stevenson channel without first-party reciprocal linkage or video-level channel-ID evidence."
   }
 }

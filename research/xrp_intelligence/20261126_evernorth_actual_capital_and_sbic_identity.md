@@ -559,3 +559,19 @@ The two video search results in `20261127T120000Z-kamilah-youtube-channel-metada
 The 36 titles listed in the earlier sections are a cached channel-page title snapshot. Most have no recovered video ID, and the categories overlap. They are **index-level candidate title listings, not 36 verified video records**. The 56 listing slots in the newer metadata artifact are not 56 unique videos. The 21 earlier seed references remain candidate-only. Inventory completeness is false; the displayed 1.2K count is a crawl-time label, not an enumerated archive.
 
 Operational rule: preserve the platform metadata mapping, person identity, and person-channel association as separate fields. Do not attribute additional videos, merge namesakes, treat cached relative ages/views as current, or admit creator content into forecasting until each record has exact first-party video evidence and the channel/person association is independently sufficient for the requested attribution standard.
+
+
+## 11. 2026-11-27 namesake-channel and exact-phrase disambiguation
+
+A later public YouTube search surfaced two additional channels with the display names **Kamilah Stevenson** and **Miss Kamilah Stevenson**:
+
+- `UCYFaD0cVIxjtxIW053EgZpA`, handle `@KamilahStevenson-e7b`
+- `UCkqkwYKhFWQpCxwQus5ccHg`, handle `@KamilahStevensonms`
+
+Both channel IDs differ from the currently researched `UCqUPJMQdkCN6lsLVDnichPA` / `@drkamilahstevenson` channel. Their descriptions also discuss investing, crypto and macro, but no reciprocal first-party link, legal identity record or video-level channel-ID evidence connects them. Treat them as separate unresolved channel identities. Do not merge their uploads into the two-record partial inventory already associated by author byline with the Dr. Kamilah Stevenson channel. No video from either namesake channel is admitted as a verified video for that person.
+
+**Exact phrase: “SBIC, ChatGPT SBIC.”** The exact quoted string remains unresolved. The closest primary-source co-occurrence is Tokyo Small and Medium Business Investment & Consultation Co. (Tokyo SBIC)'s official June 12–13, 2025 manufacturing generative-AI / machine-learning course, whose curriculum explicitly includes ChatGPT and Microsoft Copilot. The page says the course was for investee companies; it does not evidence an OpenAI partnership, investment, or corporate integration. A separate third-party LinkedIn post refers to “SBIC America” and a ChatGPT Plus contest; no primary-source relationship to the Japanese regional SBIC companies or SBI Holdings was established.
+
+**“ASK Coin.”** The current exact-phrase web sweep produced no credible primary-source match. Keep it unresolved; do not infer a token, issuer or relationship from similarly named results.
+
+**“Actual capital.”** Retain the SEC filing reconciliation in Section 9: distinguish cash proceeds, XRP contributed in kind, PIK debt, warrant proceeds, transaction expenses and optional equity facilities. These are different economic categories and must not be collapsed into one “capital” number.
