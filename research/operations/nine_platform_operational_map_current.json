@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-28T07:30:00Z",
-  "capture_basis": "Run 14 integration-first refresh: current main SHA and complete 3,168-entry tree; all 11 open PRs with ancestry and changed paths; exact-head full-suite/security/conflict/gated checks for #1715/#1716/#1717; latest main XRP ingestion #46120190816 and Cross Analysis #46118564243 with downloaded raw, receipt-index, event and feature-store artifacts; audio render workflow, bundle/QC metadata and merged audio code; mission manifest equality and runtime prompt; continuity and Sellbird status. No external model transfer, merge, deployment or real-money action.",
+  "captured_at_utc": "2026-11-28T07:58:00Z",
+  "capture_basis": "Run 15 integration-first refresh: current main SHA, complete recursive tree, all 11 open PRs and ancestry/overlap, current main XRP ingestion and Cross Analysis, exact-head CI/security checks for #1715/#1716/#1717, audio/continuity/commercial evidence. Existing history retained.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -856,7 +856,11 @@
           "Run 10: parsed cross-analysis #46104813274 and confirmed stale XRP/BTC sentiment with forecast_eligible=false",
           "Run 10: source-audited Sellbird v0.5.0 release, AGPL-3.0-only license, dependencies, mailbox providers, approval/opt-out controls, pricing and LinkedIn ToS warning",
           "Run 10: appended current verified evidence to the existing #1715 durable handoff branch; new exact-head checks are in progress",
-          "Refreshed Run 12 main ingestion #46111087041 and cross-analysis #46113982609 artifacts; parsed receipt chain, feature store, event-linkage, drift, forecast and stale-sentiment gates; updated the existing PR #1715 platform map and durable handoff without creating a new PR."
+          "Refreshed Run 12 main ingestion #46111087041 and cross-analysis #46113982609 artifacts; parsed receipt chain, feature store, event-linkage, drift, forecast and stale-sentiment gates; updated the existing PR #1715 platform map and durable handoff without creating a new PR.",
+          "Run 15: re-fetched main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1 and complete 3,168-entry recursive tree; verified all 11 open PRs, changed paths and ancestry against current main.",
+          "Run 15: verified exact-head full-suite, dependency, money, conflict-integrity and gated-merge success for #1715 head ce2f4af40c4c13d5c63c30845657894efec19dd6, #1716 head d8b47e5a5d80b786d6fefb1fc1fadf5094f8deea and #1717 head 719c32fe4f1f6b846065c6f3fab727b607aab38d.",
+          "Run 15: inspected latest main XRP ingestion #46120190816 and Cross Analysis #46123121302; forecast remains NOT_ISSUED and sentiment inputs are stale.",
+          "Run 15: updated the existing #1715 durable handoff and nine-platform map only; resulting new branch head requires fresh exact-head checks."
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -2457,18 +2461,18 @@
       "number": 1715,
       "title": "docs: refresh three-mission handoff and platform map for 2026-11-27",
       "branch": "integration/mission-handoff-refresh-20261127-run14",
-      "head_sha": "6296a29ae7fb69d9080f626e257541bf16e1e4c8",
+      "head_sha": "ce2f4af40c4c13d5c63c30845657894efec19dd6",
       "base_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
-      "ahead_by": 27,
+      "ahead_by": 28,
       "behind_by": 0,
       "changed_files": 5,
-      "additions": 4445,
+      "additions": 4856,
       "deletions": 92,
       "draft": false,
       "classification": "ACTIVE_MISSION_HANDOFF_RUNTIME_SUCCESSOR",
       "reviews": 0,
       "full_suite": {
-        "run_id": 46121093403,
+        "run_id": 46122343394,
         "passed": 4734,
         "failed": 0,
         "skipped": 1,
@@ -2477,11 +2481,12 @@
         "coverage_percent": 74.44
       },
       "exact_checks": {
-        "dependency_audit": 46121093424,
-        "money_audit": 46121093387,
-        "conflict_integrity": 46121093384,
-        "gated_merge": 46121093450,
-        "all": "success_before_run14_documentation_commit"
+        "ci": 46122343394,
+        "dependency_audit": 46122343403,
+        "money_audit": 46122343364,
+        "conflict_integrity": 46122343444,
+        "gated_merge": 46122343400,
+        "all": "success"
       },
       "post_update_exact_head_checks": "PENDING"
     },
@@ -2663,7 +2668,7 @@
   "recursive_tree_entries": 3168,
   "tree_truncated": false,
   "open_pr_count": 11,
-  "open_pr_inventory_captured_at_utc": "2026-11-28T07:30:00Z",
+  "open_pr_inventory_captured_at_utc": "2026-11-28T07:58:00Z",
   "current_main_evidence": {
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
     "tree_entries": 3168,
@@ -2696,6 +2701,7 @@
     "latest_xrp_ingestion": {
       "run_id": 46120190816,
       "conclusion": "success",
+      "created_at_utc": "2026-11-28T07:13:21Z",
       "data_cutoff_utc": "2026-11-28T07:13:50.511771Z",
       "evaluation_as_of_utc": "2026-11-28T07:13:55.677402Z",
       "adapter": "xrp-public-market-v3.34",
@@ -2704,6 +2710,13 @@
       "retained_raw_payloads": 21,
       "digest_only_receipts": 16,
       "source_failures": 18,
+      "source_failure_categories": {
+        "HTTP_451": 8,
+        "HTTP_403": 5,
+        "HTTP_429": 1,
+        "Franklin_marker_mismatch": 1,
+        "SEC_User_Agent_configuration": 3
+      },
       "feature_store_snapshots": 183,
       "feature_store_history_records": 45307,
       "delta_feature_records": 713,
@@ -2712,7 +2725,6 @@
       "excluded_records": 366,
       "sqlite_integrity": "ok",
       "event_count": 150,
-      "scenario_count": 117,
       "verified_event_receipt_links": 0,
       "event_raw_hashes": 0,
       "event_url_matches": 11,
@@ -2726,9 +2738,7 @@
       "forecast_status": "NOT_ISSUED",
       "forecast_model_eligible": false,
       "receipt_chain_verification": "PASS",
-      "cross_run_sequence": 183,
       "cross_run_continuity": "CONTINUED",
-      "cross_run_chain_sha256": "3539062898513b62a03cd79f1b0452477b9e8c26a37a025d9eef8446600b19b2",
       "external_anchor": "NOT_ANCHORED",
       "raw_artifact_retention_days": 90,
       "feature_store_checkpoint_retention_days": 7,
@@ -2743,24 +2753,23 @@
         "publisher_independence_groups": 1,
         "model_eligible": true,
         "scope": "same-venue top-of-book only; not consolidated depth or independent corroboration"
-      },
-      "source_failure_categories": {
-        "HTTP_451": 8,
-        "HTTP_403": 5,
-        "HTTP_429": 1,
-        "Franklin_marker_mismatch": 1,
-        "SEC_User_Agent_configuration": 3
       }
     },
     "latest_cross_analysis": {
-      "run_id": 46118564243,
+      "run_id": 46123121302,
       "conclusion": "success",
-      "created_at_utc": "2026-11-28T06:51:52Z"
+      "created_at_utc": "2026-11-28T07:51:37Z",
+      "sentiment_freshness": "STALE_INPUT",
+      "xrp_last_input_utc": "2026-10-29T12:39:22.915636Z",
+      "xrp_age_hours": 715.206,
+      "btc_last_input_utc": "2026-10-27T03:49:16.554499Z",
+      "btc_age_hours": 772.041,
+      "forecast_eligible": false
     }
   },
   "current_handoff_pr": 1715,
-  "current_handoff_pr_head": "6296a29ae7fb69d9080f626e257541bf16e1e4c8",
-  "current_handoff_pr_ahead_by": 27,
+  "current_handoff_pr_head": "ce2f4af40c4c13d5c63c30845657894efec19dd6",
+  "current_handoff_pr_ahead_by": 28,
   "current_handoff_pr_behind_by": 0,
   "current_handoff_pr_reviews": 0,
   "current_handoff_pr_full_suite_passed": 4734,
@@ -2770,15 +2779,15 @@
   "current_handoff_pr_full_suite_subtests": 21,
   "current_handoff_pr_coverage_percent": 74.44,
   "current_handoff_pr_exact_checks": {
-    "ci_run_id": 46121093403,
-    "dependency_audit_run_id": 46121093424,
-    "money_audit_run_id": 46121093387,
-    "conflict_integrity_run_id": 46121093384,
-    "gated_merge_run_id": 46121093450,
-    "all_conclusions": "success_on_pre_update_head"
+    "ci_run_id": 46122343394,
+    "dependency_audit_run_id": 46122343403,
+    "money_audit_run_id": 46122343364,
+    "conflict_integrity_run_id": 46122343444,
+    "gated_merge_run_id": 46122343400,
+    "all_conclusions": "success_on_validated_head_ce2f4af40c4c13d5c63c30845657894efec19dd6"
   },
   "current_handoff_pr_run13_update_status": "CREATED_ON_EXISTING_BRANCH; NEW_EXACT_HEAD_CHECKS_PENDING",
-  "current_handoff_pr_merge_status": "NOT_MERGED; ZERO_INDEPENDENT_REVIEWS; BRANCH_PROTECTION_APPROVAL_UNKNOWN; AUTOMATIC_PAGES_DEPLOYMENT_REQUIRES_SPECIFIC_APPROVAL",
+  "current_handoff_pr_merge_status": "NOT_MERGED; ZERO_INDEPENDENT_REVIEWS; BRANCH_PROTECTION_APPROVAL_UNKNOWN_HTTP_403; AUTOMATIC_PAGES_DEPLOYMENT_REQUIRES_SPECIFIC_APPROVAL",
   "run13_evidence": {
     "captured_at_utc": "2026-11-28T07:00:01Z",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -3073,6 +3082,190 @@
         "Databricks"
       ],
       "external_model_transfer": false
+    },
+    "sellbird": {
+      "last_audited_release": "v0.5.0",
+      "installed": false,
+      "mailbox_authenticated": false,
+      "prospecting_tested": false,
+      "outbound": "PAUSED",
+      "verified_prospects": 0,
+      "revenue_collected_usd": 0,
+      "scope": "BARROT_TECHNOLOGY_ONLY"
+    },
+    "merge_status": "NO_MERGE; ZERO_INDEPENDENT_REVIEWS; BRANCH_PROTECTION_APPROVAL_UNKNOWN; AUTOMATIC_PAGES_DEPLOYMENT_REQUIRES_SPECIFIC_APPROVAL",
+    "actions": {
+      "new_branch": false,
+      "new_pr": false,
+      "merge": false,
+      "deployment": false,
+      "secret_rotation": false,
+      "external_model_dispatch": false,
+      "paid_lookup": false,
+      "outbound": false,
+      "paper_trade": false,
+      "real_money": false
+    }
+  },
+  "current_handoff_pr_run15_update_status": "VALIDATED_HEAD_CE2F4AF_EXACT_CHECKS_PASSED; RUN15_HANDOFF_AND_MAP_APPEND_COMMITTED_TO_EXISTING_BRANCH; NEW_RESULTING_HEAD_REQUIRES_FRESH_EXACT_HEAD_CHECKS",
+  "run15_evidence": {
+    "captured_at_utc": "2026-11-28T07:58:00Z",
+    "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+    "tree_entries": 3168,
+    "tree_truncated": false,
+    "open_pr_count": 11,
+    "main_ci": {
+      "run_id": 46055543966,
+      "conclusion": "success",
+      "passed": 4725,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.44
+    },
+    "latest_xrp_ingestion": {
+      "run_id": 46120190816,
+      "conclusion": "success",
+      "created_at_utc": "2026-11-28T07:13:21Z",
+      "data_cutoff_utc": "2026-11-28T07:13:50.511771Z",
+      "evaluation_as_of_utc": "2026-11-28T07:13:55.677402Z",
+      "adapter": "xrp-public-market-v3.34",
+      "parser": "xrp-public-market-v3.32",
+      "receipts": 37,
+      "retained_raw_payloads": 21,
+      "digest_only_receipts": 16,
+      "source_failures": 18,
+      "source_failure_categories": {
+        "HTTP_451": 8,
+        "HTTP_403": 5,
+        "HTTP_429": 1,
+        "Franklin_marker_mismatch": 1,
+        "SEC_User_Agent_configuration": 3
+      },
+      "feature_store_snapshots": 183,
+      "feature_store_history_records": 45307,
+      "delta_feature_records": 713,
+      "input_records": 2230,
+      "eligible_records": 347,
+      "excluded_records": 366,
+      "sqlite_integrity": "ok",
+      "event_count": 150,
+      "verified_event_receipt_links": 0,
+      "event_raw_hashes": 0,
+      "event_url_matches": 11,
+      "event_url_capture_time_matches": 0,
+      "event_receipt_complete": false,
+      "walk_forward_baseline_rows": 692,
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "drift_features": 206,
+      "drift_evaluated_features": 0,
+      "drift_status": "INSUFFICIENT_DATA",
+      "forecast_status": "NOT_ISSUED",
+      "forecast_model_eligible": false,
+      "receipt_chain_verification": "PASS",
+      "cross_run_continuity": "CONTINUED",
+      "external_anchor": "NOT_ANCHORED",
+      "raw_artifact_retention_days": 90,
+      "feature_store_checkpoint_retention_days": 7,
+      "feature_store_backup_retention_days": 90,
+      "raw_only_rebuild_implemented": false,
+      "quote_basis": {
+        "venue": "OKX",
+        "mid_usd": 0.9449194705,
+        "spread_bps": 1.157146226886226,
+        "snapshot_skew_seconds": 0.1,
+        "max_component_age_seconds": 11.445771,
+        "publisher_independence_groups": 1,
+        "model_eligible": true,
+        "scope": "same-venue top-of-book only; not consolidated depth or independent corroboration"
+      }
+    },
+    "latest_cross_analysis": {
+      "run_id": 46123121302,
+      "conclusion": "success",
+      "created_at_utc": "2026-11-28T07:51:37Z",
+      "sentiment_freshness": "STALE_INPUT",
+      "xrp_last_input_utc": "2026-10-29T12:39:22.915636Z",
+      "xrp_age_hours": 715.206,
+      "btc_last_input_utc": "2026-10-27T03:49:16.554499Z",
+      "btc_age_hours": 772.041,
+      "forecast_eligible": false
+    },
+    "pr_1715": {
+      "head": "ce2f4af40c4c13d5c63c30845657894efec19dd6",
+      "ahead_by": 28,
+      "behind_by": 0,
+      "full_suite": {
+        "passed": 4734,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21
+      },
+      "exact_checks": "CI/dependency/money/conflict/gated all success",
+      "reviews": 0
+    },
+    "pr_1716": {
+      "head": "d8b47e5a5d80b786d6fefb1fc1fadf5094f8deea",
+      "ahead_by": 8,
+      "behind_by": 0,
+      "full_suite": {
+        "passed": 4759,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.51
+      },
+      "exact_checks": "CI/dependency/money/conflict/gated all success",
+      "reviews": 0
+    },
+    "pr_1717": {
+      "head": "719c32fe4f1f6b846065c6f3fab727b607aab38d",
+      "ahead_by": 2,
+      "behind_by": 0,
+      "full_suite": {
+        "passed": 4726,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21
+      },
+      "optional_dependency_audit": "PASS",
+      "reviews": 0
+    },
+    "platform_map": {
+      "authenticated": [
+        "ChatGPT-to-GitHub"
+      ],
+      "untested": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ],
+      "external_model_transfer": false
+    },
+    "audio": {
+      "merged_pr": 1704,
+      "render_run_id": 46054906107,
+      "bundle_artifact_id": 15226626401,
+      "qc_artifact_id": 15226436259,
+      "technical_qc": "PASS",
+      "listening_acceptance": "NOT_VERIFIED",
+      "native_daw_project": false
+    },
+    "continuity": {
+      "merged_pr": 1703,
+      "shared_workspace_round_robin": "VERIFIED",
+      "signed_transfer_envelopes": "TESTED",
+      "independent_host_transfer": "NOT_EXECUTED",
+      "network_sync": "NOT_VERIFIED"
     },
     "sellbird": {
       "last_audited_release": "v0.5.0",
