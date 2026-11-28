@@ -1,3 +1,69 @@
+# RUN 20 — AUTHORITATIVE CHECKPOINT — 2026-11-28 14:17 UTC
+
+Captured at 2026-11-28T14:17:00Z. This checkpoint supersedes RUN 19 where newer exact-head checks, branch ancestry and primary-source evidence differ. Earlier checkpoints remain preserved below.
+
+## Repository and integration — EXECUTED / VERIFIED
+
+- Main remains `afe0c00141f8c369ddfefdc4b31d848060ae59f1`; the complete recursive tree remains **3,168 entries, truncated=false**. Main full-suite CI #46055543966 passed **4,725 tests, 1 skipped, 11 warnings and 21 subtests**, with 74.44% coverage. Main dependency audit #46055543856 and money audit #46055543828 passed.
+- Main branch protection reports `protected=true` with required contexts `Full repository test suite`, `audit`, `pip-audit` and `Verify PR merge tree against current base`. Detailed protection still returns HTTP 403, so approving-review requirements remain unknown. A prior merge triggered automatic GitHub Pages deployment; no authorization for another deployment has been given.
+- **#1715 — canonical mission-runtime/handoff successor:** head `6b04dba222747c093343c08f70c85b8139dcab2b`, 37 ahead / 0 behind, five changed paths, zero independent reviews. Exact-head full suite #46153141624 passed **4,734, 1 skipped, 11 warnings, 21 subtests**, 74.44% coverage. Dependency audit #46153141616, money audit #46153141606, conflict-integrity #46153141695, gated-merge #46153141580 and Pages build validation all passed. This validates the current #1715 head; the new Run 20 checkpoint commit will require a fresh exact-head run.
+- **#1716 — consolidated XRP event-provenance/RLUSD successor:** latest head `e97a1814e6844db54b2b39bd2ca5b902ee773061`, 9 ahead / 0 behind, 20 changed paths, zero independent reviews. Core tests and Pages validation passed; dependency audit #46153532779, money audit #46153532764 and conflict-integrity #46153532752 passed. Full repository suite #46153532832 and gated-merge #46153532755 were still running at capture. No merge.
+- **#1717 — optional dependency audit:** head `719c32fe4f1f6b846065c6f3fab727b607aab38d`, 2 ahead / 0 behind, two changed paths, zero independent reviews. Full suite passed **4,726, 1 skipped, 11 warnings, 21 subtests**. `pip-audit` passed root runtime, development, supplemental integrations, Hugging Face Space, legacy, PEP 621 project dependencies and optional dependency groups. Money, conflict-integrity and gated-merge checks passed.
+- Remaining open PRs: #1705 is superseded by #1716; #1706 and #1708 are superseded subsets included by #1716; #1702 is only partially superseded by #1715 and its five unique paths must be retained. #1707 is a unique setup-node update (fresh ancestry comparison: 1 ahead / 61 behind). #1709 is a unique Databricks CLI update (2 ahead / 61 behind) with a shared test-file path that must be reconciled against #1716. #1710 is a unique PyYAML update (1 ahead / 61 behind). #1711 remains a draft blocked by its proposed NumPy `<3` range conflicting with the current Hugging Face Streamlit `numpy<2` constraint. Total open PRs: **11**. Do not bulk-close or merge stale branches.
+
+## XRP intelligence and prediction — EXECUTED / VERIFIED; forecast withheld
+
+- Latest main ingestion #46148370937 succeeded at cutoff **2026-11-28T13:12:00.390231Z** using adapter `xrp-public-market-v3.34` and parser `xrp-public-market-v3.32`. It captured 37 receipts (21 retained raw payloads, 16 digest-only), continued verified receipt sequence 189, and uploaded raw/receipt/event/feature artifacts. SQLite integrity was `ok`; feature store held 189 snapshots, 2,230 input records, 490 new records, 106 eligible and 384 excluded.
+- Event timeline: 150 events / 117 scenarios, **0/150 verified event-to-receipt links**, 0 event raw hashes, 11 URL matches and 0 URL-plus-capture-time matches. Walk-forward: 716 one-hour baseline-origin rows, `PARTIAL_OR_BLOCKED`. Drift: 0/206 features evaluated, `INSUFFICIENT_DATA`. Forecast model ineligible; `forecast_issued=false`.
+- Source failures: 19. SEC EDGAR remains `BLOCKED_CONFIGURATION` (three source failures, no filing receipts and no authorized contact identity). Morpho CBXRP remains `BLOCKED_INDEXER_BLOCK_MISMATCH`. GitHub Actions cache writes remain blocked by exhausted/read-only cache budget; artifact upload/restore fallback works, but raw-only reconstruction and external immutable anchoring remain absent.
+- Latest Cross Analysis #46151698617 succeeded but is descriptive-only: XRP sentiment input is 721.205 hours old, BTC input 778.04 hours old, both recent/prior counts are zero, sentiment shift is null, and `forecast_eligible=false`. Its 990 entity profiles are not fresh market sentiment or predictive evidence.
+- No directional forecast, paper trade or real-money action was issued.
+
+## SBIC / ChatGPT exact-phrase research — PRIMARY SOURCES VERIFIED
+
+- Tokyo Small and Medium Business Investment & Consultation Co. identifies itself as **SBIC East Japan**; its official company profile lists Nagoya and Osaka as sister companies. Nagoya's official profile identifies **SBIC Central Japan**; Osaka's official profile identifies **SBIC West Japan**. These are separate regional companies, not SBI Holdings.
+- Tokyo SBIC's official course notice for **2025-06-12 to 2025-06-13** includes ChatGPT usage and Microsoft Copilot in a manufacturing generative-AI / machine-learning training course. Eligibility was limited to investee companies; the notice does **not** establish an OpenAI partnership, investment, API integration or relationship to SBI Holdings.
+- Primary sources: https://www.sbic.co.jp/company/profile/ ; https://www.sbic-cj.co.jp/company/about/ ; https://www.sbic-wj.co.jp/profiles/profile/ ; https://www.sbic.co.jp/training/20250612co/ . The #1716 research branch now records this evidence on head `e97a1814e6844db54b2b39bd2ca5b902ee773061`; its exact-head full suite was still running at capture.
+- Exact literal phrase `SBIC, ChatGPT SBIC` remains unresolved; the official course is the closest primary-source co-occurrence, not a partnership. `ASK Coin` has no credible primary-source match. `actual capital` remains a phrase-level lead, not a verified XRP financing category: keep cash proceeds, XRP contributed in kind, PIK debt, warrant exercises, optional equity facilities and expenses separate.
+- Kamilah Stevenson remains a partial identity association (`STRONG_NOT_LEGAL_IDENTITY_VERIFIED`): two video records have matching author bylines but no complete channel-ID binding. Namesake channels remain separate; no broader video inventory is attributed without stronger first-party identity linkage.
+
+## Professional audio — TECHNICAL PATH EXISTS; MUSICAL ACCEPTANCE NOT VERIFIED
+
+- Main contains the merged full-song FluidSynth renderer, stereo WAV mix, nine aligned stems, 11-track MIDI, ten section markers, metadata and automated QC. The existing reference render #46054906107 was executed on the second parent of main, not rerun on merge SHA `afe0c...`: 80 bars, 175.545 seconds, 110 BPM, D minor, 4/4, 44.1 kHz; zero clipped samples; true peak -6.000 dBTP; -22.443 LUFS; nine aligned stems; technical QC passed.
+- No new full-song render was executed in this run. There is no native DAW project, no blind/level-matched listening acceptance, and sample/SoundFont rights are not independently cleared. The previous user quality rating remains 3/10. Do not claim professional quality or market music.
+
+## Long-horizon continuity and nine-platform coordination
+
+- PR #1703's ProjectStateLedger remains merged on main. Recovery and round-robin selection were verified across four fresh processes sharing one workspace; signed Ed25519 envelopes and replay guards are implemented/tested. Actual transfer between independent hosts, automatic network synchronization, key exchange and encrypted transport remain unverified.
+- The root and packaged mission manifests are byte-identical and declare exactly three active priority-1 missions: XRP intelligence/prediction, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains the shared execution, orchestration, safety, provenance and verification foundation. The runtime prompt correction remains on #1715, not main.
+- Only ChatGPT-to-GitHub authentication and data flow are tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested as authenticated model/platform integrations.
+- Pillars Consistency Check #46147523662 failed at the public Hugging Face Space runtime probe (`BUILD_ERROR`) while repository source-marker and source-fiction checks passed. Deployed revision parity was not checked; GitHub App and Databricks probes were skipped for manual opt-in. Authenticated build logs were not available. No restart, deployment or secret change was attempted.
+
+## Commercial — Sellbird restricted to Barrot technology
+
+Sellbird remains source-audited but not installed or authenticated. No prospects have been verified; no prospecting test, campaign approval, message, reply, meeting, proposal or revenue exists. Outbound remains paused. The proposed provenance-assessment pilot and all pricing remain unvalidated. Music, songwriting/background vocals, TrekFlex and other separate ventures remain excluded.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions with Barrot V3 shared foundation; evidence-gated XRP prediction; end-to-end editable audio production and quality evaluation; durable continuity; nine-platform least-privilege coordination; Barrot-only Sellbird.
+- **EXECUTED:** re-fetched main/tree/PR inventory/ancestry/diffs/workflows/dependencies/security/handoff; verified exact-head #1715 and #1717 tests/security/gates; inspected in-progress exact-head #1716 runs; inspected XRP ingestion and Cross Analysis logs; verified official SBIC East/Central/West profiles and the Tokyo SBIC ChatGPT course; reviewed audio and continuity evidence.
+- **VERIFIED:** main SHA/tree and main CI; #1715 exact-head suite/security/conflict/gated checks; #1717 full suite and optional-dependency audit; #1716 official SBIC evidence committed on current branch (full suite pending); XRP receipt chain/SQLite integrity and no-forecast gate; stale Cross Analysis inputs; Hugging Face runtime `BUILD_ERROR`; byte-identical three-mission manifests; workspace-only continuity; only ChatGPT-to-GitHub data flow.
+- **NOT VERIFIED:** #1716 exact-head full-suite/gated checks; independent PR approvals and hidden review requirements; authorization for the automatic Pages deployment side effect; event-to-receipt completeness/raw-only rebuild/external anchor; predictive superiority/calibration/drift; SEC primary filing capture and Morpho indexer reconciliation; professional listening acceptance/native DAW project/independent sample rights; actual cross-host continuity; eight external platform integrations; Sellbird prospecting or revenue.
+
+## Next concrete actions
+
+1. Complete #1716 exact-head full suite and gated-merge checks; reconcile its overlapping `tests/test_workflow_action_pins.py` path with unique #1709 before any promotion.
+2. Repair XRP event-to-receipt links and deterministic raw-artifact-to-feature-store reconstruction; preserve the no-forecast gate.
+3. Rerender a rights-cleared full song on a verified current head, deliver a reproducible DAW/interchange project, and obtain level-matched listening feedback.
+4. Execute signed continuity transfer between independent hosts and verify stale/conflict recovery without overwriting unresolved state.
+5. Diagnose the Hugging Face Space BUILD_ERROR through authorized read-only build logs; do not restart or deploy.
+6. Obtain independent review and specific authorization for the Pages deployment side effect before any merge; close only exact superseded PRs after verified successor merge.
+7. Keep Sellbird Barrot-only and outbound paused until the pilot deliverable, audience, compliance safeguards and campaign are explicitly approved.
+
+No merge, branch rewrite, force-push, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, external model dispatch, prospecting, outbound message, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # RUN 19 — AUTHORITATIVE CHECKPOINT — 2026-11-28 14:01 UTC
 
 Captured at 2026-11-28T14:01:31Z. This checkpoint is based on main SHA `afe0c00141f8c369ddfefdc4b31d848060ae59f1` and the #1715 branch head immediately before this checkpoint commit, `d5b0b7a160cc4333d88d82933c6eb3d2f2178b8e`. The new checkpoint commit itself still requires exact-head validation.
