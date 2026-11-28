@@ -113,6 +113,7 @@ def render_production_bundle(
     """Render a mix, sample-aligned instrument stems, MIDI, and QC metadata.
 
     Every WAV uses one common non-boosting gain and the same sample timeline.
+    Per-instrument GM program overrides are written to the MIDI and QC metadata.
     The MIDI file contains named instrument tracks. Separate synth passes can
     differ from the stereo mix in shared reverb/chorus behavior, so exact stem
     summation is not guaranteed. Existing output directories are never replaced.
