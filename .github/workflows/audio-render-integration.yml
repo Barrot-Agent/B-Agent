@@ -171,7 +171,7 @@ jobs:
           mkdir -p "$BUNDLE/licenses"
           cp "$BARROT_TEST_SF2_LICENSE_FILE" "$BUNDLE/licenses/FluidR3_GM_Debian_Copyright.txt"
           cp "${{ runner.temp }}/audio-full-song-routed-qc.json" "$BUNDLE/quality-control.json"
-          cat > "$BUNDLE/README.md" <<EOF
+          cat > "$BUNDLE/README.md" <<'EOF'
           # Barrot full-song keys-routed comparison bundle
 
           This is a full-length timbral comparison against the baseline bundle from the same run. The composition and Standard MIDI file are identical; only the `keys` instrument uses the Upright Piano KW SoundFont. The other eight instruments continue to use FluidR3_GM.
