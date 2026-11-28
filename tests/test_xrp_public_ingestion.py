@@ -1943,7 +1943,7 @@ def test_sbigroup_html_fetch_prefers_japanese_language_without_changing_other_ho
             return "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
 
         def read(self, _limit):
-            return b"<html>2025å¹´6æ9æ¥ 5,000ä¸ãã«</html>"
+            return "<html>2025年6月9日 5,000万ドル</html>".encode("utf-8")
 
     def fake_open(request, timeout):
         requests.append(request)
