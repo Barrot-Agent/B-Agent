@@ -68,6 +68,45 @@ jobs:
           print(f"Materialized {len(dependencies)} PEP 621 dependencies for pip-audit")
           PY
           pip-audit -r "$RUNNER_TEMP/pyproject-requirements.txt" --strict
+
+      - name: Audit PEP 621 optional dependency groups
+        id: pyproject_optional_extras
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import re
+          import tomllib
+          from pathlib import Path
+
+          project = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
+          extras = project.get("project", {}).get("optional-dependencies", {})
+          if not isinstance(extras, dict) or not extras:
+              raise SystemExit("pyproject.toml contains no [project.optional-dependencies] groups")
+          output_dir = Path(os.environ["RUNNER_TEMP"]) / "pyproject-extras"
+          output_dir.mkdir(parents=True, exist_ok=True)
+          for name, dependencies in sorted(extras.items()):
+              if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", name):
+                  raise SystemExit(f"Invalid optional dependency group name: {name!r}")
+              if not isinstance(dependencies, list) or not dependencies:
+                  raise SystemExit(f"Optional dependency group {name!r} must be a non-empty list")
+              if any(not isinstance(item, str) or not item.strip() for item in dependencies):
+                  raise SystemExit(f"Optional dependency group {name!r} contains an invalid requirement")
+              target = output_dir / f"{name}.txt"
+              target.write_text("\n".join(dependencies) + "\n", encoding="utf-8")
+              print(f"Materialized {len(dependencies)} dependencies from optional group {name!r}")
+          PY
+          shopt -s nullglob
+          requirements_files=("$RUNNER_TEMP"/pyproject-extras/*.txt)
+          if (("${#requirements_files[@]}" == 0)); then
+            echo "No optional dependency groups were materialized" >&2
+            exit 1
+          fi
+          for requirements_file in "${requirements_files[@]}"; do
+            echo "Auditing optional extra: $(basename "$requirements_file")"
+            pip-audit -r "$requirements_file" --strict
+          done
       - name: Fail if any manifest audit failed
         if: always()
         env:
@@ -77,8 +116,9 @@ jobs:
           HF_SPACE: ${{ steps.hf_space.outcome }}
           LEGACY: ${{ steps.legacy.outcome }}
           PYPROJECT: ${{ steps.pyproject.outcome }}
+          PYPROJECT_OPTIONAL_EXTRAS: ${{ steps.pyproject_optional_extras.outcome }}
         run: |
-          printf 'root_runtime=%s dev=%s integrations=%s hf_space=%s legacy=%s pyproject=%s\n' "$ROOT_RUNTIME" "$DEV" "$INTEGRATIONS" "$HF_SPACE" "$LEGACY" "$PYPROJECT"
-          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$INTEGRATIONS" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ]; then
+          printf 'root_runtime=%s dev=%s integrations=%s hf_space=%s legacy=%s pyproject=%s optional_extras=%s\n' "$ROOT_RUNTIME" "$DEV" "$INTEGRATIONS" "$HF_SPACE" "$LEGACY" "$PYPROJECT" "$PYPROJECT_OPTIONAL_EXTRAS"
+          if [ "$ROOT_RUNTIME" != "success" ] || [ "$DEV" != "success" ] || [ "$INTEGRATIONS" != "success" ] || [ "$HF_SPACE" != "success" ] || [ "$LEGACY" != "success" ] || [ "$PYPROJECT" != "success" ] || [ "$PYPROJECT_OPTIONAL_EXTRAS" != "success" ]; then
             exit 1
           fi
