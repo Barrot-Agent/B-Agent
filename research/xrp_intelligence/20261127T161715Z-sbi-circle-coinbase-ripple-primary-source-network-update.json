@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "barrot.xrp.primary_source_corporate_relationship_reconciliation",
-  "observed_at_utc": "2026-11-28T15:17:37.801Z",
+  "observed_at_utc": "2026-11-28T15:25:46.033Z",
   "repository_context": {
     "repository": "Barrot-Agent/B-Agent",
     "branch": "integration/xrp-event-provenance-successor-20261128",
@@ -532,7 +532,8 @@
     "Standard Chartered now publicly describes institutional USDC access/custody/minting through its Circle relationship and live institutional RLUSD custody on XRPL; this makes the bank a shared infrastructure counterparty for two stablecoin issuers, but it is not evidence of a direct Circle-Ripple partnership or shared XRP liquidity.",
     "The RLUSD/LMAX collateral-mirroring arrangement is planned and subject to documentation, testing, law, internal approvals and jurisdictional readiness; do not count it as live collateral demand or XRP demand.",
     "SBI's JPYSC/BlackRock tokenized-MMF MOU, Open Standard participation, SMFG alliance and Erebor investment expand non-XRP stablecoin and tokenized-cash alternatives; this is disconfirming context for any assumption that SBI's digital-asset expansion necessarily requires XRP.",
-    "SBI and Coinbase are linked indirectly through Open Standard co-membership, while no direct bilateral SBI-Coinbase agreement was identified in the inspected primary sources."
+    "SBI and Coinbase are linked indirectly through Open Standard co-membership, while no direct bilateral SBI-Coinbase agreement was identified in the inspected primary sources.",
+    "An AInvest AI-assisted secondary article dated 2026-08-23 uses the exact phrase 'actual capital' to characterize Ripple's RLUSD business; it is commentary, not a primary capital-flow disclosure, and is not admitted as evidence of a financing or token flow."
   ],
   "unresolved_questions": [
     "Current post-2025 SBI Ripple equity percentage and voting/economic rights.",
@@ -546,7 +547,8 @@
     "What realized USDC mint/redeem volume is routed through Standard Chartered's DIFC service, and when does it expand to other markets?",
     "Does the SBI/Startale/BlackRock JPYSC-tokenized-MMF MOU progress to a funded technical pilot or production settlement, and which ledger/network is selected?",
     "Which stablecoins, if any, are supported by Erebor's stablecoin deposit/withdrawal capability, and is there any disclosed XRP integration?",
-    "Is there any direct Circle-Ripple commercial, technical or equity relationship beyond both companies' separate use of shared banks and institutional counterparties?"
+    "Is there any direct Circle-Ripple commercial, technical or equity relationship beyond both companies' separate use of shared banks and institutional counterparties?",
+    "What original public source, if any, was intended by the exact phrase 'actual capital' beyond the AInvest secondary-commentary occurrence identified on 2026-08-23?"
   ],
   "sources": [
     {
@@ -772,6 +774,16 @@
       "claim_scope": "SBI Holdings USA announced a USD 100 million investment in Erebor Bank; SBI describes stablecoin deposits/withdrawals and 24/7 blockchain settlement at the bank, with deposits above USD 7 billion as of September 2026.",
       "raw_bytes_retained": false,
       "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "AInvest",
+      "published_at": "2026-08-23",
+      "type": "AI_ASSISTED_SECONDARY_COMMENTARY",
+      "url": "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/",
+      "independence_group": "ainvest_editorial_2026-08-23",
+      "claim_scope": "Contains the exact phrase 'Ripple's actual capital is flowing into its regulated stablecoin, RLUSD'; this is editorial characterization, not a primary capital-flow or financing disclosure.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
     }
   ],
   "provenance": {
@@ -779,10 +791,57 @@
     "raw_source_sha256": null,
     "raw_bytes_retained": false,
     "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT",
-    "captured_at_utc": "2026-11-28T15:17:37.801Z",
-    "source_independence": "Counterparty pairs were used where available (SBI/Circle, Coinbase/Ripple, Ripple/BNY, Circle/DBS, Circle/Paribu). These are independent publisher records of announcements, but they are not independent measurements of realized flows. Additional Standard Chartered/Circle and Standard Chartered/Ripple/LMAX records are co-publisher/counterparty announcements; they confirm announced service scope but are not independent measurements of realized balances or flows. SBI/BlackRock and SBI/Erebor records are issuer/participant announcements, not independent usage evidence.",
-    "disagreements": "Company claims and future plans are preserved separately from realized balance, flow, custody and collateral evidence. Live RLUSD custody is separated from planned LMAX collateral eligibility; SBI's tokenized-MMF and bank initiatives are separated from measured XRP usage.",
+    "captured_at_utc": "2026-11-28T15:25:46.033Z",
+    "source_independence": "Counterparty pairs were used where available (SBI/Circle, Coinbase/Ripple, Ripple/BNY, Circle/DBS, Circle/Paribu). These are independent publisher records of announcements, but they are not independent measurements of realized flows. Additional Standard Chartered/Circle and Standard Chartered/Ripple/LMAX records are co-publisher/counterparty announcements; they confirm announced service scope but are not independent measurements of realized balances or flows. SBI/BlackRock and SBI/Erebor records are issuer/participant announcements, not independent usage evidence. The AInvest exact-phrase hit is AI-assisted secondary commentary and is retained only as a phrase-search lead, not as primary or independent capital-flow evidence.",
+    "disagreements": "Company claims and future plans are preserved separately from realized balance, flow, custody and collateral evidence. Live RLUSD custody is separated from planned LMAX collateral eligibility; SBI's tokenized-MMF and bank initiatives are separated from measured XRP usage. The phrase 'actual capital' in AInvest is not treated as a primary accounting, financing or XRP-flow statement.",
     "model_eligible": false,
     "directional_forecast_issued": false
+  },
+  "exact_phrase_research": {
+    "ASK Coin": {
+      "status": "UNRESOLVED_NO_PRIMARY_EXACT_MATCH",
+      "findings": [
+        "No exact primary-source match for an XRP/SBI-related 'ASK Coin' was established in this pass.",
+        "Permission's official documentation describes an ASK token on its own ecosystem; it is a candidate referent only, with no verified XRP, Ripple or SBI relationship."
+      ],
+      "sources": [
+        "https://docs.permission.ai/ask-token"
+      ],
+      "model_eligible": false
+    },
+    "actual capital": {
+      "status": "SECONDARY_PHRASE_HIT_PRIMARY_REFERENT_UNRESOLVED",
+      "exact_phrase_hit": {
+        "publisher": "AInvest",
+        "published_at": "2026-08-23",
+        "title": "Ripple's 75 Licenses Don't Serve the Token — They Serve the Company",
+        "context": "The article says: 'Ripple's actual capital is flowing into its regulated stablecoin, RLUSD.'",
+        "url": "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/"
+      },
+      "assessment": [
+        "The page identifies its author as an AI agent and says the article uses LLM synthesis with human review.",
+        "The phrase is rhetorical commentary about RLUSD; the article does not identify a specific capital transaction, capital-flow dataset or audited financing amount in that sentence.",
+        "No primary SEC filing or issuer disclosure using this exact phrase as a transaction label was identified in this pass."
+      ],
+      "sources": [
+        "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/"
+      ],
+      "model_eligible": false
+    },
+    "SBIC, ChatGPT SBIC": {
+      "status": "PRIMARY_CONTEXT_RESOLVED_NO_PARTNERSHIP",
+      "findings": [
+        "Tokyo SBIC East's official 2025 manufacturing generative-AI training page includes ChatGPT use in the curriculum and states that non-investee companies were not eligible for the course.",
+        "This supports a training/course context, not a partnership with OpenAI, ChatGPT or SBI Holdings.",
+        "SBIC East/Central/West remain separate regional investment-development companies, not SBI Holdings."
+      ],
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/company/about/",
+        "https://www.sbic-wj.co.jp/profiles/profile/"
+      ],
+      "model_eligible": false
+    }
   }
 }
