@@ -1,3 +1,65 @@
+# RUN 18 — AUTHORITATIVE CHECKPOINT — 2026-11-28 13:28 UTC
+
+## Current repository and integration state — EXECUTED / VERIFIED
+
+- Main remains `afe0c00141f8c369ddfefdc4b31d848060ae59f1`. The recursive Git tree was fetched in full: 3,168 entries (2,967 blobs, 201 trees), `truncated=false`. Repository metadata confirms the default branch is `main`, public visibility, and the connected GitHub principal has repository admin/push access.
+- Current open-PR search returns five PRs: #1717, #1716, #1715, #1705 and #1702. No new branch or PR was created.
+- #1715 remains the canonical three-mission/runtime handoff workstream. Head `4a822b9e2caa282c1d8570b14f14df10caf4a91b`, 35 commits ahead / 0 behind main, five changed paths. Exact-head CI #46143226261, dependency audit #46143226269, conflict-integrity #46143226253, money audit #46143226249 and gated-merge workflow #46143226244 all completed successfully on that exact head. No independent review is recorded.
+- #1716 remains the consolidated XRP event-provenance/RLUSD successor, head `d8b47e5a5d80b786d6fefb1fc1fadf5094f8deea`, eight commits ahead / zero behind, 20 changed paths. Its handoff records exact-head full-suite and safety-gate success; the event capture itself remains partial (7/13 curated pages passed markers, four marker mismatches, two HTTP 403 responses).
+- #1717 remains the optional-dependency audit workstream, head `719c32fe4f1f6b846065c6f3fab727b607aab38d`, two commits ahead / zero behind. Its prior exact-head full-suite/audit checks are recorded as successful.
+- #1705 is superseded by #1716 but remains open pending successor merge and verification on main. #1702 is only partially superseded by #1715; its unique archived snapshots, index/docs and research/test work must be retained. Do not close either source PR before the required successor merge and main verification. #1706 and #1708 are not in the current open-PR search.
+- The repository's visible fallback ruleset is disabled. The branch-protection endpoint still returns HTTP 403, so required review/approval settings cannot be independently verified. No independent review is recorded for the active successor PRs. A main push is known to trigger GitHub Pages deployment; that external side effect has not been authorized. No merge is permitted on the evidence currently available.
+
+## Latest mainline execution — 2026-11-28
+
+### XRP public ingestion — EXECUTED / VERIFIED
+
+- Mainline XRP Public Market Ingestion run [#46148370937](https://github.com/Barrot-Agent/B-Agent/actions/runs/46148370937) succeeded on main SHA `afe0c00141f8c369ddfefdc4b31d848060ae59f1`.
+- Adapter `xrp-public-market-v3.34`; parser `xrp-public-market-v3.32`. Data cutoff and capture time: **2026-11-28T13:12:00.390231Z**.
+- Receipt chain verified with **37 receipts** (21 retained raw payloads, 16 digest-only); cross-run sequence **189**, status `CONTINUED`. Chain-head SHA-256: `a576a7878eb26b7283822341a7573014d755be6377dd7dba7098dc68271a93a2`.
+- Feature-store checkpoint snapshot `a7c84e9261c33d577d401441c9510fbb907cf470e116b35d76acd73c44417748`; SQLite integrity `ok`; cumulative snapshot count **189**. The per-run feature-store/receipt artifacts were uploaded successfully.
+- Event timeline remains **150 events / 117 scenarios**, with **0 verified event-to-receipt links**; event timeline is not model-eligible. Source failures increased to **19**. SEC EDGAR remains `BLOCKED_CONFIGURATION` (three SEC-specific failures, zero raw filing receipts, no authorized contact identity). Morpho CBXRP remains `BLOCKED_INDEXER_BLOCK_MISMATCH`.
+- Walk-forward report contains **716** forecast-origin rows but remains `PARTIAL_OR_BLOCKED`; drift remains `INSUFFICIENT_DATA`. Forecast model eligibility is false and `forecast_issued=false`. No directional forecast, paper trade or real-money action occurred.
+- The cache service refused a new feature-store cache reservation because the configured cache budget is exhausted/read-only. Cache save therefore failed with a warning. Artifact publication succeeded, so the next run must continue using the existing latest-successful artifact restore path; do not treat the cache as durable or claim cache continuity. This is a storage-budget limitation, not evidence of a parser failure.
+
+### Cross-analysis and service health — EXECUTED
+
+- Cross Analysis run [#46146730402](https://github.com/Barrot-Agent/B-Agent/actions/runs/46146730402) succeeded on main; output remains descriptive-only and forecast-ineligible.
+- Pillars Consistency Check run [#46147523662](https://github.com/Barrot-Agent/B-Agent/actions/runs/46147523662) failed only at the public Hugging Face Space runtime probe: `stage=BUILD_ERROR`. GitHub-main source marker and source-fiction checks passed. GitHub App and Databricks probes were skipped because manual opt-in is required. The failure does not identify the build cause and does not authorize a Space restart or deployment; investigate read-only logs/configuration first.
+
+## Audio and continuity status — RECONCILED
+
+- Main code audit confirms deterministic original composition, an 80-bar section-form composer, abstract musical manifests, MIDI export with section markers, FluidSynth rendering, float32 stereo WAV bundle export, sample-aligned instrument stems, SHA-256 metadata and technical QC. The bundle renderer supports per-instrument SoundFont mapping in code. No new full-song render was executed on this current main SHA in this run.
+- Existing full-song reference bundle remains prior evidence only: 175.545 seconds, 80 bars, 110 BPM, D minor, 4/4, 44.1 kHz, nine aligned stems, 11 MIDI tracks and ten markers; zero clipped samples, peak -6.025 dBFS, true peak -6.000 dBTP, -22.443 LUFS, LRA 7.839 LU, stereo correlation 0.734, mono fold-down loss -0.621 dB, stem-sum correlation 0.999979 and relative RMS error 0.00651. This was not rerendered on the current main SHA and does not establish professional listening acceptance. The audio analysis adapter extracts abstract onset/tempo/chroma features; it is not a stem separator or polyphonic transcription engine. No native DAW project is implemented. Sample/SoundFont rights still require independent verification; no music marketing.
+- Main mission manifest continues to encode three active priority-1 missions and the Barrot V3 shared foundation. The #1715 branch carries the runtime prompt correction, fail-closed mission-manifest validation, current nine-platform map and handoff refresh; those changes are not yet on main.
+- Continuity remains verified only for fresh-process recovery and round-robin advancement in one shared workspace. Cross-host synchronization/transfer and provider-to-provider state handoff have not been executed or verified.
+- Nine-platform map: only ChatGPT-to-GitHub is authenticated and data-flow tested. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested as model/platform integrations. The Hugging Face Space runtime probe currently reports BUILD_ERROR; this is distinct from a tested platform integration.
+
+## Commercial / Sellbird — STATUS UNCHANGED
+
+- Sellbird remains the separate `ethanplusai/sellbird` prospecting/outreach application, not a persistence/approval framework. The last verified audit recorded v0.5.0, AGPL-3.0-only and Python >=3.11. It has not been installed or authenticated in this run.
+- Scope remains Barrot technology only. No verified prospects, qualification, outreach approval, sends, replies, meetings, proposals or collected revenue are recorded. Outbound remains paused. No paid lookup or mailbox action occurred. Music, songwriting/background vocals, TrekFlex and all other separate ventures remain excluded.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions; Barrot V3 as shared execution/orchestration/safety/provenance/authorization/verification foundation; fail-closed XRP forecast gates; professional editable-audio deliverable and evaluation workflow; cross-host continuity acceptance; nine-platform least-privilege evidence map; Barrot-only Sellbird scope.
+- **EXECUTED:** fetched current main metadata, full recursive tree, current open-PR inventory, branch ancestry and overlapping path summaries; inspected main mission manifest, current handoff branch, XRP ingestion/feature-store/walk-forward code, audio composer/renderer/bundle/MIDI adapters, dependency manifest and Pillars workflow/script; inspected exact-main XRP ingestion and Cross Analysis runs, Pillars failure logs, and #1715 exact-head checks.
+- **VERIFIED:** main SHA/tree; five open PRs and their classifications; #1715 exact-head automated checks; XRP run #46148370937 receipt-chain and SQLite integrity; current event-linkage, source-failure, drift and walk-forward blockers; Pillars failure reason `hf_space stage=BUILD_ERROR`; audio code capabilities and the limits of prior render evidence; three-mission manifest; workspace-only continuity; only ChatGPT-to-GitHub live data flow.
+- **NOT VERIFIED:** independent PR approval/required branch-protection settings; authorization for the known Pages deployment side effect; a full raw-receipt-to-feature-store rebuild or external immutable anchor; complete event-to-receipt linkage; predictive superiority/calibration/drift; SEC primary-document ingestion; new audio render on current main, blind/level-matched listening acceptance, independently cleared sample rights or native DAW project; cross-host state transfer; eight other platform integrations; Sellbird prospecting, outreach or revenue.
+
+## Next concrete actions
+
+1. XRP: repair event-to-receipt linkage and implement a reproducible raw-artifact-to-feature-store rebuild; retain the no-forecast gate and artifact restore fallback while cache writes are blocked.
+2. Audio: execute a new reproducible full-song render on an exact current-main or reviewed integration head using rights-cleared, hash-verified assets; inspect mix/stems/MIDI/QC and obtain level-matched listening feedback before claiming quality improvement.
+3. Continuity: execute a signed state transfer between two independent hosts and test stale/conflict handling without overwriting unresolved records.
+4. Runtime: diagnose the Hugging Face Space BUILD_ERROR from read-only build/runtime evidence; do not restart or deploy without the specific authorization.
+5. Integration: obtain independent review, verify actual branch-protection requirements and obtain explicit authorization for the Pages deployment side effect before any merge. Keep #1715/#1716/#1717 on their existing branches; close only exact superseded PRs after verified successor merge.
+6. Commercial: keep Sellbird uninstalled/outbound paused until a verified Barrot pilot deliverable, qualified audience, compliance safeguards and explicit campaign approval exist.
+
+No merge, branch rewrite, force-push, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, external model dispatch, prospecting, outbound message, paper trade, funds transfer or real-money action occurred.
+
+---
+
 # RUN 16 — AUTHORITATIVE CHECKPOINT — 2026-11-28 09:27 UTC
 
 ## Run 17 — 2026-11-28 12:00 UTC
