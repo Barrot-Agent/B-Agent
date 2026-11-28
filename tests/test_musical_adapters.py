@@ -225,7 +225,7 @@ class AudioRenderTests(unittest.TestCase):
             target = Path(directory) / "render.wav"
             with patch.dict(sys.modules, modules), patch(
                 "barrot_agent.creative.audio_render.export_midi",
-                side_effect=lambda manifest, path: path.write_bytes(b"midi"),
+                side_effect=lambda manifest, path, program_map=None: path.write_bytes(b"midi"),
             ), patch(
                 "barrot_agent.creative.audio_render._render_midi_stereo",
                 return_value=rendered,
