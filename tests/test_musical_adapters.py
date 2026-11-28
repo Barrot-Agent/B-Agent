@@ -515,8 +515,14 @@ class FullSongProductionTests(unittest.TestCase):
             sys.modules, {"pretty_midi": fake, "mido": fake_mido}
         ):
             target = Path(directory) / "full-song.mid"
-            export_midi(manifest, target)
+            export_midi(manifest, target, program_map={"keys": 0})
             self.assertTrue(target.is_file())
+            program_by_name = {
+                instrument.name: instrument.program
+                for instrument in instances[0].instruments
+            }
+            self.assertEqual(program_by_name["keys"], 0)
+            self.assertEqual(program_by_name["bass"], 33)
 
         marker_track = next(
             track for track in midi_files[0].tracks
