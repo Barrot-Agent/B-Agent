@@ -43,6 +43,7 @@ def _fake_bundle_modules() -> dict[str, ModuleType]:
         def __init__(self, name: str, notes: list[object]) -> None:
             self.name = name
             self.notes = notes
+            self.program = {"keys": 4, "pad": 89}.get(name, 0)
 
     class FakeMidi:
         def __init__(
