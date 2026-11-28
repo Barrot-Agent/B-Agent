@@ -430,6 +430,119 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         not warnings
         for warnings in metadata["quality_warnings"]["stems"].values()
     )
+    # Render a second full-song bundle with only the keys part routed to the
+    # source-claimed CC0 upright piano. Keep the baseline bundle untouched so
+    # this is a controlled timbral A/B, not an asserted quality improvement.
+    routed_output_value = os.environ.get("BARROT_AUDIO_FULL_SONG_ROUTED_OUTPUT")
+    if routed_output_value:
+        upright_value = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT")
+        upright_source = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_SOURCE", "")
+        upright_license = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_LICENSE", "")
+        routed_qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_ROUTED_QC_OUTPUT")
+        assert upright_value and routed_qc_output, "Routed full-song output requires the upright SoundFont and QC paths"
+        upright = Path(upright_value)
+        assert upright.is_file()
+        assert upright_license == "CC0-1.0"
+        assert "freepats.zenvoid.org" in upright_source
+        assert "keys" in manifest.instruments
+
+        routed = render_production_bundle(
+            manifest,
+            Path(routed_output_value),
+            soundfont_path=soundfont,
+            sample_rate=44100,
+            headroom_dbfs=-6.0,
+            soundfont_source=source_name,
+            soundfont_license=license_name,
+            soundfont_map={"keys": upright},
+            soundfont_map_metadata={
+                "keys": {"source": upright_source, "license": upright_license}
+            },
+        )
+        routed_rate, routed_samples = wavfile.read(routed.mix_path)
+        assert routed_rate == sample_rate
+        assert routed_samples.shape == samples.shape
+        assert routed.duration_seconds == pytest.approx(result.duration_seconds, abs=1e-6)
+        assert _sha256(routed.midi_path) == _sha256(result.midi_path)
+        assert len(routed.stems) == len(result.stems) == 9
+        assert np.isfinite(routed_samples).all()
+        assert int(np.count_nonzero(np.abs(routed_samples) >= 1.0)) == 0
+
+        routed_metadata = json.loads(routed.metadata_path.read_text(encoding="utf-8"))
+        assert routed_metadata["quality_status"] == "PASS"
+        assert routed_metadata["stem_alignment"]["aligned"] is True
+        assert routed_metadata["stem_alignment"]["sample_count"] == samples.shape[0]
+        baseline_stems = {
+            item["instrument"]: result.directory / item["path"]
+            for item in metadata["stems"]
+        }
+        routed_stems = {
+            item["instrument"]: routed.directory / item["path"]
+            for item in routed_metadata["stems"]
+        }
+        assert set(baseline_stems) == set(routed_stems) == set(manifest.instruments)
+        for stem_path in routed_stems.values():
+            stem_rate, stem_samples = wavfile.read(stem_path)
+            assert stem_rate == sample_rate
+            assert stem_samples.shape == samples.shape
+            assert np.isfinite(stem_samples).all()
+            assert int(np.count_nonzero(np.abs(stem_samples) >= 1.0)) == 0
+
+        baseline_keys_rate, baseline_keys = wavfile.read(baseline_stems["keys"])
+        routed_keys_rate, routed_keys = wavfile.read(routed_stems["keys"])
+        assert baseline_keys_rate == routed_keys_rate == sample_rate
+        assert baseline_keys.shape == routed_keys.shape == samples.shape
+        assert not np.array_equal(baseline_keys, routed_keys)
+        assert not np.array_equal(samples, routed_samples)
+
+        routed_assets = {
+            item["instrument"]: item
+            for item in routed_metadata["rights"]["soundfont_assets"]
+        }
+        assert routed_assets["keys"]["sha256"] == _sha256(upright)
+        assert routed_assets["keys"]["source"] == upright_source
+        assert routed_assets["keys"]["license"] == "CC0-1.0"
+        assert routed_assets["keys"]["status"] == "CALLER_SUPPLIED_UNVERIFIED"
+        assert routed_assets["bass"]["sha256"] == metadata["rights"]["soundfont_sha256"]
+
+        baseline_lufs = float(metadata["mix"]["loudness"]["integrated_lufs"])
+        routed_lufs = float(routed_metadata["mix"]["loudness"]["integrated_lufs"])
+        keys_difference = routed_keys.astype(np.float64) - baseline_keys.astype(np.float64)
+        keys_difference_rms = float(np.sqrt(np.mean(np.square(keys_difference))))
+        routed_qc = {
+            "status": "VERIFIED_FULL_SONG_TIMBRAL_VARIANT",
+            "test": "full_song_keys_routed_to_source_claimed_cc0_upright_piano",
+            "renderer": "FluidSynth via pyfluidsynth",
+            "sample_rate_hz": sample_rate,
+            "duration_seconds": routed.duration_seconds,
+            "tempo_bpm": manifest.bpm,
+            "key": manifest.scale,
+            "time_signature": "4/4",
+            "section_count": len(manifest.sections),
+            "stem_count": len(routed.stems),
+            "baseline_mix_sha256": _sha256(result.mix_path),
+            "routed_mix_sha256": _sha256(routed.mix_path),
+            "baseline_midi_sha256": _sha256(result.midi_path),
+            "routed_midi_sha256": _sha256(routed.midi_path),
+            "baseline_keys_stem_sha256": _sha256(baseline_stems["keys"]),
+            "routed_keys_stem_sha256": _sha256(routed_stems["keys"]),
+            "keys_stem_difference_rms": keys_difference_rms,
+            "baseline_integrated_lufs": baseline_lufs,
+            "routed_integrated_lufs": routed_lufs,
+            "routed_playback_gain_db_to_match_baseline_loudness": round(baseline_lufs - routed_lufs, 6),
+            "playback_gain_applied": False,
+            "stem_alignment": routed_metadata["stem_alignment"],
+            "soundfont_assets": routed_metadata["rights"]["soundfont_assets"],
+            "license_evidence": "The FreePats source page states CC0 1.0; source metadata is recorded, not independently legally audited.",
+            "native_daw_project_available": False,
+            "listening_evaluation": "NOT_PERFORMED",
+            "artistic_quality_improvement_claimed": False,
+        }
+        Path(routed_qc_output).write_text(
+            json.dumps(routed_qc, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+
     qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_QC_OUTPUT")
     assert qc_output, "BARROT_AUDIO_FULL_SONG_QC_OUTPUT must be set in the dedicated CI job"
     Path(qc_output).write_text(json.dumps(qc, indent=2, sort_keys=True) + "\n")
