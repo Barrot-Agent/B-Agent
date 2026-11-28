@@ -24,7 +24,7 @@ def test_youtube_channel_page_verifies_channel_metadata_not_legal_identity():
     assert "strong but not legal-identity verified" in mission_lower
     assert "21 earlier seed references remain candidate-only" in mission_lower
     assert "remains probable rather than platform-verified" not in mission_lower
-    assert "not treat the inventory as complete" in mission
+    assert "not treat the inventory as complete" in mission_lower
     assert creator["channel_identity_status"] == "PLATFORM_METADATA_VERIFIED_SELF_IDENTIFIED_CHANNEL"
     assert creator["youtube_channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
     assert creator["youtube_handle"] == "@drkamilahstevenson"
