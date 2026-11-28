@@ -458,13 +458,41 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
             soundfont_map_metadata={
                 "keys": {"source": upright_source, "license": upright_license}
             },
+            program_map={"keys": 0},
         )
         routed_rate, routed_samples = wavfile.read(routed.mix_path)
         assert routed_rate == sample_rate
         assert routed_samples.shape == samples.shape
         assert routed.duration_seconds == pytest.approx(result.duration_seconds, abs=1e-6)
-        assert _sha256(routed.midi_path) == _sha256(result.midi_path)
         assert len(routed.stems) == len(result.stems) == 9
+        routed_midi = pretty_midi.PrettyMIDI(str(routed.midi_path))
+        assert [item.name for item in routed_midi.instruments] == [
+            item.name for item in midi.instruments
+        ]
+        for baseline_instrument, routed_instrument in zip(
+            midi.instruments, routed_midi.instruments
+        ):
+            baseline_notes = [
+                (note.pitch, note.start, note.end, note.velocity)
+                for note in baseline_instrument.notes
+            ]
+            routed_notes = [
+                (note.pitch, note.start, note.end, note.velocity)
+                for note in routed_instrument.notes
+            ]
+            assert routed_notes == baseline_notes
+            expected_program = 0 if routed_instrument.name == "keys" else baseline_instrument.program
+            assert routed_instrument.program == expected_program
+
+        routed_midi_file = mido.MidiFile(str(routed.midi_path))
+        routed_markers = []
+        for track in routed_midi_file.tracks:
+            absolute_tick = 0
+            for message in track:
+                absolute_tick += message.time
+                if message.type == "marker":
+                    routed_markers.append((message.text, absolute_tick))
+        assert routed_markers == markers
         assert np.isfinite(routed_samples).all()
         assert routed.peak_level <= ceiling + 1e-4
         assert routed.true_peak_level <= ceiling + 2e-3
@@ -526,6 +554,10 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
             "routed_mix_sha256": _sha256(routed.mix_path),
             "baseline_midi_sha256": _sha256(result.midi_path),
             "routed_midi_sha256": _sha256(routed.midi_path),
+            "note_events_match_baseline": True,
+            "section_markers_match_baseline": True,
+            "midi_program_overrides": routed_metadata["midi"]["program_overrides"],
+            "midi_track_programs": routed_metadata["midi"]["track_programs"],
             "baseline_keys_stem_sha256": _sha256(baseline_stems["keys"]),
             "routed_keys_stem_sha256": _sha256(routed_stems["keys"]),
             "keys_stem_difference_rms": keys_difference_rms,
