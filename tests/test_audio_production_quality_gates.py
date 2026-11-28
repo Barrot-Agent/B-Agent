@@ -307,10 +307,26 @@ def test_bundle_rejects_missing_soundfont_and_invalid_configuration_before_outpu
             soundfont_path=soundfont,
             headroom_dbfs=1.0,
         )
+    with pytest.raises(ValueError, match="unknown instruments"):
+        render_production_bundle(
+            _manifest(),
+            tmp_path / "bad-program-name",
+            soundfont_path=soundfont,
+            program_map={"not-a-track": 0},
+        )
+    with pytest.raises(ValueError, match="0 to 127"):
+        render_production_bundle(
+            _manifest(),
+            tmp_path / "bad-program-number",
+            soundfont_path=soundfont,
+            program_map={"keys": 128},
+        )
     assert not (tmp_path / "missing").exists()
     assert not (tmp_path / "bad-rate").exists()
     assert not (tmp_path / "duplicate").exists()
     assert not (tmp_path / "bad-headroom").exists()
+    assert not (tmp_path / "bad-program-name").exists()
+    assert not (tmp_path / "bad-program-number").exists()
 
 
 def test_bundle_reports_missing_optional_music_dependencies(tmp_path: Path) -> None:
