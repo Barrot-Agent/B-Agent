@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-28T00:02:00Z",
-  "capture_basis": "Run 5: re-fetched main, complete recursive tree, current code, all nine open PRs, changed paths, branch ancestry and overlaps; verified main full-suite/security evidence and exact-head #1715 checks; inspected latest successful XRP ingestion raw/receipt/event/feature-store artifacts and audio production bundle/QC; verified continuity ledger on main. Updated the existing #1715 handoff branch only. No merge, deployment, external platform transfer or outreach.",
+  "captured_at_utc": "2026-11-28T01:11:07Z",
+  "capture_basis": "Run 6: re-fetched current main SHA and complete recursive tree (3,168 entries, not truncated); inspected all nine open PRs, current ancestry/overlap, current main CI and security runs, exact #1715 head tests, latest scheduled XRP ingestion and cross-analysis, audio renderer/bundle code, continuity ledger/tests, and Sellbird v0.5.0 source/release/security controls. Updated only the existing #1715 handoff branch. No merge, deployment, external platform transfer, prospecting or outreach.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -26,7 +26,7 @@
       "latest_main_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966",
       "latest_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
       "latest_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
-      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081057561",
+      "latest_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46088785474",
       "latest_pr_1699_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991841",
       "latest_pr_1699_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991844",
       "latest_pr_1699_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/45493991955",
@@ -46,7 +46,7 @@
       "latest_handoff_successor_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637153",
       "latest_handoff_successor_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637018",
       "latest_handoff_successor_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46067637048",
-      "latest_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46079145362",
+      "latest_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46090331150",
       "latest_handoff_successor_pre_run4_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46074826560",
       "latest_xrp_research_pr_exact_head_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46044062019",
       "latest_xrp_raw_artifact": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081057561/artifacts/15237241957",
@@ -55,14 +55,15 @@
       "latest_xrp_feature_store": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081057561/artifacts/15236747532",
       "latest_audio_bundle": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107/artifacts/15226626401",
       "latest_audio_qc": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107/artifacts/15226436259",
-      "latest_pr_1715_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081439196",
-      "latest_pr_1715_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081439177",
-      "latest_pr_1715_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081439159",
-      "latest_pr_1715_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081459734",
-      "latest_pr_1715_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46081439161"
+      "latest_pr_1715_full_suite": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46086402160",
+      "latest_pr_1715_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46086402155",
+      "latest_pr_1715_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46086402104",
+      "latest_pr_1715_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46086402137",
+      "latest_pr_1715_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46086402119",
+      "latest_sellbird_release": "https://github.com/ethanplusai/sellbird/releases/tag/v0.5.0"
     },
     "branch_protection_summary": {
-      "observed_at_utc": "2026-11-28T00:02:00Z",
+      "observed_at_utc": "2026-11-28T01:11:07Z",
       "source": "GET /repos/Barrot-Agent/B-Agent/branches/main",
       "branch_protected": true,
       "protection_enabled": true,
@@ -101,23 +102,23 @@
       "pages_deployment_conclusion": "success",
       "pages_deployment_was_automatic_merge_side_effect": true,
       "future_merge_requires_explicit_deployment_approval": true,
-      "latest_xrp_ingestion_run_id": 46081057561,
+      "latest_xrp_ingestion_run_id": 46088785474,
       "latest_xrp_ingestion_conclusion": "success",
-      "latest_xrp_data_cutoff_utc": "2026-11-27T23:11:50.773045Z",
-      "latest_xrp_feature_store_cutoff_utc": "2026-11-27T22:13:19.195484Z",
-      "latest_xrp_snapshot_id": "16d98bc244928b237f3a7b64c24b6ff378b0c6a0881b2fcdca6cc01db5c84d60",
-      "latest_xrp_feature_store_snapshot_count": 174,
-      "latest_xrp_eligible_feature_record_count": 106,
-      "latest_xrp_excluded_feature_record_count": 384,
-      "latest_xrp_receipt_count": 37,
-      "latest_xrp_retained_raw_payload_count": 21,
+      "latest_xrp_data_cutoff_utc": "2026-11-28T00:36:57.690518Z",
+      "latest_xrp_feature_store_cutoff_utc": "2026-11-28T00:36:57.727406Z",
+      "latest_xrp_snapshot_id": "f23d395d3107dcf18ee9e8e0c2e38cae9898d720f019ff97542b7ad7c4c79708",
+      "latest_xrp_feature_store_snapshot_count": 176,
+      "latest_xrp_eligible_feature_record_count": 101,
+      "latest_xrp_excluded_feature_record_count": 450,
+      "latest_xrp_receipt_count": 40,
+      "latest_xrp_retained_raw_payload_count": 24,
       "latest_xrp_digest_only_receipt_count": 16,
-      "latest_xrp_source_failure_count": 18,
+      "latest_xrp_source_failure_count": 21,
       "latest_xrp_event_count": 150,
       "latest_xrp_verified_event_receipt_links": 0,
       "latest_xrp_receipt_chain_continuity": "CONTINUED",
       "latest_xrp_per_source_independent_timestamp_anchor": false,
-      "latest_xrp_walk_forward_rows": 660,
+      "latest_xrp_walk_forward_rows": 1788,
       "latest_xrp_walk_forward_status": "PARTIAL_OR_BLOCKED",
       "latest_xrp_drift_feature_count": 206,
       "latest_xrp_drift_evaluated_feature_count": 0,
@@ -129,7 +130,7 @@
       "latest_xrp_morpho_snapshot_status": "BLOCKED_INDEXER_BLOCK_MISMATCH",
       "latest_xrp_morpho_model_eligible": false,
       "actions_cache_write_status": "READ_ONLY_BUDGET_EXHAUSTED",
-      "cross_analysis_run_id": 46079145362,
+      "cross_analysis_run_id": 46090331150,
       "cross_analysis_conclusion": "success",
       "cross_analysis_xrp_sentiment_age_hours": 706.207,
       "cross_analysis_btc_sentiment_age_hours": 763.042,
@@ -156,23 +157,27 @@
       "current_xrp_research_pr_reviews": 0,
       "current_xrp_research_pr_model_eligible": false,
       "current_xrp_research_pr_raw_source_receipts": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT",
-      "latest_xrp_evaluation_as_of_utc": "2026-11-27T23:11:55.115326Z",
+      "latest_xrp_evaluation_as_of_utc": "2026-11-28T00:37:03.734196Z",
       "latest_xrp_previous_snapshot_id": "47ce421ec72e7bdabd8cb86dad6379ffccb44ae4608e5b2f0f20dc8eebea7b59",
-      "latest_xrp_feature_store_history_record_count": 42877,
-      "latest_xrp_delta_feature_record_count": 490,
-      "latest_xrp_input_feature_record_count": 2230,
+      "latest_xrp_feature_store_history_record_count": 43337,
+      "latest_xrp_delta_feature_record_count": 551,
+      "latest_xrp_input_feature_record_count": 2296,
       "latest_xrp_raw_only_source_count": 26,
       "latest_xrp_event_url_match_count": 11,
       "latest_xrp_event_raw_hash_present_count": 0,
       "latest_xrp_event_receipt_complete": false,
       "latest_xrp_event_linkage_status": "INCOMPLETE",
       "latest_xrp_receipt_chain_status": "PASS",
-      "latest_xrp_receipt_chain_sequence": 174,
-      "latest_xrp_receipt_chain_sha256": "fef45f6f85a3106a3fbdc525a8841b92a9c1a25ccb4653fe29f3208e40fc0187",
+      "latest_xrp_receipt_chain_sequence": 176,
+      "latest_xrp_receipt_chain_sha256": "b7ae7761a6eb5506be4f3ccffe9e84987878b0e49855083e5da3c9a82196dcb5",
       "latest_xrp_receipt_chain_head_sha256": "792b66273877215bc9df9d5b44c95038a822fbfc69b7e501ae5c0eea285fff6f",
       "latest_xrp_external_receipt_anchor_status": "NOT_ANCHORED",
       "latest_xrp_walk_forward_horizons": [
-        "1h"
+        "1h",
+        "4h",
+        "24h",
+        "7d",
+        "30d"
       ],
       "latest_xrp_forecast_model_eligible": false,
       "latest_xrp_scenario_count": 117,
@@ -183,10 +188,10 @@
       "latest_xrp_feature_store_rebuild_from_raw_artifacts_implemented": false,
       "latest_xrp_quote_basis_status": "VERIFIED",
       "latest_xrp_quote_basis_venue": "OKX",
-      "latest_xrp_quote_basis_mid_usd": 0.945418873,
-      "latest_xrp_quote_basis_spread_bps": 1.1565878693857021,
+      "latest_xrp_quote_basis_mid_usd": 0.9485151685,
+      "latest_xrp_quote_basis_spread_bps": 1.1531391761808243,
       "latest_xrp_quote_basis_independence_groups": 1,
-      "latest_xrp_quote_basis_limit": "Same-venue OKX XRP-USDT and USDT-USD synchronized top-of-book only; not full-depth liquidity or independent corroboration.",
+      "latest_xrp_quote_basis_limit": "Same-venue synchronized OKX XRP-USDT and USDT-USD top-of-book only; no depth conversion or independent corroboration.",
       "current_handoff_pr_pre_run5_head": "92857b92272410ea5d4f9d1a62f9fc67838d2b8e",
       "current_handoff_pr_pre_run5_ahead_by": 11,
       "current_handoff_pr_pre_run5_behind_by": 0,
@@ -202,7 +207,27 @@
       "current_handoff_pr_pre_run5_gated_merge": "success",
       "current_handoff_pr_pre_run5_reviews": 0,
       "current_handoff_pr_run5_update_status": "PENDING_NEW_HEAD_EXACT_CHECKS",
-      "current_handoff_pr_merge_status": "BLOCKED_NO_INDEPENDENT_REVIEW_BRANCH_PROTECTION_DETAILS_403_AND_PAGES_DEPLOYMENT_APPROVAL"
+      "current_handoff_pr_merge_status": "BLOCKED_ZERO_INDEPENDENT_REVIEWS_AND_UNAUTHORIZED_AUTOMATIC_PAGES_DEPLOYMENT",
+      "latest_xrp_event_url_capture_time_match_count": 0,
+      "latest_xrp_sec_source_failure_count": 6,
+      "current_handoff_pr_head": "17f55b98c33833933b17b1e6e649915cf15e2867",
+      "current_handoff_pr_ahead_by": 13,
+      "current_handoff_pr_behind_by": 0,
+      "current_handoff_pr_reviews": 0,
+      "current_handoff_pr_full_suite_passed": 4734,
+      "current_handoff_pr_full_suite_failed": 0,
+      "current_handoff_pr_full_suite_skipped": 1,
+      "current_handoff_pr_full_suite_warnings": 11,
+      "current_handoff_pr_full_suite_subtests": 21,
+      "current_handoff_pr_coverage_percent": 74.44,
+      "current_handoff_pr_exact_checks": {
+        "ci_run_id": 46086402160,
+        "dependency_audit_run_id": 46086402155,
+        "money_audit_run_id": 46086402104,
+        "conflict_integrity_run_id": 46086402137,
+        "gated_merge_run_id": 46086402119,
+        "all_conclusions": "success"
+      }
     },
     "merged_prs": [
       {
@@ -223,8 +248,8 @@
     "current_open_prs": [
       {
         "number": 1715,
-        "classification": "ACTIVE_HANDOFF_AND_RUNTIME_MISSION_SUCCESSOR; PRE_RUN5_HEAD_CHECKS_PASSED; RUN5_UPDATE_REQUIRES_RECHECK",
-        "ahead_by": 11,
+        "classification": "ACTIVE_HANDOFF_AND_RUNTIME_MISSION_SUCCESSOR; EXACT_HEAD_CHECKS_PASSED; BLOCKED_BY_APPROVAL_AND_PAGES_DEPLOYMENT",
+        "ahead_by": 13,
         "behind_by": 0,
         "workstream": "mission handoff/runtime mission context",
         "branch": "integration/mission-handoff-refresh-20261127-run14",
@@ -238,10 +263,9 @@
         ],
         "reviews": 0,
         "merge_blockers": [
-          "Run 5 handoff update creates a new head and requires fresh exact-head checks",
-          "no independent approving review",
-          "required approval count and detailed branch protection remain unavailable (HTTP 403)",
-          "automatic GitHub Pages deployment on merge has not been explicitly authorized"
+          "zero independent reviews",
+          "detailed branch-protection endpoint HTTP 403; required approval count remains unknown",
+          "merge triggers automatic GitHub Pages deployment; no specific deployment approval"
         ],
         "pre_run5_update_head": "92857b92272410ea5d4f9d1a62f9fc67838d2b8e",
         "pre_run5_update_exact_head_full_suite": "4,734 passed; 1 skipped; 11 warnings; 21 subtests; 74.44% coverage",
@@ -252,6 +276,16 @@
           "conflict_integrity_run_id": 46081459734,
           "gated_merge_run_id": 46081439161,
           "all_conclusions": "success"
+        },
+        "head_sha": "17f55b98c33833933b17b1e6e649915cf15e2867",
+        "exact_head_full_suite": "4,734 passed; 1 skipped; 11 warnings; 21 subtests; 74.44% coverage",
+        "exact_head_checks": {
+          "ci": 46086402160,
+          "dependency_audit": 46086402155,
+          "money_audit": 46086402104,
+          "conflict_integrity": 46086402137,
+          "gated_merge": 46086402119,
+          "all": "success"
         }
       },
       {
@@ -377,7 +411,9 @@
         ]
       }
     ],
-    "current_main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1"
+    "current_main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+    "tree_entry_count": 3168,
+    "tree_truncated": false
   },
   "mission_portfolio": {
     "schema_version": "barrot.mission-portfolio.v1",
@@ -450,7 +486,12 @@
           "Verified PR #1715 pre-Run-5 head 92857b92272410ea5d4f9d1a62f9fc67838d2b8e is 11 ahead and 0 behind; exact full suite 4,734 passed, 1 skipped, 11 warnings, 21 subtests; dependency, money, conflict-integrity and gated-merge checks passed; zero reviews.",
           "Inspected main XRP ingestion #46081057561 and downloaded its raw receipts, receipt-chain index, event timeline and SQLite feature-store artifacts; confirmed forecast remains NOT_ISSUED.",
           "Downloaded and inspected the full-song WAV/stems/MIDI bundle and QC artifacts from #46054906107; technical QC passed, but no listening acceptance or native DAW project exists.",
-          "Verified #1703 continuity ledger merge remains on main; signed cross-host transfer is implemented but no independent-host transfer was executed."
+          "Verified #1703 continuity ledger merge remains on main; signed cross-host transfer is implemented but no independent-host transfer was executed.",
+          "Run 6: fetched current main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1 and complete recursive tree (3,168 entries; not truncated); read all nine open PRs and inspected changed paths/ancestry for #1715, #1702 and #1705.",
+          "Run 6: verified #1715 exact head 17f55b98c33833933b17b1e6e649915cf15e2867: full suite 4,734 passed, 1 skipped, 11 warnings, 21 subtests; 74.44% coverage; dependency, money, conflict-integrity and gated-merge checks passed; zero reviews.",
+          "Run 6: inspected latest XRP ingestion #46088785474 and parsed exact data cutoff, receipt-chain, feature-store, event-linkage, walk-forward, drift, SEC and Morpho gates; forecast remained NOT_ISSUED.",
+          "Run 6: inspected audio per-instrument SoundFont mapping in main code, continuity ledger and tests, and Sellbird v0.5.0 release, AGPL-3.0-only license, security policy, deliverability and opt-out controls.",
+          "Run 6: no external model transfer, deployment, merge, Sellbird installation, prospecting, outbound sending or real-money action."
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -665,7 +706,17 @@
       "model_eligible": false,
       "directional_forecast_issued": false
     },
-    "classification": "UNIQUE_UNREVIEWED_BLOCKED_DIVERGED"
+    "classification": "UNIQUE_UNREVIEWED_BLOCKED_DIVERGED",
+    "event_receipt_capture_implemented_on_branch_1705": true,
+    "event_receipt_capture_specs": 12,
+    "event_receipt_capture_mode": "CURATED_ALLOWLISTED_DAILY_OR_MANUAL; DIGEST_ONLY; EXACT_ID_URL_MARKER_AND_CUTOFF_VALIDATION",
+    "main_gap": "Current main lacks EVENT_SOURCE_CAPTURE_SPECS and _capture_public_event_sources; latest main event timeline has 150 events and zero verified receipt links.",
+    "integration_blockers": [
+      "PR #1705 is 48 ahead and 49 behind current main",
+      "workflow overlaps with dependency PRs #1706 and #1708",
+      "old-base full suite passed but current-main integration has not been verified",
+      "no independent review"
+    ]
   },
   "audio_production": {
     "status": "FULL_SONG_TECHNICAL_BUNDLE_VERIFIED; MUSICAL_ACCEPTANCE_NOT_VERIFIED",
@@ -737,7 +788,10 @@
       "soundfont": "Debian FluidR3_GM by Frank Wen; manifest labels MIT; license notice included; SoundFont binary not bundled",
       "manifest_rights_status": "CALLER_SUPPLIED_UNVERIFIED",
       "alternate_cc0_soundfont_routing": "Separate routing QC passed; those assets were not the full-song SoundFont"
-    }
+    },
+    "per_instrument_soundfont_mapping": "IMPLEMENTED_IN_MAIN_AND_ROUTING_QC_TESTED; full-song bundle used one SoundFont",
+    "native_daw_project_available": false,
+    "musical_acceptance": "NOT_VERIFIED; prior user rating 3/10 remains"
   },
   "continuity": {
     "status": "MERGED_ON_MAIN; LOCAL_CROSS_PROCESS_RECOVERY_VERIFIED; CROSS_HOST_SYNC_NOT_VERIFIED",
@@ -756,7 +810,8 @@
       "key exchange or encrypted transport",
       "independent-host recovery after key/guard loss"
     ],
-    "security_note": "The project-state transfer format authenticates signatures and detects tampering; it does not encrypt bundles or create a network connection. Private keys and trusted public-key registration remain externally managed."
+    "security_note": "The project-state transfer format authenticates signatures and detects tampering; it does not encrypt bundles or create a network connection. Private keys and trusted public-key registration remain externally managed.",
+    "cross_host_transfer": "IMPLEMENTED_AND_TESTED_WITH_INDEPENDENT_WORKSPACES; actual independent-host transfer, network sync and encrypted transport NOT_VERIFIED"
   },
   "commercial": {
     "scope": "BARROT_TECHNOLOGY_ONLY",
@@ -777,11 +832,35 @@
     ],
     "note": "The assessment price is unvalidated; no customer acquisition or revenue is claimed.",
     "status": "SOURCE_AUDITED_NOT_INSTALLED_OR_AUTHENTICATED; NO_PROSPECTING_EXECUTED",
-    "fastest_offer_status": "NOT_VALIDATED",
-    "pricing_note": "The $500-$750 assessment range remains a hypothesis only; do not advertise until the deliverable and pilot scope are proven."
+    "fastest_offer_status": "NOT_VALIDATED; potential Barrot data-provenance/ingestion assessment remains a pricing and deliverability hypothesis only",
+    "pricing_note": "The $500-$750 assessment range remains a hypothesis only; do not advertise until the deliverable and pilot scope are proven.",
+    "sellbird_version": "0.5.0",
+    "sellbird_release_published_at_utc": "2026-11-25T08:37:30Z",
+    "sellbird_license": "AGPL-3.0-only",
+    "sellbird_python_requirement": ">=3.11",
+    "sellbird_security_posture": "SOURCE_AUDITED; no dynamic security test",
+    "sellbird_default_sending_mode": "MANUAL_APPROVAL",
+    "sellbird_autopilot": "AVAILABLE_UPSTREAM_BUT_NOT_ENABLED",
+    "sellbird_safeguards": [
+      "deterministic pre-send gate",
+      "do-not-contact suppression",
+      "immediate opt-out handling",
+      "recipient-time-zone send windows",
+      "daily caps and sending pause/kill switch",
+      "warmup and dedicated secondary-domain guidance"
+    ],
+    "sellbird_provider_notes": [
+      "OpenStreetMap free discovery default",
+      "paid providers disclose cost before search",
+      "email verification providers Reoon/ZeroBounce/Hunter optional",
+      "Gmail/Microsoft 365/SMTP mailbox authentication required",
+      "LinkedIn browser automation carries explicit terms-of-service ban warning; do not use"
+    ],
+    "sellbird_installation": "NOT_INSTALLED",
+    "sellbird_mailbox_authentication": "NOT_CONFIGURED"
   },
   "runtime_context_integration": {
-    "status": "EXECUTED_ON_PR_1715_PRE_RUN5_HEAD; EXACT_HEAD_CHECKS_PASSED; NOT_MERGED",
+    "status": "EXECUTED_ON_PR_1715_HEAD; EXACT_HEAD_CHECKS_PASSED; NOT_MERGED",
     "changed_paths": [
       "scripts/ask_barrot.py",
       "tests/test_ask_barrot_context.py",
@@ -796,11 +875,12 @@
     "pre_run5_head": "92857b92272410ea5d4f9d1a62f9fc67838d2b8e",
     "pre_run5_exact_head_full_suite": "4,734 passed; 1 skipped; 11 warnings; 21 subtests; 74.44% coverage",
     "exact_head_checks": {
-      "ci": 46081439196,
-      "dependency_audit": 46081439177,
-      "money_audit": 46081439159,
-      "conflict_integrity": 46081459734,
-      "gated_merge": 46081439161,
+      "ci": 46086402160,
+      "full_suite": "4,734 passed; 1 skipped; 11 warnings; 21 subtests; 74.44% coverage",
+      "dependency_audit": 46086402155,
+      "money_audit": 46086402104,
+      "conflict_integrity": 46086402137,
+      "gated_merge": 46086402119,
       "all": "success"
     },
     "main_gap": "scripts/ask_barrot.py on main still states XRP is the singular highest-priority mission. The three-mission runtime loader and regression tests are on #1715 and remain unmerged.",
@@ -809,6 +889,14 @@
       "branch-protection details HTTP 403",
       "automatic Pages deployment requires explicit approval",
       "new Run 5 handoff commit must pass fresh exact-head checks"
+    ],
+    "current_head_sha": "17f55b98c33833933b17b1e6e649915cf15e2867",
+    "current_head_ahead_by": 13,
+    "current_head_behind_by": 0,
+    "merge_blockers": [
+      "zero independent reviews",
+      "branch-protection details HTTP 403; approval requirement unknown",
+      "automatic Pages deployment requires specific approval"
     ]
   }
 }
