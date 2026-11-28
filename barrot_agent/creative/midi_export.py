@@ -43,7 +43,9 @@ def export_midi(
     for name in manifest.instruments:
         is_drum = name.lower() in drum_pitches
         instrument = pretty_midi.Instrument(
-            program=supplied_programs.get(name, programs.get(name.lower(), 0)), is_drum=is_drum, name=name
+            program=supplied_programs.get(name, programs.get(name.lower(), 0)),
+            is_drum=is_drum,
+            name=name,
         )
         instruments[name] = instrument
         midi.instruments.append(instrument)
