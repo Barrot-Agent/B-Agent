@@ -3123,3 +3123,52 @@ PR #1703 is merged on main at 9265a90e363b7128b7cd6bd9b9823655d98bd1b6. Mission 
 6. Keep Sellbird Barrot-only, uninstalled and outbound paused until a verified pilot deliverable, audience, pricing, mailbox and compliance controls are approved.
 
 No merge, branch rewrite, force-push, deployment, Space restart, secret rotation, paid lookup, Kaggle submission, external model dispatch, prospecting, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+# RUN 23 — AUDIO ARTIFACT CORRECTION + XRP NETWORK UPDATE — 2026-11-28T15:21:48.799Z
+
+This checkpoint corrects the prior statement that no user-accessible full WAV/stem/MIDI bundle existed. The bundle does exist as a retained GitHub Actions artifact from merged PR #1704. It is a technical reference render, not proof of professional artistic quality.
+
+## Integrated repository and PR state — EXECUTED / VERIFIED
+
+- Current main remains `afe0c00141f8c369ddfefdc4b31d848060ae59f1`; recursive tree is 3,168 entries with `truncated=false`.
+- Main exact-head full suite [run 46055543966](https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543966): 4,725 passed, 1 skipped, 74.44% coverage. Dependency audit [46055543856](https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856) and money audit [46055543828](https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828) passed on the same SHA.
+- PR #1715 current head `49e5af2c937396556c203ca41b1baea25c7935ae`: exact-head full repository suite [run 46158272540](https://github.com/Barrot-Agent/B-Agent/actions/runs/46158272540) passed: 4,734 passed, 1 skipped, 11 warnings, 21 subtests; 74.44% coverage. Dependency, money, conflict-integrity, Pages validation-only and gated-merge checks passed. Pages job explicitly built without deployment.
+- PR #1716 research branch was extended on existing branch only, with commit `a927016778ce491c9c4cd5b4cddad4b8b5aa2851`. Eight primary-source metadata records and four institutional relationship nodes were added; current exact-head CI was still running at capture time, while dependency and money audits had passed. No new PR was created.
+- PR #1717 remains at `719c32fe4f1f6b846065c6f3fab727b607aab38d`; its exact-head full suite and technical gates passed in the prior checkpoint.
+- No merges occurred. No independent approvals were present on the active integration PRs. Detailed main branch-protection settings remain unreadable to this integration (HTTP 403). Do not merge until required approvals/protection are verified and any deployment side effect is explicitly authorized.
+
+## XRP intelligence — EXECUTED / VERIFIED
+
+- Latest successful main public-data ingestion inspected: [run 46153384590](https://github.com/Barrot-Agent/B-Agent/actions/runs/46153384590), data cutoff 2026-11-28 14:12:05 UTC; adapter v3.34, parser v3.32; 37 source receipts (21 retained raw payloads, 16 digest-only); receipt-chain sequence 190; 190 feature-store snapshots; latest snapshot 123 eligible / 367 excluded; 150 events and 117 scenarios, but zero verified event-to-receipt links. Walk-forward remains partial/blocked (720 one-hour origins); drift evaluated 0/206 features; no forecast issued.
+- Cross-analysis [run 46156805012](https://github.com/Barrot-Agent/B-Agent/actions/runs/46156805012) is a read-only analysis of checked-in legacy sentiment snapshots. XRP sentiment input is stale by 721.477 hours (latest 2026-10-29 13:23 UTC); zero recent 24-hour entries. The 1,208 XRP and 1,245 BTC historical records are not current-window features. Both legacy knowledge-signal workflows are deliberately quarantined and disabled; do not re-enable their unreceipted model-backed signal path. Current cross-analysis correctly reports `forecast_eligible=false`.
+- Existing #1716 research now records: SBI/Startale/BlackRock's exploratory JPYSC-tokenized-MMF MOU (2026-10-27); SBI's announced USD 100m Erebor Bank investment (2026-11-02); Standard Chartered/Circle institutional USDC mint/redeem access (launched 2026-07-02; relationship reported as beginning in 2023); and Standard Chartered's live RLUSD custody on XRPL through DIFC (2026-10-12), alongside a planned—not live—LMAX RLUSD collateral-mirroring integration subject to documentation, testing, law, internal approval and jurisdictional readiness. SBI Startale Marketing ownership is 55% SBI Holdings / 40% Startale / 5% SMFG. These are stablecoin/tokenized-cash network facts, not XRP demand evidence.
+- SBI/Coinbase remains an indirect Open Standard co-membership, not a demonstrated bilateral agreement. No direct Circle-Ripple partnership was identified. SBI's Ripple stake remains a historical approximately 9% disclosure; current ownership is unresolved. SBI's Ripple DLT remittance references do not by themselves prove XRP bridge-asset use.
+- Exact-phrase status remains: “ASK Coin” unresolved (Permission ASK is a candidate token referent, no XRP/SBI link); “actual capital” has no verified exact-phrase primary-source match, while Evernorth funding sources are separately reconciled; “SBIC, ChatGPT SBIC” maps to a Tokyo SBIC East training/course context, not an SBI Holdings/OpenAI partnership. Kamilah Stevenson channel mapping is strong at channel level but not legal-identity verified; only two individual video author-byline records have exact IDs, 21 older candidates remain unadmitted.
+- The new #1716 source records are web-metadata-only, not raw receipt hashes; they remain research-only and model-ineligible until byte-exact capture and event-to-receipt linkage are implemented.
+
+## Professional audio — artifact exists; artistic acceptance unverified
+
+- PR #1704 is merged on main. Its full-song render artifact is [run 46054906107 / artifact 15226626401](https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107/artifacts/15226626401), 242,109,368 bytes, retained until 2026-12-27. The archive contains `mix.wav`, nine aligned WAV stems, `composition.mid`, metadata, quality-control report and a SoundFont license notice. The artifact is available to repository users; it is not a native DAW project.
+- Verified bundle: 44.1 kHz stereo float32, 80 bars, 110 BPM, D minor, 4/4, 175.545 seconds (about 2:55); nine stems each have the same 7,741,555-frame duration; MIDI has 11 tracks (nine musical/percussion parts plus tempo/marker tracks). Mix peak -6.025 dBFS, true peak -6.000 dBTP, integrated loudness -22.443 LUFS, LRA 7.839 LU; no clipped samples. QC reports sample-aligned stems, reconstruction correlation 0.9999788 and relative RMS error 0.006507.
+- The full-song bundle uses the same FluidR3_GM SoundFont for all nine parts. Its metadata says MIT but each source is marked `CALLER_SUPPLIED_UNVERIFIED`; do not claim independent license verification. A separate routing-QC artifact tests two CC0 piano SoundFonts only; it does not show those assets used in the full-song render.
+- MIDI section comparison shows exact note-on pattern reuse in 5/7 active parts between verse 1 and verse 2, 6/8 between pre-choruses, and 7/9 between choruses. This is an objective arrangement-development limitation, not a subjective listening verdict. No blind/level-matched listening or new user acceptance was performed; prior user rating remains 3/10. Do not call this professional quality or market music.
+- Local inspected copy: `/mnt/data/barrot-audio-production-bundle-46054906107.zip`. Technical QC archive: `/mnt/data/barrot-audio-render-qc-46054906107.zip`. The bundle is an editable WAV-stem/MIDI deliverable, but no native DAW session/project is present.
+
+## Runtime / continuity / commercial blockers
+
+- Main's latest Pillars Consistency Check [run 46147523662](https://github.com/Barrot-Agent/B-Agent/actions/runs/46147523662) failed because the public Hugging Face Space `Scribedpengenius/Barrot-Omega` runtime reported `BUILD_ERROR`. The repo source marker is present, but deployed revision and build logs were not available through the read-only access used here. No Space restart or deployment was attempted. The Space app also contains a stale `BarrotBrain` docstring claiming default Groq/fallback providers, while actual code defaults to no provider and requires explicit external-inference consent; correct this only as part of a coherent Space repair after build evidence is available.
+- Nine-platform map remains in PR #1715, not main. Only ChatGPT-to-GitHub authentication/data flow is tested; the other eight platform connections are not verified. Workspace round-robin recovery is verified across fresh processes; independent-host transfer/synchronization remains unverified.
+- Sellbird remains audited but not installed/authenticated. No prospecting-tested leads, approved/sent outreach, replies, meetings, proposals or revenue. Barrot-only scope remains enforced; music and TrekFlex stay excluded.
+
+## Next actions
+
+1. Finish exact-head full-suite and fail-closed checks for the new #1716 research commit; obtain independent review before any merge.
+2. Resolve event-to-receipt linkage and deterministic raw-artifact reconstruction; build a receipt-backed current-news/sentiment path rather than reactivating quarantined RSS/Groq workflows.
+3. Obtain authorized read-only Hugging Face build logs and identify the Space build failure before any restart or deployment.
+4. Improve the audio arrangement and full-song SoundFont routing, then obtain level-matched listening and explicit user acceptance; produce a native DAW project only after a supported target format is selected.
+5. Continue independent-host continuity testing and maintain the Barrot-only pilot offer as unvalidated until the provenance/evaluation deliverable is reproducible.
+
+## Authorization record
+
+No merge, deployment, Space restart, secret rotation, provider credential use, Kaggle submission, funds transfer, paper trade, real-money action or outbound Sellbird message occurred in this checkpoint.
