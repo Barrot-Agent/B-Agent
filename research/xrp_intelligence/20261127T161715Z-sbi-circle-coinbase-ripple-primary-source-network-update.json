@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "barrot.xrp.primary_source_corporate_relationship_reconciliation",
-  "observed_at_utc": "2026-11-27T16:17:15Z",
+  "observed_at_utc": "2026-11-28T15:17:37.801Z",
   "repository_context": {
     "repository": "Barrot-Agent/B-Agent",
-    "branch": "integration/xrp-rlusd-cross-chain-research-20261125",
-    "base_head_sha": "5aca974fa9c88310098ac128beea5062ce8f4779",
+    "branch": "integration/xrp-event-provenance-successor-20261128",
+    "base_head_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
     "workstream": "XRP intelligence and research-only corporate relationship evidence"
   },
   "source_policy": {
@@ -220,13 +220,17 @@
       ],
       "status": "CAPITAL_BUSINESS_ALLIANCE_EXPLORATORY",
       "facts": [
-        "On 2026-10-30 SBI Holdings and SMFG announced a capital and business alliance to jointly examine financial services using stablecoins and other tokenized assets."
+        "On 2026-10-30 SBI Holdings and SMFG announced a capital and business alliance to jointly examine financial services using stablecoins and other tokenized assets.",
+        "SMFG agreed to acquire 5% of SBI Startale Marketing; SBI's 2026-11-02 presentation shows the ownership split as SBI Holdings 55%, Startale 40%, SMFG 5%.",
+        "The stated use case includes studying JPYSC integration into SMFG's Olive ecosystem; this remains exploratory."
       ],
       "caveats": [
-        "The release describes joint study and development; it is not proof of a production XRP rail or XRP-token use."
+        "The equity stake is in SBI Startale Marketing, not a direct equity stake in JPYSC or an XRP-related entity.",
+        "The Olive integration and new services are prospective; no production transaction volume or XRP-token use is disclosed."
       ],
       "sources": [
-        "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+        "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
       ]
     },
     {
@@ -418,6 +422,101 @@
       "sources": [
         "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
       ]
+    },
+    {
+      "id": "SBI_BLACKROCK_JPYSC_TOKENIZED_MMF",
+      "parties": [
+        "SBI Holdings",
+        "Startale Group",
+        "BlackRock Financial Management",
+        "BlackRock Japan",
+        "JPYSC",
+        "tokenized money-market fund"
+      ],
+      "status": "MOU_EXPLORATORY_NOT_PRODUCTION",
+      "facts": [
+        "On 2026-10-27 SBI Holdings and Startale announced an MOU with BlackRock Financial Management and BlackRock Japan to explore a digital-asset ecosystem connecting tokenized money-market funds and the yen-denominated trust stablecoin JPYSC.",
+        "The announcement assigns BlackRock global tokenized-MMF knowledge/network, SBI Group financial customer base and regulatory know-how, and Startale on-chain technology capabilities."
+      ],
+      "caveats": [
+        "The announcement is an MOU to examine technical, commercial and regulatory possibilities; it does not establish a production integration, settlement volume, collateral acceptance or XRP requirement.",
+        "The proposed JPYSC/MMF rail is an adjacent or competing tokenized-cash path, not evidence of XRP demand."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+      ]
+    },
+    {
+      "id": "SBI_EREBOR_US_DIGITAL_BANK",
+      "parties": [
+        "SBI Holdings",
+        "SBI Holdings USA",
+        "Erebor Bank",
+        "stablecoin deposits and withdrawals",
+        "blockchain settlement"
+      ],
+      "status": "USD_100M_INVESTMENT_ANNOUNCED_BANK_CAPABILITIES_REPORTED",
+      "facts": [
+        "On 2026-11-02 SBI Holdings announced a USD 100 million investment in Erebor Bank through SBI Holdings USA.",
+        "SBI's release says Erebor supports stablecoin deposits and withdrawals, blockchain-based settlement at any time including weekends, and major payment rails; deposits exceeded USD 7 billion as of September 2026.",
+        "SBI described its existing JPYSC, USDC and RLUSD initiatives as part of its wider digital-asset strategy."
+      ],
+      "caveats": [
+        "The release does not identify which stablecoins Erebor supports, disclose XRP integration, or show XRP settlement/collateral flows.",
+        "The investment announcement and bank capability description are not evidence of a live SBI-Erebor XRP product."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/english/news/pdf/2026/1102_c_en.pdf"
+      ]
+    },
+    {
+      "id": "STANDARD_CHARTERED_CIRCLE_USDC",
+      "parties": [
+        "Standard Chartered",
+        "Circle",
+        "USDC"
+      ],
+      "status": "DIRECT_INSTITUTIONAL_MINT_REDEEM_ACCESS_LAUNCHED",
+      "facts": [
+        "Standard Chartered and Circle announced on 2026-07-02 that eligible institutional clients could access USDC minting and redemption through a single bank-led onboarding and service experience without opening direct Circle accounts.",
+        "The initial capability was available through Standard Chartered's DIFC operations; expansion to other markets is subject to regulatory approvals and market readiness.",
+        "Circle's 2026 Internet Financial System report says the relationship began in 2023 and expanded from global cash management to USDC custody on permissionless chains and USDC minting."
+      ],
+      "caveats": [
+        "The announcements do not disclose realized USDC transaction volume through the service.",
+        "This is a USDC institutional banking rail, not an XRP or RLUSD integration."
+      ],
+      "sources": [
+        "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+        "https://www.circle.com/pressroom/standard-chartered-and-circle-launch-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption",
+        "https://www.circle.com/reports/internet-financial-system/usdc-and-circle-digital-assets"
+      ]
+    },
+    {
+      "id": "STANDARD_CHARTERED_RIPPLE_LMAX_RLUSD",
+      "parties": [
+        "Standard Chartered",
+        "Ripple",
+        "LMAX Group",
+        "RLUSD",
+        "XRP Ledger"
+      ],
+      "status": "RLUSD_CUSTODY_LIVE_PLANNED_LMAX_COLLATERAL_INTEGRATION_NOT_LIVE",
+      "facts": [
+        "On 2026-10-12 Standard Chartered said institutional custody support for RLUSD issued on XRPL was live through its DIFC branch, regulated by the Dubai Financial Services Authority.",
+        "Standard Chartered, Ripple and LMAX Group intend to make RLUSD eligible collateral for agreed LMAX products using Standard Chartered's collateral-mirroring model, so underlying RLUSD need not be transferred to the trading venue.",
+        "The announcement says future capabilities remain subject to final documentation, successful testing, applicable laws and regulations, internal approvals and jurisdictional readiness."
+      ],
+      "caveats": [
+        "Live RLUSD custody is not XRP-token custody, and no RLUSD custody balances, XRP AUC, flows or collateral utilization were disclosed.",
+        "LMAX RLUSD collateral eligibility is planned, not verified as live; no XRP-token collateral use is established.",
+        "Standard Chartered, Ripple and LMAX published the same joint announcement; these are counterparty copies, not independent measurements of realized activity."
+      ],
+      "sources": [
+        "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/?nr=1"
+      ]
     }
   ],
   "cross_hypotheses_and_disconfirming_evidence": [
@@ -429,7 +528,11 @@
     "Ripple's $16T transaction figure and $900M annualized product revenue are company-reported cross-product metrics, not XRP-only financial metrics.",
     "SBI's JPYSC, USDC and RLUSD strategy is a multi-stablecoin strategy; no measured XRP settlement requirement was disclosed.",
     "SBI and SMBC's October 2026 alliance is exploratory; it does not establish a live production rail.",
-    "The direct Circle-Coinbase distribution relationship is financially material, but it is a USDC reserve/distribution relationship, not an XRP market-flow signal."
+    "The direct Circle-Coinbase distribution relationship is financially material, but it is a USDC reserve/distribution relationship, not an XRP market-flow signal.",
+    "Standard Chartered now publicly describes institutional USDC access/custody/minting through its Circle relationship and live institutional RLUSD custody on XRPL; this makes the bank a shared infrastructure counterparty for two stablecoin issuers, but it is not evidence of a direct Circle-Ripple partnership or shared XRP liquidity.",
+    "The RLUSD/LMAX collateral-mirroring arrangement is planned and subject to documentation, testing, law, internal approvals and jurisdictional readiness; do not count it as live collateral demand or XRP demand.",
+    "SBI's JPYSC/BlackRock tokenized-MMF MOU, Open Standard participation, SMFG alliance and Erebor investment expand non-XRP stablecoin and tokenized-cash alternatives; this is disconfirming context for any assumption that SBI's digital-asset expansion necessarily requires XRP.",
+    "SBI and Coinbase are linked indirectly through Open Standard co-membership, while no direct bilateral SBI-Coinbase agreement was identified in the inspected primary sources."
   ],
   "unresolved_questions": [
     "Current post-2025 SBI Ripple equity percentage and voting/economic rights.",
@@ -437,7 +540,13 @@
     "Product-level split of Ripple's reported payment volume attributable to XRP versus fiat/stablecoin or other rails.",
     "Actual XRP balances, flows, custody AUC and collateral utilization at Coinbase, BNY, SBI VC Trade and other institutions.",
     "Whether any RLUSD Coinbase collateral feature went live after the October 28 launch announcement, and actual utilization if so.",
-    "Independent raw-byte capture and point-in-time receipt linkage for each primary-source event."
+    "Independent raw-byte capture and point-in-time receipt linkage for each primary-source event.",
+    "Does Standard Chartered's live RLUSD custody produce material client balances or XRPL transfer volume, and are those balances reported anywhere?",
+    "Has the planned RLUSD collateral-mirroring integration with LMAX passed final documentation, testing, legal, internal and jurisdictional gates, and what is actual utilization?",
+    "What realized USDC mint/redeem volume is routed through Standard Chartered's DIFC service, and when does it expand to other markets?",
+    "Does the SBI/Startale/BlackRock JPYSC-tokenized-MMF MOU progress to a funded technical pilot or production settlement, and which ledger/network is selected?",
+    "Which stablecoins, if any, are supported by Erebor's stablecoin deposit/withdrawal capability, and is there any disclosed XRP integration?",
+    "Is there any direct Circle-Ripple commercial, technical or equity relationship beyond both companies' separate use of shared banks and institutional counterparties?"
   ],
   "sources": [
     {
@@ -583,6 +692,86 @@
       "published_at": "current_docs",
       "type": "official_token_documentation",
       "url": "https://docs.permission.ai/ask-token"
+    },
+    {
+      "publisher": "Standard Chartered",
+      "published_at": "2026-07-02",
+      "type": "official_joint_product_launch",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+      "independence_group": "sc_circle_usdc_access_2026-07-02",
+      "claim_scope": "Eligible institutional clients can access USDC minting and redemption through Standard Chartered's DIFC operations without direct Circle accounts; wider market expansion remains subject to approvals.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Circle",
+      "published_at": "2026-report",
+      "type": "official_corporate_report",
+      "url": "https://www.circle.com/reports/internet-financial-system/usdc-and-circle-digital-assets",
+      "independence_group": "circle_internet_financial_system_report",
+      "claim_scope": "Circle states its Standard Chartered relationship began in 2023 and expanded from global cash management to USDC custody on permissionless chains and USDC minting.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Standard Chartered",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Institutional RLUSD custody on XRPL is live through the bank's DIFC branch; LMAX collateral integration is intended, not yet production-confirmed.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Ripple",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Counterparty publication of the same Standard Chartered/Ripple/LMAX RLUSD custody and planned collateral announcement; not independent flow evidence.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "LMAX Group",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/?nr=1",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Counterparty publication of the same RLUSD custody and planned collateral integration; the release preserves final-documentation, testing, legal and internal-approval conditions.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings / Startale Group",
+      "published_at": "2026-10-27",
+      "type": "official_joint_mou_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "independence_group": "sbi_startale_blackrock_jpysc_mmf_mou_2026-10-27",
+      "claim_scope": "SBI, Startale and BlackRock agreed to explore connections between tokenized money-market funds and JPYSC; roles are described, but no production settlement or XRP requirement is established.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-11-02",
+      "type": "official_financial_results_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "independence_group": "sbi_smfg_jpysc_ownership_2026-10-30",
+      "claim_scope": "Presentation discloses SBI Startale Marketing ownership as SBI Holdings 55%, Startale 40%, SMFG 5%, and describes JPYSC integration into SMFG Olive as a prospective initiative.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings / SBI Holdings USA",
+      "published_at": "2026-11-02",
+      "type": "official_investment_announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/1102_c_en.pdf",
+      "independence_group": "sbi_erebor_investment_2026-11-02",
+      "claim_scope": "SBI Holdings USA announced a USD 100 million investment in Erebor Bank; SBI describes stablecoin deposits/withdrawals and 24/7 blockchain settlement at the bank, with deposits above USD 7 billion as of September 2026.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
     }
   ],
   "provenance": {
@@ -590,9 +779,9 @@
     "raw_source_sha256": null,
     "raw_bytes_retained": false,
     "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT",
-    "captured_at_utc": "2026-11-27T16:17:15Z",
-    "source_independence": "Counterparty pairs were used where available (SBI/Circle, Coinbase/Ripple, Ripple/BNY, Circle/DBS, Circle/Paribu). These are independent publisher records of announcements, but they are not independent measurements of realized flows.",
-    "disagreements": "Company claims and future plans are preserved separately from realized balance, flow, custody and collateral evidence.",
+    "captured_at_utc": "2026-11-28T15:17:37.801Z",
+    "source_independence": "Counterparty pairs were used where available (SBI/Circle, Coinbase/Ripple, Ripple/BNY, Circle/DBS, Circle/Paribu). These are independent publisher records of announcements, but they are not independent measurements of realized flows. Additional Standard Chartered/Circle and Standard Chartered/Ripple/LMAX records are co-publisher/counterparty announcements; they confirm announced service scope but are not independent measurements of realized balances or flows. SBI/BlackRock and SBI/Erebor records are issuer/participant announcements, not independent usage evidence.",
+    "disagreements": "Company claims and future plans are preserved separately from realized balance, flow, custody and collateral evidence. Live RLUSD custody is separated from planned LMAX collateral eligibility; SBI's tokenized-MMF and bank initiatives are separated from measured XRP usage.",
     "model_eligible": false,
     "directional_forecast_issued": false
   }
