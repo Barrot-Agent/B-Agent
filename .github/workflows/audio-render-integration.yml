@@ -174,7 +174,7 @@ jobs:
           cat > "$BUNDLE/README.md" <<'EOF'
           # Barrot full-song keys-routed comparison bundle
 
-          This is a full-length timbral comparison against the baseline bundle from the same run. The composition and Standard MIDI file are identical; only the `keys` instrument uses the Upright Piano KW SoundFont. The other eight instruments continue to use FluidR3_GM.
+          This is a full-length timbral comparison against the baseline bundle from the same run. The note events and section markers are identical. The `keys` MIDI program changes from General MIDI program 4 to program 0 so the alternate acoustic-piano SoundFont preset is selected; only the `keys` instrument uses the Upright Piano KW SoundFont. The other eight instruments continue to use FluidR3_GM.
 
           - Renderer: FluidSynth via pyfluidsynth
           - Keys SoundFont: FreePats Upright Piano KW; source page states CC0 1.0: https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
