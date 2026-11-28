@@ -36,6 +36,18 @@ Captured: 2026-11-28T02:23:31.241Z
 - #1706 and #1708 are separate cache-action dependency updates; #1707, #1709 and #1710 are other action/dependency updates; #1711 remains draft/blocked on NumPy compatibility. These were not bulk-closed or silently absorbed.
 - #1705 is the only source PR explicitly superseded by #1716. No other unique research or feature PR is superseded.
 
+### Run-7 branch ancestry and overlap audit
+
+The GitHub branch inventory returned 822 branch refs across pages 1–9; page 10 was empty. Relevant audio, continuity, mission-handoff and XRP branches were compared with current main. No stale branch was deleted, rewritten or force-pushed.
+
+- Audio: integration/audio-instrument-soundfont-map-20261125 is 0 ahead / 1 behind with no diff. integration/audio-deterministic-safe-builds-rebased-20261124 is 0 ahead / 87 behind with no diff. The older integration/audio-deterministic-safe-builds-20261123 branch is 111 ahead / 99 behind; the checked composer, MIDI-export and adapter files match main, while main's audio_bundle.py and audio_render.py are newer and its quality/integration tests and workflow are more developed. No unique production change from that branch was promoted.
+- Musical DNA: feature/musical-dna-recursive-learning is 49 ahead / 902 behind. musical_dna.py and test_musical_dna.py are byte-identical to main; the branch's composer, renderer, MIDI exporter and documentation are older. No missing core Musical DNA capability was found.
+- Continuity: integration/continuity-fresh-process-recovery-20261123 is 10 ahead / 99 behind; its learning_curriculum.py and cross-process recovery test match main, while its operational map and map test are older. The rebased variant is 1 ahead / 96 behind with the same stale map/test difference. integration/long-horizon-project-state-20261125 is 0 ahead / 32 behind with no diff. The current #1715 branch is the active continuity/runtime integration candidate.
+- XRP: integration/xrp-sec-event-receipt-linkage-20261123 is 54 ahead / 99 behind. The inspected xrp_public_ingestion.py, event_timeline.py, workflow, event-timeline/public-ingestion tests and primary-source reconciliation file are byte-identical to main; no unique code change was found in those inspected paths. The branch is stale and was not promoted. integration/xrp-primary-event-receipts-20261127 points exactly at current main and has no delta. The old integration/xrp-rlusd-cross-chain-research-20261125 branch is source PR #1705 and is superseded by #1716.
+- Mission/Sellbird: integration/mission-handoff-refresh-20261125 is the #1702 source branch; preserve its unique archive/index material while #1715 handles the overlapping handoff/runtime paths. integration/barrot-mission-and-sellbird-scope-20261122 is 0 ahead / 331 behind with no diff.
+
+This audit found no reason to create additional audio or continuity PRs. Existing main implementations supersede the checked older branch content; unique/unreviewed history remains preserved rather than bulk-closed or deleted.
+
 ## XRP intelligence and prediction engine
 
 Latest main ingestion: [run 46097356822](https://github.com/Barrot-Agent/B-Agent/actions/runs/46097356822), success.
