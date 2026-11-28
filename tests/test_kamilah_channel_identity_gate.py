@@ -19,11 +19,11 @@ def test_youtube_channel_page_verifies_channel_metadata_not_legal_identity():
     creator = profile["creator"]
     status = profile["video_inventory_status"]
     assert creator["person_identity_status"] == "CONFIRMED"
-    mission = profile["mission"]
-    assert "first-party YouTube channel-page metadata verifies" in mission.lower()
-    assert "strong but not legal-identity verified" in mission.lower()
-    assert "21 earlier seed references remain candidate-only" in mission.lower()
-    assert "remains probable rather than platform-verified" not in mission.lower()
+    mission_lower = profile["mission"].casefold()
+    assert "first-party youtube channel-page metadata verifies" in mission_lower
+    assert "strong but not legal-identity verified" in mission_lower
+    assert "21 earlier seed references remain candidate-only" in mission_lower
+    assert "remains probable rather than platform-verified" not in mission_lower
     assert "not treat the inventory as complete" in mission
     assert creator["channel_identity_status"] == "PLATFORM_METADATA_VERIFIED_SELF_IDENTIFIED_CHANNEL"
     assert creator["youtube_channel_id"] == "UCqUPJMQdkCN6lsLVDnichPA"
