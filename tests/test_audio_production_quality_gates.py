@@ -248,7 +248,10 @@ def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: 
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
+        patch(
+            "barrot_agent.creative.audio_bundle.export_midi",
+            side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi"),
+        ),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
         patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
@@ -352,7 +355,7 @@ def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", return_value=np.zeros((4, 1), dtype=np.float32)),
     ):
         with pytest.raises(ValueError, match="invalid stereo mix"):
@@ -369,7 +372,7 @@ def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=misaligned),
     ):
         with pytest.raises(RuntimeError, match="not sample-aligned"):
@@ -387,7 +390,7 @@ def test_bundle_keeps_new_partial_directory_for_failure_inspection(tmp_path: Pat
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=RuntimeError("render failed")),
     ):
         with pytest.raises(RuntimeError, match="render failed"):
