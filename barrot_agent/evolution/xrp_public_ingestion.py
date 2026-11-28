@@ -824,6 +824,7 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
             "Accept": "text/html,application/xhtml+xml",
             "User-Agent": "Barrot-XRP-Public-Ingestion/1.0",
             "Cache-Control": "no-cache",
+            **({"Accept-Language": "ja,en;q=0.8"} if parsed.hostname == "www.sbigroup.co.jp" else {}),
         },
     )
     try:
@@ -6126,7 +6127,7 @@ def _event_source_capture_due(
 
 
 class _VisibleHTMLTextParser(HTMLParser):
-    """Extract visible HTML text while preserving inline text continuity."""
+    """Extract visible text plus safe, non-executable page metadata and JSON-LD."""
 
     _BLOCK_TAGS = frozenset({
         "address", "article", "aside", "blockquote", "body", "br", "caption",
@@ -6136,14 +6137,47 @@ class _VisibleHTMLTextParser(HTMLParser):
         "tbody", "td", "tfoot", "th", "thead", "tr", "ul",
     })
     _IGNORED_TAGS = frozenset({"script", "style", "noscript", "template"})
+    _METADATA_FIELDS = frozenset({
+        "description", "og:title", "og:description", "twitter:title",
+        "twitter:description", "article:published_time", "article:modified_time",
+    })
+    _JSON_DATA_SCRIPT_IDS = frozenset({"__next_data__", "__nuxt_data__", "__initial_state__"})
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
         self._ignored_stack: list[str] = []
+        self._json_data_buffer: list[str] | None = None
+
+    @staticmethod
+    def _json_string_values(value: Any) -> list[str]:
+        if isinstance(value, str):
+            return [value]
+        if isinstance(value, list):
+            return [item for child in value for item in _VisibleHTMLTextParser._json_string_values(child)]
+        if isinstance(value, dict):
+            return [item for child in value.values() for item in _VisibleHTMLTextParser._json_string_values(child)]
+        return []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         normalized_tag = tag.casefold()
+        attr_map = {key.casefold(): value or "" for key, value in attrs}
+        if normalized_tag == "meta" and not self._ignored_stack:
+            field = (attr_map.get("property") or attr_map.get("name") or "").casefold()
+            content = attr_map.get("content", "")
+            if field in self._METADATA_FIELDS and content:
+                self.parts.extend((" ", content, " "))
+        if normalized_tag == "script":
+            script_type = attr_map.get("type", "").split(";", 1)[0].strip().casefold()
+            script_id = attr_map.get("id", "").casefold()
+            json_script = (
+                script_type == "application/ld+json"
+                or (script_type == "application/json" and script_id in self._JSON_DATA_SCRIPT_IDS)
+            )
+            self._ignored_stack.append("script")
+            if json_script and len(self._ignored_stack) == 1:
+                self._json_data_buffer = []
+            return
         if normalized_tag in self._IGNORED_TAGS:
             self._ignored_stack.append(normalized_tag)
         elif not self._ignored_stack and normalized_tag in self._BLOCK_TAGS:
@@ -6151,6 +6185,15 @@ class _VisibleHTMLTextParser(HTMLParser):
 
     def handle_endtag(self, tag: str) -> None:
         normalized_tag = tag.casefold()
+        if normalized_tag == "script" and self._json_data_buffer is not None:
+            raw_json = "".join(self._json_data_buffer)
+            try:
+                parsed_json = json.loads(raw_json)
+            except (TypeError, ValueError):
+                parsed_json = None
+            if parsed_json is not None:
+                self.parts.extend((" ", " ".join(self._json_string_values(parsed_json)), " "))
+            self._json_data_buffer = None
         if self._ignored_stack:
             for index in range(len(self._ignored_stack) - 1, -1, -1):
                 if self._ignored_stack[index] == normalized_tag:
@@ -6160,7 +6203,9 @@ class _VisibleHTMLTextParser(HTMLParser):
             self.parts.append(" ")
 
     def handle_data(self, data: str) -> None:
-        if not self._ignored_stack:
+        if self._json_data_buffer is not None:
+            self._json_data_buffer.append(data)
+        elif not self._ignored_stack:
             self.parts.append(data)
 
 

@@ -1927,6 +1927,38 @@ def test_public_html_fetch_captures_allowlisted_issuer_bytes(monkeypatch):
     assert result["http_date"] == "Wed, 05 Nov 2026 02:30:00 GMT"
 
 
+def test_sbigroup_html_fetch_prefers_japanese_language_without_changing_other_hosts(monkeypatch):
+    requests = []
+
+    class HtmlResponse:
+        headers = {"Content-Type": "text/html; charset=utf-8", "Date": "Sat, 28 Nov 2026 02:30:00 GMT"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+
+        def read(self, _limit):
+            return b"<html>2025å¹´6æ9æ¥ 5,000ä¸ãã«</html>"
+
+    def fake_open(request, timeout):
+        requests.append(request)
+        return HtmlResponse()
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion._open_public_request",
+        fake_open,
+    )
+    url = "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+    result = fetch_public_html("sbi_holdings_circle_investment_release_20250609", url)
+    assert requests[0].headers.get("Accept-language") == "ja,en;q=0.8"
+    assert "5,000万ドル" in result["payload"]["html_text"]
+
+
 def test_public_html_fetch_rejects_untrusted_redirect(monkeypatch):
     class RedirectedHtmlResponse:
         headers = {"Content-Type": "text/html"}

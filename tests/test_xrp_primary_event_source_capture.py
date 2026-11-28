@@ -454,3 +454,25 @@ def test_event_source_visible_text_normalizer_ignores_script_and_style_content()
     assert "hidden-marker" not in normalized
     assert "hidden-style" not in normalized
 
+
+def test_event_source_text_normalizer_extracts_meta_and_jsonld_without_executing_scripts():
+    normalized = _normalized_event_source_html_text(
+        b"""
+        <html><head>
+          <meta property="og:title" content="SBI Circle primary release">
+          <meta name="description" content="2025年6月9日 5,000万ドル USDC">
+          <script type="application/ld+json">
+            {"@type":"NewsArticle","headline":"SBI Circle primary release",
+             "datePublished":"2025-06-09","articleBody":"SBIホールディングス：2,500万ドル SBI新生銀行：2,500万ドル"}
+          </script>
+          <script>window.secret = "must-not-be-executed";</script>
+        </head><body><p>Visible content</p></body></html>
+        """
+    )
+    assert "sbi circle primary release" in normalized
+    assert "2025年6月9日" in normalized
+    assert "5,000万ドル" in normalized
+    assert "sbiホールディングス:2,500万ドル" in normalized
+    assert "sbi新生銀行:2,500万ドル" in normalized
+    assert "must-not-be-executed" not in normalized
+
