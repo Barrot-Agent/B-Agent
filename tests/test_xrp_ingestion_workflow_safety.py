@@ -23,6 +23,10 @@ def test_production_schedule_is_separate_from_integration_smoke():
         "barrot_agent/evolution/sec_edgar.py",
     ]
     assert "workflow_dispatch" in payload["on"]
+    dispatch_inputs = payload["on"]["workflow_dispatch"]["inputs"]
+    assert dispatch_inputs["capture_event_sources"]["type"] == "boolean"
+    assert dispatch_inputs["capture_event_sources"]["default"] == "false"
+    assert dispatch_inputs["capture_event_sources"]["required"] == "false"
     capture_step = next(
         step for step in payload["jobs"]["capture"]["steps"]
         if step.get("name") == "Capture public XRP market sources and evaluate historical baselines"
