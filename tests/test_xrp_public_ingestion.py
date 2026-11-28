@@ -1418,7 +1418,7 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}" in capture_step
     assert 'if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]' in capture_step
     assert "args+=(--capture-event-sources)" in capture_step
-    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
+    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v6.1.0\s*$", workflow)
     assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v4\s*$", workflow)
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
     assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
