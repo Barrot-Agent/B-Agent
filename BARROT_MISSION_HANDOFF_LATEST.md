@@ -1,3 +1,123 @@
+
+# RUN 7 — AUTHORITATIVE OPERATING CHECKPOINT
+
+Captured: 2026-11-28T02:23:31.241Z
+
+## Current repository and integration state
+
+- Current main: afe0c00141f8c369ddfefdc4b31d848060ae59f1.
+- Recursive main tree: 3,168 entries; not truncated. Main is unchanged during this run.
+- Main CI on that exact SHA: run 46055543966, success; 4,725 passed, 1 skipped, 11 warnings, 21 subtests, 74.44% coverage. Dependency Audit and Money audit passed. The merge of audio PR #1704 triggered GitHub Pages deployment run 46055542164, which completed successfully. This confirms that a main merge has an external deployment side effect.
+- Current open PR count: 10. No PR was merged in this run.
+
+### Integration successors
+
+**PR #1716 — XRP event provenance / RLUSD research successor**
+
+- Created directly on current main after auditing #1705's 48-ahead / 49-behind divergence.
+- Branch: integration/xrp-event-provenance-successor-20261128.
+- Head: a050060fa6ab0eb3481c8868d1d3bd4b2161f980; one commit ahead, zero behind; 18 changed paths; 8,890 additions and 4,903 deletions.
+- Before copying, every pre-existing changed path was checked against #1705's merge-base version and was byte-identical on current main. Seven paths were new. The successor contains the 18 source paths without importing the stale 48-commit branch history.
+- Exact-head CI run 46097095522: 4,757 passed, 1 skipped, 11 warnings, 21 subtests; 74.50% coverage. Dependency Audit 46097095542, Money audit 46097095520, Conflict Integrity 46097095518 and Gated Merge 46097095538 all succeeded. GitHub Pages build validation succeeded; no deployment occurred from the PR check.
+- GitHub reports mergeable. No independent review is present. Detailed branch-protection approval requirements remain inaccessible through the integration (HTTP 403). Merge is therefore blocked; the automatic Pages deployment also requires specific authorization.
+- #1705 was commented with the #1716 cross-reference and is classified SUPERSEDED, but remains open until #1716 is merged and verified on main. Only #1705 should then be closed.
+
+**PR #1715 — three-mission handoff and runtime context**
+
+- Existing branch: integration/mission-handoff-refresh-20261127-run14.
+- Pre-Run-7 head 2250868432b2ff8d62f063f06bc591e0b9300075 was 15 ahead / 0 behind and passed exact-head CI: 4,734 passed, 1 skipped, 11 warnings, 21 subtests; 74.44% coverage. Dependency Audit, Money audit, Conflict Integrity and Gated Merge all succeeded.
+- This run updated the operational map in commit 0c3d64afb4e9e49624714cfd783e37f95055f9c7. That map snapshot was captured while the branch still pointed at the pre-update head. This handoff update is a second commit on the same branch; its new exact-head checks must be re-run before any merge.
+- No independent review is present. The same branch-protection and Pages-deployment blockers apply.
+- The three-mission runtime correction is still on #1715, not main. Main's runtime prompt still contains legacy singular-XRP priority wording until this PR is merged.
+
+**Other open PR disposition**
+
+- #1702 is only partially superseded by #1715. A comment records that only the overlapping handoff/runtime paths may be retired after merge; preserve its unique archive/index and primary-source work.
+- #1706 and #1708 are separate cache-action dependency updates; #1707, #1709 and #1710 are other action/dependency updates; #1711 remains draft/blocked on NumPy compatibility. These were not bulk-closed or silently absorbed.
+- #1705 is the only source PR explicitly superseded by #1716. No other unique research or feature PR is superseded.
+
+## XRP intelligence and prediction engine
+
+Latest main ingestion: [run 46097356822](https://github.com/Barrot-Agent/B-Agent/actions/runs/46097356822), success.
+
+- Data cutoff: 2026-11-28T02:18:16.059818Z; evaluation as of 02:18:22.032047Z.
+- Adapter v3.34 / parser v3.32; snapshot ID 1595076424bdfeeccfe810851afb2bf4fad376a5f73ea71642ad095050326d43.
+- 37 raw-source receipts: 21 retained payloads and 16 digest-only. Independent artifact inspection verified all 37 canonical receipt IDs, all 21 retained-payload SHA-256 values and all 16 digest-only entries. Receipt-chain verification passed; cross-run sequence 178; chain head 63748a928ad500bbc019cf356be51f9f4cdc0c6b230826be17e745623e8bb15d. Cross-run chain hash 4a60beddaeb4f10c9a52758777261f1d1c2d35adedc76c00a600ea1d048f887a.
+- External timestamp/WORM anchor remains NOT_ANCHORED. GitHub artifacts retain raw evidence for 90 days; the chain is tamper-evident relative to its head, not an independent timestamp authority.
+- Feature store: 43,818 history records; 178 snapshots; 2,230 input records; 123 eligible; 367 excluded; 490 delta records. SQLite integrity passed. Cache save is read-only because the configured cache budget is exhausted, but the per-run checkpoint artifact was successfully published. Automatic reconstruction from raw artifacts is not implemented.
+- Event timeline: 150 events; zero verified receipt links; 11 URL-only matches; zero event raw hashes; linkage INCOMPLETE. No historical event has been backdated.
+- Walk-forward: 672 rows for the hourly 1h horizon only; status PARTIAL_OR_BLOCKED. Drift: 206 features, zero evaluated; INSUFFICIENT_DATA. Forecast status NOT_ISSUED. No directional forecast, paper trade or real-money action.
+- One verified quote basis: same-venue OKX XRP-USDT and USDT-USD top-of-book; mid USD 0.9541084765, spread 1.146966 bps, snapshot skew 0.798 seconds, maximum component age 9.987 seconds. Both inputs share one OKX publisher-independence group. This is not independent market corroboration and is not a directional signal.
+- Eighteen source failures: eight Binance HTTP 451, five Bybit HTTP 403, one Grayscale HTTP 429, one Franklin issuer-page marker/identity mismatch, and three SEC EDGAR requests blocked because BARROT_SEC_USER_AGENT lacks a monitored project contact. These are not silently retried or zero-filled.
+- Morpho CBXRP normalization remains BLOCKED_INDEXER_BLOCK_MISMATCH: the market observation is ahead of Morpho's Base indexer tip and no canonical Base block timestamp was captured. It remains research-only.
+- Cross-analysis run 46095219613 succeeded technically, but sentiment inputs are stale: XRP 709.209 hours and BTC 766.044 hours against a 48-hour freshness limit. Sentiment is descriptive only and forecast-ineligible.
+
+### Consolidated XRP successor #1716
+
+The successor carries 13 curated, allowlisted primary-event capture specifications, 10 new event records (registry 150 to 160), marker and URL checks, digest-only receipt handling, cutoff-aware event relinking, the SBIC/Evernorth/SBI/Circle/Coinbase/Ripple research updates, Kamilah channel identity gates and research-only RLUSD cross-chain normalization. The exact-head tests pass. Live scheduled capture of those 13 pages has not yet executed on main; until then, event receipt linkage remains 0/150. The digest-only design does not claim retained raw HTML or historical page-vintage proof.
+
+### Research findings preserved in #1716
+
+- Japan's SBIC East, SBIC Central and SBIC West are distinct regional statutory investment companies, not SBI Holdings. SBI Holdings' historical SBI CAPITAL/SBIC use is a separate corporate entity; historical ownership evidence does not establish its current 2026 status.
+- Evernorth's four SBI-controlled investor entities are capped at 39.9% of Class A voting power. The voting cap is not equivalent to economic ownership.
+- Evernorth capital is separated by type and timing: $214.05M cash received before closing was used to purchase 84.365876M XRP by November 6, 2025; 600,000 XRP was contributed in kind; delayed funding included $10.5M cash plus 200,000 XRP. At the October 9, 2026 business-combination closing, reported gross cash was $272.6M ($224.6M private placements plus $48M SPAC trust) before expenses, alongside 388.911M XRP in kind. The $30M PIK note produced $29M net after a $1M advisor fee, with an October 12/13 issuance-date discrepancy. Warrant exercises generated $35.3M gross cash from 3,073,366 exercised warrants; 8,666,279 remained. The optional equity line covers up to 5,218,935 shares at 97% of VWAP and is not committed cash; the $0.5M fee is an outflow. The $336.9M sum of closing gross cash, net note proceeds and gross warrant proceeds is an identified-proceeds subtotal, not net cash or cash on hand.
+- The XRP in-kind ledger separates 346.284972M XRP reported at September 30, 346.484972M transferred to Pathfinder in November (including 200,000 delayed subscription XRP), and Ripple's 126.791458M contribution. Their mechanical sum is not represented as a current post-close balance. RippleWorks' 211.319M XRP and 50M XRP in escrow are separately classified.
+- SBI-Circle: $50M investment ($25M each) and a later JV; SBI VC Trade's USDC distribution is distinct from XRP. SBI Group's Arc presale/validator participation is not XRP activity, and Arc is a separate network.
+- SBI-Ripple: the 2016 investment and SBI Ripple Asia JV are documented; a roughly 9% SBI stake is a historical 2025 disclosure, not a verified current percentage.
+- Circle-Coinbase: Q3 2026 distribution costs were $331.3M and nine-month costs $986.6M. Derived shares of total distribution/transaction costs are approximately 81.0% and 80.5%; these are not Coinbase net profit. Coinbase reported a $22B average USDC balance, not XRP holdings.
+- Coinbase-Ripple RLUSD access was announced October 28 across XRPL, Base and Ethereum. Coinbase Global Exchange collateral was described as future availability at launch; no actual collateral utilization was established.
+- Ripple-BNY custody support for XRP and RLUSD is documented; future mint/redeem and trade-finance functions are not treated as live flows. Circle-DBS USDC 24/7 settlement is a USDC rail, not XRP demand. SBI's JPYSC/RLUSD/USDC strategy is not proof of XRP collateral or throughput.
+- Exact-phrase ASK Coin has no credible primary-source match in the current evidence. "SBIC, ChatGPT SBIC" remains unresolved; Tokyo SBIC's 2025 ChatGPT/Copilot course is not an OpenAI partnership or investment.
+- Kamilah/Camilla Stevenson: channel association is strong but legal identity is not established. Two public video records are partial byline matches; 36 cached title strings are not 36 verified videos, and 56 listing slots are not 56 unique uploads. Two namesake channels remain separate and are not merged.
+
+## Professional audio production
+
+- PR #1704 is merged on main at current SHA afe0c001. The integrated renderer uses FluidSynth and produces a full-song 175.545-second, 110 BPM, D-minor, 4/4 arrangement with 80 bars, nine aligned stereo stems, 11 MIDI tracks and 10 section markers.
+- The recorded technical QC for the example bundle: 44.1 kHz; zero clipped samples; sample peak -6.025 dBFS; true peak -6.0 dBTP; integrated loudness -22.443 LUFS; LRA 7.839 LU; mono fold-down loss -0.621 dB; stem-sum correlation 0.999979 and RMS error 0.00651; automated QC PASS.
+- This is a technical render result, not proof of professional musical quality. No blind/level-matched listening acceptance has been recorded; the prior user quality rejection remains open. A native editable DAW project is not yet verified. Caller-supplied SoundFont provenance/licensing remains unverified. No claim of user-approved improvement.
+
+## Long-horizon continuity and nine-platform coordination
+
+- Three co-equal priority-1 missions remain the target: XRP intelligence/prediction mastery, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains the shared execution, orchestration, safety and verification foundation.
+- Continuity work merged in #1703 is verified across four fresh Python processes sharing the same workspace: versioned project state, round-robin mission selection, provenance/hashes, staleness/supersession handling, unresolved-conflict preservation and replay guards. Ed25519 transfer-envelope tests exist. Independent-host transfer, network synchronization and encrypted transport have not been verified.
+- The #1715 runtime loader and three-mission regression tests remain unmerged. Main still contains the older singular-XRP runtime wording.
+- Of ChatGPT, Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks, only the current ChatGPT-to-GitHub connector path has been tested in this run. No live external model connection or cross-platform data flow is claimed for the other eight.
+
+## Commercial readiness — Barrot technology only
+
+- Sellbird remains source-audited but not installed/configured/authenticated. No mailbox, domain-health, suppression/opt-out or sending approval is verified.
+- Qualified Barrot prospects: 0 verified. Outreach approved/sent: 0. Replies/meetings/proposals/revenue: 0. No campaign was sent.
+- Active scope remains Barrot technology and Barrot-related services only. Music, songwriting, finished tracks, TrekFlex and other separate ventures remain excluded from Sellbird.
+- The fastest credible offer is still a supervised, read-only evidence-provenance/research-ingestion pilot, not a production forecasting service. Pricing remains an unvalidated hypothesis; do not market forecast accuracy, production readiness, certifications or customer results.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- DESIGNED: three equal missions; V3 shared foundation; evidence-first XRP prediction gates; professional audio workflow; cross-run continuity; Barrot-only customer acquisition controls.
+- EXECUTED: full current-main/PR/tree/branch/workflow audit; latest scheduled XRP ingestion and cross-analysis inspection; raw artifact download and independent receipt/payload hash verification; PR #1716 consolidated successor creation; #1705 and #1702 cross-reference comments; operational map update commit 0c3d64afb4e9e49624714cfd783e37f95055f9c7; this handoff update on the existing #1715 branch.
+- VERIFIED: main SHA/tree and main CI; PR #1716 exact-head full suite/security/integrity/gated checks; PR #1715 pre-update exact-head checks; 37/37 receipt IDs, 21/21 payload hashes and 16/16 digest-only receipt records; cross-run sequence 178 and receipt-chain verification PASS.
+- NOT VERIFIED: merge of #1716 or #1715; required review/branch-protection approvals; permission to trigger automatic Pages deployment; live execution of the 13 new event-page captures; external WORM/timestamp anchoring; directional predictive edge; audio listening acceptance/native DAW project; independent-host continuity; other eight platform connections; Sellbird prospecting/outreach or revenue.
+
+## Next bounded actions
+
+1. Keep #1716 as the single active XRP integration successor. Do not merge until independent review/required checks are confirmed and the automatic Pages deployment is specifically authorized. After merge, fetch main again, verify files and merge SHA, run main CI, then close only #1705 with a cross-reference.
+2. Keep #1715 as the active continuity/runtime handoff PR. Re-run exact-head CI after this Run-7 handoff commit. Do not merge without review and deployment approval. Preserve #1702's unique archive/index work.
+3. After #1716 is merged, verify the 13 scheduled primary-source captures on a new main run; report actual linked-event count rather than assuming all 160 events are covered.
+4. Resolve SEC ingestion only with a real monitored project contact identity; do not use GitHub noreply or invent an address.
+5. Investigate lawful alternative sources for Binance/Bybit 451/403 coverage; do not retry non-retryable provider denials. Reconcile Franklin marker changes and Grayscale rate limiting.
+6. Repair Morpho indexer/block-time alignment; implement raw-artifact feature-store rebuild and external receipt anchoring.
+7. Expand chronological evaluation to all configured horizons, verify baselines/calibration/drift and independent source clusters; continue withholding directional forecasts until out-of-sample readiness passes.
+8. For audio, rerun a reproducible full-song build from main with rights-cleared sound assets, produce an editable DAW/interchange project, and obtain blind/level-matched listening acceptance before claiming quality improvement.
+9. Demonstrate continuity on an independent host with authenticated, encrypted, replay-safe transfer and explicit conflict resolution.
+10. Validate the supervised Barrot evidence-pipeline pilot offer, then conduct Barrot-only prospect discovery. Keep outbound sending paused until audience, offer, message and sending setup are approved.
+
+No merge, force-push, deployment, secret rotation, Spaces restart, Kaggle submission, paper trade, funds transfer or real-money action occurred in this run.
+
+---
+
+
+
+---
+
 # RUN 6 — AUTHORITATIVE OPERATING CHECKPOINT
 **Captured:** 2026-11-28 01:11:07 UTC  
 **Current main:** `afe0c00141f8c369ddfefdc4b31d848060ae59f1`  
