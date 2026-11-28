@@ -107,6 +107,8 @@ jobs:
           BARROT_AUDIO_QC_OUTPUT: ${{ runner.temp }}/audio-render-qc.json
           BARROT_AUDIO_BUNDLE_QC_OUTPUT: ${{ runner.temp }}/audio-bundle-qc.json
           BARROT_AUDIO_FULL_SONG_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-qc.json
+          BARROT_AUDIO_FULL_SONG_ROUTED_OUTPUT: ${{ runner.temp }}/audio-full-song-keys-routed
+          BARROT_AUDIO_FULL_SONG_ROUTED_QC_OUTPUT: ${{ runner.temp }}/audio-full-song-routed-qc.json
           BARROT_AUDIO_BUNDLE_OUTPUT: ${{ runner.temp }}/audio-production-bundle
           BARROT_AUDIO_SOUNDFONT_ROUTING_OUTPUT: ${{ runner.temp }}/audio-soundfont-routing
           BARROT_AUDIO_SOUNDFONT_ROUTING_QC_OUTPUT: ${{ runner.temp }}/audio-soundfont-routing-qc.json
@@ -159,6 +161,43 @@ jobs:
         with:
           name: audio-production-bundle-${{ github.run_id }}
           path: ${{ runner.temp }}/audio-production-bundle/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Add attribution and A/B instructions to the routed full-song variant
+        if: success()
+        run: |
+          BUNDLE="${{ runner.temp }}/audio-full-song-keys-routed"
+          mkdir -p "$BUNDLE/licenses"
+          cp "$BARROT_TEST_SF2_LICENSE_FILE" "$BUNDLE/licenses/FluidR3_GM_Debian_Copyright.txt"
+          cp "${{ runner.temp }}/audio-full-song-routed-qc.json" "$BUNDLE/quality-control.json"
+          cat > "$BUNDLE/README.md" <<'EOF'
+          # Barrot full-song keys-routed comparison bundle
+
+          This is a full-length timbral comparison against the baseline bundle from the same run. The note events and section markers are identical. The `keys` MIDI program changes from General MIDI program 4 to program 0 so the alternate acoustic-piano SoundFont preset is selected; only the `keys` instrument uses the Upright Piano KW SoundFont. The other eight instruments continue to use FluidR3_GM.
+
+          - Renderer: FluidSynth via pyfluidsynth
+          - Keys SoundFont: FreePats Upright Piano KW; source page states CC0 1.0: https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
+          - Other instruments: FluidR3_GM from Debian's fluid-soundfont-gm package; MIT notice is in licenses/FluidR3_GM_Debian_Copyright.txt
+          - Both SoundFont binaries are omitted. SHA-256 values and source/license declarations are recorded in metadata.json.
+          - The FreePats source/license declaration is caller-supplied metadata, not an independent legal audit.
+
+          Import composition.mid and the aligned files in stems/ into a DAW. The QC file reports the playback gain offset required to match the baseline mix's measured integrated loudness; no gain or loudness normalization has been applied.
+
+          This is an experimental timbral A/B, not a professional mix/master claim and not evidence of artistic improvement. No comparative listening or user acceptance has been performed. The baseline artifact from the same run is the control.
+          EOF
+          test -s "$BUNDLE/mix.wav"
+          test -s "$BUNDLE/composition.mid"
+          test -s "$BUNDLE/metadata.json"
+          test -s "$BUNDLE/quality-control.json"
+          test "$(find "$BUNDLE/stems" -maxdepth 1 -type f -name '*.wav' | wc -l)" -eq 9
+
+      - name: Upload full-song keys-routed comparison bundle
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: audio-production-bundle-keys-routed-${{ github.run_id }}
+          path: ${{ runner.temp }}/audio-full-song-keys-routed/
           if-no-files-found: error
           retention-days: 30
 

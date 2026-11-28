@@ -43,6 +43,7 @@ def _fake_bundle_modules() -> dict[str, ModuleType]:
         def __init__(self, name: str, notes: list[object]) -> None:
             self.name = name
             self.notes = notes
+            self.program = {"keys": 4, "pad": 89}.get(name, 0)
 
     class FakeMidi:
         def __init__(
@@ -173,7 +174,7 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
         rms = float(np.sqrt(np.mean(np.square(values))))
         return peak, peak * 1.05, rms
 
-    def export(manifest, path: Path) -> None:
+    def export(manifest, path: Path, *, program_map=None) -> None:
         Path(path).write_bytes(b"named-midi-tracks")
 
     with (
@@ -211,6 +212,14 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert metadata["dc_offset_correction"]["applied"] is True
     assert metadata["dc_offset_correction"]["reversible"] is True
     assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert all(
+        item["measurement_stage"] == "pre_common_headroom_gain"
+        for item in metadata["stereo_compatibility_corrections"].values()
+    )
+    assert all(
+        stem["stereo_integrity"]["stereo_rms_dbfs"] <= 0.0
+        for stem in metadata["stems"]
+    )
     assert metadata["audio_quality_benchmark_version"] == "1.1.0"
     assert metadata["mix"]["loudness"]["integrated_lufs"] == -20.0
     assert metadata["mix"]["loudness"]["normalization_applied"] is False
@@ -247,7 +256,10 @@ def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: 
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch(
+            "barrot_agent.creative.audio_bundle.export_midi",
+            side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi"),
+        ),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
         patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
@@ -307,10 +319,26 @@ def test_bundle_rejects_missing_soundfont_and_invalid_configuration_before_outpu
             soundfont_path=soundfont,
             headroom_dbfs=1.0,
         )
+    with pytest.raises(ValueError, match="unknown instruments"):
+        render_production_bundle(
+            _manifest(),
+            tmp_path / "bad-program-name",
+            soundfont_path=soundfont,
+            program_map={"not-a-track": 0},
+        )
+    with pytest.raises(ValueError, match="0 to 127"):
+        render_production_bundle(
+            _manifest(),
+            tmp_path / "bad-program-number",
+            soundfont_path=soundfont,
+            program_map={"keys": 128},
+        )
     assert not (tmp_path / "missing").exists()
     assert not (tmp_path / "bad-rate").exists()
     assert not (tmp_path / "duplicate").exists()
     assert not (tmp_path / "bad-headroom").exists()
+    assert not (tmp_path / "bad-program-name").exists()
+    assert not (tmp_path / "bad-program-number").exists()
 
 
 def test_bundle_reports_missing_optional_music_dependencies(tmp_path: Path) -> None:
@@ -335,7 +363,7 @@ def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", return_value=np.zeros((4, 1), dtype=np.float32)),
     ):
         with pytest.raises(ValueError, match="invalid stereo mix"):
@@ -352,7 +380,7 @@ def test_bundle_rejects_invalid_mix_and_sample_misaligned_stem(tmp_path: Path) -
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=misaligned),
     ):
         with pytest.raises(RuntimeError, match="not sample-aligned"):
@@ -370,7 +398,7 @@ def test_bundle_keeps_new_partial_directory_for_failure_inspection(tmp_path: Pat
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=RuntimeError("render failed")),
     ):
         with pytest.raises(RuntimeError, match="render failed"):

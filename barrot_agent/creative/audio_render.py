@@ -545,6 +545,7 @@ def render_audio(
     soundfont_path: str | Path,
     sample_rate: int = 44100,
     headroom_dbfs: float = -6.0,
+    program_map: Mapping[str, int] | None = None,
 ) -> AudioRenderResult:
     """Render a manifest to a new stereo WAV using a caller-provided SF2 SoundFont.
 
@@ -577,7 +578,7 @@ def render_audio(
     target.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="barrot-render-") as temporary:
         midi_path = Path(temporary) / "composition.mid"
-        export_midi(manifest, midi_path)
+        export_midi(manifest, midi_path, program_map=program_map)
         try:
             midi = pretty_midi.PrettyMIDI(str(midi_path))
             audio = _render_midi_stereo(

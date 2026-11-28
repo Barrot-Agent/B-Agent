@@ -108,10 +108,12 @@ def render_production_bundle(
     soundfont_license: str | None = None,
     soundfont_map: Mapping[str, str | Path] | None = None,
     soundfont_map_metadata: Mapping[str, Mapping[str, str]] | None = None,
+    program_map: Mapping[str, int] | None = None,
 ) -> AudioProductionBundleResult:
     """Render a mix, sample-aligned instrument stems, MIDI, and QC metadata.
 
     Every WAV uses one common non-boosting gain and the same sample timeline.
+    Per-instrument GM program overrides are written to the MIDI and QC metadata.
     The MIDI file contains named instrument tracks. Separate synth passes can
     differ from the stereo mix in shared reverb/chorus behavior, so exact stem
     summation is not guaranteed. Existing output directories are never replaced.
@@ -130,6 +132,17 @@ def render_production_bundle(
         raise TypeError("soundfont_map_metadata must map instrument names to source/license metadata")
     supplied_map = dict(soundfont_map or {})
     supplied_metadata = dict(soundfont_map_metadata or {})
+    if program_map is not None and not isinstance(program_map, Mapping):
+        raise TypeError("program_map must map instrument names to General MIDI program numbers")
+    supplied_programs = dict(program_map or {})
+    unknown_programs = set(supplied_programs) - instrument_names
+    if unknown_programs:
+        raise ValueError(f"program_map contains unknown instruments: {sorted(unknown_programs)}")
+    for instrument_name, program in supplied_programs.items():
+        if isinstance(program, bool) or not isinstance(program, int) or not 0 <= program <= 127:
+            raise ValueError(
+                f"program_map value for {instrument_name!r} must be an integer from 0 to 127"
+            )
     unknown_map = set(supplied_map) - instrument_names
     unknown_metadata = set(supplied_metadata) - instrument_names
     if unknown_map:
@@ -168,7 +181,7 @@ def render_production_bundle(
     stems_dir = target / "stems"
     stems_dir.mkdir(exist_ok=False)
 
-    export_midi(manifest, midi_path)
+    export_midi(manifest, midi_path, program_map=supplied_programs)
     midi = pretty_midi.PrettyMIDI(str(midi_path))
     soundfont_assets_by_instrument = {}
     for instrument_name, asset_path in soundfont_by_instrument.items():
@@ -273,6 +286,9 @@ def render_production_bundle(
             audio_arrays[index],
             mono_fold_down_warning_db=-3.0,
         )
+        # These diagnostics are measured before the shared headroom gain below.
+        # Final post-gain dBFS values are recorded separately in stereo_integrity.
+        correction["measurement_stage"] = "pre_common_headroom_gain"
         audio_arrays[index] = corrected
         stereo_compatibility_corrections.append(correction)
 
@@ -371,6 +387,7 @@ def render_production_bundle(
         stem_metadata.append(
             {
                 "instrument": descriptor["instrument"],
+                "midi_program": int(midi.instruments[len(stem_metadata)].program),
                 "path": descriptor["path"],
                 "sha256": _sha256_file(stem_path),
                 "sample_count": int(audio.shape[0]),
@@ -483,6 +500,12 @@ def render_production_bundle(
             "path": "composition.mid",
             "sha256": midi_sha256,
             "track_names": [instrument.name for instrument in midi.instruments],
+            "track_programs": {
+                instrument.name: int(instrument.program)
+                for instrument in midi.instruments
+            },
+            "program_overrides": dict(sorted(supplied_programs.items())),
+            "program_overrides_apply_to_exported_midi": True,
             "format": "Standard MIDI File",
         },
         "stems": stem_metadata,

@@ -1,13 +1,30 @@
 """Optional Standard MIDI File export for generated musical manifests."""
 from __future__ import annotations
 
+from collections.abc import Mapping
 from pathlib import Path
 
 from .musical_dna import MusicalManifest
 
 
-def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
-    """Render a manifest to a new MIDI file; never overwrite an existing file."""
+def export_midi(
+    manifest: MusicalManifest,
+    destination: str | Path,
+    *,
+    program_map: Mapping[str, int] | None = None,
+) -> Path:
+    """Render a manifest to MIDI with optional per-instrument GM program overrides."""
+    if program_map is not None and not isinstance(program_map, Mapping):
+        raise TypeError("program_map must map instrument names to General MIDI program numbers")
+    supplied_programs = dict(program_map or {})
+    unknown_programs = set(supplied_programs) - set(manifest.instruments)
+    if unknown_programs:
+        raise ValueError(f"program_map contains unknown instruments: {sorted(unknown_programs)}")
+    for instrument_name, program in supplied_programs.items():
+        if isinstance(program, bool) or not isinstance(program, int) or not 0 <= program <= 127:
+            raise ValueError(
+                f"program_map value for {instrument_name!r} must be an integer from 0 to 127"
+            )
     path = Path(destination)
     if path.exists():
         raise FileExistsError(path)
@@ -26,7 +43,9 @@ def export_midi(manifest: MusicalManifest, destination: str | Path) -> Path:
     for name in manifest.instruments:
         is_drum = name.lower() in drum_pitches
         instrument = pretty_midi.Instrument(
-            program=programs.get(name.lower(), 0), is_drum=is_drum, name=name
+            program=supplied_programs.get(name, programs.get(name.lower(), 0)),
+            is_drum=is_drum,
+            name=name,
         )
         instruments[name] = instrument
         midi.instruments.append(instrument)
