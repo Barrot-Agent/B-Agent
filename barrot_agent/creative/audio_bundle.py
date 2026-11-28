@@ -286,6 +286,9 @@ def render_production_bundle(
             audio_arrays[index],
             mono_fold_down_warning_db=-3.0,
         )
+        # These diagnostics are measured before the shared headroom gain below.
+        # Final post-gain dBFS values are recorded separately in stereo_integrity.
+        correction["measurement_stage"] = "pre_common_headroom_gain"
         audio_arrays[index] = corrected
         stereo_compatibility_corrections.append(correction)
 

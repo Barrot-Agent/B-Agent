@@ -212,6 +212,14 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
     assert metadata["dc_offset_correction"]["applied"] is True
     assert metadata["dc_offset_correction"]["reversible"] is True
     assert metadata["mix"]["stereo_integrity"]["dc_offset_dbfs"] < -60.0
+    assert all(
+        item["measurement_stage"] == "pre_common_headroom_gain"
+        for item in metadata["stereo_compatibility_corrections"].values()
+    )
+    assert all(
+        stem["stereo_integrity"]["stereo_rms_dbfs"] <= 0.0
+        for stem in metadata["stems"]
+    )
     assert metadata["audio_quality_benchmark_version"] == "1.1.0"
     assert metadata["mix"]["loudness"]["integrated_lufs"] == -20.0
     assert metadata["mix"]["loudness"]["normalization_applied"] is False
