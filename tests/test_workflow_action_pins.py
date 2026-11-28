@@ -36,8 +36,8 @@ APPROVED_ACTION_SHAS = {
     "actions/upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
     "actions/download-artifact": "9000827ccba6bdab643e8b6fd33ac0654aef8333",
     "actions/jekyll-build-pages": "44a6e6beabd48582f863aeeb6cb2151cc1716697",
-    "actions/cache/restore": "0057852bfaa89a56745cba8c7296529d2fc39830",
-    "actions/cache/save": "0057852bfaa89a56745cba8c7296529d2fc39830",
+    "actions/cache/restore": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+    "actions/cache/save": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
     "cloudflare/wrangler-action": "953926a2e2182532811c01a25e53647d93bf07c0",
     "databricks/setup-cli": "4f41a4c5291b531c1bb1e5760d677999cd484f89",
 }
