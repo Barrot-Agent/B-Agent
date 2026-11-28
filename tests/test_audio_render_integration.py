@@ -466,6 +466,8 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         assert _sha256(routed.midi_path) == _sha256(result.midi_path)
         assert len(routed.stems) == len(result.stems) == 9
         assert np.isfinite(routed_samples).all()
+        assert routed.peak_level <= ceiling + 1e-4
+        assert routed.true_peak_level <= ceiling + 2e-3
         assert int(np.count_nonzero(np.abs(routed_samples) >= 1.0)) == 0
 
         routed_metadata = json.loads(routed.metadata_path.read_text(encoding="utf-8"))
