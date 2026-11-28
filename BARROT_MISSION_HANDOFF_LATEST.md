@@ -1,3 +1,64 @@
+# RUN 23 ADDENDUM — corrections and new primary-source findings — 2026-11-28T15:47:11.800Z
+
+This addendum supersedes the corresponding RUN 23 statements below where newer evidence differs. It preserves the original checkpoint and its history.
+
+## #1715 exact-head CI — EXECUTED / VERIFIED
+
+- PR #1715 current head: `9dc9a310b16e0e973b9ce5f498bb58b958c830c2`; PR is non-draft, GitHub reports mergeable=true and `mergeable_state=clean`.
+- Exact-head full repository suite [run 46161006812](https://github.com/Barrot-Agent/B-Agent/actions/runs/46161006812): **4,734 passed, 1 skipped, 11 warnings, 21 subtests; 82% total coverage**. The new mission-critical coverage floors all passed, including `creative/*`, `audio_adapter.py`, `audio_bundle.py`, `audio_render.py`, and `midi_export.py`.
+- Exact-head money audit [46161006857](https://github.com/Barrot-Agent/B-Agent/actions/runs/46161006857), conflict-integrity check [46161006858](https://github.com/Barrot-Agent/B-Agent/actions/runs/46161006858), dependency audit [46161006862](https://github.com/Barrot-Agent/B-Agent/actions/runs/46161006862), merge-tree verification and the read-only gated-merge workflow all succeeded. The gate explicitly reported `READINESS=READY_FOR_EXPLICIT_MERGE` in [run 46161006824](https://github.com/Barrot-Agent/B-Agent/actions/runs/46161006824).
+- This is technical readiness, not authorization to bypass governance. The PR has **no independent review**; detailed branch-protection settings still return HTTP 403. A merge to main triggers the repository's automatic GitHub Pages deployment, which has not been separately authorized. **Do not merge or deploy.**
+
+## PR #1717 readiness correction
+
+The latest #1717 `Merge readiness` check is **success**, [run 46106321074](https://github.com/Barrot-Agent/B-Agent/actions/runs/46106321074); an earlier failed attempt was superseded. GitHub still reports `mergeable_state=unstable`, and there is no independent review. Classify #1717 as **blocked pending current mergeability/review/branch-protection reconciliation**, not as having a currently failed merge-readiness job.
+
+## Japan SBIC identity — primary-source resolution
+
+The three regional SBIC companies are separate Japanese regional investment-development corporations, not SBI Holdings:
+
+- **SBIC East Japan:** Tokyo Small and Medium Business Investment & Consultation Co., Ltd. (東京中小企業投資育成株式会社); 18 eastern prefectures. Official profile: https://www.sbic.co.jp/company/profile/
+- **SBIC Central Japan:** Nagoya Small and Medium Business Investment & Consultation Co., Ltd. (名古屋中小企業投資育成株式会社); Aichi, Gifu, Mie, Toyama and Ishikawa. Official profile: https://www.sbic-cj.co.jp/company/about/
+- **SBIC West Japan:** Osaka Small and Medium Business Investment & Consultation Co., Ltd. (大阪中小企業投資育成株式会社); 24 western prefectures. Official profile: https://www.sbic-wj.co.jp/profiles/profile/
+- METI's official guide identifies the three companies, their territories and the legal framework: https://www.meti.go.jp/policy/investment/pdf/02guidline.pdf. Tokyo SBIC's FAQ describes them as sister companies with different territories: https://www.sbic.co.jp/investment/faq/. They operate under Japan's Small and Medium Enterprise Investment & Consultation Corporation Act (1963).
+
+Do not confuse these three regional corporations with **SBI Capital / SBI CAPITAL Co., Ltd.** SBI Holdings' own 2007 release describes a distinct SBI Capital buyout-fund company and a 40% transfer to a Goldman Sachs affiliate (60% SBI / 40% Jupiter after transfer): https://www.sbigroup.co.jp/english/news/pdf/2007/0521_a_en.pdf. SBI Holdings' 2011 annual report lists SBI CAPITAL Co., Ltd. as 100% owned: https://www.sbigroup.co.jp/english/investors/library/annualreport/pdf/2011ar_e-all.pdf. The current SBI Group companies page (as of 2026-10-07) lists “SBI Capital” under **Parties Authorized for Common Use**, not the formal group-company roster: https://www.sbigroup.co.jp/english/company/group/overview.html. The current legal entity and ownership continuity of that name remain unresolved; do not equate it with regional SBIC East/Central/West or infer a current SBI Holdings subsidiary relationship from the name alone.
+
+## Evernorth / SBI ownership and “actual capital” — primary-source reconciliation
+
+- The SEC S-4/A defines “SBI” as **SBI Holdings, Inc.** and identifies the four SBI Stockholders as SBI Venture Fund 2023A Investment LPS, SBI Venture Fund 2023B Investment LPS, SBI PE Holdings Co., Ltd. and SBI Holdings USA, Inc., each controlled by SBI Holdings. These are not the three regional SBIC companies. The same filing caps SBI Group's Class A ownership at 39.9%; excess subscribed shares are issued as Class C, which carries economic rights but not ordinary voting rights. https://www.sec.gov/Archives/edgar/data/2092032/000119312526347519/d944435ds4a.htm
+- SBI Holdings' November 2, 2026 Q2 presentation reports Evernorth at approximately **473 million XRP**, SBI Group voting rights **36.1%**, and economic interest **20.5%**. The voting denominator is Class A; economic interest is measured against Class A plus Class C. https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf
+- Evernorth's SEC Q3 2026 10-Q says $214,049,995 advance-funding cash was received by October 23, 2025 and used to buy 84,365,876 XRP; 600,000 XRP was contributed in kind. Additional delayed funding of $10.5 million and 200,000 XRP was committed for closing. The $214.05 million was converted into XRP; it is not idle cash. https://www.sec.gov/Archives/edgar/data/2092592/000162828026073871/xrpn-20260930.htm
+- At the October 9, 2026 closing, Evernorth reported approximately **$272.6 million gross cash before transaction expenses** ($224.6 million private-placement proceeds plus $48.0 million released from the trust account) and approximately **388,910,554 XRP contributed in kind**. These are different asset types and time points; do not add them to historical balances without a reconciled custody/ledger bridge.
+- The same 10-Q reports approximately **346,284,972 XRP** held at September 30 and a subsequent transfer of **346,484,972 XRP to Pathfinder** after the business combination. The SBI presentation's later ~473 million XRP company-level figure is a separate November 2 observation. The filings do not provide a complete post-close wallet-by-wallet custody ledger.
+- A **$30 million 4% PIK convertible note** was issued October 13; the 10-Q reports $29 million net cash after a $1 million advisor fee. It is debt, not equity. The October 23 Cantor ELOC permits, but does not require, purchases of up to 5,218,935 Class A shares at 97% of the applicable VWAP; it is a financing option, not cash already received. From October 12 to November 9, 3,073,366 warrants were exercised for $35.3 million gross cash, with 8,666,279 warrants remaining. See 10-Q lines covering the convertible note, ELOC and warrant exercises.
+- The exact phrase **“Ripple's actual capital is flowing into its regulated stablecoin, RLUSD”** appears in an August 23, 2026 AInvest opinion article by an AI-agent author, not in a primary Ripple, SBI or SEC filing: https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/. Treat it as editorial framing, not a capital-flow disclosure. The SEC amounts above are the primary-source ledger; classify cash, XRP in-kind contributions, converted advance funding, debt, warrant proceeds and optional equity facilities separately.
+
+## Exact-phrase research and identity safeguards
+
+- **“ASK Coin”:** the strongest surfaced candidate is Permission's ASK token. Its own documentation describes it as the native token of the Permission ecosystem, with Base and Polygon deployments. No XRP Ledger, Ripple or SBI relationship is established. If the original reference meant another ASK, retain it as unresolved rather than forcing this match: https://docs.permission.ai/ask-token
+- **“SBIC, ChatGPT SBIC”:** Tokyo SBIC's official 2025 training page for investee companies includes ChatGPT and Copilot instruction. It is an educational course, not an OpenAI partnership or proof of a direct relationship: https://www.sbic.co.jp/training/20250612co/
+- **“actual capital”:** exact phrase is secondary/editorial in the AInvest article above. The term does not define a financial instrument or replace the audited capital categories.
+- **Camilla/Kamilah Stevenson:** retain the partial identity-verified inventory from the XRP research bundle: person identity has first-party corroboration; channel association is strong but not legal-identity verified; two first-party author-byline records and 21 candidate-only references were found. The estimated ~1.2k indexed video archive is not an exhaustive inventory. Do not merge candidate-only videos into the verified list.
+
+## Sellbird v0.5.0 — ChatGPT capability clarified, still unverified
+
+- Current upstream is still `ethanplusai/sellbird` v0.5.0, main `8c743f1c475f61f7b2c04e50501cf6938a126ed6`, AGPL-3.0-only, Python 3.11+.
+- `docs/agent-app.md` explicitly documents browser-pane support for **ChatGPT desktop, Claude desktop and Codex**, but its host matrix marks ChatGPT desktop as **not checked**. Claude desktop and Codex are marked checked; Claude Code cards are not fully confirmed. `sellbird connect` currently names Claude Code, Claude desktop and Codex as automatic configuration targets. No ChatGPT desktop or Barrot end-to-end test has been executed.
+- Security nuance: the agent's own key cannot approve, send or resume; however, a signed-in browser pane is the user's session and can click Approve. Pane use must be supervised, then signed out. A one-use link lasts two minutes; the pane session lasts twelve hours.
+- The default YAML has email enabled with Gmail selected, approval required, risky/catch-all sends disabled, 50/day cap, but warmup start date blank, postal address blank, Precleared disabled and suppression list empty. Email-verification keys are blank. This is a template, not a configured or compliant sending setup. LinkedIn browser automation is explicitly warned to violate LinkedIn's Terms of Service; do not use it.
+- Sellbird remains uninstalled/unauthenticated; zero prospects, campaigns, sends, replies, meetings or revenue. Barrot-only scope and outbound pause remain unchanged.
+
+## Updated next actions
+
+1. Preserve #1715's exact-head green state; do not merge while branch-protection requirements remain inaccessible and automatic Pages deployment is unauthorized.
+2. Continue #1716's event-source receipt linkage and verify its capture workflow on exact head; keep the corporate relationship graph separated into direct, indirect, co-membership, custody and future/planned edges.
+3. Keep all Evernorth capital instruments in separate ledgers with date, legal entity, asset/currency, gross/net, received/committed/optional status and source. Do not derive a single “actual capital” total without a custody and transaction reconciliation.
+4. Audio remains blocked on comparative listening/user acceptance and a native DAW project; do not infer musical quality from technical QC.
+5. Continuity remains blocked on a demonstrated independent-host transfer; manual export/import is verified, automatic sync is not.
+6. Keep Sellbird discovery and outreach paused until Barrot offer/ICP and the mailbox/compliance setup are actually validated.
+
+
 # RUN 23 — AUTHORITATIVE CHECKPOINT — 2026-11-28 15:39 UTC
 
 Captured at 2026-11-28T15:39:18.027Z. This checkpoint supersedes RUN 22 wherever newer repository, PR, XRP raw-market, platform-runtime, or Sellbird evidence differs. Historical checkpoints remain preserved below.
