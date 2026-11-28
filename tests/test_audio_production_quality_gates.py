@@ -174,7 +174,7 @@ def test_bundle_exports_mix_aligned_stems_midi_and_rights_metadata(
         rms = float(np.sqrt(np.mean(np.square(values))))
         return peak, peak * 1.05, rms
 
-    def export(manifest, path: Path) -> None:
+    def export(manifest, path: Path, *, program_map=None) -> None:
         Path(path).write_bytes(b"named-midi-tracks")
 
     with (
@@ -248,7 +248,7 @@ def test_bundle_requires_explicit_rights_metadata_to_claim_any_status(tmp_path: 
 
     with (
         patch.dict(sys.modules, _fake_bundle_modules()),
-        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p: Path(p).write_bytes(b"midi")),
+        patch("barrot_agent.creative.audio_bundle.export_midi", side_effect=lambda m, p, *, program_map=None: Path(p).write_bytes(b"midi")),
         patch("barrot_agent.creative.audio_bundle._render_midi_stereo", side_effect=render),
         patch("barrot_agent.creative.audio_bundle._measure_audio_levels", return_value=(0.0, 0.0, 0.0)),
         patch("barrot_agent.creative.audio_bundle._measure_loudness", side_effect=_fake_loudness_report),
