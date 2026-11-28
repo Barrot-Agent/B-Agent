@@ -1410,8 +1410,16 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "actions: read" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
-    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
-    assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v4\s*$", workflow)
+    dispatch_inputs = workflow.split("  workflow_dispatch:", 1)[1].split("\npermissions:", 1)[0]
+    assert "capture_event_sources:" in dispatch_inputs
+    assert "default: false" in dispatch_inputs
+    assert "type: boolean" in dispatch_inputs
+    capture_step = workflow.split("      - name: Capture public XRP market sources", 1)[1].split("      - name:", 1)[0]
+    assert "CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}" in capture_step
+    assert 'if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]' in capture_step
+    assert "args+=(--capture-event-sources)" in capture_step
+    assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v6.1.0\s*$", workflow)
+    assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v6.1.0\s*$", workflow)
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
     assert "if: steps.feature_cache.outputs.cache-hit != 'true'" in workflow
     assert "cache-matched-key" not in workflow
@@ -1727,6 +1735,22 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
     assert "raw_only" in reason
 
 
+def test_franklin_xrpz_identity_failure_reports_missing_markers():
+    captured = datetime(2026, 11, 26, 16, 15, tzinfo=timezone.utc)
+    source_id = "xrp_etf_franklin_xrpz_issuer_page"
+    url = dict(ENDPOINTS)[source_id]
+    payload = {"html_text": "<html><title>Franklin XRP ETF</title><p>As of 11/26/2026</p></html>"}
+
+    with pytest.raises(XRPIngestionError, match="missing required markers: xrpz, xrp in fund"):
+        PARSERS[source_id](
+            payload,
+            source_id=source_id,
+            url=url,
+            digest="e" * 64,
+            captured=captured,
+        )
+
+
 @pytest.mark.parametrize(
     ("source_id", "host", "url"),
     [
@@ -1901,6 +1925,38 @@ def test_public_html_fetch_captures_allowlisted_issuer_bytes(monkeypatch):
     assert result["raw_bytes"].startswith(b"<html>")
     assert "CoinShares XRP ETP" in result["payload"]["html_text"]
     assert result["http_date"] == "Wed, 05 Nov 2026 02:30:00 GMT"
+
+
+def test_sbigroup_html_fetch_prefers_japanese_language_without_changing_other_hosts(monkeypatch):
+    requests = []
+
+    class HtmlResponse:
+        headers = {"Content-Type": "text/html; charset=utf-8", "Date": "Sat, 28 Nov 2026 02:30:00 GMT"}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def geturl(self):
+            return "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+
+        def read(self, _limit):
+            return "<html>2025年6月9日 5,000万ドル</html>".encode("utf-8")
+
+    def fake_open(request, timeout):
+        requests.append(request)
+        return HtmlResponse()
+
+    monkeypatch.setattr(
+        "barrot_agent.evolution.xrp_public_ingestion._open_public_request",
+        fake_open,
+    )
+    url = "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+    result = fetch_public_html("sbi_holdings_circle_investment_release_20250609", url)
+    assert requests[0].headers.get("Accept-language") == "ja,en;q=0.8"
+    assert "5,000万ドル" in result["payload"]["html_text"]
 
 
 def test_public_html_fetch_rejects_untrusted_redirect(monkeypatch):
@@ -3271,7 +3327,12 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
 
 def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run(tmp_path):
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
-    summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
+    summary = run_ingestion(
+        tmp_path / "weekly",
+        fetcher=_fake_fetcher(captured),
+        now=captured,
+        capture_event_sources=False,
+    )
 
     assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 3
     assert summary["source_failure_count"] == 0

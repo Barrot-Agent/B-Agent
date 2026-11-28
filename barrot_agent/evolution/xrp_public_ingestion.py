@@ -22,6 +22,8 @@ from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 from urllib.parse import urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from html.parser import HTMLParser
+import unicodedata
 
 from .feature_store import FeatureStoreError, HistoricalFeatureStore
 from .point_in_time_features import FeatureSnapshotError, build_feature_snapshot
@@ -34,8 +36,8 @@ from .sec_edgar import SEC_ISSUERS, capture_sec_edgar, fetch_sec_document, fetch
 
 MAX_RESPONSE_BYTES = 10 * 1024 * 1024
 _SHA256_RE = re.compile(r"[0-9a-f]{64}")
-ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.deribit.com"}
-ADAPTER_VERSION = "xrp-public-market-v3.34"
+ALLOWED_HOSTS = {"api.binance.com", "api.bybit.com", "us.okx.com", "fapi.binance.com", "api.kraken.com", "api.exchange.coinbase.com", "public.bitbank.cc", "www.bitstamp.net", "xrp-insights.com", "www.rexshares.com", "www.bitwiseetfs.com", "etfs.grayscale.com", "www.franklintempleton.com", "canaryetfs.com", "www.21shares.com", "xrplcluster.com", "honeycluster.io", "ripple.com", "xrpldashboard.com", "www.circle.com", "circle.com", "www.cftc.gov", "api.morpho.org", "www.coinbase.com", "www.sbivc.co.jp", "www.remit.co.jp", "www.deribit.com", "apps.occ.gov", "pnc.mediaroom.com", "www.dbs.com", "www.sbigroup.co.jp"}
+ADAPTER_VERSION = "xrp-public-market-v3.36"
 PARSER_VERSION = "xrp-public-market-v3.32"
 MAX_LIVE_AGE_SECONDS = 300
 MAX_ORDERBOOK_AGE_SECONDS = 60
@@ -247,9 +249,53 @@ DIGEST_ONLY_RAW_SOURCE_REASONS = {
         "Public issuer page is cited for research; raw HTML redistribution terms have not been reviewed, "
         "so retain the SHA-256 receipt only until permission is established."
     ),
+    "coinbase_rlusd_listing_20261028": (
+        "Public dated publisher announcement is captured for point-in-time event provenance; "
+        "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
+    "circle_usdc_xrpl_native_launch_20250612": (
+        "Public dated publisher announcement is captured for point-in-time event provenance; "
+        "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
+    "sbi_remit_xrp_odl_corridor_expansion_20230906": (
+        "SBI Remit's public dated XRP remittance announcement is captured for point-in-time event provenance; "
+        "HTML redistribution terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
+    "ripple_xrp_holdings_20260930": (
+        "Ripple's official XRP page is captured for point-in-time supply provenance; raw HTML redistribution "
+        "terms have not been reviewed, so retain only the SHA-256 receipt."
+    ),
     "sbi_vc_trade_lending_page": (
         "SBI VC Trade's public lending terms are captured for source-change detection; raw HTML redistribution "
         "rights have not been reviewed, so retain only the SHA-256 receipt and do not publish the page bytes."
+    ),
+    "ripple_coinbase_rlusd_partnership_20261028": (
+        "Public Ripple press release is captured for research; raw HTML redistribution terms have not been reviewed, "
+        "so retain the SHA-256 receipt only."
+    ),
+    "occ_ripple_national_trust_bank_cas_20261026": (
+        "Public OCC regulatory filing detail is captured for point-in-time event provenance; retain only its SHA-256 receipt."
+    ),
+    "occ_coinbase_national_trust_bank_20261106": (
+        "Public OCC regulatory filing detail is captured for point-in-time event provenance; retain only its SHA-256 receipt."
+    ),
+    "pnc_coinbase_usdc_pilot_20261109": (
+        "Public PNC corporate announcement is captured for point-in-time event provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "dbs_circle_usdc_access_20261118": (
+        "Public DBS/Circle joint announcement is captured for point-in-time event provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_holdings_circle_investment_release_20250609": (
+        "Public SBI Holdings corporate disclosure is captured for point-in-time relationship provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_circle_holdings_jv_establishment_20250822": (
+        "Public SBI Holdings corporate disclosure is captured for point-in-time relationship provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_startale_open_standard_jpysc_ousd_20261016": (
+        "Public SBI Holdings corporate announcement is captured for point-in-time stablecoin interoperability provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
+    ),
+    "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24": (
+        "Public SBI VC Trade/Ripple corporate announcement is captured for point-in-time RLUSD distribution provenance; raw HTML redistribution terms have not been reviewed, so retain only its SHA-256 receipt."
     ),
 }
 
@@ -294,6 +340,146 @@ SCHEDULED_ENDPOINTS = tuple(
     if source_id not in NONCOMMERCIAL_XRPL_NODE_SOURCE_IDS
     and source_id not in WEEKLY_SOURCE_IDS
 )
+
+# Capture a bounded set of exact, curated first-party disclosures once daily.
+# HTML is marker-checked in memory and retained as a digest-only receipt because
+# publisher-page redistribution terms have not been reviewed.
+EVENT_SOURCE_CAPTURE_SPECS = (
+    {
+        "event_id": "coinbase-rlusd-coinbase-distribution-20261028",
+        "source_id": "coinbase_rlusd_listing_20261028",
+        "source_uri": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+        "required_markers": ("RLUSD is now available on Coinbase", "Oct 28, 2026", "XRP Ledger"),
+    },
+    {
+        "event_id": "ripple-coinbase-rlusd-partnership-2026-10-28",
+        "source_id": "ripple_coinbase_rlusd_partnership_20261028",
+        "source_uri": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/",
+        "required_markers": (
+            "Ripple and Coinbase Partner to Expand Access to Ripple USD",
+            "Oct 28, 2026",
+            "Availability for Coinbase Global Exchange customers, including leveraging RLUSD as collateral, will follow.",
+            "On Base, Ripple will provide liquidity to support the growth of RLUSD.",
+        ),
+    },
+    {
+        "event_id": "circle-usdc-xrpl-native-2025-06-12",
+        "source_id": "circle_usdc_xrpl_native_launch_20250612",
+        "source_uri": "https://www.circle.com/blog/now-available-usdc-on-the-xrpl",
+        "required_markers": ("Now Available: USDC on the XRPL", "June 12, 2025", "XRP Ledger"),
+    },
+    {
+        "event_id": "sbi-remit-xrp-odl-corridors-2023-09-06",
+        "source_id": "sbi_remit_xrp_odl_corridor_expansion_20230906",
+        "source_uri": "https://www.remit.co.jp/en/kaigaisoukin/information/release20230906/",
+        "required_markers": (
+            "XRP-based International Money Transfer Service",
+            "2023/09/06",
+            "SBI Remit Co., Ltd.",
+        ),
+    },
+    {
+        "event_id": "ripple-xrp-holdings-2026-09-30",
+        "source_id": "ripple_xrp_holdings_20260930",
+        "source_uri": "https://ripple.com/xrp/",
+        "required_markers": (
+            "TOTAL XRP HELD BY RIPPLE: 36,809,481,946",
+            "TOTAL XRP DISTRIBUTED: 63,176,123,712",
+            "TOTAL XRP PLACED IN ESCROW: 31,700,000,000",
+            "As of 09/30/26",
+        ),
+    },
+    {
+        "event_id": "ripple-national-trust-bank-occ-effective-2026-10-26",
+        "source_id": "occ_ripple_national_trust_bank_cas_20261026",
+        "source_uri": "https://apps.occ.gov/CAS/home/details?FilingID=RjzoD2gxmYOv&FilingSubtypeID=1093&FilingTypeID=2",
+        "required_markers": ("2025-Charter-342347", "Ripple National Trust Bank", "Approved", "Consummated/Effective", "10/26/2026"),
+    },
+    {
+        "event_id": "coinbase-national-trust-bank-occ-effective-2026-11-06",
+        "source_id": "occ_coinbase_national_trust_bank_20261106",
+        "source_uri": "https://apps.occ.gov/CAS/home/details?FilingID=3RAoRRek6o4j&FilingSubtypeID=1093&FilingTypeID=2",
+        "required_markers": ("2025-Charter-343449", "Coinbase National Trust Company", "Approved", "Consummated/Effective", "11/06/2026"),
+    },
+    {
+        "event_id": "pnc-coinbase-usdc-incoming-pilot-2026-11-09",
+        "source_id": "pnc_coinbase_usdc_pilot_20261109",
+        "source_uri": "https://pnc.mediaroom.com/2026-11-09-PNC-Bank-Launches-Incoming-Stablecoin-Payments-for-Corporate-and-Institutional-Banking-Clients",
+        "required_markers": (
+            "PNC Bank Launches Incoming Stablecoin Payments for Corporate and Institutional Banking Clients",
+            "Nov. 9, 2026",
+            "USDC",
+            "Ethereum blockchain",
+            "Coinbase Payment products",
+            "limited basis to eligible clients as part of a pilot program",
+        ),
+    },
+    {
+        "event_id": "dbs-circle-usdc-institutional-access-2026-11-18",
+        "source_id": "dbs_circle_usdc_access_20261118",
+        "source_uri": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia",
+        "required_markers": (
+            "DBS and Circle expand institutional access to USDC in Asia",
+            "Singapore, 18 Nov 2026",
+            "eligible institutional clients can directly mint and redeem USDC through DBS",
+            "24/7 USD-USDC settlement",
+            "Project BLOOM",
+        ),
+    },
+    {
+        "event_id": "sbi-circle-investment-and-ripple-equity-stake-20250605",
+        "source_id": "sbi_holdings_circle_investment_release_20250609",
+        "source_uri": "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "required_markers": (
+            "米Circle社への出資に関するお知らせ",
+            "2025年6月9日",
+            "5,000万ドル",
+            "SBIホールディングス：2,500万ドル",
+            "SBI新生銀行：2,500万ドル",
+            "約9%の株式を保有",
+        ),
+    },
+    {
+        "event_id": "sbi-circle-holdings-jv-established-20250822",
+        "source_id": "sbi_circle_holdings_jv_establishment_20250822",
+        "source_uri": "https://www.sbigroup.co.jp/news/2025/0822_15679.html",
+        "required_markers": (
+            "Circle Internet Holdings, Inc.との合弁会社設立に関するお知らせ",
+            "2025年8月22日",
+            "Circle Internet Holdings, Inc.",
+            "合弁会社を設立",
+            "USDC",
+        ),
+    },
+    {
+        "event_id": "sbi-startale-open-standard-jpysc-ousd-20261016",
+        "source_id": "sbi_startale_open_standard_jpysc_ousd_20261016",
+        "source_uri": "https://www.sbigroup.co.jp/news/2026/1016_16665.html",
+        "required_markers": (
+            "SBIホールディングスとスターテイル、Open Standardに参画",
+            "2026年10月16日",
+            "Open Standard",
+            "JPYSC",
+            "Open USD（OUSD）",
+            "実証実験を検討",
+        ),
+    },
+    {
+        "event_id": "sbi-vc-trade-rlusd-japan-availability-2026-06-24",
+        "source_id": "sbi_vc_trade_ripple_rlusd_japan_launch_2026_06_24",
+        "source_uri": "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "required_markers": (
+            "国内初の4号電子決済手段",
+            "2026年6月24日",
+            "RLUSD",
+            "Ripple Labs Inc.",
+            "イーサリアムチェーンのみの対応となります",
+        ),
+    },
+)
+EVENT_SOURCE_CAPTURE_BY_ID = {
+    spec["source_id"]: spec for spec in EVENT_SOURCE_CAPTURE_SPECS
+}
 
 
 def _weekly_endpoints_for_capture(captured: datetime) -> tuple[tuple[str, str], ...]:
@@ -638,6 +824,7 @@ def fetch_public_html(source_id: str, url: str) -> dict[str, Any]:
             "Accept": "text/html,application/xhtml+xml",
             "User-Agent": "Barrot-XRP-Public-Ingestion/1.0",
             "Cache-Control": "no-cache",
+            **({"Accept-Language": "ja,en;q=0.8"} if parsed.hostname == "www.sbigroup.co.jp" else {}),
         },
     )
     try:
@@ -3800,8 +3987,11 @@ def _raw_only_franklin_xrpz_issuer_page(payload: Any, *, captured: datetime, **_
         raise XRPIngestionError("Franklin XRPZ issuer page response must contain HTML text")
     normalized = payload["html_text"].casefold()
     required_markers = ("franklin xrp etf", "xrpz", "xrp in fund", "as of")
-    if any(marker not in normalized for marker in required_markers):
-        raise XRPIngestionError("Franklin XRPZ issuer-page identity or holdings markers are missing")
+    missing_markers = tuple(marker for marker in required_markers if marker not in normalized)
+    if missing_markers:
+        raise XRPIngestionError(
+            "Franklin XRPZ issuer-page missing required markers: " + ", ".join(missing_markers)
+        )
     return (
         [],
         None,
@@ -5596,7 +5786,7 @@ def _default_public_fetcher(source_id: str, url: str) -> Mapping[str, Any]:
         response = fetch_sec_json(source_id, url)
     elif source_id in XRPL_NODE_SOURCES:
         response = fetch_public_rpc(source_id, url)
-    elif source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"}:
+    elif source_id in {"xrp_etf_xrpr_issuer_page", "xrp_etf_bitwise_issuer_page", "xrp_etf_grayscale_gxrp_issuer_page", "xrp_etf_franklin_xrpz_issuer_page", "xrp_etf_canary_xrpc_issuer_page", "xrp_etf_21shares_toxr_issuer_page", "ripple_rlusd_transparency_dashboard", "xrpldashboard_rlusd_cross_chain_supply", "circle_usdc_transparency_dashboard", "sbi_vc_trade_lending_page", "coinbase_cbxrp_proof_of_reserves", "cftc_contract_status_index", "cftc_tff_financial_futures", "cftc_legacy_futures_only"} or source_id in EVENT_SOURCE_CAPTURE_BY_ID:
         response = fetch_public_html(source_id, url)
     elif source_id == "xrp_etf_flows_csv":
         response = fetch_public_csv(source_id, url)
@@ -5921,6 +6111,430 @@ def _attach_immutable_sec_event_receipts(
     return output, summary
 
 
+def _event_source_capture_due(
+    run_started_at: datetime,
+    requested: bool | None,
+) -> bool:
+    """Capture curated event pages daily at the 00:15 UTC run, or on explicit request."""
+    if requested is not None:
+        if not isinstance(requested, bool):
+            raise XRPIngestionError("capture_event_sources must be a boolean or None")
+        return requested
+    if run_started_at.tzinfo is None:
+        return False
+    utc = run_started_at.astimezone(timezone.utc)
+    return utc.hour == 0 and utc.minute >= 15
+
+
+class _VisibleHTMLTextParser(HTMLParser):
+    """Extract visible text plus safe, non-executable page metadata and JSON-LD."""
+
+    _BLOCK_TAGS = frozenset({
+        "address", "article", "aside", "blockquote", "body", "br", "caption",
+        "dd", "div", "dl", "dt", "fieldset", "figcaption", "figure", "footer",
+        "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr",
+        "html", "li", "main", "nav", "ol", "p", "pre", "section", "table",
+        "tbody", "td", "tfoot", "th", "thead", "tr", "ul",
+    })
+    _IGNORED_TAGS = frozenset({"script", "style", "noscript", "template"})
+    _METADATA_FIELDS = frozenset({
+        "description", "og:title", "og:description", "twitter:title",
+        "twitter:description", "article:published_time", "article:modified_time",
+    })
+    _JSON_DATA_SCRIPT_IDS = frozenset({"__next_data__", "__nuxt_data__", "__initial_state__"})
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self._ignored_stack: list[str] = []
+        self._json_data_buffer: list[str] | None = None
+
+    @staticmethod
+    def _json_string_values(value: Any) -> list[str]:
+        if isinstance(value, str):
+            return [value]
+        if isinstance(value, list):
+            return [item for child in value for item in _VisibleHTMLTextParser._json_string_values(child)]
+        if isinstance(value, dict):
+            return [item for child in value.values() for item in _VisibleHTMLTextParser._json_string_values(child)]
+        return []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        normalized_tag = tag.casefold()
+        attr_map = {key.casefold(): value or "" for key, value in attrs}
+        if normalized_tag == "meta" and not self._ignored_stack:
+            field = (attr_map.get("property") or attr_map.get("name") or "").casefold()
+            content = attr_map.get("content", "")
+            if field in self._METADATA_FIELDS and content:
+                self.parts.extend((" ", content, " "))
+        if normalized_tag == "script":
+            script_type = attr_map.get("type", "").split(";", 1)[0].strip().casefold()
+            script_id = attr_map.get("id", "").casefold()
+            json_script = (
+                script_type == "application/ld+json"
+                or (script_type == "application/json" and script_id in self._JSON_DATA_SCRIPT_IDS)
+            )
+            self._ignored_stack.append("script")
+            if json_script and len(self._ignored_stack) == 1:
+                self._json_data_buffer = []
+            return
+        if normalized_tag in self._IGNORED_TAGS:
+            self._ignored_stack.append(normalized_tag)
+        elif not self._ignored_stack and normalized_tag in self._BLOCK_TAGS:
+            self.parts.append(" ")
+
+    def handle_endtag(self, tag: str) -> None:
+        normalized_tag = tag.casefold()
+        if normalized_tag == "script" and self._json_data_buffer is not None:
+            raw_json = "".join(self._json_data_buffer)
+            try:
+                parsed_json = json.loads(raw_json)
+            except (TypeError, ValueError):
+                parsed_json = None
+            if parsed_json is not None:
+                self.parts.extend((" ", " ".join(self._json_string_values(parsed_json)), " "))
+            self._json_data_buffer = None
+        if self._ignored_stack:
+            for index in range(len(self._ignored_stack) - 1, -1, -1):
+                if self._ignored_stack[index] == normalized_tag:
+                    del self._ignored_stack[index:]
+                    return
+        if not self._ignored_stack and normalized_tag in self._BLOCK_TAGS:
+            self.parts.append(" ")
+
+    def handle_data(self, data: str) -> None:
+        if self._json_data_buffer is not None:
+            self._json_data_buffer.append(data)
+        elif not self._ignored_stack:
+            self.parts.append(data)
+
+
+def _normalize_event_marker_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value)
+    return re.sub(r"\s+", " ", normalized).strip().casefold()
+
+
+def _normalized_event_source_html_text(raw_bytes: bytes) -> str:
+    """Normalize visible HTML text for exact marker checks without changing receipt hashes."""
+    if not isinstance(raw_bytes, bytes) or not raw_bytes:
+        raise XRPIngestionError("event source HTML must be non-empty bytes")
+    parser = _VisibleHTMLTextParser()
+    parser.feed(raw_bytes.decode("utf-8", errors="replace"))
+    parser.close()
+    return _normalize_event_marker_text("".join(parser.parts))
+
+
+def _capture_public_event_sources(
+    registry_path: str | Path | None,
+    *,
+    fetcher: Callable[[str, str], Mapping[str, Any]],
+    archive: RawReceiptArchive,
+    captured: datetime,
+    receipts: list[dict[str, Any]],
+    failures: list[dict[str, Any]],
+    raw_only: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Capture a bounded set of dated primary pages as digest-only event receipts."""
+    path = (
+        Path(registry_path)
+        if registry_path is not None
+        else Path(__file__).resolve().parents[2]
+        / "research"
+        / "xrp_intelligence"
+        / "event_registry_current.json"
+    )
+    summary: dict[str, Any] = {
+        "status": "NOT_SCHEDULED",
+        "requested_event_count": len(EVENT_SOURCE_CAPTURE_SPECS),
+        "captured_event_count": 0,
+        "marker_mismatch_count": 0,
+        "failed_event_count": 0,
+        "registry_event_mismatch_count": 0,
+        "digest_only_receipt_count": 0,
+        "receipt_ids": [],
+        "latest_source_capture_utc": _iso(captured),
+        "model_eligible": False,
+        "event_discovery_implemented": False,
+    }
+    if not path.is_file():
+        summary["status"] = "REGISTRY_MISSING"
+        return summary
+    try:
+        registry = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise XRPIngestionError(f"event registry cannot be read for primary-source capture: {exc}") from exc
+    if (
+        not isinstance(registry, Mapping)
+        or registry.get("artifact_type") != "barrot.xrp.event_registry"
+        or not isinstance(registry.get("events"), list)
+    ):
+        raise XRPIngestionError("event registry schema is invalid for primary-source capture")
+
+    event_records = registry["events"]
+    latest_capture = captured
+    for spec in EVENT_SOURCE_CAPTURE_SPECS:
+        matches = [
+            item for item in event_records
+            if isinstance(item, Mapping)
+            and item.get("event_id") == spec["event_id"]
+            and item.get("source_id") == spec["source_id"]
+            and item.get("source_url") == spec["source_uri"]
+            and item.get("source_status") == "verified"
+        ]
+        if len(matches) != 1:
+            summary["registry_event_mismatch_count"] += 1
+            continue
+
+        response: Mapping[str, Any] | None = None
+        raw_bytes: bytes | None = None
+        source_captured = captured
+        source_captured_s = _iso(captured)
+        try:
+            response = fetcher(spec["source_id"], spec["source_uri"])
+            if not isinstance(response, Mapping):
+                raise XRPIngestionError("event source fetcher response must be a mapping")
+            source_captured = _response_received_at(response, captured)
+            source_captured_s = _iso(source_captured)
+            raw_bytes = response.get("raw_bytes")
+            if not isinstance(raw_bytes, bytes) or not raw_bytes:
+                raise XRPIngestionError("event source response must contain non-empty raw bytes")
+            if len(raw_bytes) > MAX_RESPONSE_BYTES:
+                raise XRPIngestionError("event source response exceeds the public capture size limit")
+            normalized_html_text = _normalized_event_source_html_text(raw_bytes)
+            missing_markers = [
+                marker for marker in spec["required_markers"]
+                if _normalize_event_marker_text(marker) not in normalized_html_text
+            ]
+            if missing_markers:
+                receipt_reason = "event_source_marker_validation_failed"
+                retention_reason = (
+                    "Marker validation failed; retain only the SHA-256 receipt and do not link this capture to the event."
+                )
+            else:
+                receipt_reason = DIGEST_ONLY_RAW_SOURCE_REASONS[spec["source_id"]]
+                retention_reason = receipt_reason
+        except Exception as exc:
+            failure = _source_failure_record(
+                spec["source_id"], spec["source_uri"], source_captured_s, exc
+            )
+            failure.update({
+                "event_id": spec["event_id"],
+                "capture_family": "curated_primary_event_source",
+            })
+            if isinstance(response, Mapping) and isinstance(raw_bytes, bytes) and raw_bytes:
+                receipt = archive.store(
+                    source_id=spec["source_id"],
+                    source_uri=spec["source_uri"],
+                    captured_at_utc=source_captured_s,
+                    raw_bytes=raw_bytes,
+                    source_data_as_of_utc=None,
+                    model_eligible=False,
+                    raw_only_reason=f"source_processing_failure:{type(exc).__name__}",
+                    source_http_date=response.get("http_date"),
+                    source_http_headers=response.get("http_headers"),
+                    retain_raw_bytes=False,
+                    raw_retention_reason="Source processing failed; retain only the SHA-256 receipt.",
+                )
+                receipts.append(receipt)
+                failure["raw_receipt_id"] = receipt["receipt_id"]
+                failure["raw_content_sha256"] = receipt["raw_content_sha256"]
+            failures.append(failure)
+            summary["failed_event_count"] += 1
+            continue
+
+        # Archive writes remain outside the fetch/validation exception handler:
+        # receipt-store corruption must fail the ingestion run closed.
+        receipt = archive.store(
+            source_id=spec["source_id"],
+            source_uri=spec["source_uri"],
+            captured_at_utc=source_captured_s,
+            raw_bytes=raw_bytes,
+            source_data_as_of_utc=None,
+            model_eligible=False,
+            raw_only_reason=receipt_reason,
+            source_http_date=response.get("http_date"),
+            source_http_headers=response.get("http_headers"),
+            retain_raw_bytes=False,
+            raw_retention_reason=retention_reason,
+        )
+        receipts.append(receipt)
+        raw_only.append({
+            "source_id": spec["source_id"],
+            "reason": receipt_reason,
+            "receipt_id": receipt["receipt_id"],
+        })
+        summary["receipt_ids"].append(receipt["receipt_id"])
+        summary["digest_only_receipt_count"] += 1
+        latest_capture = max(latest_capture, source_captured)
+        summary["latest_source_capture_utc"] = _iso(latest_capture)
+        if missing_markers:
+            failure = _source_failure_record(
+                spec["source_id"],
+                spec["source_uri"],
+                source_captured_s,
+                XRPIngestionError(
+                    "event source page did not contain all expected event identity markers"
+                ),
+            )
+            failure.update({
+                "event_id": spec["event_id"],
+                "capture_family": "curated_primary_event_source",
+                "missing_markers": missing_markers,
+                "raw_receipt_id": receipt["receipt_id"],
+                "raw_content_sha256": receipt["raw_content_sha256"],
+            })
+            failures.append(failure)
+            summary["marker_mismatch_count"] += 1
+        else:
+            summary["captured_event_count"] += 1
+
+    if summary["captured_event_count"]:
+        summary["status"] = (
+            "CAPTURED"
+            if summary["captured_event_count"] == summary["requested_event_count"]
+            and not summary["failed_event_count"]
+            and not summary["marker_mismatch_count"]
+            and not summary["registry_event_mismatch_count"]
+            else "PARTIAL"
+        )
+    elif summary["failed_event_count"] or summary["marker_mismatch_count"] or summary["registry_event_mismatch_count"]:
+        summary["status"] = "BLOCKED_OR_FAILED"
+    else:
+        summary["status"] = "NO_CAPTURED_EVENTS"
+    return summary
+
+
+def _attach_public_event_source_receipts(
+    event_records: Sequence[Mapping[str, Any]],
+    raw_receipts: Sequence[Mapping[str, Any]] | None,
+    data_cutoff_utc: str,
+) -> tuple[list[Any], dict[str, Any]]:
+    """Link only marker-verified, exact-ID, exact-URL public event receipts."""
+    summary: dict[str, Any] = {
+        "status": "NOT_PROVIDED" if raw_receipts is None else "NO_MATCHING_PRIMARY_EVENT_RECEIPTS",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
+    if raw_receipts is None:
+        return [dict(record) if isinstance(record, Mapping) else record for record in event_records], summary
+    if not isinstance(raw_receipts, Sequence) or isinstance(raw_receipts, (str, bytes)):
+        raise XRPIngestionError("raw_receipts must be a sequence before primary event receipt linkage")
+    cutoff = _from_iso8601(data_cutoff_utc, "primary event receipt data cutoff")
+    spec_by_event = {spec["event_id"]: spec for spec in EVENT_SOURCE_CAPTURE_SPECS}
+    by_source: dict[tuple[str, str], list[tuple[datetime, Mapping[str, Any]]]] = {}
+    for index, receipt in enumerate(raw_receipts):
+        if not isinstance(receipt, Mapping):
+            continue
+        source_id = receipt.get("source_id")
+        source_uri = receipt.get("source_uri")
+        spec = EVENT_SOURCE_CAPTURE_BY_ID.get(source_id) if isinstance(source_id, str) else None
+        if not spec or source_uri != spec["source_uri"]:
+            continue
+        summary["candidate_receipt_count"] += 1
+        if receipt.get("raw_only_reason") != DIGEST_ONLY_RAW_SOURCE_REASONS[source_id]:
+            continue
+        captured_at = _from_iso8601(
+            receipt.get("captured_at_utc"),
+            f"raw_receipts[{index}].captured_at_utc",
+        )
+        if captured_at > cutoff:
+            summary["future_receipt_count"] += 1
+            continue
+        by_source.setdefault((source_id, source_uri), []).append((captured_at, receipt))
+
+    output: list[Any] = []
+    linked_receipt_ids: set[str] = set()
+    for index, record in enumerate(event_records):
+        if not isinstance(record, Mapping):
+            output.append(record)
+            continue
+        item = dict(record)
+        spec = spec_by_event.get(item.get("event_id"))
+        if (
+            spec is None
+            or item.get("source_id") != spec["source_id"]
+            or item.get("source_url") != spec["source_uri"]
+        ):
+            output.append(item)
+            continue
+        candidates = by_source.get((spec["source_id"], spec["source_uri"]), [])
+        if not candidates:
+            output.append(item)
+            continue
+        latest_capture = max(captured_at for captured_at, _ in candidates)
+        latest = [receipt for captured_at, receipt in candidates if captured_at == latest_capture]
+        if len(latest) != 1:
+            summary["ambiguous_event_count"] += 1
+            output.append(item)
+            continue
+        receipt = latest[0]
+        receipt_hash = receipt.get("raw_content_sha256")
+        receipt_id = receipt.get("receipt_id")
+        receipt_source_id = receipt.get("source_id")
+        receipt_capture = receipt.get("captured_at_utc")
+        raw_retained = receipt.get("raw_bytes_retained")
+        if (
+            not isinstance(receipt_hash, str)
+            or not _SHA256_RE.fullmatch(receipt_hash)
+            or not isinstance(receipt_id, str)
+            or not _SHA256_RE.fullmatch(receipt_id)
+            or not isinstance(receipt_capture, str)
+            or receipt_source_id != spec["source_id"]
+            or raw_retained is not False
+        ):
+            raise XRPIngestionError("primary event receipt does not match canonical identity fields")
+        canonical_payload = {key: value for key, value in receipt.items() if key != "receipt_id"}
+        expected_receipt_id = hashlib.sha256(_canonical(canonical_payload).encode("utf-8")).hexdigest()
+        if receipt_id != expected_receipt_id:
+            raise XRPIngestionError("primary event receipt ID does not match canonical receipt metadata")
+        history = item.get("source_capture_history", [])
+        if not isinstance(history, list):
+            raise XRPIngestionError(f"event_records[{index}].source_capture_history must be a list")
+        previous = {
+            "capture_method": "legacy_registry_capture_without_canonical_receipt",
+            "source_id": item.get("source_id"),
+            "captured_at_utc": item.get("captured_at_utc"),
+            "available_at_utc": item.get("available_at_utc"),
+            "raw_source_sha256": item.get("raw_source_sha256"),
+            "receipt_id": None,
+            "raw_bytes_retained": None,
+        }
+        if (
+            isinstance(previous["source_id"], str)
+            and isinstance(previous["captured_at_utc"], str)
+            and isinstance(previous["available_at_utc"], str)
+            and previous not in history
+        ):
+            history = [*history, previous]
+        current = {
+            "capture_method": "scheduled_primary_event_source_recapture",
+            "source_id": receipt_source_id,
+            "captured_at_utc": receipt_capture,
+            "available_at_utc": receipt_capture,
+            "raw_source_sha256": receipt_hash,
+            "receipt_id": receipt_id,
+            "raw_bytes_retained": raw_retained,
+        }
+        history = [entry for entry in history if entry != current]
+        history.append(current)
+        item["source_capture_history"] = history
+        item["receipt_linkage_method"] = "scheduled_primary_event_source_recapture"
+        item["captured_at_utc"] = receipt_capture
+        item["available_at_utc"] = receipt_capture
+        item["raw_source_sha256"] = receipt_hash
+        summary["linked_event_count"] += 1
+        linked_receipt_ids.add(receipt_id)
+        output.append(item)
+    summary["unique_receipt_count"] = len(linked_receipt_ids)
+    if summary["linked_event_count"]:
+        summary["status"] = "LINKED"
+    return output, summary
+
+
 def _capture_event_timeline_registry(
     registry_path: str | Path | None,
     data_cutoff_utc: str,
@@ -5936,6 +6550,15 @@ def _capture_event_timeline_registry(
         pass
 
     receipt_relinkage = {
+        "status": "NOT_APPLICABLE",
+        "candidate_receipt_count": 0,
+        "linked_event_count": 0,
+        "unique_receipt_count": 0,
+        "ambiguous_event_count": 0,
+        "future_receipt_count": 0,
+        "cutoff_utc": data_cutoff_utc,
+    }
+    public_receipt_relinkage = {
         "status": "NOT_APPLICABLE",
         "candidate_receipt_count": 0,
         "linked_event_count": 0,
@@ -5964,6 +6587,7 @@ def _capture_event_timeline_registry(
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
             "receipt_relinkage": receipt_relinkage,
+            "public_receipt_relinkage": public_receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -5988,6 +6612,11 @@ def _capture_event_timeline_registry(
             raise XRPIngestionError("XRP event registry events must be a list")
         recaptured_records, receipt_relinkage = _attach_immutable_sec_event_receipts(
             records,
+            raw_receipts,
+            data_cutoff_utc,
+        )
+        recaptured_records, public_receipt_relinkage = _attach_public_event_source_receipts(
+            recaptured_records,
             raw_receipts,
             data_cutoff_utc,
         )
@@ -6016,6 +6645,7 @@ def _capture_event_timeline_registry(
             "receipt_complete": timeline["receipt_complete"],
             "receipt_linkage": timeline["receipt_linkage"],
             "receipt_relinkage": receipt_relinkage,
+            "public_receipt_relinkage": public_receipt_relinkage,
             "forecast_status": "NOT_ISSUED",
             "directional_forecast": False,
             "probabilities": None,
@@ -6024,8 +6654,8 @@ def _capture_event_timeline_registry(
             "warnings": [
                 "registry_sha256 authenticates only the curated registry file, not publisher payloads.",
                 "Events without raw_source_sha256 remain receipt-incomplete and model-ineligible.",
-                "Only exact SEC accession-document URLs may receive a new capture version; mutable company pages and secondary sources are not relinked automatically.",
-                "A recaptured SEC document becomes known at its new receipt capture time; its legacy unreceipted timestamp is preserved only as history.",
+                "Only exact SEC accession-document URLs and three marker-checked dated primary announcements receive new capture versions; mutable company pages and secondary sources are not relinked automatically.",
+                "A recaptured source becomes known at its new receipt capture time; its legacy unreceipted timestamp is preserved only as history.",
                 "Hypotheses and counter-hypotheses are authored inputs; no causal inference or forecast probabilities are produced.",
                 "The registry is curated, not an automatically discovered event feed.",
             ],
@@ -6048,12 +6678,15 @@ def run_ingestion(
     event_registry_path: str | Path | None = None,
     previous_receipt_chain_manifest_path: str | Path | None = None,
     receipt_chain_continuity_status: str | None = None,
+    capture_event_sources: bool | None = None,
 ) -> dict[str, Any]:
     """Capture public XRP data; scheduled hourly runs use 1h and daily runs may evaluate the full horizon matrix."""
     if not isinstance(include_noncommercial_xrpl_nodes, bool):
         raise XRPIngestionError("include_noncommercial_xrpl_nodes must be a boolean")
     if not isinstance(include_sec_filings, bool) or not isinstance(include_sec_companyfacts, bool):
         raise XRPIngestionError("SEC ingestion flags must be booleans")
+    if capture_event_sources is not None and not isinstance(capture_event_sources, bool):
+        raise XRPIngestionError("capture_event_sources must be a boolean or None")
     if include_sec_companyfacts:
         include_sec_filings = True
     if isinstance(coinbase_backfill_days, bool) or not isinstance(coinbase_backfill_days, int) or not 0 <= coinbase_backfill_days <= MAX_COINBASE_BACKFILL_DAYS:
@@ -6474,6 +7107,39 @@ def run_ingestion(
                 captured = max(captured, backfill_capture)
                 captured_s = _iso(captured)
 
+    event_source_capture = {
+        "status": "NOT_SCHEDULED",
+        "requested_event_count": len(EVENT_SOURCE_CAPTURE_SPECS),
+        "captured_event_count": 0,
+        "marker_mismatch_count": 0,
+        "failed_event_count": 0,
+        "registry_event_mismatch_count": 0,
+        "digest_only_receipt_count": 0,
+        "receipt_ids": [],
+        "latest_source_capture_utc": captured_s,
+        "model_eligible": False,
+        "event_discovery_implemented": False,
+    }
+    if _event_source_capture_due(run_started_at, capture_event_sources):
+        event_source_capture = _capture_public_event_sources(
+            event_registry_path,
+            fetcher=fetcher,
+            archive=archive,
+            captured=captured,
+            receipts=receipts,
+            failures=failures,
+            raw_only=raw_only,
+        )
+        latest_source_capture = max(
+            latest_source_capture,
+            _from_iso8601(
+                event_source_capture["latest_source_capture_utc"],
+                "primary event source latest capture",
+            ),
+        )
+        captured = latest_source_capture
+        captured_s = _iso(captured)
+
     receipt_chain_verification = archive.write_manifest(
         output / "receipt_chain_manifest.json",
         previous_manifest_path=previous_receipt_chain_manifest_path,
@@ -6633,6 +7299,8 @@ def run_ingestion(
         "feature_store_cutoff_utc": store_cutoff_s,
         "evaluation_as_of_utc": evaluation_as_of_s,
         "source_receipt_count": len(receipts),
+        "event_source_capture": event_source_capture,
+        "event_timeline_data_cutoff_utc": captured_s,
         "coinbase_backfill": coinbase_backfill,
         "quote_basis": quote_basis_diagnostics,
         "quote_basis_path": "quote_basis.json",
@@ -6800,6 +7468,11 @@ def main() -> None:
         help="Explicit predecessor state; a missing predecessor keeps continuity unverified.",
     )
     parser.add_argument(
+        "--capture-event-sources",
+        action="store_true",
+        help="Capture the bounded, marker-checked primary event-source pages now; scheduled runs do this once daily at 00:15 UTC.",
+    )
+    parser.add_argument(
         "--include-sec-filings",
         action="store_true",
         help="Capture read-only SEC EDGAR submissions for Evernorth, Coinbase and Circle.",
@@ -6831,6 +7504,7 @@ def main() -> None:
         event_registry_path=args.event_registry,
         previous_receipt_chain_manifest_path=args.previous_receipt_chain_manifest,
         receipt_chain_continuity_status=args.receipt_chain_continuity_status,
+        capture_event_sources=True if args.capture_event_sources else None,
     )
     print(json.dumps(summary, indent=2, sort_keys=True))
 

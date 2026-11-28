@@ -283,6 +283,7 @@ def test_current_registry_retains_market_and_sbi_resale_counterevidence_without_
         "sbi-holdings-ripple-stake-and-xrp-supply-2026-04-27",
         "doppler-sbi-digital-finance-institutional-xrp-partnership-2026-07-13",
         "ripple-national-trust-bank-occ-effective-2026-10-26",
+        "ripple-coinbase-rlusd-partnership-2026-10-28",
         "xrp-okx-spot-2026-11-12T0447Z",
         "xrp-kraken-spot-2026-11-12T0502Z",
         "xrp-fuelmaps-depth-2026-11-12T0400Z",
@@ -523,3 +524,32 @@ def test_registry_does_not_link_url_only_match_from_another_capture_time(tmp_pat
     assert result["receipt_linkage"]["url_capture_time_match_count"] == 0
     assert result["receipt_linkage"]["verified_receipt_count"] == 0
     assert result["timeline"]["event_timeline"][0]["receipt_status"] == "MISSING_RAW_RECEIPT_HASH"
+
+
+def test_sbi_jpysc_reserve_allocation_is_research_only_and_not_xrp_collateral():
+    import json
+    from pathlib import Path
+
+    registry_path = (
+        Path(__file__).resolve().parents[1]
+        / "research"
+        / "xrp_intelligence"
+        / "event_registry_current.json"
+    )
+    registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    event = next(
+        item for item in registry["events"]
+        if item["event_id"] == "sbi-jpysc-short-term-jgb-reserve-2026-09-07"
+    )
+
+    assert event["source_status"] == "verified"
+    assert event["source_url"] == "https://www.sbigroup.co.jp/news/2026/0907_16567.html"
+    assert event["source_published_at_utc"] is None
+    assert event["event_time_precision"] == "date-only"
+    assert event["raw_source_sha256"] is None
+    assert event["model_eligible"] is False
+    assert "JPY 1.0 billion" in event["claim"]
+    assert "JPY 20.1 billion" in event["claim"]
+    assert "JPY 6.9 billion" in event["claim"]
+    assert "does not establish XRP collateral" in event["counter_hypothesis"]
+    assert event["independence_group"] == "sbi-vc-trade-official-jpysc"

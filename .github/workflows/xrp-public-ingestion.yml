@@ -13,9 +13,15 @@ on:
       - .github/workflows/xrp-public-ingestion.yml
       - barrot_agent/evolution/research_timestamp_corrections.py
       - barrot_agent/evolution/xrp_public_ingestion.py
+      - barrot_agent/evolution/rlusd_cross_chain_research.py
       - barrot_agent/evolution/sec_edgar.py
   workflow_dispatch:
     inputs:
+      capture_event_sources:
+        description: "Capture the curated dated primary-source event pages now; public read-only fetches retain digest-only receipts."
+        required: false
+        default: false
+        type: boolean
       coinbase_backfill_days:
         description: "Additional Coinbase XRP-USD hourly history before the latest candle page (0 disables; maximum 365 days). Manual dispatch only."
         required: false
@@ -134,7 +140,7 @@ jobs:
           retention-days: 90
       - name: Restore cumulative feature-store cache
         id: feature_cache
-        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3
           key: xrp-feature-store-v1-${{ github.run_id }}
@@ -190,6 +196,7 @@ jobs:
         env:
           WALK_FORWARD_HORIZONS: ${{ (github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *') && '1h,4h,24h,7d,30d' || '1h' }}
           INCLUDE_SEC_COMPANYFACTS: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}
+          CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}
           BARROT_SEC_USER_AGENT: ${{ vars.BARROT_SEC_USER_AGENT }}
         shell: bash
         run: |
@@ -204,10 +211,18 @@ jobs:
           if [[ -n "${BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST:-}" ]]; then
             args+=(--previous-receipt-chain-manifest "$BARROT_PREVIOUS_RECEIPT_CHAIN_MANIFEST")
           fi
+          if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]; then
+            args+=(--capture-event-sources)
+          fi
           if [[ "$INCLUDE_SEC_COMPANYFACTS" == "true" ]]; then
             args+=(--include-sec-companyfacts)
           fi
           python -m barrot_agent.evolution.xrp_public_ingestion "${args[@]}"
+      - name: Normalize RLUSD cross-chain supply as research-only evidence
+        run: |
+          python -m barrot_agent.evolution.rlusd_cross_chain_research \
+            --input-dir artifacts/xrp_ingestion \
+            --output artifacts/xrp_ingestion/rlusd_cross_chain_research.json
       - name: Upload content-addressed raw-source receipts (90-day GitHub artifact; not WORM)
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
@@ -240,6 +255,7 @@ jobs:
             artifacts/xrp_ingestion/event_timeline.json
             artifacts/xrp_ingestion/sec_capital_events.json
             artifacts/xrp_ingestion/research_only_observations.json
+            artifacts/xrp_ingestion/rlusd_cross_chain_research.json
           if-no-files-found: error
           retention-days: 90
       - name: Upload per-run point-in-time feature-store checkpoint
@@ -271,7 +287,7 @@ jobs:
       - name: Save cumulative feature-store cache after successful artifact publication
         if: success() && steps.feature_cache.outputs.cache-hit != 'true'
         continue-on-error: true
-        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: artifacts/xrp_ingestion/feature_store.sqlite3
           key: xrp-feature-store-v1-${{ github.run_id }}

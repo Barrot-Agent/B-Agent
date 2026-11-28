@@ -1,0 +1,847 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "barrot.xrp.primary_source_corporate_relationship_reconciliation",
+  "observed_at_utc": "2026-11-28T15:25:46.033Z",
+  "repository_context": {
+    "repository": "Barrot-Agent/B-Agent",
+    "branch": "integration/xrp-event-provenance-successor-20261128",
+    "base_head_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+    "workstream": "XRP intelligence and research-only corporate relationship evidence"
+  },
+  "source_policy": {
+    "preferred": "Primary issuer, corporate, counterparty and SEC filings.",
+    "interpretation": "A company announcement establishes what that company announced. It does not independently prove realized throughput, market share, token demand, collateral use, customer balances or economic impact.",
+    "raw_receipts": "The web retrieval did not expose byte-exact publisher responses to Barrot RawReceiptArchive. Each source below is URL/timestamp metadata only; raw_source_sha256=null, raw_bytes_retained=false, receipt_status=WEB_METADATA_ONLY_NOT_RAW_RECEIPT.",
+    "model_eligibility": false
+  },
+  "identity_resolution": {
+    "sbic": {
+      "status": "RESOLVED_HIGH_CONFIDENCE",
+      "entities": [
+        {
+          "region": "East Japan",
+          "legal_name": "Tokyo Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_brand": "SBIC East Japan",
+          "established": "1963-11-15",
+          "corporate_number": "9011001030621",
+          "region_definition": "18 prefectures east of Shizuoka, Nagano and Niigata",
+          "official_profile": "https://www.sbic.co.jp/company/profile/"
+        },
+        {
+          "region": "Central Japan",
+          "legal_name": "Nagoya Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_brand": "SBIC Central Japan",
+          "established": "1963-11-18",
+          "region_definition": "Aichi, Gifu, Mie, Toyama and Ishikawa",
+          "official_profile": "https://www.sbic-cj.co.jp/"
+        },
+        {
+          "region": "West Japan",
+          "legal_name": "Osaka Small and Medium Business Investment & Consultation Co., Ltd.",
+          "english_brand": "SBIC West Japan",
+          "established": "1963-11-20",
+          "region_definition": "24 prefectures west of Fukui, Shiga, Nara and Wakayama",
+          "official_profile": "https://www.sbic-wj.co.jp/"
+        }
+      ],
+      "legal_basis": "Act on the Small and Medium Business Investment and Consultation Company, Act No. 101 of 1963, Article 2: https://laws.e-gov.go.jp/law/338AC0000000101",
+      "relationship": "Three separate regional statutory investment companies that identify one another as sister companies. They are not SBI Holdings, Inc. and the reviewed official profiles do not establish that they are SBI Holdings subsidiaries.",
+      "related_name_collision": "SBI CAPITAL Co., Ltd. appears as a separate SBI Holdings entity in a historical SBI report; its current 2026 legal status remains unresolved. Do not merge that entity with the three regional SBIC companies.",
+      "chatgpt_context": "Tokyo SBIC East's official 2025-06-12 to 2025-06-13 training for investee companies included ChatGPT usage and Microsoft Copilot functions. This is educational use by an SBIC company, not an OpenAI partnership.",
+      "primary_evidence": [
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic-cj.co.jp/",
+        "https://www.sbic-wj.co.jp/",
+        "https://laws.e-gov.go.jp/law/338AC0000000101"
+      ]
+    },
+    "exact_phrases": {
+      "ask_coin": {
+        "status": "CANDIDATE_IDENTIFIED_CONTEXT_UNCONFIRMED",
+        "best_supported_candidate": "Permission ASK token",
+        "evidence": "Permission documentation describes ASK on Base and Polygon, including OFT/Stargate-related functionality.",
+        "base_contract": "0xBB146326778227A8498b105a18f84E0987A684b4",
+        "polygon_contract": "0xaA3717090CDDc9B227e49d0D84A28aC0a996e6Ff",
+        "xrp_or_sbi_link": "NONE_ESTABLISHED",
+        "warning": "Do not assert this is the intended ASK Coin without the original context.",
+        "sources": [
+          "https://docs.permission.ai/ask-token",
+          "https://docs.permission.ai/ask-token/ask-tokenomics"
+        ]
+      },
+      "actual_capital": {
+        "status": "UNRESOLVED_NO_PRIMARY_EXACT_PHRASE_MATCH",
+        "warning": "Do not conflate the phrase with the SBI presentation's 'Actual XRP' category. That category is described as Ripple holdings currently not in circulation, not cash, actual capital or a verified capital-flow measure.",
+        "source": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+      },
+      "sbic_chatgpt": {
+        "status": "EDUCATIONAL_USE_NOT_PARTNERSHIP",
+        "evidence": "The SBIC East training course included ChatGPT and Copilot. No OpenAI/SBIC partnership was established.",
+        "source": "https://www.sbic.co.jp/training/20250612co/"
+      }
+    },
+    "youtube": {
+      "channel_handle": "@drkamilahstevenson",
+      "channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
+      "person_identity": "FIRST_PARTY_BIO_AND_PUBLIC_INTERVIEW_SUPPORT_PERSON_IDENTITY",
+      "channel_association": "STRONG_PUBLIC_CHANNEL_ATTRIBUTION_NOT_LEGAL_IDENTITY_VERIFIED",
+      "exact_author_byline_records": 2,
+      "prior_candidate_seed_references": 21,
+      "sampled_title_list": "36-title sample is an index-level candidate list, not a verified complete video inventory.",
+      "full_archive_estimate": "Approximately 1.2K indexed videos; not inventoried end-to-end.",
+      "namesake_handling": "Do not merge @KamilahStevensonXrpStocks or the unlinked 2016 Apostle Kamilah Stevenson video. Preserve the unresolved Camilla/Kamilah spelling and channel-attribution conflict.",
+      "status": "PARTIAL_IDENTITY_RECONCILIATION_INVENTORY_INCOMPLETE"
+    }
+  },
+  "corporate_relationships": [
+    {
+      "id": "SBI_CIRCLE_EQUITY_AND_JV",
+      "parties": [
+        "SBI Holdings",
+        "SBI Shinsei Bank",
+        "Circle Internet Group",
+        "SBI Circle Holdings"
+      ],
+      "status": "DIRECT_EQUITY_INVESTMENT_AND_JV",
+      "facts": [
+        "SBI Holdings and SBI Shinsei Bank each disclosed a $25 million Circle share purchase at Circle's June 2025 NYSE listing, $50 million combined.",
+        "SBI Holdings and Circle's group company agreed in March 2025 to form SBI Circle Holdings; the JV was subsequently established.",
+        "SBI VC Trade began public USDC distribution in Japan in March 2025."
+      ],
+      "caveats": [
+        "The $50 million is a historical investment amount, not current market value or current ownership percentage.",
+        "No XRP demand, XRP collateral or XRPL transaction volume is implied."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2025/0609_15491.html",
+        "https://www.sbigroup.co.jp/news/2025/0325_15331.html"
+      ]
+    },
+    {
+      "id": "SBI_CIRCLE_ARC",
+      "parties": [
+        "SBI Group",
+        "SBI Holdings",
+        "Circle",
+        "Arc"
+      ],
+      "status": "DIRECT_TOKEN_PRESALE_PARTICIPATION_AND_FOUNDING_VALIDATOR",
+      "facts": [
+        "SBI Holdings disclosed on 2026-05-12 that a consolidated subsidiary participated in Circle's ARC Token presale; Circle described a $222 million investor consortium. SBI's own allocation was not disclosed.",
+        "Circle's 2026-09-16 Arc mainnet announcement lists SBI Group among founding validators and quotes SBI CEO Yoshitaka Kitao describing SBI's role in Arc operation and governance.",
+        "Circle's Q3 2026 Form 10-Q recognizes $181.8 million of ARC token presale revenue during Q3 and the nine-month period."
+      ],
+      "caveats": [
+        "ARC is Arc's native token, not XRP.",
+        "Arc is Circle's separate EVM-compatible Layer 1, not XRPL.",
+        "SBI's presale amount, current ARC holdings and validator rewards were not disclosed in these sources."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/0512_16310.html",
+        "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/",
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+      ]
+    },
+    {
+      "id": "SBI_RIPPLE",
+      "parties": [
+        "SBI Holdings",
+        "Ripple",
+        "SBI Ripple Asia"
+      ],
+      "status": "DIRECT_HISTORICAL_EQUITY_INVESTMENT_AND_JOINT_VENTURE_REPORTED",
+      "facts": [
+        "SBI disclosed a 2016 Ripple investment and formed SBI Ripple Asia as a joint venture.",
+        "SBI's 2025 disclosures described Ripple as an investee and referenced a roughly 9% stake at the relevant historical disclosure date."
+      ],
+      "caveats": [
+        "Current post-2025 Ripple ownership percentage has not been independently recalculated from a current cap table.",
+        "A Ripple equity stake and SBI Ripple Asia do not prove SBI or its customers hold XRP or use XRP as collateral."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/english/",
+        "https://www.sbigroup.co.jp/news/pr/2026/0220_16124.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+      ]
+    },
+    {
+      "id": "SBI_RLUSD_AND_JPYSC",
+      "parties": [
+        "SBI Holdings",
+        "SBI Shinsei Trust Bank",
+        "SBI VC Trade",
+        "Ripple",
+        "RLUSD",
+        "JPYSC"
+      ],
+      "status": "LIVE_JAPAN_DISTRIBUTION_WITH_LIMITED_LAUNCH_SCOPE",
+      "facts": [
+        "SBI VC Trade announced RLUSD handling in Japan on 2026-06-24; launch support was Ethereum-only in the cited product notice.",
+        "SBI Group and Startale launched trust-type yen stablecoin JPYSC on 2026-06-24. SBI Shinsei Trust is issuer and SBI VC Trade distributes it; initial availability was restricted to SBI VC Trade accounts.",
+        "SBI said public-chain circulation would follow once legal and tax practices were clarified."
+      ],
+      "caveats": [
+        "An Ethereum-only RLUSD listing is not XRPL distribution.",
+        "JPYSC's initial account-limited availability is not proof of public-chain circulation or XRP use.",
+        "Neither announcement proves XRP is required collateral."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html",
+        "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+      ]
+    },
+    {
+      "id": "SBI_CIRCLE_COINHAKO_AND_STABLECOIN_STRATEGY",
+      "parties": [
+        "SBI Holdings",
+        "SBI Coinhako",
+        "Circle",
+        "USDC",
+        "RLUSD",
+        "JPYSC"
+      ],
+      "status": "GROUP_STRATEGY_ANNOUNCED_NOT_MEASURED_THROUGHPUT",
+      "facts": [
+        "SBI disclosures describe a 51.69% SBI Coinhako ownership position and a strategic plan involving JPYSC, USDC and RLUSD for yen-dollar and cross-border settlement."
+      ],
+      "caveats": [
+        "Strategy language is not evidence of live material settlement, XRP demand or measured token flows."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+      ]
+    },
+    {
+      "id": "SBI_SMBC",
+      "parties": [
+        "SBI Holdings",
+        "Sumitomo Mitsui Financial Group"
+      ],
+      "status": "CAPITAL_BUSINESS_ALLIANCE_EXPLORATORY",
+      "facts": [
+        "On 2026-10-30 SBI Holdings and SMFG announced a capital and business alliance to jointly examine financial services using stablecoins and other tokenized assets.",
+        "SMFG agreed to acquire 5% of SBI Startale Marketing; SBI's 2026-11-02 presentation shows the ownership split as SBI Holdings 55%, Startale 40%, SMFG 5%.",
+        "The stated use case includes studying JPYSC integration into SMFG's Olive ecosystem; this remains exploratory."
+      ],
+      "caveats": [
+        "The equity stake is in SBI Startale Marketing, not a direct equity stake in JPYSC or an XRP-related entity.",
+        "The Olive integration and new services are prospective; no production transaction volume or XRP-token use is disclosed."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1030_16698.html",
+        "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf"
+      ]
+    },
+    {
+      "id": "SBI_CAMBODIA_STABLECOIN",
+      "parties": [
+        "SBI Holdings",
+        "National Bank of Cambodia",
+        "SBI Remit",
+        "SBI Digitrust"
+      ],
+      "status": "MOU_STABLECOIN_REMITTANCE_EXPLORATION",
+      "facts": [
+        "SBI announced a 2026-11-13 MOU concerning stablecoin-based remittance exploration with Cambodia-related counterparties and SBI group entities."
+      ],
+      "caveats": [
+        "No XRP settlement or production throughput was established by the MOU."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1113_16737.html"
+      ]
+    },
+    {
+      "id": "SBI_OPEN_STANDARD",
+      "parties": [
+        "SBI Group",
+        "Startale Group",
+        "Coinbase",
+        "Open Standard consortium"
+      ],
+      "status": "CONSORTIUM_MEMBERSHIP_NOT_BILATERAL_PARTNERSHIP",
+      "facts": [
+        "SBI and Startale joined the Open Standard initiative in October 2026; the consortium included Coinbase among 140+ members and discussed JPYSC/OUSD interoperability."
+      ],
+      "caveats": [
+        "Consortium co-membership is not a bilateral SBI-Coinbase partnership and does not establish XRP demand."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+      ]
+    },
+    {
+      "id": "CIRCLE_COINBASE_DISTRIBUTION_ECONOMICS",
+      "parties": [
+        "Circle Internet Group",
+        "Coinbase Global"
+      ],
+      "status": "DIRECT_CONTRACTUAL_DISTRIBUTION_AND_REVENUE_ECONOMIC_RELATIONSHIP",
+      "facts": [
+        "Circle's Q3 2026 Form 10-Q says Coinbase receives allocations based on USDC held on Coinbase's platform after issuer retention, plus half of the remaining ecosystem-growth payment base after approved third-party participant payments.",
+        "Circle reported $331.3 million of distribution costs under its Coinbase agreements in Q3 2026 and $986.6 million for the first nine months of 2026.",
+        "Circle reported total distribution and transaction costs of $409.169 million in Q3 and $1,224.985 million for nine months. Derived Coinbase concentration is approximately 81.0% in Q3 and 80.5% year to date.",
+        "Coinbase's Q3 2026 Form 10-Q says the Circle arrangement was renewed on the same terms and average USDC held in Coinbase products reached an all-time high; the retrieved filing does not state the $22 billion amount.",
+        "Coinbase's October 29, 2026 Q3 earnings release reports the $22 billion average USDC balance and says it represented roughly 30% of average USDC market capitalization, up 49% year over year."
+      ],
+      "derived_metrics": {
+        "q3_2026_coinbase_cost_usd_millions": 331.3,
+        "q3_2026_total_distribution_transaction_costs_usd_millions": 409.169,
+        "q3_2026_derived_share_percent": 80.98,
+        "nine_month_2026_coinbase_cost_usd_millions": 986.6,
+        "nine_month_2026_total_distribution_transaction_costs_usd_millions": 1224.985,
+        "nine_month_2026_derived_share_percent": 80.54
+      },
+      "caveats": [
+        "These are Circle distribution expenses, not a direct measure of Coinbase net profit or USDC reserve income.",
+        "Coinbase's $22 billion average USDC balance is a platform balance measure, not XRP liquidity or XRP collateral.",
+        "The 81.0% and 80.5% figures are derived ratios of Coinbase-specific distribution costs to the broader distribution-and-transaction-cost totals; the denominator includes transaction costs and other arrangements, not only pure distribution costs.",
+        "The $22 billion average USDC balance is in Coinbase's October 29, 2026 earnings release, not the retrieved Form 10-Q. The 10-Q confirms the all-time-high trend and same-terms renewal; both disclosures are from Coinbase and are not independent corroboration."
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm",
+        "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm",
+        "https://investor.coinbase.com/news/news-details/2026/Coinbase-Q3-2026-Earnings-Show-All-time-high-Coinbase-One-Subscribers-and-Prediction-Markets-Surpassing-200-Million-in-Annualized-Revenue/default.aspx"
+      ]
+    },
+    {
+      "id": "COINBASE_RIPPLE_RLUSD",
+      "parties": [
+        "Coinbase",
+        "Ripple",
+        "RLUSD",
+        "XRPL",
+        "Base",
+        "Ethereum"
+      ],
+      "status": "DIRECT_DISTRIBUTION_PARTNERSHIP_ANNOUNCED",
+      "facts": [
+        "Coinbase and Ripple announced RLUSD availability across Coinbase Prime, Coinbase Exchange and the retail app on 2026-10-28.",
+        "At launch, RLUSD deposits and withdrawals were supported on XRPL, Base and Ethereum.",
+        "Coinbase Global Exchange availability and RLUSD collateral functionality were described as following later, not live at launch."
+      ],
+      "caveats": [
+        "Listing on XRPL does not establish net XRPL inflows or XRP-token demand.",
+        "Future collateral plans are not evidence of live XRP collateral use.",
+        "No public launch balance, flow or collateral utilization was identified in these announcements."
+      ],
+      "sources": [
+        "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase",
+        "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+      ]
+    },
+    {
+      "id": "RIPPLE_BNY_CUSTODY_AND_TRADE_FINANCE",
+      "parties": [
+        "Ripple",
+        "BNY",
+        "XRP",
+        "RLUSD",
+        "XRPL",
+        "C2FO"
+      ],
+      "status": "DIRECT_CUSTODY_SUPPORT_LIVE_FUTURE_FINANCE_USE_CASES_SUBJECT_TO_APPROVAL",
+      "facts": [
+        "Ripple and BNY announced on 2026-10-27 that BNY supports XRP and RLUSD on its Digital Asset Custody platform.",
+        "BNY is identified as primary reserve custodian for RLUSD and has a custody relationship with Ripple Prime.",
+        "BNY and Ripple described future direct RLUSD mint/redeem through BNY and tokenized trade-finance work on XRPL, subject to client requirements and final regulatory approvals."
+      ],
+      "caveats": [
+        "Custody availability is not evidence of actual customer holdings or AUC for XRP.",
+        "Future mint/redeem and tokenized trade-finance plans are not current production flows.",
+        "The announcement does not state XRP is the settlement asset or collateral for the proposed C2FO workflow."
+      ],
+      "sources": [
+        "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html",
+        "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+      ]
+    },
+    {
+      "id": "CIRCLE_DBS_USDC",
+      "parties": [
+        "Circle",
+        "DBS",
+        "USDC",
+        "Project BLOOM"
+      ],
+      "status": "DIRECT_INSTITUTIONAL_MINT_REDEEM_AND_24_7_SETTLEMENT_PARTNERSHIP",
+      "facts": [
+        "Circle and DBS announced on 2026-11-18 that eligible institutional clients can directly mint and redeem USDC through DBS with 24/7 USD-USDC settlement.",
+        "Both organizations participate in Project BLOOM, led by the Monetary Authority of Singapore."
+      ],
+      "caveats": [
+        "This is a USDC banking/payment rail, not an XRP or XRPL partnership.",
+        "The announcement does not disclose realized transaction volume."
+      ],
+      "sources": [
+        "https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia",
+        "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia"
+      ]
+    },
+    {
+      "id": "CIRCLE_PARIBU_ARC",
+      "parties": [
+        "Circle",
+        "Paribu",
+        "Arc",
+        "USDC"
+      ],
+      "status": "DIRECT_MOU_ON_EXISTING_ARC_INTEGRATION",
+      "facts": [
+        "Paribu was an Arc day-one launch partner and supports USDC deposits/withdrawals over Arc; Paribu Custody added Arc support.",
+        "Circle and Paribu signed a 2026-11-24 MOU to explore Arc products, tokenization, institutional custody, education and research."
+      ],
+      "caveats": [
+        "The MOU is exploratory; no committed volume or production use case was disclosed.",
+        "Arc is Circle's separate network, not XRPL."
+      ],
+      "sources": [
+        "https://www.circle.com/pressroom/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye",
+        "https://www.paribu.com/blog/en/news/paribu-circle-mou/",
+        "https://www.paribu.com/blog/en/news/paribu-supports-arc-as-day-1-launch-partner-in-turkiye/"
+      ]
+    },
+    {
+      "id": "RIPPLE_CORPORATE_CLAIMS",
+      "parties": [
+        "Ripple",
+        "Ripple Payments",
+        "RLUSD",
+        "XRP Ledger"
+      ],
+      "status": "COMPANY_REPORTED_NOT_INDEPENDENTLY_RECONCILED",
+      "facts": [
+        "Ripple's 2026-10-28 release reported a $900 million annualized product-revenue run rate, more than $16 trillion in transactions enabled across Ripple products during 2025, more than 85 licenses, 1,700+ institutional/corporate/enterprise users, 60+ payout markets, and nearly $150 billion of lifetime Ripple Payments volume by year-end.",
+        "The same release described RLUSD at approximately $2.6 billion market capitalization and said it was used across Ripple products."
+      ],
+      "caveats": [
+        "These are Ripple's company-reported metrics across products, not XRP-only volume, XRP sales, XRP liquidity, or XRPL settlement volume.",
+        "No independent product-level bridge from Ripple Payments volume to XRP-token usage was provided in the release."
+      ],
+      "sources": [
+        "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+      ]
+    },
+    {
+      "id": "SBI_BLACKROCK_JPYSC_TOKENIZED_MMF",
+      "parties": [
+        "SBI Holdings",
+        "Startale Group",
+        "BlackRock Financial Management",
+        "BlackRock Japan",
+        "JPYSC",
+        "tokenized money-market fund"
+      ],
+      "status": "MOU_EXPLORATORY_NOT_PRODUCTION",
+      "facts": [
+        "On 2026-10-27 SBI Holdings and Startale announced an MOU with BlackRock Financial Management and BlackRock Japan to explore a digital-asset ecosystem connecting tokenized money-market funds and the yen-denominated trust stablecoin JPYSC.",
+        "The announcement assigns BlackRock global tokenized-MMF knowledge/network, SBI Group financial customer base and regulatory know-how, and Startale on-chain technology capabilities."
+      ],
+      "caveats": [
+        "The announcement is an MOU to examine technical, commercial and regulatory possibilities; it does not establish a production integration, settlement volume, collateral acceptance or XRP requirement.",
+        "The proposed JPYSC/MMF rail is an adjacent or competing tokenized-cash path, not evidence of XRP demand."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/news/2026/1027_16682.html"
+      ]
+    },
+    {
+      "id": "SBI_EREBOR_US_DIGITAL_BANK",
+      "parties": [
+        "SBI Holdings",
+        "SBI Holdings USA",
+        "Erebor Bank",
+        "stablecoin deposits and withdrawals",
+        "blockchain settlement"
+      ],
+      "status": "USD_100M_INVESTMENT_ANNOUNCED_BANK_CAPABILITIES_REPORTED",
+      "facts": [
+        "On 2026-11-02 SBI Holdings announced a USD 100 million investment in Erebor Bank through SBI Holdings USA.",
+        "SBI's release says Erebor supports stablecoin deposits and withdrawals, blockchain-based settlement at any time including weekends, and major payment rails; deposits exceeded USD 7 billion as of September 2026.",
+        "SBI described its existing JPYSC, USDC and RLUSD initiatives as part of its wider digital-asset strategy."
+      ],
+      "caveats": [
+        "The release does not identify which stablecoins Erebor supports, disclose XRP integration, or show XRP settlement/collateral flows.",
+        "The investment announcement and bank capability description are not evidence of a live SBI-Erebor XRP product."
+      ],
+      "sources": [
+        "https://www.sbigroup.co.jp/english/news/pdf/2026/1102_c_en.pdf"
+      ]
+    },
+    {
+      "id": "STANDARD_CHARTERED_CIRCLE_USDC",
+      "parties": [
+        "Standard Chartered",
+        "Circle",
+        "USDC"
+      ],
+      "status": "DIRECT_INSTITUTIONAL_MINT_REDEEM_ACCESS_LAUNCHED",
+      "facts": [
+        "Standard Chartered and Circle announced on 2026-07-02 that eligible institutional clients could access USDC minting and redemption through a single bank-led onboarding and service experience without opening direct Circle accounts.",
+        "The initial capability was available through Standard Chartered's DIFC operations; expansion to other markets is subject to regulatory approvals and market readiness.",
+        "Circle's 2026 Internet Financial System report says the relationship began in 2023 and expanded from global cash management to USDC custody on permissionless chains and USDC minting."
+      ],
+      "caveats": [
+        "The announcements do not disclose realized USDC transaction volume through the service.",
+        "This is a USDC institutional banking rail, not an XRP or RLUSD integration."
+      ],
+      "sources": [
+        "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+        "https://www.circle.com/pressroom/standard-chartered-and-circle-launch-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption",
+        "https://www.circle.com/reports/internet-financial-system/usdc-and-circle-digital-assets"
+      ]
+    },
+    {
+      "id": "STANDARD_CHARTERED_RIPPLE_LMAX_RLUSD",
+      "parties": [
+        "Standard Chartered",
+        "Ripple",
+        "LMAX Group",
+        "RLUSD",
+        "XRP Ledger"
+      ],
+      "status": "RLUSD_CUSTODY_LIVE_PLANNED_LMAX_COLLATERAL_INTEGRATION_NOT_LIVE",
+      "facts": [
+        "On 2026-10-12 Standard Chartered said institutional custody support for RLUSD issued on XRPL was live through its DIFC branch, regulated by the Dubai Financial Services Authority.",
+        "Standard Chartered, Ripple and LMAX Group intend to make RLUSD eligible collateral for agreed LMAX products using Standard Chartered's collateral-mirroring model, so underlying RLUSD need not be transferred to the trading venue.",
+        "The announcement says future capabilities remain subject to final documentation, successful testing, applicable laws and regulations, internal approvals and jurisdictional readiness."
+      ],
+      "caveats": [
+        "Live RLUSD custody is not XRP-token custody, and no RLUSD custody balances, XRP AUC, flows or collateral utilization were disclosed.",
+        "LMAX RLUSD collateral eligibility is planned, not verified as live; no XRP-token collateral use is established.",
+        "Standard Chartered, Ripple and LMAX published the same joint announcement; these are counterparty copies, not independent measurements of realized activity."
+      ],
+      "sources": [
+        "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+        "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/?nr=1"
+      ]
+    }
+  ],
+  "cross_hypotheses_and_disconfirming_evidence": [
+    "Corporate partnerships, custody support, exchange listings, stablecoin circulation, and tokenized-asset plans do not automatically create XRP demand.",
+    "Circle Arc is a separate EVM-compatible L1; SBI Group's Arc validator/presale activity is not evidence of XRP or XRPL use.",
+    "RLUSD being available on XRPL, Base and Ethereum does not establish net XRPL inflows, XRP bridge demand, or XRP collateral use.",
+    "BNY custody support establishes product availability, not balances held, AUC, transfer volume, or collateral utilization.",
+    "Coinbase Global Exchange RLUSD collateral functionality was described as future at the 2026-10-28 launch.",
+    "Ripple's $16T transaction figure and $900M annualized product revenue are company-reported cross-product metrics, not XRP-only financial metrics.",
+    "SBI's JPYSC, USDC and RLUSD strategy is a multi-stablecoin strategy; no measured XRP settlement requirement was disclosed.",
+    "SBI and SMBC's October 2026 alliance is exploratory; it does not establish a live production rail.",
+    "The direct Circle-Coinbase distribution relationship is financially material, but it is a USDC reserve/distribution relationship, not an XRP market-flow signal.",
+    "Standard Chartered now publicly describes institutional USDC access/custody/minting through its Circle relationship and live institutional RLUSD custody on XRPL; this makes the bank a shared infrastructure counterparty for two stablecoin issuers, but it is not evidence of a direct Circle-Ripple partnership or shared XRP liquidity.",
+    "The RLUSD/LMAX collateral-mirroring arrangement is planned and subject to documentation, testing, law, internal approvals and jurisdictional readiness; do not count it as live collateral demand or XRP demand.",
+    "SBI's JPYSC/BlackRock tokenized-MMF MOU, Open Standard participation, SMFG alliance and Erebor investment expand non-XRP stablecoin and tokenized-cash alternatives; this is disconfirming context for any assumption that SBI's digital-asset expansion necessarily requires XRP.",
+    "SBI and Coinbase are linked indirectly through Open Standard co-membership, while no direct bilateral SBI-Coinbase agreement was identified in the inspected primary sources.",
+    "An AInvest AI-assisted secondary article dated 2026-08-23 uses the exact phrase 'actual capital' to characterize Ripple's RLUSD business; it is commentary, not a primary capital-flow disclosure, and is not admitted as evidence of a financing or token flow."
+  ],
+  "unresolved_questions": [
+    "Current post-2025 SBI Ripple equity percentage and voting/economic rights.",
+    "Current Coinbase ownership percentage in Circle after IPO, subsequent transactions and Q3 2026 disclosures.",
+    "Product-level split of Ripple's reported payment volume attributable to XRP versus fiat/stablecoin or other rails.",
+    "Actual XRP balances, flows, custody AUC and collateral utilization at Coinbase, BNY, SBI VC Trade and other institutions.",
+    "Whether any RLUSD Coinbase collateral feature went live after the October 28 launch announcement, and actual utilization if so.",
+    "Independent raw-byte capture and point-in-time receipt linkage for each primary-source event.",
+    "Does Standard Chartered's live RLUSD custody produce material client balances or XRPL transfer volume, and are those balances reported anywhere?",
+    "Has the planned RLUSD collateral-mirroring integration with LMAX passed final documentation, testing, legal, internal and jurisdictional gates, and what is actual utilization?",
+    "What realized USDC mint/redeem volume is routed through Standard Chartered's DIFC service, and when does it expand to other markets?",
+    "Does the SBI/Startale/BlackRock JPYSC-tokenized-MMF MOU progress to a funded technical pilot or production settlement, and which ledger/network is selected?",
+    "Which stablecoins, if any, are supported by Erebor's stablecoin deposit/withdrawal capability, and is there any disclosed XRP integration?",
+    "Is there any direct Circle-Ripple commercial, technical or equity relationship beyond both companies' separate use of shared banks and institutional counterparties?",
+    "What original public source, if any, was intended by the exact phrase 'actual capital' beyond the AInvest secondary-commentary occurrence identified on 2026-08-23?"
+  ],
+  "sources": [
+    {
+      "publisher": "Tokyo SBIC East",
+      "published_at": "2025-06-12/13",
+      "type": "official_training_notice",
+      "url": "https://www.sbic.co.jp/training/20250612co/"
+    },
+    {
+      "publisher": "Tokyo SBIC East",
+      "published_at": "current_company_profile",
+      "type": "official_company_profile",
+      "url": "https://www.sbic.co.jp/company/profile/"
+    },
+    {
+      "publisher": "e-Gov Japan",
+      "published_at": "1963-07-20",
+      "type": "statute",
+      "url": "https://laws.e-gov.go.jp/law/338AC0000000101"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2025-06-09",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0609_15491.html"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2025-03-25",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2025/0325_15331.html"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-05-12",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0512_16310.html"
+    },
+    {
+      "publisher": "Circle Investor Relations",
+      "published_at": "2026-09-16",
+      "type": "official_corporate_release",
+      "url": "https://investor.circle.com/news/news-details/2026/Circle-Launches-Arc-Mainnet-an-Economic-Operating-System-for-the-Internet/"
+    },
+    {
+      "publisher": "Circle / SEC",
+      "published_at": "2026-Q3",
+      "type": "SEC_FORM_10_Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000311/crcl-20260930.htm"
+    },
+    {
+      "publisher": "Coinbase / SEC",
+      "published_at": "2026-Q3",
+      "type": "SEC_FORM_10_Q",
+      "url": "https://www.sec.gov/Archives/edgar/data/1679788/000167978826000122/coin-20260930.htm"
+    },
+    {
+      "publisher": "Coinbase",
+      "published_at": "2026-10-28",
+      "type": "official_product_announcement",
+      "url": "https://www.coinbase.com/blog/rlusd-is-now-available-on-coinbase"
+    },
+    {
+      "publisher": "Ripple",
+      "published_at": "2026-10-28",
+      "type": "official_corporate_announcement",
+      "url": "https://ripple.com/ripple-press/ripple-and-coinbase-partner-to-expand-access-to-rlusd/"
+    },
+    {
+      "publisher": "BNY",
+      "published_at": "2026-10-27",
+      "type": "official_counterparty_announcement",
+      "url": "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/ripple-expands-strategic-digital-assets-collaboration-with-bny-across-custody-and-tokenized-trade-finance.html"
+    },
+    {
+      "publisher": "Ripple",
+      "published_at": "2026-10-27",
+      "type": "official_corporate_announcement",
+      "url": "https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/"
+    },
+    {
+      "publisher": "Ripple",
+      "published_at": "2026-10-28",
+      "type": "company_reported_metrics",
+      "url": "https://ripple.com/ripple-press/ripple-reports-banner-year-approaching-900m-product-revenue-run-rate-signs-multi-solution-partnerships/"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-06-24",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/0624_16425.html"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-10-30",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1030_16698.html"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-11-13",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1113_16737.html"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-10-16",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/2026/1016_16665.html"
+    },
+    {
+      "publisher": "SBI Ripple Asia",
+      "published_at": "2026-02-20",
+      "type": "official_corporate_release",
+      "url": "https://www.sbigroup.co.jp/news/pr/2026/0220_16124.html"
+    },
+    {
+      "publisher": "Circle",
+      "published_at": "2026-11-18",
+      "type": "official_corporate_release",
+      "url": "https://www.circle.com/pressroom/dbs-and-circle-expand-institutional-access-to-usdc-in-asia"
+    },
+    {
+      "publisher": "DBS",
+      "published_at": "2026-11-18",
+      "type": "official_counterparty_announcement",
+      "url": "https://www.dbs.com/newsroom/DBS_and_Circle_expand_institutional_access_to_USDC_in_Asia"
+    },
+    {
+      "publisher": "Circle",
+      "published_at": "2026-11-24",
+      "type": "official_corporate_release",
+      "url": "https://www.circle.com/pressroom/paribu-and-circle-sign-mou-to-explore-usdc-access-and-onchain-finance-in-turkiye"
+    },
+    {
+      "publisher": "Paribu",
+      "published_at": "2026-11-24",
+      "type": "official_counterparty_announcement",
+      "url": "https://www.paribu.com/blog/en/news/paribu-circle-mou/"
+    },
+    {
+      "publisher": "Permission",
+      "published_at": "current_docs",
+      "type": "official_token_documentation",
+      "url": "https://docs.permission.ai/ask-token"
+    },
+    {
+      "publisher": "Standard Chartered",
+      "published_at": "2026-07-02",
+      "type": "official_joint_product_launch",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/",
+      "independence_group": "sc_circle_usdc_access_2026-07-02",
+      "claim_scope": "Eligible institutional clients can access USDC minting and redemption through Standard Chartered's DIFC operations without direct Circle accounts; wider market expansion remains subject to approvals.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Circle",
+      "published_at": "2026-report",
+      "type": "official_corporate_report",
+      "url": "https://www.circle.com/reports/internet-financial-system/usdc-and-circle-digital-assets",
+      "independence_group": "circle_internet_financial_system_report",
+      "claim_scope": "Circle states its Standard Chartered relationship began in 2023 and expanded from global cash management to USDC custody on permissionless chains and USDC minting.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Standard Chartered",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Institutional RLUSD custody on XRPL is live through the bank's DIFC branch; LMAX collateral integration is intended, not yet production-confirmed.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "Ripple",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Counterparty publication of the same Standard Chartered/Ripple/LMAX RLUSD custody and planned collateral announcement; not independent flow evidence.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "LMAX Group",
+      "published_at": "2026-10-12",
+      "type": "official_joint_corporate_announcement",
+      "url": "https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/?nr=1",
+      "independence_group": "sc_ripple_lmax_rlusd_2026-10-12",
+      "claim_scope": "Counterparty publication of the same RLUSD custody and planned collateral integration; the release preserves final-documentation, testing, legal and internal-approval conditions.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings / Startale Group",
+      "published_at": "2026-10-27",
+      "type": "official_joint_mou_announcement",
+      "url": "https://www.sbigroup.co.jp/news/2026/1027_16682.html",
+      "independence_group": "sbi_startale_blackrock_jpysc_mmf_mou_2026-10-27",
+      "claim_scope": "SBI, Startale and BlackRock agreed to explore connections between tokenized money-market funds and JPYSC; roles are described, but no production settlement or XRP requirement is established.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings",
+      "published_at": "2026-11-02",
+      "type": "official_financial_results_presentation",
+      "url": "https://www.sbigroup.co.jp/english/investors/disclosure/presentation/pdf/261102presentations.pdf",
+      "independence_group": "sbi_smfg_jpysc_ownership_2026-10-30",
+      "claim_scope": "Presentation discloses SBI Startale Marketing ownership as SBI Holdings 55%, Startale 40%, SMFG 5%, and describes JPYSC integration into SMFG Olive as a prospective initiative.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "SBI Holdings / SBI Holdings USA",
+      "published_at": "2026-11-02",
+      "type": "official_investment_announcement",
+      "url": "https://www.sbigroup.co.jp/english/news/pdf/2026/1102_c_en.pdf",
+      "independence_group": "sbi_erebor_investment_2026-11-02",
+      "claim_scope": "SBI Holdings USA announced a USD 100 million investment in Erebor Bank; SBI describes stablecoin deposits/withdrawals and 24/7 blockchain settlement at the bank, with deposits above USD 7 billion as of September 2026.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    },
+    {
+      "publisher": "AInvest",
+      "published_at": "2026-08-23",
+      "type": "AI_ASSISTED_SECONDARY_COMMENTARY",
+      "url": "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/",
+      "independence_group": "ainvest_editorial_2026-08-23",
+      "claim_scope": "Contains the exact phrase 'Ripple's actual capital is flowing into its regulated stablecoin, RLUSD'; this is editorial characterization, not a primary capital-flow or financing disclosure.",
+      "raw_bytes_retained": false,
+      "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT"
+    }
+  ],
+  "provenance": {
+    "web_retrieval_used": true,
+    "raw_source_sha256": null,
+    "raw_bytes_retained": false,
+    "receipt_status": "WEB_METADATA_ONLY_NOT_RAW_RECEIPT",
+    "captured_at_utc": "2026-11-28T15:25:46.033Z",
+    "source_independence": "Counterparty pairs were used where available (SBI/Circle, Coinbase/Ripple, Ripple/BNY, Circle/DBS, Circle/Paribu). These are independent publisher records of announcements, but they are not independent measurements of realized flows. Additional Standard Chartered/Circle and Standard Chartered/Ripple/LMAX records are co-publisher/counterparty announcements; they confirm announced service scope but are not independent measurements of realized balances or flows. SBI/BlackRock and SBI/Erebor records are issuer/participant announcements, not independent usage evidence. The AInvest exact-phrase hit is AI-assisted secondary commentary and is retained only as a phrase-search lead, not as primary or independent capital-flow evidence.",
+    "disagreements": "Company claims and future plans are preserved separately from realized balance, flow, custody and collateral evidence. Live RLUSD custody is separated from planned LMAX collateral eligibility; SBI's tokenized-MMF and bank initiatives are separated from measured XRP usage. The phrase 'actual capital' in AInvest is not treated as a primary accounting, financing or XRP-flow statement.",
+    "model_eligible": false,
+    "directional_forecast_issued": false
+  },
+  "exact_phrase_research": {
+    "ASK Coin": {
+      "status": "UNRESOLVED_NO_PRIMARY_EXACT_MATCH",
+      "findings": [
+        "No exact primary-source match for an XRP/SBI-related 'ASK Coin' was established in this pass.",
+        "Permission's official documentation describes an ASK token on its own ecosystem; it is a candidate referent only, with no verified XRP, Ripple or SBI relationship."
+      ],
+      "sources": [
+        "https://docs.permission.ai/ask-token"
+      ],
+      "model_eligible": false
+    },
+    "actual capital": {
+      "status": "SECONDARY_PHRASE_HIT_PRIMARY_REFERENT_UNRESOLVED",
+      "exact_phrase_hit": {
+        "publisher": "AInvest",
+        "published_at": "2026-08-23",
+        "title": "Ripple's 75 Licenses Don't Serve the Token — They Serve the Company",
+        "context": "The article says: 'Ripple's actual capital is flowing into its regulated stablecoin, RLUSD.'",
+        "url": "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/"
+      },
+      "assessment": [
+        "The page identifies its author as an AI agent and says the article uses LLM synthesis with human review.",
+        "The phrase is rhetorical commentary about RLUSD; the article does not identify a specific capital transaction, capital-flow dataset or audited financing amount in that sentence.",
+        "No primary SEC filing or issuer disclosure using this exact phrase as a transaction label was identified in this pass."
+      ],
+      "sources": [
+        "https://www.ainvest.com/news/ripple-75-licenses-don-serve-token-serve-company-2608/"
+      ],
+      "model_eligible": false
+    },
+    "SBIC, ChatGPT SBIC": {
+      "status": "PRIMARY_CONTEXT_RESOLVED_NO_PARTNERSHIP",
+      "findings": [
+        "Tokyo SBIC East's official 2025 manufacturing generative-AI training page includes ChatGPT use in the curriculum and states that non-investee companies were not eligible for the course.",
+        "This supports a training/course context, not a partnership with OpenAI, ChatGPT or SBI Holdings.",
+        "SBIC East/Central/West remain separate regional investment-development companies, not SBI Holdings."
+      ],
+      "sources": [
+        "https://www.sbic.co.jp/training/20250612co/",
+        "https://www.sbic.co.jp/company/profile/",
+        "https://www.sbic-cj.co.jp/company/about/",
+        "https://www.sbic-wj.co.jp/profiles/profile/"
+      ],
+      "model_eligible": false
+    }
+  }
+}
