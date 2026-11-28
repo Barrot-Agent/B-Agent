@@ -2155,3 +2155,75 @@ Captured: 2026-11-28T07:00:01Z. This checkpoint refreshes the same canonical han
 6. Keep Sellbird outbound paused and uninstalled until the Barrot-only pilot offer, legal review, mailbox/domain authentication, suppression/opt-out controls and user campaign approval are complete.
 
 No merge, branch creation, source-PR closure, deployment, secret rotation, paid lookup, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+## CURRENT AUTHORITATIVE CHECKPOINT — 2026-11-28 07:58 UTC (RUN 15)
+
+Captured: 2026-11-28T07:58:00Z. This checkpoint supersedes earlier checkpoints where newer evidence exists; prior evidence remains in the history below.
+
+## Mission portfolio and repository — VERIFIED
+
+- The three active priority-1 missions remain XRP intelligence/prediction-engine mastery, professional audio production, and long-horizon continuity/capability development. Barrot V3 remains the shared execution, orchestration, MMI, provenance, authorization, safety and verification foundation. Revenue/customer acquisition remains a cross-mission objective, not a fourth mission; Sellbird remains restricted to Barrot technology only.
+- Current main remains `afe0c00141f8c369ddfefdc4b31d848060ae59f1`. The complete recursive Git tree contains 3,168 entries with `truncated=false`. Main CI #46055543966 remains the current-main full-suite evidence: 4,725 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests, 74.44% coverage. Main dependency audit #46055543856 and money audit #46055543828 passed.
+- Main is unchanged since the #1704 audio merge. The detailed branch-protection endpoint still returns HTTP 403 (`Resource not accessible by integration`); required approval count and administrator enforcement remain unknown. The #1704 merge triggered Pages deployment #46055542164 successfully. No further merge is authorized until the deployment side effect is explicitly approved.
+- Re-fetched all 11 open PRs, current metadata, changed paths and ancestry against main. No new branch or PR was created.
+
+## Open integration PRs — EXACT-HEAD CHECKS VERIFIED; MERGE BLOCKED
+
+- **#1715 — canonical mission handoff/runtime successor.** Current validated head `ce2f4af40c4c13d5c63c30845657894efec19dd6`, 28 commits ahead / 0 behind main, five changed paths. Full repository suite run #46122343394: **4,734 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests**; the full-suite job and Pages validation passed. Dependency audit #46122343403, money audit #46122343364, conflict-integrity #46122343444 and gated-merge #46122343400 all succeeded on this head. Zero independent reviews. The detailed protection settings remain inaccessible and the known Pages deployment side effect is not authorized. Do not merge.
+- **#1716 — consolidated XRP event-provenance/RLUSD successor.** Head `d8b47e5a5d80b786d6fefb1fc1fadf5094f8deea`, 8 ahead / 0 behind, 20 changed paths. Exact-head full suite #46100978374: **4,759 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests; 74.51% coverage**. Dependency audit #46100978310, money audit #46100978327, conflict-integrity #46100978344 and gated merge #46100978313 all succeeded. Zero independent reviews. The branch's 13 curated event-page capture specifications yielded 7 marker-passing captures, 4 marker mismatches and 2 HTTP 403 responses; the 7 links are digest-only, 153/160 events still lack raw receipt hashes, and no external timestamp anchor exists. It supersedes only #1705, #1706 and #1708, which must remain open until #1716 is merged and its contents are verified on main.
+- **#1717 — optional dependency audit hardening.** Head `719c32fe4f1f6b846065c6f3fab727b607aab38d`, 2 ahead / 0 behind, two changed paths. Exact-head full suite #46106321086: **4,726 passed, 0 failed, 1 skipped, 11 warnings, 21 subtests**. Dependency audit #46106321083, money audit #46106321094, conflict-integrity #46106321060 and gated merge #46106321074 all succeeded. The new optional-dependency audit step passed. Zero independent reviews. Do not merge until review/protection and deployment requirements are satisfied.
+
+### Remaining open-PR classification (11 total)
+
+| PR | Classification | Current handling |
+|---|---|---|
+| #1715 | Active canonical handoff/runtime successor | Keep one active; exact-head checks pass; no review; merge blocked |
+| #1716 | Active consolidated XRP successor | Exact-head checks pass; no review; supersedes #1705/#1706/#1708 only after verified merge |
+| #1717 | Active supporting security integration | Exact-head checks pass; no review; merge blocked |
+| #1702 | Partially superseded, unique remainder | Preserve docs/INDEX, archived handoff/map, 2026-11-24 primary-source reconciliation and map test; do not merge stale branch wholesale |
+| #1705 | Superseded by #1716, pending successor merge | Keep open until #1716 is merged and verified |
+| #1706 | Superseded cache-action subset of #1716 | Keep open until #1716 is merged and verified |
+| #1708 | Superseded cache-save subset of #1716; draft | Keep open until #1716 is merged and verified |
+| #1707 | Unique/unreviewed setup-node dependency update | Preserve; 1 ahead / 61 behind; rebase and verify before promotion |
+| #1709 | Unique/unreviewed Databricks CLI dependency update | Preserve; 2 ahead / 61 behind; verify workflow/test overlap before promotion |
+| #1710 | Unique/unreviewed legacy PyYAML update | Preserve; 1 ahead / 61 behind |
+| #1711 | Blocked draft NumPy compatibility update | Preserve draft; 1 ahead / 61 behind; test NumPy compatibility before promotion |
+
+Ancestry against current main confirms #1702 is 207 ahead / 49 behind, #1705 48/49, #1706 2/61, #1707 1/61, #1708 1/61, #1709 2/61, #1710 1/61 and #1711 1/61. #1702 overlaps #1715 on five paths but retains unique work. #1705 overlaps #1716 on the XRP workflow and research/test paths; #1706/#1708 touch the same XRP workflow with separate cache restore/save changes, both incorporated by #1716. #1709 shares the action-pin test path with #1706 but is otherwise a separate Databricks workflow update.
+
+## XRP intelligence and prediction — EXECUTED; FORECAST WITHHELD
+
+- Latest successful main ingestion is #46120190816 on main SHA `afe0c00141f8c369ddfefdc4b31d848060ae59f1`. Data cutoff: **2026-11-28T07:13:50.511771Z**; evaluation as-of: **07:13:55.677402Z**. Adapter `xrp-public-market-v3.34`, parser `xrp-public-market-v3.32`.
+- 37 source receipts: 21 retained raw payloads and 16 digest-only receipts; 18 source failures (8 HTTP 451, 5 HTTP 403, 1 HTTP 429, 1 Franklin marker mismatch, 3 SEC configuration failures). Receipt-chain status is CONTINUED and verification passed, but there is no independent external timestamp anchor; raw artifacts retain for 90 days, feature-store checkpoints for 7 days and daily backups for 90 days. Raw-only feature-store rebuild is not implemented.
+- Point-in-time feature store: **183 snapshots**, **45,307** history records, 2,230 input records, 347 eligible and 366 excluded in the latest snapshot; SQLite integrity `ok`.
+- Event timeline: 150 curated events; **0 verified event-to-receipt links**, 0 event raw-source hashes, and event receipt completeness false. Walk-forward baseline: **692 rows**, status PARTIAL_OR_BLOCKED. Drift: 0/206 features evaluated, INSUFFICIENT_DATA. Forecast status: **NOT_ISSUED**; no directional forecast or paper trade.
+- Latest quote basis is same-venue OKX top-of-book only: mid USD 0.9449194705, spread 1.1571 bps, 0.1-second snapshot skew, 11.446-second maximum component age, one publisher-independence group. This is not consolidated depth or independent corroboration.
+- SEC EDGAR capture remains BLOCKED_CONFIGURATION; Morpho cbXRP remains BLOCKED_INDEXER_BLOCK_MISMATCH. Do not bypass provider HTTP 451/403 restrictions or treat them as retryable.
+- Latest Cross Analysis #46123121302 succeeded at 07:51:37Z but rejected sentiment freshness: XRP input age **715.206 hours**, BTC **772.041 hours**. Sentiment is descriptive only; `forecast_eligible=false`.
+
+## Audio, continuity, platforms and commercial status
+
+- **Audio:** PR #1704 remains merged on main. Full-song FluidSynth bundle #15226626401 (242,109,368 bytes) contains stereo WAV, nine aligned stems, 11 MIDI tracks and 10 section markers; it is not a native DAW project. QC artifact #15226436259 passed: zero clipped samples, -6.000 dBTP, -22.443 LUFS, 7.839 LU range, 0.999979 stem-sum correlation and 0.00651 relative RMS reconstruction error. The current #1715 full-suite log reports audio adapter coverage 100%, bundle 93%, renderer 84%, MIDI export 96%. Numeric QC is not musical acceptance: no blind/level-matched listening or user acceptance is verified; the prior user rating remains 3/10. SoundFont binary provenance/rights and native DAW project remain open.
+- **Continuity:** #1703 is merged. Shared-workspace fresh-process round-robin recovery and signed Ed25519 transfer-envelope/replay controls are tested. A real independent-host transfer, network sync, automatic key exchange and encrypted transport remain unverified.
+- **Nine platforms:** only ChatGPT-to-GitHub authentication, permissions and data flow are verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain untested; no external model dispatch or cross-platform evidence transfer occurred.
+- **Sellbird:** exact upstream v0.5.0 source and AGPL-3.0-only license have been audited, but it remains uninstalled and unauthenticated. Barrot-only scope. Verified prospects 0; qualified prospects 0; approved outreach 0; sent 0; replies 0; meetings 0; proposals 0; collected revenue $0. Outbound remains paused. No music/TrekFlex prospecting.
+
+## DESIGNED / EXECUTED / VERIFIED
+
+- **DESIGNED:** three co-equal priority-1 missions, Barrot V3 foundation, forecast gates, audio deliverable/quality gates, long-horizon state ledger, nine-platform least-privilege map and Barrot-only commercial funnel.
+- **EXECUTED:** re-fetched main SHA and full recursive tree, all 11 open PRs, changed paths and ancestry; inspected current workflows/dependencies, latest main XRP ingestion and cross-analysis logs, exact-head CI/security/conflict/gated-merge jobs, audio render/QC records and continuity/platform/Sellbird evidence.
+- **VERIFIED:** main SHA/tree; current-main CI and audits; exact-head full-suite/dependency/money/conflict/gated checks for #1715/#1716/#1717; current XRP receipt-chain integrity and feature-store SQLite integrity; audio technical QC; repository tests for workspace continuity and signed-transfer controls.
+- **NOT VERIFIED:** independent PR approvals and detailed branch protection; deployment authorization; complete event-to-receipt linkage, raw-source retention beyond workflow artifacts, external timestamp anchoring, adequate walk-forward/drift evaluation and predictive superiority; audio listening acceptance, rights-complete SoundFont provenance and native DAW project; independent-host synchronization; eight external platform connections; Sellbird installation, prospecting, outreach or revenue.
+
+## Next concrete actions
+
+1. Keep #1715 as the sole handoff/runtime successor. Obtain an independent review and verify required branch-protection approval settings. Do not merge #1715, #1716 or #1717 while the automatic Pages deployment side effect remains unapproved.
+2. Continue #1716's event-to-receipt linkage and primary-source capture work; preserve marker mismatches and HTTP denials rather than manufacturing receipts.
+3. Resolve SEC contact configuration only with an authorized monitored identity; keep Morpho blocked until canonical Base block-time reconciliation.
+4. Keep forecasts disabled until complete point-in-time event/receipt linkage, leakage-safe out-of-sample evaluation, calibration and drift gates pass.
+5. Advance audio through rights-verified assets, reproducible full render, level-matched listening acceptance and an editable DAW project/interchange path.
+6. Execute signed state transfer between independent hosts and verify stale/conflict/replay behavior end-to-end.
+7. Keep Sellbird outbound paused; validate a Barrot-only offer and prospects before any campaign approval.
+
+No merge, branch creation, force-push, branch rewrite, deployment, Space restart, secret rotation, external model dispatch, paid lookup, Kaggle submission, outbound message, paper trade, funds transfer or real-money action occurred.
