@@ -1,3 +1,94 @@
+# RUN 26 ADDENDUM — current-head governance, XRP ingestion, RLUSD custody/collateral evidence and verified creator identity — 2026-11-28T19:00Z
+
+This checkpoint is append-only. It supersedes earlier status only where newer evidence differs. Main remains unchanged.
+
+## Three co-equal missions and V3 foundation — VERIFIED
+XRP intelligence/prediction, professional audio production, and long-horizon continuity/capability development remain equal priority 1. None is subordinate. Barrot V3 remains the shared execution, orchestration, provenance, safety, authorization and verification foundation. The three mission manifests remain unchanged and consistent.
+
+## Repository and integration state — EXECUTED / VERIFIED
+- Current main SHA: afe0c00141f8c369ddfefdc4b31d848060ae59f1. Recursive tree: 3,168 entries, not truncated.
+- Open PR inventory: 12. Four coherent integration branches remain the only active workstreams; their changed-path sets do not overlap. Compared with main: #1715 47 ahead / 0 behind; #1716 15 / 0; #1717 2 / 0; #1718 20 / 0.
+- #1715 pre-update head: 85296661d2d4d2f63c477ee314b56a9398fd2859. This Run 26 handoff append advances that branch; the resulting new head must receive its own exact-head CI. Do not transfer the prior head's passing result to the new commit.
+- #1716 XRP head: c5dc4fade37d0d74edf1d15b65c02dcda620884c. #1717 dependency/security head: 719c32fe4f1f6b846065c6f3fab727b607aab38d. #1718 audio head: 21a7d71d599cae9639378b5532eb8b240182816f.
+- Exact-head full-suite runs passed on the pre-update heads: #1715 run 46175401308 — 4,734 passed, 1 skipped, 11 warnings, 21 subtests; #1716 run 46174586066 — 4,759 passed, 1 skipped; #1717 run 46106321086 — 4,726 passed, 1 skipped; #1718 run 46166904646 — 4,725 passed, 1 skipped. Each run also passed its full-suite coverage gates. The #1717 optional-dependency audit passed; its fail-closed gate passed. The #1715, #1716 and #1718 security/dependency and gated checks also passed on their recorded heads.
+- Main CI run 46055543966 passed on the current main SHA.
+- Main branch API reports protected=true. Detailed branch-protection configuration returns HTTP 403, so the required approval count and exact rules remain unknown. The visible repository ruleset listing contains a disabled ruleset. No approving review is recorded on #1715–#1718.
+- A main push has a verified external side effect: Pages run 46055542164 on the current main SHA completed both build and deploy jobs successfully. Therefore a merge that updates main would publish a Pages deployment. No such deployment is authorized in this run. Do not merge until protection/approval requirements are verifiable and the user has specifically authorized this Pages deployment.
+- No branch was created, force-pushed, rewritten, reset, cleaned or discarded. No PR was created or closed. The eight non-integration PRs retain their prior classifications: #1702 partially superseded with unique material preserved; #1705 superseded; #1706 and #1708 duplicate/subsets incorporated by #1716; #1707, #1709, #1710 and #1711 unique dependency updates requiring refreshed exact-head review.
+
+## XRP intelligence — latest main ingestion EXECUTED / VERIFIED; forecast withheld
+- Latest successful main ingestion: run 46174742782, exact main SHA above, completed 2026-11-28 18:15:53 UTC. Data cutoff 2026-11-28T18:14:50.835444Z. Cross-run receipt sequence 194; predecessor run 46169076842, sequence 193.
+- 37 receipts: 21 retained raw payloads and 16 digest-only. Independently recomputed SHA-256 for the 21 retained payload files: 21/21 matched their content-addressed filenames. Receipt-chain verification PASS. External anchor remains NOT_ANCHORED; GitHub artifacts are retention-limited, not WORM storage or an independent trusted timestamp.
+- Downloaded feature-store artifact and independently checked SQLite: PRAGMA integrity_check=ok; 194 snapshots; 46,511 feature records; 2,286 source-snapshot lineage rows. Latest snapshot ID ba8380986ccaad15c427573949334a075f90f3dc5865ff321be8c03b48eafb70. 490 feature candidates/deltas; 106 eligible; 384 excluded.
+- Latest synchronized OKX XRP-USDT / USDT-USD top-of-book basis: mid USD 0.936414118; spread 1.166834 bps; component skew 0.305 seconds; maximum component age 9.071444 seconds. Both observations share one OKX publisher-independence group. This is not independent venue corroboration, not depth-normalized liquidity, and not a consolidated market price.
+- Event registry: 150 curated events, 117 scenarios; 0/150 have verified raw-receipt linkage on main. Event timeline is not model-eligible. Drift: 0/206 features evaluated, INSUFFICIENT_DATA. Walk-forward: 736 origins, PARTIAL_OR_BLOCKED. Forecast eligibility false; no directional forecast or paper trade.
+- 18 source failures: eight Binance endpoints HTTP 451; five Bybit endpoints HTTP 403 with documented U.S./Mainland China access restrictions and unverified runner region; Grayscale GXRP HTTP 429; Franklin XRPZ issuer-page identity/holdings marker mismatch; three SEC EDGAR issuer submissions blocked because BARROT_SEC_USER_AGENT lacks an authorized monitored project contact email. No proxy or regional restriction bypass attempted.
+- Latest scheduled Cross Analysis run 46178101781 completed successfully at 18:51:28 UTC. XRP sentiment input age 726.204 hours; BTC age 783.039 hours. Both remain STALE_INPUT; 3,217 entity co-occurrence pairs are descriptive historical aggregates, not current sentiment or forecasts. forecast_eligible=false.
+
+## XRP event capture and raw-store reconstruction — gap verified; implementation not yet verified
+- Earlier #1716 branch capture run 46098397091 ran on historical branch commit 00a7c24e3056f2d7660bd71bd21db65086eb74ce, not the current #1716 head. It captured 7/13 curated primary event pages and linked 7/160 registry events. Two pages returned HTTP 403 (Coinbase and PNC); four SBI pages failed exact marker checks. The four mismatches concern the 2025-06-09 SBI/Circle investment notice, 2025-08-22 SBI/Circle JV notice, 2026-10-16 SBI/Startale Open Standard notice, and 2026-06-24 SBI VC Trade RLUSD notice. Do not weaken marker validation without byte-level page evidence; preserve failed captures as unlinked receipts.
+- The existing xrp_feature_store_backfill.py is a narrowly pinned historical sibling-fork reconciliation, not a general raw-artifact-to-feature-store rebuild. Latest main summary explicitly reports feature_store_rebuild_from_raw_artifacts_implemented=false. Generic rebuild remains absent.
+- Implementation acceptance criteria for the next XRP work on existing #1716: an offline parser registry pinned to parser/schema versions; verify every retained raw payload against its receipt hash before replay; preserve original captured_at, source_data_as_of and available_at semantics; mark digest-only receipts unreplayable rather than reconstructing invented bytes; deterministic/idempotent append-only snapshots; no live network requests during replay; exact source/feature lineage and counts; tamper and point-in-time leakage tests; full repository suite and security checks. This is a concrete capability gap, but implementation is not claimed because source-parser coverage and replay semantics across all 37 receipts remain unresolved. Continue bounded compatibility investigation on #1716 rather than creating another PR.
+
+## New primary institutional evidence — RLUSD custody is live; LMAX collateral integration remains conditional
+The verified Kamilah Stevenson video discussed a Standard Chartered / Ripple / LMAX development. The creator video is a research lead, not primary evidence. Three coordinated primary announcements dated 2026-10-12 confirm:
+- Standard Chartered says institutional custody support for RLUSD issued on XRPL is live for eligible clients through its DFSA-regulated DIFC Branch.
+- Standard Chartered, Ripple and LMAX intend to make RLUSD eligible collateral for agreed LMAX products and extend Standard Chartered's collateral-mirroring model to LMAX. The underlying RLUSD would remain in bank custody rather than be transferred to the trading venue.
+- The parties explicitly state future capabilities remain subject to final documentation, successful testing, applicable law/regulation, internal approvals and jurisdictional readiness. Do not describe LMAX collateral mirroring as live or operational.
+- The announced collateral is RLUSD, not XRP. The releases do not establish an XRP-collateral commitment, a material XRP purchase, or a quantified XRP-demand effect. Any XRP effect through XRPL reserves/transaction fees is indirect and unquantified; a counter-hypothesis is that RLUSD institutional adoption grows without meaningful incremental XRP market demand.
+- LMAX/Ripple's 2026-01-15 primary announcement separately describes a multi-year partnership and Ripple financing of $150 million to support LMAX's growth strategy, alongside planned RLUSD integration as collateral. The financing announcement does not establish a draw, a use-of-proceeds allocation to XRP, or an XRP purchase.
+- Standard Chartered's 2026-09-16 announcement names LMAX as a digital-asset custody client through its DIFC branch and Luxembourg subsidiary; it says LMAX was the first client onboarded in Luxembourg after MiCA authorization and that the firms executed live digital-asset prime-brokerage trades in July 2026. This is separate evidence of the custody relationship, not proof the RLUSD collateral workflow has launched.
+- DFSA's 2025-06-03 notice recognizes RLUSD as a crypto token; that recognition is not approval of the specific future LMAX collateral workflow.
+- Ripple's 2026-10-27 announcement says BNY now supports XRP and RLUSD on its Digital Asset Custody platform, building on BNY's role as primary RLUSD reserve custodian. Distinguish reserve custody from client-asset custody and from the separate Standard Chartered/LMAX arrangement.
+- Standard Chartered's 2026-07-02 Circle announcement confirms institutional USDC mint/redeem access through a bank-led service. This is a separate Circle relationship, not evidence that USDC is XRP collateral.
+- SBI VC Trade's 2026-06-24 primary announcement confirms RLUSD listing in its VCTRADE service. It identifies SBI VC Trade as an SBI Holdings subsidiary and states BITPOINT is excluded from that service. Keep this distinct from the regional SBIC East/Central/West entities.
+- Treat the 2026-10-12 Standard Chartered, Ripple and LMAX releases as a coordinated announcement cluster, not three independent confirmations. DFSA is a separate regulator source. All of this remains research-only: raw HTTP bytes, headers, hashes and trusted external timestamp receipts were not captured; it is excluded from model training and forecast eligibility.
+
+Primary URLs:
+https://www.sc.com/en/press-release/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+https://ripple.com/ripple-press/standard-chartered-launches-rlusd-custody-and-joins-planned-collateral-integration-with-ripple-and-lmax-group/
+https://www.lmax.com/press-centre/lmax-group-ripple-and-standard-chartered-plan-rlusd-collateral-integration-as-standard-chartered-launches-rlusd-custody/
+https://www.lmax.com/press-centre/lmax-group-and-ripple-partner-to-accelerate-institutional-stablecoin-adoption-and-cross-asset-mobility/
+https://www.sc.com/lu/2026/09/16/standard-chartered-and-lmax-group-expand-partnership-to-include-digital-asset-custody-in-luxembourg-and-difc/
+https://www.dfsa.ae/news/notice-crypto-token-recognition-ripple-rlusd
+https://ripple.com/ripple-press/ripple-expands-collaboration-with-bny-across-custody-and-tokenized-trade-finance/
+https://www.sc.com/En/press-release/standard-chartered-and-circle-launch-first-g-sib-led-integrated-access-to-usdc-minting-and-redemption/
+https://www.sbigroup.co.jp/news/pr/2026/0624_16424.html
+
+## Kamilah Stevenson identity and YouTube inventory — updated, partial
+- Identity remains cross-source verified for Dr. Kamilah Stevenson / The Wealth Doctor and channel @drkamilahstevenson, channel ID UCqUPJMQdkCN6lsLVDnichPA. YouTube channel metadata returned 142,000 subscribers and approximately 1,200 videos; channel page is a discovery index, not a complete inventory.
+- Newly resolved direct public video: “This NEW Bank Deal Shows Exactly Where XRP Is Headed”, https://www.youtube.com/watch?v=vRlw4BV-cGE. Individual video metadata reports publication 2026-10-20, 29,824 views and 1,100 likes. The channel index's relative “1d ago” label conflicts with the video's dated metadata; retain the dated video metadata and flag the relative label as stale/ambiguous.
+- The channel index lists 12 recent public videos, public live replays, popular videos and shorts. Members-only items are excluded from the public inventory. Only this new video URL was individually resolved in this pass; do not claim a complete inventory of the channel's 1,200 videos. The channel also promotes a separate @PrescribeWealth channel; do not attribute that channel's videos to Kamilah until cross-link identity is independently checked.
+- The video discusses RLUSD custody and planned collateral mirroring. Primary issuer/partner releases above confirm the distinction between live custody and conditional future collateral integration. Do not treat the video's XRP thesis as an independent source or price signal.
+
+## Audio production — technical path remains; artistic acceptance open
+- #1718 current head 21a7d71d599cae9639378b5532eb8b240182816f passed the full repository suite (run 46166904646, 4,725 passed / 1 skipped) and the exact-head audio-render integration run 46166904570 passed.
+- The existing full-song bundle remains a technical baseline: 175.545 seconds, 110 BPM, D minor, 4/4, 44.1 kHz, nine aligned stems, MIDI and ten section markers, no clipped samples, approximately -6 dBTP and -22.443 LUFS. No comparative listening was performed in this checkpoint; the user's acceptance/rejection remains open. A native editable DAW project and final soundfont rights verification remain blockers. Do not claim professional-quality improvement from technical QC alone.
+
+## Long-horizon continuity, nine platforms and Sellbird
+- The handoff was retrieved and reconciled against current main, all active branches, CI, latest ingestion and latest cross-analysis. This verifies current-run recovery of the project state, not independent-host or cross-platform transfer. Four-process recovery in one shared workspace remains the last verified transfer test; independent-host transfer and conflict/staleness recovery remain unverified.
+- Only ChatGPT-to-GitHub authentication/data flow is verified. Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.
+- Sellbird v0.5.0 remains source-audited only (AGPL-3.0). It is not installed or authenticated. Barrot-only scope remains in force. Prospect discovery has not been tested; zero verified prospects, zero approved/sent messages, zero replies, zero meetings, zero proposals and zero revenue. Outbound remains paused.
+
+## DESIGNED / EXECUTED / VERIFIED
+- DESIGNED: acceptance criteria for generic raw-artifact replay, source-event receipt completeness, calibrated leakage-safe forecasts, audio listening acceptance, independent-host continuity, nine-platform verification and Barrot-only commercial funnel.
+- EXECUTED: fetched main tree and open PR inventory; compared all four active branches; inspected exact-head CI/security/gated runs and reviews; checked main protection and Pages deployment side effects; downloaded latest XRP raw and feature-store artifacts; recomputed 21 raw hashes; checked SQLite integrity and table counts; reviewed latest source failures and cross-analysis freshness; verified primary RLUSD custody/collateral announcements; updated Kamilah channel/video attribution.
+- VERIFIED: main SHA/tree, exact current data cutoffs and receipt chain, 21/21 raw hashes, SQLite integrity, latest source-failure breakdown, stale sentiment status, primary distinction between live RLUSD custody and conditional LMAX collateral mirroring, current PR head checks listed above, and the Pages deploy side effect.
+- NOT VERIFIED: merge readiness, required approval count, permission to deploy Pages, generic raw-to-feature-store reconstruction, 150/150 event receipt links, external immutable receipt anchoring, fresh sentiment ingestion, forecast superiority/calibration/drift, XRP collateral demand from the RLUSD arrangement, complete YouTube upload inventory, audio listening acceptance, native DAW project, independent-host continuity, eight external platform connections, Sellbird installation/prospecting/outreach/revenue.
+
+## Next concrete actions
+1. Keep all four existing integration branches; do not create another PR. Obtain an authorized independent review and establish exact branch-protection requirements. Do not merge until the Pages deployment is explicitly authorized.
+2. On existing #1716, build the offline receipt-to-parser coverage registry first, then the generic replay/rebuild path only for hash-verified retained bytes. Keep digest-only inputs unreplayable and preserve point-in-time semantics.
+3. Resolve event-source marker mismatches from byte-exact primary captures; do not loosen markers based on search snippets. Keep 0/150 main event links fail-closed.
+4. Replace stale sentiment with a fresh receipt-backed public-news feed, then expand chronological walk-forward evaluation and probability calibration. No forecast until eligibility gates pass.
+5. On #1718, perform level-matched listening, verify asset rights, improve arrangement only against the benchmark, and add a reproducible editable DAW/interchange project.
+6. Demonstrate independent-host state transfer and stale/conflict recovery without overwriting unresolved records.
+7. Keep Sellbird uninstalled and sending paused until a verified Barrot pilot offer, audience, mailbox/domain health, suppression/opt-out safeguards and user approval are in place.
+
+No merge, branch rewrite, force-push, Pages deployment, Space restart, secret rotation, paid lookup, Kaggle submission, external model dispatch, prospecting, outbound message, paper trade, funds transfer or real-money action occurred.
+
+
+
 # RUN 25 ADDENDUM — latest XRP ingestion, audio A/B validation, and integration governance — 2026-11-28T17:13Z
 
 This addendum supersedes prior state only where newer evidence differs. Historical checkpoints remain preserved below.
