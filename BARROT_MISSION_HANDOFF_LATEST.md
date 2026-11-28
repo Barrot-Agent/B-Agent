@@ -1,3 +1,48 @@
+# RUN 27 ADDENDUM — latest main ingestion, exact-head handoff validation and Sellbird release recheck — 2026-11-28T19:20Z
+
+Append-only update to Run 26. Main is unchanged.
+
+## Repository and current integration head — VERIFIED
+- Main remains afe0c00141f8c369ddfefdc4b31d848060ae59f1; recursive tree remains 3,168 entries; 12 PRs remain open.
+- Before this Run 27 append, #1715 head 47272f974aa7152cecf0960475b14fc7a93913dc was clean, non-draft, mergeable, 48 commits ahead / 0 behind, with no changed-path overlap against #1716, #1717 or #1718.
+- Exact-head #1715 CI run 46180007896 passed: 4,734 passed, 1 skipped, 11 warnings, 21 subtests, in 217.97 seconds. Full repository coverage gates passed. Exact-head dependency audit 46180007962, conflict-integrity 46180007929, money audit 46180007919, and gated-merge check 46180007933 all passed. The Pages job in the PR run was validation-only and passed. The push-side gated-merge run 46180003465 also passed.
+- The gate reports READINESS=READY_FOR_EXPLICIT_MERGE on that pre-update head. The GitHub PR API reports mergeable_state=clean, but no review is recorded. The repository reports main protected=true; detailed branch-protection settings remain inaccessible (HTTP 403), so required review count is not verified.
+- No merge was performed. Main pushes trigger the confirmed GitHub Pages build-and-deploy workflow (run 46055542164); that external deployment is not specifically authorized. The merge-readiness workflow is read-only and does not grant deployment authorization.
+- This Run 27 handoff append advances #1715 again. The 47272 head's passing CI must not be attributed to the new commit. New-head CI is required before that new head can be considered merge-ready.
+
+## Latest XRP public ingestion — EXECUTED / VERIFIED
+- Newest scheduled main ingestion: run 46179738837, completed 2026-11-28 19:11:43 UTC on main SHA afe0c00141f8c369ddfefdc4b31d848060ae59f1. Data cutoff 2026-11-28T19:10:38.215704Z. Snapshot ID a931d4e9b45da712f58165b0769a9bd9473e5578656dfe00c72345ba17ce4e14. Cross-run receipt sequence 195.
+- 37 receipts; 21 retained raw payloads and 16 digest-only. Independently recomputed SHA-256 for the 21 retained raw payload files: 21/21 matched their content-addressed filenames. Feature-store SQLite PRAGMA integrity_check=ok; 195 snapshots; 46,634 feature records; 2,298 source-snapshot lineage rows.
+- Latest snapshot: 490 delta features; 123 eligible; 367 excluded. The eligible count increased by 17 from the previous run, but this does not establish predictive edge.
+- Latest synchronized OKX top-of-book basis: mid USD 0.9359146705; spread 1.167403 bps; snapshot skew 0.203 seconds; maximum component age 10.347704 seconds. Same-venue OKX observations remain one publisher-independence group; no cross-venue corroboration or depth-normalized liquidity is implied. The mid is about 0.053% below the 18:14Z snapshot, a descriptive two-point change only, not a forecast signal.
+- Event receipt linkage remains 0/150; event timeline remains ineligible. Walk-forward count is 740, status PARTIAL_OR_BLOCKED. Drift remains 0/206, INSUFFICIENT_DATA. Forecast model eligibility remains false; no directional forecast or paper trade.
+- The same 18 provider/processing failures remain: eight Binance HTTP 451 responses; five Bybit HTTP 403 responses with runner region unverified and no bypass attempted; Grayscale HTTP 429; Franklin XRPZ marker mismatch; three SEC EDGAR user-agent configuration failures.
+- Latest Cross Analysis remains run 46178101781 at 18:51:28 UTC: XRP sentiment 726.204 hours old and BTC 783.039 hours old; both stale. No newer Cross Analysis result was present at this checkpoint.
+- The latest research-correction-audit artifact (run 46179738837) is read-only: two overlay applications, source_artifacts_modified=false, forecast_issued=false. It preserves original source artifacts rather than rewriting them. The overlay/correction history remains separate from model-eligible point-in-time features.
+
+## Sellbird current-source recheck — VERIFIED, not deployed
+- Exact repository: https://github.com/ethanplusai/sellbird. Current main is identical to release tag v0.5.0; compare v0.5.0...main reports zero commits ahead/behind. License metadata reports AGPL-3.0. Latest release published 2026-11-25. Repository metadata updated 2026-11-28, but no post-release source commit was found.
+- Current shipped sellbird.yaml template: email enabled, Gmail default, 50/day cap, require_approval=true, LinkedIn disabled. Warmup start_date is blank (no ramp), recipient send window is commented out, postal_address is blank, do_not_contact is empty, and Precleared is disabled. These are placeholders, not a production-ready sending configuration.
+- Current approval documentation says every outgoing email waits for operator approval by default, but explicitly offers autopilot by setting require_approval=false; do not enable it. The sender includes a deterministic pre-send gate, suppression checks and kill switch, but these safeguards do not replace mailbox/domain, legal, warmup, suppression and user-approval readiness.
+- Sellbird remains uninstalled and unauthenticated. No mailbox connected, no prospecting test, no paid lookup, no campaign approved, no messages sent, no replies, no meetings, no proposals and no revenue. Barrot-only scope remains mandatory; music and TrekFlex remain excluded.
+
+## Current portfolio state and next actions
+- Three missions remain co-equal priority 1 on V3. No mission was demoted.
+- XRP: first build a receipt-to-parser coverage registry and offline replay harness on existing #1716. Only hash-verified retained bytes may replay; digest-only receipts remain unreplayable; preserve capture time and data-as-of semantics. Then resolve event receipt linkage without weakening source identity checks.
+- Audio: #1718 exact-head full suite and audio-render integration remain passed; no new render or listening test in Run 27. Continue with level-matched listening, asset-rights verification and an import-tested editable DAW/interchange project.
+- Continuity: Run 26 and Run 27 handoff recovery is verified within this shared repository/workspace; independent-host transfer and stale/conflict recovery remain unverified.
+- Platforms: only ChatGPT-to-GitHub is verified; Claude, Grok, Gemini, Copilot, Codex, Hugging Face, Kaggle and Databricks remain unverified.
+- Commercial: no Sellbird deployment or outreach. First validate a Barrot-only pilot offer against implemented capabilities, then verify prospecting and compliance readiness before seeking campaign approval.
+
+DESIGNED: raw replay acceptance criteria and Barrot-only commercial controls remain defined.
+EXECUTED: latest ingestion artifacts downloaded; 21 raw hashes and SQLite integrity independently checked; Sellbird tag/main identity and default configuration rechecked; exact-head PR #1715 full suite and gates inspected.
+VERIFIED: main SHA/tree, sequence 195 receipt chain, raw hashes, feature-store integrity/counts, current quote basis, current failure breakdown, exact-head #1715 pre-update CI, Sellbird v0.5.0 source identity.
+NOT VERIFIED: new Run 27 handoff commit CI until its exact-head runs complete; merge approvals/protection details; authorization for Pages deployment; forecast eligibility; generic raw replay; complete event receipt linkage; audio listening acceptance; independent-host continuity; external platform connections; Sellbird prospecting or revenue.
+
+No merge, Pages deployment, branch rewrite, force-push, secret rotation, Space restart, paid lookup, Kaggle submission, outbound send, paper trade, funds transfer or real-money action occurred.
+
+
+
 # RUN 26 ADDENDUM — current-head governance, XRP ingestion, RLUSD custody/collateral evidence and verified creator identity — 2026-11-28T19:00Z
 
 This checkpoint is append-only. It supersedes earlier status only where newer evidence differs. Main remains unchanged.
