@@ -1,8 +1,8 @@
 {
   "schema_version": "barrot.nine-platform-operational-map.v1",
   "artifact_type": "nine_platform_operational_capability_authentication_permission_dataflow_map",
-  "captured_at_utc": "2026-11-28T14:17:00Z",
-  "capture_basis": "Run 20: re-fetched main and full tree; verified exact-head #1715 and #1717 tests/security/gates; inspected in-progress #1716 exact-head checks and its new primary SBIC East/Central/West plus ChatGPT-course evidence; refreshed current PR ancestry including #1707; reviewed XRP ingestion, Cross Analysis, HF runtime, audio, continuity, platform and commercial status. Updated only the existing #1715 handoff branch; no merge, deployment, restart, external model transfer or outbound action.",
+  "captured_at_utc": "2026-11-28T15:04:12Z",
+  "capture_basis": "Run 22 correction: re-fetched current main and complete tree; verified current PR inventory and exact-head checks; inspected main XRP ingestion #46153384590 and Cross Analysis #46156805012; verified audio integration #46054906107 on final PR #1704 head and compared its tree to main (one merge commit ahead, no file diff); downloaded and inspected full-song QC and distinct-CC0 routing artifacts; updated the existing #1715 handoff and nine-platform map only. No merge, deployment, Space restart, external model transfer or outbound action.",
   "repository": {
     "full_name": "Barrot-Agent/B-Agent",
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
@@ -41,12 +41,12 @@
       "sellbird_repository": "https://github.com/ethanplusai/sellbird",
       "latest_handoff_successor": "https://github.com/Barrot-Agent/B-Agent/pull/1715",
       "latest_main_merge_readiness_failure": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46066224273",
-      "latest_handoff_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46121093403",
-      "latest_handoff_successor_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46121093424",
-      "latest_handoff_successor_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46121093387",
-      "latest_handoff_successor_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46121093384",
-      "latest_handoff_successor_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46121093450",
-      "latest_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46151698617",
+      "latest_handoff_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46157891899",
+      "latest_handoff_successor_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46157891927",
+      "latest_handoff_successor_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46157891877",
+      "latest_handoff_successor_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46157891886",
+      "latest_handoff_successor_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46157891865",
+      "latest_cross_analysis": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46156805012",
       "latest_handoff_successor_pre_run4_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46074826560",
       "latest_xrp_research_pr_exact_head_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46100978374",
       "latest_xrp_raw_artifact": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46133994409/artifacts/15258837003",
@@ -61,7 +61,7 @@
       "latest_pr_1715_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46133654546",
       "latest_pr_1715_gated_merge": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46133654551",
       "latest_sellbird_release": "https://github.com/ethanplusai/sellbird/releases/tag/v0.5.0",
-      "latest_main_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46133994409",
+      "latest_main_xrp_ingestion": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46153384590",
       "latest_main_xrp_raw_artifact": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46116102543/artifacts/15252126165",
       "latest_main_xrp_receipt_index": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46116102543/artifacts/15251946522",
       "latest_main_xrp_event_timeline": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46116102543/artifacts/15251482976",
@@ -111,7 +111,7 @@
       "latest_main_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543856",
       "latest_main_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46055543828",
       "latest_xrp_research_successor": "https://github.com/Barrot-Agent/B-Agent/pull/1716",
-      "latest_xrp_research_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46100978374",
+      "latest_xrp_research_successor_exact_ci": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46155114086",
       "latest_xrp_research_successor_dependency_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46100978310",
       "latest_xrp_research_successor_money_audit": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46100978327",
       "latest_xrp_research_successor_conflict_integrity": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46100978344",
@@ -124,7 +124,8 @@
       "sellbird_pr_306": "https://github.com/ethanplusai/sellbird/pull/306",
       "sellbird_pr_298": "https://github.com/ethanplusai/sellbird/pull/298",
       "sellbird_pr_288": "https://github.com/ethanplusai/sellbird/pull/288",
-      "latest_hf_runtime_check": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46147523662"
+      "latest_hf_runtime_check": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46147523662",
+      "latest_audio_soundfont_routing_qc": "https://github.com/Barrot-Agent/B-Agent/actions/runs/46054906107/artifacts/15226691185"
     },
     "branch_protection_summary": {
       "observed_at_utc": "2026-11-28T11:10:18Z",
@@ -877,7 +878,10 @@
           "Run 18: parsed XRP ingestion #46133994409; 37 receipts, 21 retained raw payloads, 16 digest-only, receipt-chain PASS, 0 of 150 event receipt links, 704 partial/blocked one-hour walk-forward rows, drift insufficient and forecast withheld.",
           "Run 18: inspected Cross Analysis #46137134795; sentiment/entity outputs remain descriptive and forecast-ineligible.",
           "Run 18: downloaded and inspected audio QC artifact #15226436259; technical bundle metrics passed, but no native DAW project or user listening acceptance exists.",
-          "Run 18: reconfirmed Sellbird v0.5.0, AGPL-3.0-only, and no installation, mailbox authentication, prospecting or sending."
+          "Run 18: reconfirmed Sellbird v0.5.0, AGPL-3.0-only, and no installation, mailbox authentication, prospecting or sending.",
+          "Run 22: verified main XRP ingestion #46153384590 and Cross Analysis #46156805012; forecast remains withheld.",
+          "Run 22: verified Audio Render Integration #46054906107 on final PR #1704 head, downloaded full-song QC and distinct-CC0 routing QC, and confirmed the tested tree is identical to main.",
+          "Run 22: refreshed exact-head PR #1715/#1716/#1717 checks, branch ancestry, open-PR classifications and current handoff evidence."
         ],
         "external_model_data_transfer": false,
         "persistent_agent_connection": false
@@ -1686,8 +1690,7 @@
       "no blind or level-matched listening acceptance",
       "prior user rating remains 3/10; no acceptance supersedes it",
       "native DAW project not produced",
-      "sample-kit provenance remains unverified",
-      "full-song render was executed on the second parent of main, not re-executed on the merge commit"
+      "sample-kit provenance remains unverified"
     ],
     "render_run_is_second_parent_of_main": true,
     "deliverables": {
@@ -1985,6 +1988,80 @@
       "render_head": "6b2fc000c53459b32654e77d81e9fee0f298b9d2",
       "render_is_second_parent_of_main": true,
       "render_rerun_on_merge_sha": false
+    },
+    "main_tree_equivalence": {
+      "compare_url": "https://github.com/Barrot-Agent/B-Agent/compare/6b2fc000c53459b32654e77d81e9fee0f298b9d2...afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+      "ahead_by": 1,
+      "behind_by": 0,
+      "changed_files": 0,
+      "status": "PR head is an ancestor of main; no file diff"
+    },
+    "run22_evidence": {
+      "run_id": 46054906107,
+      "run_head_sha": "6b2fc000c53459b32654e77d81e9fee0f298b9d2",
+      "run_conclusion": "success",
+      "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+      "main_tree_equivalence": "one merge commit ahead, zero file differences",
+      "artifacts": {
+        "full_bundle": {
+          "id": 15226626401,
+          "size_bytes": 242109368,
+          "retention_days": 30
+        },
+        "qc": {
+          "id": 15226436259,
+          "size_bytes": 7839
+        },
+        "soundfont_routing_qc": {
+          "id": 15226691185,
+          "size_bytes": 2745962
+        }
+      },
+      "full_song": {
+        "bars": 80,
+        "bpm": 110,
+        "key": "D minor",
+        "time_signature": "4/4",
+        "duration_seconds": 175.54546485260772,
+        "sample_rate_hz": 44100,
+        "channels": 2,
+        "aligned_stems": 9,
+        "midi_tracks": 11,
+        "section_markers": 10,
+        "clip_samples": 0,
+        "peak_dbfs": -6.0251943344,
+        "true_peak_dbtp": -6.0000004907,
+        "integrated_lufs": -22.4429586035,
+        "loudness_range_lu": 7.8394293937,
+        "crest_factor_db": 18.8096591459,
+        "stereo_correlation": 0.7337587959,
+        "mono_fold_down_loss_db": -0.6212884009,
+        "dc_offset_dbfs": -184.7507637105,
+        "stem_sum_correlation": 0.99997882799,
+        "stem_sum_relative_rms_error": 0.0065074777,
+        "quality_status": "PASS",
+        "normalization_applied": false
+      },
+      "routing": {
+        "status": "VERIFIED",
+        "distinct_soundfonts": true,
+        "assets": [
+          "UprightPianoKW-small-20190703.sf2",
+          "PianoFB small 20200401.sf2"
+        ],
+        "official_license_pages": [
+          "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html",
+          "https://freepats.zenvoid.org/Piano/honky-tonk-piano.html"
+        ],
+        "license_claim": "CC0-1.0 on both official pages; source/archive/sample hashes recorded",
+        "legal_review": "NOT_INDEPENDENTLY_AUDITED"
+      },
+      "limits": [
+        "No blind/level-matched listening acceptance",
+        "No native DAW project",
+        "Full-song mix uses MIT FluidR3_GM; alternate CC0 assets are used in the routing comparison, not the full-song mix",
+        "Rights metadata remains CALLER_SUPPLIED_UNVERIFIED"
+      ]
     }
   },
   "continuity": {
@@ -2709,9 +2786,9 @@
       "number": 1715,
       "title": "docs: refresh three-mission handoff and platform map for 2026-11-27",
       "branch": "integration/mission-handoff-refresh-20261127-run14",
-      "head_sha": "6b04dba222747c093343c08f70c85b8139dcab2b",
+      "head_sha": "a3860ad12ccaea167c04d136bcb685a9544a12c1",
       "base_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
-      "ahead_by": 37,
+      "ahead_by": 40,
       "behind_by": 0,
       "changed_files": 5,
       "additions": 6166,
@@ -2720,12 +2797,12 @@
       "classification": "ACTIVE_MISSION_HANDOFF_RUNTIME_SUCCESSOR",
       "reviews": 0,
       "exact_checks": {
-        "ci": 46153141624,
-        "dependency_audit": 46153141616,
-        "money_audit": 46153141606,
-        "conflict_integrity": 46153141695,
-        "gated_merge": 46153141580,
-        "all": "success_on_pre_run20_head"
+        "ci": 46157891899,
+        "dependency_audit": 46157891927,
+        "money_audit": 46157891877,
+        "conflict_integrity": 46157891886,
+        "gated_merge": 46157891865,
+        "all": "IN_PROGRESS_ON_CHECKPOINT_PARENT"
       },
       "full_suite": {
         "passed": 4734,
@@ -2734,15 +2811,16 @@
         "warnings": 11,
         "subtests": 21,
         "coverage_percent": 74.44
-      }
+      },
+      "full_suite_status": "IN_PROGRESS"
     },
     {
       "number": 1716,
       "title": "XRP event provenance + RLUSD research — consolidated successor to #1705",
       "branch": "integration/xrp-event-provenance-successor-20261128",
-      "head_sha": "e97a1814e6844db54b2b39bd2ca5b902ee773061",
+      "head_sha": "b41490bf6bcabb2f902f1ac0f24140ed5c045ff3",
       "base_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
-      "ahead_by": 9,
+      "ahead_by": 12,
       "behind_by": 0,
       "changed_files": 20,
       "additions": 4211,
@@ -2751,12 +2829,12 @@
       "classification": "ACTIVE_CONSOLIDATED_XRP_SUCCESSOR",
       "reviews": 0,
       "exact_checks": {
-        "ci": 46153532832,
-        "dependency_audit": 46153532779,
-        "money_audit": 46153532764,
-        "conflict_integrity": 46153532752,
-        "gated_merge": 46153532755,
-        "all": "CI_FULL_SUITE_AND_GATED_MERGE_IN_PROGRESS; OTHER_CHECKS_SUCCESS"
+        "ci": 46155114086,
+        "dependency_audit": 46155114097,
+        "money_audit": 46155114156,
+        "conflict_integrity": 46155114100,
+        "gated_merge": 46155114105,
+        "all": "SUCCESS_ON_CURRENT_HEAD"
       },
       "supersedes": [
         1705,
@@ -2765,7 +2843,15 @@
       ],
       "event_capture": "7/13 marker-passing; four mismatches; two HTTP 403; event-to-receipt linkage incomplete",
       "full_suite_status": "IN_PROGRESS",
-      "research_update": "Primary SBIC East/Central/West identity pages and Tokyo SBIC ChatGPT training evidence added; no partnership claim"
+      "research_update": "Primary SBIC East/Central/West identity pages and Tokyo SBIC ChatGPT training evidence added; no partnership claim",
+      "full_suite": {
+        "passed": 4759,
+        "failed": 0,
+        "skipped": 1,
+        "warnings": 11,
+        "subtests": 21,
+        "coverage_percent": 74.51
+      }
     },
     {
       "number": 1717,
@@ -2787,14 +2873,15 @@
         "money_audit": 46106321094,
         "conflict_integrity": 46106321060,
         "gated_merge": 46106321074,
-        "all": "success_on_current_head"
+        "all": "SUCCESS_ON_CURRENT_HEAD"
       },
       "full_suite": {
         "passed": 4726,
         "failed": 0,
         "skipped": 1,
         "warnings": 11,
-        "subtests": 21
+        "subtests": 21,
+        "coverage_percent": 74.44
       }
     },
     {
@@ -2907,7 +2994,7 @@
   "recursive_tree_entries": 3168,
   "tree_truncated": false,
   "open_pr_count": 11,
-  "open_pr_inventory_captured_at_utc": "2026-11-28T14:17:00Z",
+  "open_pr_inventory_captured_at_utc": "2026-11-28T15:04:12Z",
   "current_main_evidence": {
     "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
     "tree_entries": 3168,
@@ -3032,24 +3119,24 @@
     }
   },
   "current_handoff_pr": 1715,
-  "current_handoff_pr_head": "6b04dba222747c093343c08f70c85b8139dcab2b",
-  "current_handoff_pr_ahead_by": 37,
+  "current_handoff_pr_head": "a3860ad12ccaea167c04d136bcb685a9544a12c1",
+  "current_handoff_pr_ahead_by": 40,
   "current_handoff_pr_behind_by": 0,
   "current_handoff_pr_reviews": 0,
-  "current_handoff_pr_full_suite_passed": 4734,
-  "current_handoff_pr_full_suite_failed": 0,
-  "current_handoff_pr_full_suite_skipped": 1,
-  "current_handoff_pr_full_suite_warnings": 11,
-  "current_handoff_pr_full_suite_subtests": 21,
-  "current_handoff_pr_coverage_percent": 74.44,
+  "current_handoff_pr_full_suite_passed": null,
+  "current_handoff_pr_full_suite_failed": null,
+  "current_handoff_pr_full_suite_skipped": null,
+  "current_handoff_pr_full_suite_warnings": null,
+  "current_handoff_pr_full_suite_subtests": null,
+  "current_handoff_pr_coverage_percent": null,
   "current_handoff_pr_exact_checks": {
-    "ci_run_id": 46153141624,
-    "dependency_audit_run_id": 46153141616,
-    "money_audit_run_id": 46153141606,
-    "conflict_integrity_run_id": 46153141695,
-    "gated_merge_run_id": 46153141580,
-    "pages_validation": "SUCCESS",
-    "all_conclusions": "success_on_pre_run20_head"
+    "ci_run_id": 46157891899,
+    "dependency_audit_run_id": 46157891927,
+    "money_audit_run_id": 46157891877,
+    "conflict_integrity_run_id": 46157891886,
+    "gated_merge_run_id": 46157891865,
+    "pages_validation": "IN_PROGRESS",
+    "all_conclusions": "IN_PROGRESS_ON_a3860ad12ccaea167c04d136bcb685a9544a12c1"
   },
   "current_handoff_pr_run13_update_status": "CREATED_ON_EXISTING_BRANCH; NEW_EXACT_HEAD_CHECKS_PENDING",
   "current_handoff_pr_merge_status": "BLOCKED_NO_INDEPENDENT_REVIEWS; DETAILED_BRANCH_PROTECTION_HTTP_403; AUTOMATIC_PAGES_DEPLOYMENT_NOT_AUTHORIZED",
@@ -3769,8 +3856,8 @@
       "scope": "BARROT_TECHNOLOGY_ONLY"
     }
   },
-  "current_handoff_pr_head_scope": "Observed immediately before RUN 19 checkpoint commit; new head requires fresh exact-head checks.",
-  "current_handoff_pr_full_suite_result": "SUCCESS_ON_PRE_UPDATE_HEAD; exact test count not extracted in this run.",
+  "current_handoff_pr_head_scope": "Observed immediately before the Run 22 handoff/map correction commit; the resulting commit requires fresh exact-head checks.",
+  "current_handoff_pr_full_suite_result": "IN_PROGRESS_ON_CHECKPOINT_PARENT_a3860ad; previous 0189fd5 exact-head results are not substituted.",
   "current_handoff_pr_run19_update_status": "CHECKPOINT_AND_MAP_REFRESH_COMMITTED_ON_EXISTING_BRANCH; EXACT_HEAD_CHECKS_PENDING",
   "run19_evidence": {
     "captured_at_utc": "2026-11-28T14:01:31Z",
@@ -3913,6 +4000,102 @@
       "Kaggle submission",
       "external model dispatch",
       "prospecting",
+      "outbound sending",
+      "paper trade",
+      "funds transfer",
+      "real-money action"
+    ]
+  },
+  "current_handoff_pr_run22_update_status": "RUN22 checkpoint committed on the existing #1715 branch; exact-head CI/security/conflict/gated-merge checks were in progress on parent a3860ad before this combined handoff/map correction.",
+  "run22_evidence": {
+    "captured_at_utc": "2026-11-28T15:04:12Z",
+    "main_sha": "afe0c00141f8c369ddfefdc4b31d848060ae59f1",
+    "tree_entries": 3168,
+    "tree_truncated": false,
+    "open_pr_count": 11,
+    "pr_1715_checkpoint_parent": "a3860ad12ccaea167c04d136bcb685a9544a12c1",
+    "pr_1715_ahead": 40,
+    "pr_1715_behind": 0,
+    "pr_1715_reviews": 0,
+    "pr_1715_checks": "IN_PROGRESS_ON_CHECKPOINT_PARENT",
+    "pr_1716_head": "b41490bf6bcabb2f902f1ac0f24140ed5c045ff3",
+    "pr_1716_full_suite": {
+      "passed": 4759,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.51
+    },
+    "pr_1717_head": "719c32fe4f1f6b846065c6f3fab727b607aab38d",
+    "pr_1717_full_suite": {
+      "passed": 4726,
+      "failed": 0,
+      "skipped": 1,
+      "warnings": 11,
+      "subtests": 21,
+      "coverage_percent": 74.44
+    },
+    "latest_xrp_ingestion": {
+      "run_id": 46153384590,
+      "data_cutoff_utc": "2026-11-28T14:12:05.730179Z",
+      "receipts": 37,
+      "raw_payloads": 21,
+      "digest_only": 16,
+      "sequence": 190,
+      "feature_store_records": 46087,
+      "snapshots": 190,
+      "delta_features": 490,
+      "eligible_features": 123,
+      "excluded_features": 367,
+      "event_count": 150,
+      "event_receipt_links": 0,
+      "walk_forward_rows": 720,
+      "walk_forward_status": "PARTIAL_OR_BLOCKED",
+      "drift_evaluated": 0,
+      "drift_total": 206,
+      "forecast": "NOT_ISSUED"
+    },
+    "latest_cross_analysis": {
+      "run_id": 46156805012,
+      "conclusion": "success"
+    },
+    "audio_run_id": 46054906107,
+    "audio_run_head": "6b2fc000c53459b32654e77d81e9fee0f298b9d2",
+    "audio_main_tree_equivalence": "one merge commit ahead, no file differences",
+    "hf_runtime_check": {
+      "run_id": 46147523662,
+      "status": "BUILD_ERROR"
+    },
+    "platforms": {
+      "verified": [
+        "ChatGPT-to-GitHub"
+      ],
+      "untested": [
+        "Claude",
+        "Grok",
+        "Gemini",
+        "Copilot",
+        "Codex",
+        "Hugging Face",
+        "Kaggle",
+        "Databricks"
+      ]
+    },
+    "sellbird": {
+      "status": "not installed/authenticated",
+      "verified_prospects": 0,
+      "outbound": "paused",
+      "revenue_usd": 0
+    },
+    "actions_withheld": [
+      "merge",
+      "deployment",
+      "Space restart",
+      "secret rotation",
+      "external model dispatch",
+      "paid lookup",
+      "Kaggle submission",
       "outbound sending",
       "paper trade",
       "funds transfer",
