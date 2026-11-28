@@ -439,7 +439,9 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
         upright_source = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_SOURCE", "")
         upright_license = os.environ.get("BARROT_TEST_SF2_ALT_UPRIGHT_LICENSE", "")
         routed_qc_output = os.environ.get("BARROT_AUDIO_FULL_SONG_ROUTED_QC_OUTPUT")
-        assert upright_value and routed_qc_output, "Routed full-song output requires the upright SoundFont and QC paths"
+        assert upright_value and routed_qc_output, (
+            "Routed full-song output requires the upright SoundFont and QC paths"
+        )
         upright = Path(upright_value)
         assert upright.is_file()
         assert upright_license == "CC0-1.0"
@@ -481,7 +483,9 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
                 for note in routed_instrument.notes
             ]
             assert routed_notes == baseline_notes
-            expected_program = 0 if routed_instrument.name == "keys" else baseline_instrument.program
+            expected_program = (
+                0 if routed_instrument.name == "keys" else baseline_instrument.program
+            )
             assert routed_instrument.program == expected_program
 
         routed_midi_file = mido.MidiFile(str(routed.midi_path))
@@ -563,11 +567,16 @@ def test_full_song_fluidsynth_bundle_is_full_length_and_section_marked(tmp_path)
             "keys_stem_difference_rms": keys_difference_rms,
             "baseline_integrated_lufs": baseline_lufs,
             "routed_integrated_lufs": routed_lufs,
-            "routed_playback_gain_db_to_match_baseline_loudness": round(baseline_lufs - routed_lufs, 6),
+            "routed_playback_gain_db_to_match_baseline_loudness": round(
+                baseline_lufs - routed_lufs, 6
+            ),
             "playback_gain_applied": False,
             "stem_alignment": routed_metadata["stem_alignment"],
             "soundfont_assets": routed_metadata["rights"]["soundfont_assets"],
-            "license_evidence": "The FreePats source page states CC0 1.0; source metadata is recorded, not independently legally audited.",
+            "license_evidence": (
+                "The FreePats source page states CC0 1.0; source metadata is recorded, "
+                "not independently legally audited."
+            ),
             "native_daw_project_available": False,
             "listening_evaluation": "NOT_PERFORMED",
             "artistic_quality_improvement_claimed": False,
