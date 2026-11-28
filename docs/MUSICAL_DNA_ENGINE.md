@@ -25,9 +25,9 @@ Turn abstract musical structure into a repeatable analysis → transmutation →
 - `barrot_agent.creative.RecursiveCompositionEngine(memory).create(manifest)`
 - `run.learned_lessons` exposes approved lessons from earlier attempts
 - `engine.record_feedback(run, feedback=..., lesson=...)` appends user feedback
-- `barrot_agent.creative.export_midi(manifest, destination)`
-- `barrot_agent.creative.render_audio(manifest, destination, soundfont_path=...)`
-- `barrot_agent.creative.render_production_bundle(manifest, destination_dir, soundfont_path=..., soundfont_map=...)`
+- `barrot_agent.creative.export_midi(manifest, destination, program_map=...)` for per-track General MIDI program overrides
+- `barrot_agent.creative.render_audio(manifest, destination, soundfont_path=..., program_map=...)`
+- `barrot_agent.creative.render_production_bundle(manifest, destination_dir, soundfont_path=..., soundfont_map=..., program_map=...)`
 - `barrot_agent.creative.transmute(manifest, Transmutation(...))`
 - `barrot_agent.creative.evaluate_transmutation(source, candidate)`
 - `barrot_agent.creative.RecursiveCreativeMemory(path)`
