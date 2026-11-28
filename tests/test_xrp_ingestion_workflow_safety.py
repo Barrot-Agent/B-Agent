@@ -19,6 +19,7 @@ def test_production_schedule_is_separate_from_integration_smoke():
         ".github/workflows/xrp-public-ingestion.yml",
         "barrot_agent/evolution/research_timestamp_corrections.py",
         "barrot_agent/evolution/xrp_public_ingestion.py",
+        "barrot_agent/evolution/rlusd_cross_chain_research.py",
         "barrot_agent/evolution/sec_edgar.py",
     ]
     assert "workflow_dispatch" in payload["on"]
@@ -27,6 +28,11 @@ def test_production_schedule_is_separate_from_integration_smoke():
         if step.get("name") == "Capture public XRP market sources and evaluate historical baselines"
     )
     assert "startsWith(github.ref, 'refs/heads/integration/')" in capture_step["env"]["INCLUDE_SEC_COMPANYFACTS"]
+    capture_event_sources = capture_step["env"]["CAPTURE_EVENT_SOURCES"]
+    assert "inputs.capture_event_sources" in capture_event_sources
+    assert "github.event.schedule == '15 0 * * *'" in capture_event_sources
+    assert "github.event_name == 'push'" in capture_event_sources
+    assert "refs/heads/integration/" in capture_event_sources
     assert payload["jobs"]["capture"]["if"] == (
         "github.ref == 'refs/heads/main' || "
         "(startsWith(github.ref, 'refs/heads/integration/') && "

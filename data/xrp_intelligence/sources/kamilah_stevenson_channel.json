@@ -13,29 +13,37 @@
     "youtube_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "channel_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
     "videos_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA/videos",
-    "identity_status": "PERSON_CONFIRMED_CHANNEL_PROBABLE_MATCH",
+    "identity_status": "PERSON_CONFIRMED_CHANNEL_PLATFORM_METADATA_VERIFIED_ASSOCIATION_STRONG",
     "identity_evidence": [
       "The first-person branded site identifies its owner as Dr. Kamilah Stevenson, also known as The Wealth Doctor.",
       "In the 2026-06-11 iHeart XRP Podcast interview, the guest self-reports a YouTube display name rendered in the auto-generated transcript as doctor Camilla Stevenson and warns that fake pages exist; the transcript does not supply an exact channel URL.",
       "The Linktree account @Dr.Kamilahstevenson links to a YouTube channel labelled Kamilah Stevenson and to the Kamilah Stevenson branded site; the retrieved branded site did not reciprocally link to the exact YouTube channel.",
       "The Linktree YouTube link resolves to the candidate handle @drkamilahstevenson, but the YouTube page fetch was throttled and did not expose first-party About metadata or the canonical channel ID.",
-      "YouTube search results display Kamilah Stevenson as author for candidate videos; indexed author labels are not platform-side account ownership proof."
+      "YouTube search results display Kamilah Stevenson as author for candidate videos; indexed author labels are not platform-side account ownership proof.",
+      "The first-party YouTube channel page at the canonical channel ID displays the channel title Kamilah Stevenson and handle @drkamilahstevenson on the same page, and links to go.prescribewealth.com/yt-bio. This verifies the platform channel ID/handle/display-name mapping, not civil identity.",
+      "Two first-party YouTube video search results display the author as Kamilah Stevenson and provide exact video IDs, publication dates and metadata. Their author bylines match the self-identifying channel display name; the individual video results do not expose a channel ID.",
+      "The channel-to-person association is strongly corroborated by the channel's branded external link, the first-party Kamilah Stevenson site and the iHeart interview self-identification, but no government identity record, platform verification badge or reciprocal first-party website link was captured."
     ],
     "caveats": [
-      "Person identity is confirmed; canonical YouTube channel ownership and the exact handle-to-channel-ID relation remain unverified.",
-      "The interview warns that fake pages exist; do not merge accounts by name, spelling, subscriber count or ticker focus alone.",
-      "The Linktree account is self-described and links to the branded site and YouTube, but no reciprocal link from the branded site to the exact channel was captured.",
-      "The candidate channel ID UCqUPJMQdkCN6lsLVDnichPA and handle @drkamilahstevenson are probably related but remain unverified at platform metadata level.",
-      "Third-party channel analytics report inconsistent subscriber and video counts; do not use those counts as canonical."
+      "YouTube first-party metadata now verifies the canonical channel ID, handle and self-identifying display name; it does not independently prove the operator's civil/legal identity.",
+      "The person-to-channel association is strong but not legal-identity verified. Preserve this distinction in all future attribution.",
+      "The iHeart transcript uses Camila/Camilla as an auto-generated spelling variant and warns about fake pages; do not merge unrelated same-name accounts.",
+      "The two video author bylines are first-party YouTube metadata, but the individual video results did not expose their channel IDs. Keep that limitation attached to each record.",
+      "The 21 earlier seed-video references remain candidate-only because their individual author/channel provenance was not upgraded by this channel-page capture.",
+      "YouTube subscriber/video counts and indexed view/like counts are dynamic crawl-time observations, not canonical current counts."
     ],
     "person_identity_status": "CONFIRMED",
-    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
-    "youtube_channel_id_status": "THIRD_PARTY_CANDIDATE",
+    "channel_identity_status": "PLATFORM_METADATA_VERIFIED_SELF_IDENTIFIED_CHANNEL",
+    "youtube_channel_id_status": "FIRST_PARTY_YOUTUBE_CHANNEL_PAGE",
     "youtube_handle_candidate": "@drkamilahstevenson",
-    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL"
+    "handle_channel_id_relation": "VERIFIED_BY_YOUTUBE_CHANNEL_PAGE",
+    "youtube_handle": "@drkamilahstevenson",
+    "youtube_handle_verified": true,
+    "person_channel_association_status": "STRONG_NOT_LEGAL_IDENTITY_VERIFIED",
+    "legal_identity_verified": false
   },
   "ingestion_policy": {
-    "scope": "CANDIDATE_REFERENCES_ONLY_PENDING_CANONICAL_CHANNEL_VERIFICATION",
+    "scope": "PARTIAL_VERIFIED_CHANNEL_METADATA_INVENTORY_WITH_PRIOR_CANDIDATES_QUARANTINED",
     "required_fields": [
       "video_id",
       "canonical_url",
@@ -64,31 +72,50 @@
     "evidence_policy": "Creator statements are claims, not ground truth. Independently corroborate with primary filings, official statements, market data, on-chain data, regulatory records, and independent sources.",
     "forecasting_policy": "Never use a video published after the forecast cutoff as a feature for that forecast. Prevent look-ahead and survivorship leakage.",
     "financial_safety": "Research and shadow evaluation only; no trading instruction or live order execution.",
-    "identity_gate": "Person identity is confirmed and public-channel attribution is strongly corroborated, but the exact channel ID/handle is not platform-side verified. Keep references candidate-only. Do not classify uploads as a verified creator inventory or admit them to the verified source corpus until authorized YouTube metadata or a first-party reciprocal link establishes the exact channel ID."
+    "identity_gate": "YouTube first-party channel metadata verifies the channel ID/handle/display-name mapping. Two individual YouTube author-byline records are admitted to a partial channel-attribution inventory. The person-to-channel association is strong but not legal-identity verified; 21 earlier seed references remain candidate-only."
   },
   "video_inventory_status": {
-    "status": "PARTIAL_CANDIDATE_INVENTORY_CANONICAL_CHANNEL_UNVERIFIED",
+    "status": "PARTIAL_VERIFIED_CHANNEL_METADATA_INVENTORY",
     "completeness_verified": false,
     "discovered_total_count": null,
     "indexed_seed_video_count": 21,
     "missing_work": [
-      "Resolve the exact @drkamilahstevenson handle to a canonical YouTube channel ID using authorized YouTube metadata or a first-party reciprocal link.",
-      "Capture channel About metadata and reciprocal website/contact links without bypassing access controls.",
-      "Classify the three newly observed personal-channel uploads as candidates only until the canonical channel ID/handle relation is verified.",
-      "Enumerate all public uploads, Shorts, live and archived streams only after canonical channel verification.",
-      "Deduplicate by canonical video ID and retain timestamped pagination/change-detection receipts.",
-      "Retrieve permitted/public transcripts, hash exact captured text, preserve timestamps, and keep creator commentary out of ground-truth market features."
+      "Enumerate all public uploads, Shorts, live streams and archived streams using authorized YouTube metadata with pagination and change-detection receipts.",
+      "Resolve video IDs and direct channel IDs for the remaining channel-page title listings.",
+      "Retrieve permitted public descriptions/transcripts, preserve publication and retrieval timestamps, and hash exact captured text when bytes are available.",
+      "Independently verify the civil/legal identity of the channel operator only if a lawful, first-party identity source becomes available.",
+      "Keep all 21 older seed references quarantined until each video has its own first-party author/channel evidence."
     ],
     "person_identity_verified": true,
-    "canonical_channel_verified": false,
+    "canonical_channel_verified": true,
     "candidate_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "candidate_handle": "@drkamilahstevenson",
-    "channel_id_handle_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
-    "attribution_verified": false,
-    "identity_gate_passed": false,
-    "verified_inventory_count": 0,
+    "channel_id_handle_relation": "VERIFIED_BY_YOUTUBE_CHANNEL_PAGE",
+    "attribution_verified": true,
+    "identity_gate_passed": true,
+    "verified_inventory_count": 2,
     "candidate_reference_count": 21,
-    "inventory_scope": "Candidate references only; not an attributed, canonical, or exhaustive public-video inventory."
+    "inventory_scope": "Two first-party YouTube author-byline records matching the self-identifying channel page; 21 prior seed references remain candidate-only; public listing snapshot is partial and non-exhaustive.",
+    "person_channel_association_status": "STRONG_NOT_LEGAL_IDENTITY_VERIFIED",
+    "legal_identity_verified": false,
+    "platform_displayed_video_count_label": "1.2K",
+    "platform_displayed_subscriber_count_label": "142K",
+    "channel_page_capture_at_utc": "2026-11-27T12:00:00Z",
+    "public_listing_snapshot": {
+      "source_url": "https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+      "handle_url": "https://www.youtube.com/@drkamilahstevenson",
+      "source_crawl_age": "YouTube channel-page result reported as crawled last month",
+      "recent_public_listing_count": 12,
+      "popular_public_listing_count": 12,
+      "public_live_stream_listing_count": 12,
+      "public_shorts_listing_count": 20,
+      "members_only_listing_count": 12,
+      "members_only_included": false,
+      "unique_video_ids_recovered": 2,
+      "total_listing_slots": 56,
+      "unique_total_unknown": true,
+      "note": "Categories overlap and most visible titles lack IDs; 56 is a count of listing slots, not unique videos or a complete channel inventory."
+    }
   },
   "seed_videos": [
     {
@@ -538,18 +565,22 @@
     "requested_identity": "Camilla/Kamilah Stevenson",
     "person_identity_status": "CONFIRMED",
     "candidate_identity": "Dr. Kamilah Stevenson; self-reported YouTube display name rendered as doctor Camilla Stevenson",
-    "channel_identity_status": "PROBABLE_MATCH_NOT_FIRST_PARTY_VERIFIED",
+    "channel_identity_status": "PLATFORM_METADATA_VERIFIED_SELF_IDENTIFIED_CHANNEL",
     "canonical_channel_id": "UCqUPJMQdkCN6lsLVDnichPA",
     "candidate_handle": "@drkamilahstevenson",
-    "handle_channel_id_relation": "UNRESOLVED_POSSIBLY_SAME_CHANNEL",
+    "handle_channel_id_relation": "VERIFIED_BY_YOUTUBE_CHANNEL_PAGE",
     "allow_candidate_references": true,
-    "allow_verified_creator_inventory": false,
+    "allow_verified_creator_inventory": true,
     "allow_forecast_feature_admission": false,
     "required_evidence": [
-      "Authorized YouTube channel metadata that resolves the exact handle to a canonical channel ID and exposes About/owner metadata, or",
-      "A creator-controlled first-party website/social profile that links reciprocally to the exact YouTube handle or channel ID."
+      "The YouTube first-party channel page must show the canonical channel ID, handle and self-identifying display name together.",
+      "Each video admitted to the verified channel-attribution inventory must have a first-party YouTube video result with an exact video ID, title, publication date and author byline matching the channel display name.",
+      "Keep the channel-to-person association and legal identity as separate confidence fields; do not infer legal identity from a display name or channel description."
     ],
-    "rule": "Preserve candidate video references, but do not call them a verified creator inventory or attribute them as confirmed channel uploads until the exact channel identity is verified."
+    "rule": "Only admit video records with first-party YouTube author-byline evidence and an exact video ID. Preserve prior seed references as candidates until each independently meets this rule. Channel metadata verification does not establish legal identity and no creator commentary is eligible as an XRP market feature.",
+    "youtube_handle": "@drkamilahstevenson",
+    "person_channel_association_status": "STRONG_NOT_LEGAL_IDENTITY_VERIFIED",
+    "legal_identity_verified": false
   },
   "identity_status_history": [
     {
@@ -566,6 +597,62 @@
         "research/xrp_intelligence/20261105T2150Z-kamilah-stevenson-public-youtube-inventory-addendum.json"
       ],
       "scope": "Person identity and public-channel attribution strengthened; canonical channel ID/handle ownership still not platform-verified."
+    },
+    {
+      "observed_date": "2026-11-27",
+      "status": "YOUTUBE_CHANNEL_METADATA_AND_TWO_AUTHOR_BYLINES_VERIFIED_PERSON_ASSOCIATION_NOT_LEGAL_IDENTITY",
+      "sources": [
+        "YouTube canonical channel page https://www.youtube.com/channel/UCqUPJMQdkCN6lsLVDnichPA",
+        "YouTube video https://www.youtube.com/watch?v=vRlw4BV-cGE",
+        "YouTube video https://www.youtube.com/watch?v=dAKrq3c9hts"
+      ],
+      "scope": "The platform page verifies the channel ID/handle/display-name mapping; two videos have YouTube author bylines matching the channel name. Civil/legal identity and exhaustive inventory remain unverified."
+    }
+  ],
+  "verified_channel_videos": [
+    {
+      "video_id": "vRlw4BV-cGE",
+      "title": "This NEW Bank Deal Shows Exactly Where XRP Is Headed",
+      "canonical_url": "https://www.youtube.com/watch?v=vRlw4BV-cGE",
+      "published_at": "2026-10-20",
+      "duration_label": "12:58",
+      "duration_seconds": 778,
+      "author_as_displayed": "Kamilah Stevenson",
+      "publisher": "YouTube",
+      "attribution_status": "YOUTUBE_FIRST_PARTY_AUTHOR_BYLINE_MATCHED_TO_SELF_IDENTIFYING_CHANNEL",
+      "channel_id": null,
+      "channel_id_exposed_on_video_result": false,
+      "views_at_indexed_capture": 29824,
+      "likes_at_indexed_capture": 1100,
+      "channel_followers_at_indexed_capture": 142000,
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "creator_claims_summary": "Description claims Standard Chartered provides institutional custody for RLUSD on XRPL and describes a planned Ripple/LMAX collateral collaboration; creator-reported claims require primary-source corroboration.",
+      "claims_admissible_as_market_facts": false,
+      "eligible_for_forecast_feature": false,
+      "retrieval_note": "YouTube search result; indexed crawl age last month; counts are dynamic."
+    },
+    {
+      "video_id": "dAKrq3c9hts",
+      "title": "SWIFT Built Its Own Blockchain. It Still Can't Do XRP's Job",
+      "canonical_url": "https://www.youtube.com/watch?v=dAKrq3c9hts",
+      "published_at": "2026-08-23",
+      "duration_label": null,
+      "duration_seconds": null,
+      "author_as_displayed": "Kamilah Stevenson",
+      "publisher": "YouTube",
+      "attribution_status": "YOUTUBE_FIRST_PARTY_AUTHOR_BYLINE_MATCHED_TO_SELF_IDENTIFYING_CHANNEL",
+      "channel_id": null,
+      "channel_id_exposed_on_video_result": false,
+      "views_at_indexed_capture": 24868,
+      "likes_at_indexed_capture": 1400,
+      "channel_followers_at_indexed_capture": 139000,
+      "content_reviewed": false,
+      "description_metadata_only": true,
+      "creator_claims_summary": "Description argues SWIFT's shared ledger uses tokenized bank deposits rather than XRP and frames cross-currency liquidity as a separate bridge-asset problem; creator commentary, not independent evidence.",
+      "claims_admissible_as_market_facts": false,
+      "eligible_for_forecast_feature": false,
+      "retrieval_note": "YouTube search result; indexed crawl age two months; counts are dynamic."
     }
   ]
 }

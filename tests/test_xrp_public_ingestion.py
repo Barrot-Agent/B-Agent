@@ -1410,6 +1410,14 @@ def test_scheduled_ingestion_workflow_persists_history_without_repository_writes
     assert "actions: read" in workflow
     assert "contents: read" in workflow
     assert "persist-credentials: false" in workflow
+    dispatch_inputs = workflow.split("  workflow_dispatch:", 1)[1].split("\npermissions:", 1)[0]
+    assert "capture_event_sources:" in dispatch_inputs
+    assert "default: false" in dispatch_inputs
+    assert "type: boolean" in dispatch_inputs
+    capture_step = workflow.split("      - name: Capture public XRP market sources", 1)[1].split("      - name:", 1)[0]
+    assert "CAPTURE_EVENT_SOURCES: ${{ inputs.capture_event_sources || github.event.schedule == '15 0 * * *' || (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/integration/')) }}" in capture_step
+    assert 'if [[ "${CAPTURE_EVENT_SOURCES:-false}" == "true" ]]' in capture_step
+    assert "args+=(--capture-event-sources)" in capture_step
     assert re.search(r"(?m)^\s+uses: actions/cache/restore@[0-9a-f]{40} # v4\s*$", workflow)
     assert re.search(r"(?m)^\s+uses: actions/cache/save@[0-9a-f]{40} # v4\s*$", workflow)
     assert "if: steps.feature_cache.outputs.cache-hit == 'true'" in workflow
@@ -1725,6 +1733,22 @@ def test_xrpr_primary_issuer_page_is_registered_and_retained_raw_only():
     assert source_as_of is None
     assert eligible is False
     assert "raw_only" in reason
+
+
+def test_franklin_xrpz_identity_failure_reports_missing_markers():
+    captured = datetime(2026, 11, 26, 16, 15, tzinfo=timezone.utc)
+    source_id = "xrp_etf_franklin_xrpz_issuer_page"
+    url = dict(ENDPOINTS)[source_id]
+    payload = {"html_text": "<html><title>Franklin XRP ETF</title><p>As of 11/26/2026</p></html>"}
+
+    with pytest.raises(XRPIngestionError, match="missing required markers: xrpz, xrp in fund"):
+        PARSERS[source_id](
+            payload,
+            source_id=source_id,
+            url=url,
+            digest="e" * 64,
+            captured=captured,
+        )
 
 
 @pytest.mark.parametrize(
@@ -3271,7 +3295,12 @@ def test_weekly_cftc_endpoint_is_selected_only_after_scheduled_publication(monke
 
 def test_weekly_cftc_tff_capture_is_receipted_and_research_only_on_saturday_daily_run(tmp_path):
     captured = datetime(2026, 11, 7, 0, 15, tzinfo=timezone.utc)
-    summary = run_ingestion(tmp_path / "weekly", fetcher=_fake_fetcher(captured), now=captured)
+    summary = run_ingestion(
+        tmp_path / "weekly",
+        fetcher=_fake_fetcher(captured),
+        now=captured,
+        capture_event_sources=False,
+    )
 
     assert summary["source_receipt_count"] == len(SCHEDULED_ENDPOINTS) + 3
     assert summary["source_failure_count"] == 0
